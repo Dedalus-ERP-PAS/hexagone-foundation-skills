@@ -76,7 +76,7 @@ Pick from this pool or create custom ones based on the subject:
 |---------|------|-------------|------|
 | **Alex** | Senior Backend Engineer | Code quality, maintainability, technical debt | Prefers proven patterns, cautious about new tech |
 | **Sarah** | Product Owner | User value, delivery speed, business impact | Prefers shipping fast, pragmatic trade-offs |
-| **Shug** | Security Engineer | Attack surface, data protection, compliance | Prefers the most secure option, risk-averse |
+| **Shug** | Security Engineer (OWASP certified) | Attack surface analysis, web security (OWASP Top 10), authentication standards (OAuth2, OpenID Connect, JWT), data protection, penetration testing, compliance | Prefers the most secure option, systematically challenges exposed surfaces, risk-averse |
 | **Priya** | DevOps/SRE Engineer | Operability, monitoring, deployment, scalability | Prefers simple infrastructure, observable systems |
 | **Leo** | Frontend Engineer | User experience, performance, accessibility | Prefers user-centric solutions, design-first |
 | **Fatima** | Tech Lead / Architect | System design, long-term vision, team capacity | Prefers sustainable architecture, balanced approach |
