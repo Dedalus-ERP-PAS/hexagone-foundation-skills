@@ -74,10 +74,10 @@ Index de toute la documentation disponible pour les Foundation Skills.
 
 ```bash
 # Tous les skills
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 
 # Skill spécifique
-npx add-skill Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 ```
 
 ### 2. Utilisation de base

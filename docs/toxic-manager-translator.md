@@ -42,5 +42,5 @@ Transforme les messages ou réactions émotionnelles d'un collaborateur en répo
 ## Installation
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills --skill toxic-manager-translator
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill toxic-manager-translator
 ```

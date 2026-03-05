@@ -18,7 +18,7 @@ README.md                      # README principal (français)
 
 ```bash
 # Installer les skills dans un projet
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 ```
 
 ## Conventions à Respecter
@@ -52,5 +52,5 @@ npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
 
 - Ce dépôt ne contient pas de code exécutable, uniquement du Markdown
 - Pas de dépendances npm/pip à installer pour le développement
-- La distribution se fait via le CLI `add-skill` de Vercel Labs
+- La distribution se fait via le CLI `skills` de Vercel Labs
 - 24 skills disponibles répartis en 5 catégories : développement, parseurs santé, gestion d'issues, documents, utilitaires

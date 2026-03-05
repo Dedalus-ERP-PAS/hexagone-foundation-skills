@@ -70,25 +70,25 @@ Bibliothèque centralisée de skills pour assistants IA de développement, desti
 
 ```mermaid
 graph LR
-    A[Développeur] -->|Installe les skills| B[CLI add-skill]
+    A[Développeur] -->|Installe les skills| B[CLI skills]
     B -->|Copie dans le projet| C[Répertoire .skills/]
     C -->|Chargement dynamique| D[Agent IA]
     D -->|Exécute les instructions| E[Tâche réalisée]
 ```
 
-Le développeur installe les skills via la commande `npx add-skill`. Les fichiers sont copiés dans le projet local. L'agent IA (Copilot, Claude, Cursor) charge dynamiquement les skills nécessaires et exécute les instructions pour réaliser la tâche demandée.
+Le développeur installe les skills via la commande `npx skills add`. Les fichiers sont copiés dans le projet local. L'agent IA (Copilot, Claude, Cursor) charge dynamiquement les skills nécessaires et exécute les instructions pour réaliser la tâche demandée.
 
 ## Environnements
 
 | Environnement | URL | Description |
 |---------------|-----|-------------|
 | Dépôt GitHub | `https://github.com/Dedalus-ERP-PAS/foundation-skills` | Code source et releases |
-| Installation locale | `npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y` | Installation dans le projet |
+| Installation locale | `npx skills add Dedalus-ERP-PAS/foundation-skills -g -y` | Installation dans le projet |
 
 ## Stack technique
 
 - **Format :** Markdown (SKILL.md), suivant le standard ouvert [Agent Skills](https://agentskills.io)
-- **Distribution :** GitHub + CLI [add-skill](https://github.com/vercel-labs/add-skill)
+- **Distribution :** GitHub + CLI [skills](https://github.com/vercel-labs/agent-skills)
 - **Agents compatibles :** GitHub Copilot, Claude Code, Cursor, Windsurf
 - **Licence :** MIT
 
@@ -133,7 +133,7 @@ Le développeur installe les skills via la commande `npx add-skill`. Les fichier
 
 - **[Guide complet d'utilisation](docs/comment-utiliser.md)** — Documentation détaillée sur l'installation et l'utilisation
 - [Agent Skills](https://agentskills.io) — Standard ouvert pour les skills d'agents IA
-- [add-skill CLI](https://github.com/vercel-labs/add-skill) — Outil d'installation des skills
+- [skills CLI](https://github.com/vercel-labs/agent-skills) — Outil d'installation des skills
 
 ## Licence
 

@@ -18,7 +18,7 @@ Utilisez ce skill pour :
 ## Démarrage rapide
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 ```
 
 ## Contenu du skill

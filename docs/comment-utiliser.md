@@ -27,7 +27,7 @@ Guide complet pour installer et utiliser les skills avec vos assistants IA de d�
 Installer tous les skills pour tous les agents supportés :
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 ```
 
 Cette commande :
@@ -39,7 +39,7 @@ Cette commande :
 #### Installer des skills spécifiques
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills \
+npx skills add Dedalus-ERP-PAS/foundation-skills \
   --skill backend-patterns \
   --skill react-best-practices \
   --skill frontend-design \
@@ -49,7 +49,7 @@ npx add-skill Dedalus-ERP-PAS/foundation-skills \
 #### Installer pour des agents spécifiques
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills \
+npx skills add Dedalus-ERP-PAS/foundation-skills \
   -a cursor \
   -a github-copilot \
   -g -y
@@ -61,7 +61,7 @@ Pour installer les skills uniquement dans le projet courant (sans `-g`) :
 
 ```bash
 cd votre-projet
-npx add-skill Dedalus-ERP-PAS/foundation-skills -y
+npx skills add Dedalus-ERP-PAS/foundation-skills -y
 ```
 
 ## Utilisation avec différents agents
@@ -220,19 +220,19 @@ L'agent va :
 ### Lister les skills disponibles
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills --list
+npx skills add Dedalus-ERP-PAS/foundation-skills --list
 ```
 
 ### Mettre à jour les skills
 
 ```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y --update
+npx skills add Dedalus-ERP-PAS/foundation-skills -g -y --update
 ```
 
 ### Désinstaller un skill
 
 ```bash
-npx remove-skill backend-patterns
+npx skills remove backend-patterns
 ```
 
 ### Vérifier l'installation
@@ -339,12 +339,12 @@ Commencez simple, puis ajoutez de la complexité :
 
 1. Vérifiez l'installation :
    ```bash
-   npx add-skill Dedalus-ERP-PAS/foundation-skills --list
+   npx skills add Dedalus-ERP-PAS/foundation-skills --list
    ```
 
 2. Réinstallez :
    ```bash
-   npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y --force
+   npx skills add Dedalus-ERP-PAS/foundation-skills -g -y --force
    ```
 
 3. Redémarrez votre IDE/agent
@@ -354,7 +354,7 @@ Commencez simple, puis ajoutez de la complexité :
 - Vérifiez le nom exact du skill (voir README.md)
 - Installez le skill spécifique :
   ```bash
-  npx add-skill Dedalus-ERP-PAS/foundation-skills --skill nom-du-skill -g -y
+  npx skills add Dedalus-ERP-PAS/foundation-skills --skill nom-du-skill -g -y
   ```
 
 ### Conflit entre skills
@@ -366,7 +366,7 @@ Certains skills peuvent avoir des overlaps (ex: coding-standards et backend-patt
 Sur Linux/Mac, si vous avez des erreurs de permissions :
 
 ```bash
-sudo npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+sudo npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 ```
 
 ### Les scripts Python ne s'exécutent pas
@@ -393,6 +393,6 @@ Pour ajouter ou améliorer un skill, consultez le [CONTRIBUTING.md](../CONTRIBUT
 ## Ressources supplémentaires
 
 - [Agent Skills Documentation](https://agentskills.io/docs)
-- [add-skill CLI](https://github.com/vercel-labs/add-skill)
+- [skills CLI](https://github.com/vercel-labs/agent-skills)
 - [Guide des patterns backend](backend-patterns.md)
 - [Guide React best practices](react-best-practices.md)

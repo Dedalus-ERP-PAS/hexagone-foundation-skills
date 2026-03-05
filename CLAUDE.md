@@ -7,7 +7,7 @@ Foundation Skills is a centralized repository of AI agent skills for Dedalus ERP
 ## Tech Stack
 
 - **Format:** Markdown (SKILL.md), Agent Skills standard
-- **Distribution:** GitHub + `npx add-skill` CLI
+- **Distribution:** GitHub + `npx skills` CLI
 - **License:** MIT
 
 ## Project Structure
@@ -52,7 +52,7 @@ foundation-skills/
 
 ```bash
 # Install skills in a project
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 ```
 
 ## Git Workflow
