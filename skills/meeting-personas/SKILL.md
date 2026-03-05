@@ -15,12 +15,12 @@ Simulate a structured meeting with multiple expert personas to analyze a subject
 ## When to Use This Skill
 
 Activate when the user:
-- Asks to "run a meeting" or "simulate a meeting" about a topic
-- Wants to analyze a problem from multiple perspectives before deciding
-- Says "let's discuss this with personas" or "what would experts think about..."
-- Needs a structured debate before making an architectural, product, or technical decision
-- Wants to explore trade-offs on a feature, migration, refactoring, or design choice
-- References a GitLab or GitHub issue and wants a meeting analysis posted to it
+- Demande de « lancer une réunion » ou « simuler une réunion » sur un sujet
+- Veut analyser un problème sous plusieurs angles avant de décider
+- Dit « discutons-en avec des personas » ou « qu'en penseraient des experts ? »
+- A besoin d'un débat structuré avant une décision d'architecture, produit ou technique
+- Souhaite explorer les compromis sur une fonctionnalité, une migration, un refactoring ou un choix de design
+- Référence une issue GitLab ou GitHub et souhaite y poster l'analyse de la réunion
 
 ## Core Principles
 
@@ -272,7 +272,7 @@ If the subject is linked to a GitLab or GitHub issue and the user asks to post:
 ### Example 1: Technical Decision
 
 ```
-User: Run a meeting about whether we should use GraphQL or REST for our new API
+User: Lance une réunion pour savoir si on doit utiliser GraphQL ou REST pour la nouvelle API
 
 Meeting would include: Alex (Backend), Sarah (PO), Priya (DevOps), Leo (Frontend)
 Decision question: "Devons-nous utiliser GraphQL ou REST pour la nouvelle API ?"
@@ -281,7 +281,7 @@ Decision question: "Devons-nous utiliser GraphQL ou REST pour la nouvelle API ?"
 ### Example 2: Architecture Decision with Issue
 
 ```
-User: Run a meeting about issue #234 - migrating from monolith to microservices
+User: Fais une réunion sur l'issue #234 - migration du monolithe vers des microservices
 
 Meeting would include: Fatima (Architect), Alex (Backend), Priya (DevOps), Sarah (PO), Yuki (QA)
 Decision question: "Comment migrer du monolithe vers des microservices pour le module facturation ?"
@@ -291,7 +291,7 @@ Analysis posted to GitLab issue #234 after user validation
 ### Example 3: Product Decision
 
 ```
-User: Let's have a meeting about adding real-time notifications to the app
+User: Organisons une réunion sur l'ajout de notifications temps réel dans l'application
 
 Meeting would include: Sarah (PO), Leo (Frontend), Alex (Backend), Marcus (Security)
 Decision question: "Quelle approche adopter pour les notifications temps réel ?"
