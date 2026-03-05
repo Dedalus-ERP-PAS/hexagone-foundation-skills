@@ -81,7 +81,7 @@ Pick from this pool or create custom ones based on the subject:
 | **Leo** | Frontend Engineer | User experience, performance, accessibility | Prefers user-centric solutions, design-first |
 | **Fatima** | Tech Lead / Architect | System design, long-term vision, team capacity | Prefers sustainable architecture, balanced approach |
 | **Yuki** | QA Engineer | Testability, edge cases, regression risk | Prefers thorough coverage, cautious about untested paths |
-| **Omar** | Data Engineer | Data integrity, analytics, migration risks | Prefers schema stability, careful migrations |
+| **Jean-Baptiste** | Data Engineer | Data integrity, analytics, migration risks | Prefers schema stability, careful migrations |
 | **Santiago** | Senior Interoperability PO | Standards compliance (HL7, FHIR, HPK), cross-system integration, data flow consistency | Prefers standard-based approaches, careful about breaking upstream/downstream systems |
 | **Victor** | Senior Interoperability Fullstack Developer | End-to-end integration (API, middleware, frontend), message parsing (HL7, FHIR, HPK), system connectors, data mapping and transformation | Prefers pragmatic solutions that work across the full stack, bridges the gap between standards and implementation |
 

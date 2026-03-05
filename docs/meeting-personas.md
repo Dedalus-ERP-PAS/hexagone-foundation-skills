@@ -45,7 +45,7 @@ Discutons avec des personas : doit-on ajouter des notifications temps réel ?
 | Leo | Ingénieur Frontend | Expérience utilisateur, performance |
 | Fatima | Tech Lead / Architecte | Vision long terme, capacité de l'équipe |
 | Yuki | Ingénieure QA | Testabilité, cas limites, régression |
-| Omar | Ingénieur Data | Intégrité des données, migrations |
+| Jean-Baptiste | Ingénieur Data | Intégrité des données, migrations |
 | Santiago | PO Interopérabilité Senior | Standards (HL7, FHIR, HPK), intégration inter-systèmes |
 | Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages (HL7, FHIR, HPK), connecteurs et transformation de données |
 
