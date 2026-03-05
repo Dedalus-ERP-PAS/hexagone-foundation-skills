@@ -47,6 +47,7 @@ Discutons avec des personas : doit-on ajouter des notifications temps réel ?
 | Yuki | Ingénieure QA | Testabilité, cas limites, régression |
 | Jean-Baptiste | Ingénieur Data | Intégrité des données, migrations |
 | Santiago | PO Interopérabilité Senior | Standards (HL7, FHIR, HPK), intégration inter-systèmes |
+| Gilles | Développeur Fullstack Senior (spécialiste Uniface) | Développement Uniface, modernisation de systèmes legacy, patterns 4GL/RAD, stratégies de migration |
 | Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages (HL7, FHIR, HPK), connecteurs et transformation de données |
 
 Des personas spécialisées (santé, finance, juridique) sont créées automatiquement si le sujet le nécessite.
