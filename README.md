@@ -1,70 +1,139 @@
 # Foundation Skills
 
-Repository centralisé de skills pour les assistants IA de développement (GitHub Copilot, Claude, Cursor, Windsurf...) destiné aux équipes de développement ERP-PAS.
+Bibliothèque centralisée de skills pour assistants IA de développement, destinée aux équipes ERP-PAS de Dedalus.
 
-Les skills sont des instructions et ressources que les agents IA chargent dynamiquement pour réaliser des tâches spécialisées de manière reproductible. Ils suivent le standard ouvert [Agent Skills](https://agentskills.io).
+## Table des matières
 
-## Prérequis
+- [A quoi sert ce produit ?](#a-quoi-sert-ce-produit-)
+- [Fonctionnalités principales](#fonctionnalités-principales)
+- [Comment ça fonctionne](#comment-ça-fonctionne)
+- [Environnements](#environnements)
+- [Stack technique](#stack-technique)
+- [Skills disponibles](#skills-disponibles)
+- [Documentation complémentaire](#documentation-complémentaire)
 
-### VSCode
+### Documentation technique
 
-Pour utiliser les skills dans VSCode, vous devez activer l'option **"Use Agent skills"** dans les paramètres :
+| Document | Description |
+|----------|-------------|
+| [Guide d'utilisation](docs/comment-utiliser.md) | Guide complet d'installation et d'utilisation des skills avec différents agents IA |
+| [Index documentation](docs/README.md) | Index de la documentation avec liste des guides et skills disponibles |
+| [Guide parseurs santé](docs/healthcare-parsers-guide.md) | Guide complet pour parser les messages HPK et HL7 PAM dans les systèmes hospitaliers |
+| [Spécification HPK/GEF](docs/specification-hpk-gef.md) | Référentiel technique des messages de gestion économique et financière HPK/GEF |
+| [Messages HPK ADT](docs/hpk-adt-message.md) | Spécification technique des messages de gestion économique au format HPK |
+| [Parseur HPK](docs/hpk-parser.md) | Parsing et explication des messages HPK propriétaires au format délimité par pipes |
+| [Parseur HL7 PAM](docs/hl7-pam-parser.md) | Parsing et explication des messages HL7 v2.5 IHE PAM d'administration des patients |
+| [Backend patterns](docs/backend-patterns.md) | Patterns d'architecture backend (Repository, Service Layer) et optimisations API |
+| [Coding standards](docs/coding-standards.md) | Standards de code universels pour TypeScript, JavaScript, React et Node.js |
+| [React best practices](docs/react-best-practices.md) | Guide des best practices React et Next.js (architecture, performance, shadcn/ui) |
+| [Vue best practices](docs/vue-best-practices.md) | Best practices Vue.js 3 et Nuxt avec Composition API et patterns d'organisation |
+| [Frontend design](docs/frontend-design.md) | Création d'interfaces web distinctives et professionnelles |
+| [Web design guidelines](docs/web-design-guidelines.md) | Audit et revue de code UI pour conformité aux guidelines web |
+| [Design system rules](docs/create-design-system-rules.md) | Génération de règles de design system pour workflows Figma-to-code |
+| [MCP builder](docs/mcp-builder.md) | Guide pour créer des serveurs MCP (Model Context Protocol) en TypeScript ou Python |
+| [Playwright skill](docs/playwright-skill.md) | Tests et automatisation web complète avec Playwright |
+| [PostgreSQL](docs/postgres.md) | Exécution de requêtes SQL en lecture seule sur PostgreSQL |
+| [GitLab code review](docs/gitlab-code-review.md) | Revue de code des merge requests GitLab avec analyse qualité et sécurité |
+| [GitLab issue](docs/gitlab-issue.md) | Création et gestion d'issues GitLab sur instance auto-hébergée |
+| [GitHub issues](docs/github-issues.md) | Création et gestion d'issues GitHub avec workflows structurés |
+| [Security review](docs/security-review.md) | Audit de sécurité couvrant authentification, injection SQL, secrets et CSRF |
+| [Article extractor](docs/article-extractor.md) | Extraction du contenu propre d'articles web sans publicités |
+| [Changelog generator](docs/changelog-generator.md) | Génération automatique de changelogs à partir de l'historique git |
+| [Documents Word](docs/docx.md) | Manipulation et génération de documents Word (.docx) |
+| [PDF](docs/pdf.md) | Manipulation de fichiers PDF (extraction de texte, tableaux et création) |
+| [PowerPoint](docs/pptx.md) | Manipulation de présentations PowerPoint (lecture, création et modification) |
+| [Excel](docs/xlsx.md) | Manipulation de fichiers Excel (création, lecture et formatage) |
+| [Toxic manager translator](docs/toxic-manager-translator.md) | Transformation de messages émotionnels en réponses professionnelles |
+| [README generator](docs/readme.md) | Génération automatique de README.md en français orienté Product Owner |
+| [Meeting personas](docs/meeting-personas.md) | Simulation de réunion avec personas pour analyser un sujet et converger vers une décision |
 
-1. Ouvrez les paramètres VSCode (`Ctrl+,` ou `Cmd+,`)
-2. Recherchez "Use Agent skills"
-3. Cochez l'option pour activer les skills
+## A quoi sert ce produit ?
 
-Sans cette activation, les skills ne seront pas chargés par l'agent GitHub Copilot.
+- Fournir aux équipes des instructions IA réutilisables pour des tâches de développement courantes
+- Garantir des pratiques de code homogènes grâce à des skills standardisés
+- Accélérer le développement en automatisant les tâches répétitives (revue de code, changelogs, documentation)
+- Parser et interpréter les messages de santé HPK et HL7 PAM propres au domaine hospitalier
+- Créer et manipuler des documents bureautiques (Word, Excel, PowerPoint, PDF) de manière programmatique
 
-## Installation et mise à jour
+## Fonctionnalités principales
 
-Pour installer ou mettre à jour les skills vers la dernière version :
+- **Skills de développement** — Standards de code, patterns backend, best practices React et Vue.js
+- **Revue de code automatisée** — Analyse qualité, sécurité et performance des merge requests GitLab
+- **Parseurs de messages de santé** — Interprétation des formats HPK et HL7 PAM utilisés en milieu hospitalier
+- **Gestion d'issues** — Création et suivi d'issues GitHub et GitLab avec contexte enrichi
+- **Manipulation de documents** — Création et édition de fichiers Word, Excel, PowerPoint et PDF
+- **Tests et automatisation web** — Tests fonctionnels et visuels avec Playwright
+- **Audit de sécurité** — Détection des vulnérabilités OWASP Top 10 dans le code
+- **Génération de changelogs** — Notes de version automatiques à partir de l'historique git
 
-```bash
-npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y
+## Comment ça fonctionne
+
+```mermaid
+graph LR
+    A[Développeur] -->|Installe les skills| B[CLI add-skill]
+    B -->|Copie dans le projet| C[Répertoire .skills/]
+    C -->|Chargement dynamique| D[Agent IA]
+    D -->|Exécute les instructions| E[Tâche réalisée]
 ```
+
+Le développeur installe les skills via la commande `npx add-skill`. Les fichiers sont copiés dans le projet local. L'agent IA (Copilot, Claude, Cursor) charge dynamiquement les skills nécessaires et exécute les instructions pour réaliser la tâche demandée.
+
+## Environnements
+
+| Environnement | URL | Description |
+|---------------|-----|-------------|
+| Dépôt GitHub | `https://github.com/Dedalus-ERP-PAS/foundation-skills` | Code source et releases |
+| Installation locale | `npx add-skill Dedalus-ERP-PAS/foundation-skills -g -y` | Installation dans le projet |
+
+## Stack technique
+
+- **Format :** Markdown (SKILL.md), suivant le standard ouvert [Agent Skills](https://agentskills.io)
+- **Distribution :** GitHub + CLI [add-skill](https://github.com/vercel-labs/add-skill)
+- **Agents compatibles :** GitHub Copilot, Claude Code, Cursor, Windsurf
+- **Licence :** MIT
 
 ## Skills disponibles
 
 ### Skills de développement
 
-| Skill | Description | How to use |
-|-------|-------------|------------|
-| **backend-patterns** | Patterns d'architecture backend : API RESTful, repository pattern, optimisation DB, caching, authentification et rate limiting pour Node.js/Express/Next.js | [backend-patterns.md](docs/backend-patterns.md) |
-| **changelog-generator** | Génère automatiquement des changelogs conviviaux à partir de l'historique git en catégorisant les changements (features, fixes, breaking changes) | [changelog-generator.md](docs/changelog-generator.md) |
-| **coding-standards** | Standards de code universels : conventions de nommage, principes SOLID, patterns TypeScript/JavaScript et règles de qualité | [coding-standards.md](docs/coding-standards.md) |
-| **create-design-system-rules** | Génère des règles de design system personnalisées pour automatiser les workflows Figma-to-code avec conventions et patterns cohérents | [create-design-system-rules.md](docs/create-design-system-rules.md) |
-| **frontend-design** | Création d'interfaces frontend de qualité production avec direction esthétique audacieuse, évitant les designs génériques AI | [frontend-design.md](docs/frontend-design.md) |
-| **github-issues** | Gestion complète des issues GitHub : création avec contexte, recherche, mise à jour, commentaires et workflows structurés | [github-issues.md](docs/github-issues.md) |
-| **hl7-pam-parser** | Parse et explique les messages HL7 v2.5 IHE PAM (Patient Administration Management) : segments MSH/EVN/PID/PV1, validation structure, ADT events | [hl7-pam-parser.md](docs/hl7-pam-parser.md) |
-| **hpk-parser** | Parse et explique les messages HPK (format propriétaire santé français) : identité/mouvements/couverture avec validation et explications détaillées | [hpk-parser.md](docs/hpk-parser.md) |
-| **gitlab-code-review** | Revue de code approfondie des merge requests GitLab : analyse qualité, sécurité, performance et best practices avec feedback constructif | [gitlab-code-review.md](docs/gitlab-code-review.md) |
-| **gitlab-issue** | Gestion des issues GitLab pour instances auto-hébergées : création, mise à jour, recherche et liaison avec merge requests | [gitlab-issue.md](docs/gitlab-issue.md) |
-| **mcp-builder** | Guide complet pour créer des serveurs MCP (Model Context Protocol) de qualité en Python (FastMCP) ou TypeScript (MCP SDK) | [mcp-builder.md](docs/mcp-builder.md) |
-| **playwright-skill** | Tests et automatisation web avec Playwright : gestion serveurs, reconnaissance DOM dynamique, screenshots, validation UX et tests responsifs | [playwright-skill.md](docs/playwright-skill.md) |
-| **postgres** | Exécution sécurisée de requêtes SQL lecture seule sur PostgreSQL avec support multi-bases et sélection intelligente | [postgres.md](docs/postgres.md) |
-| **react-best-practices** | Guide complet React/Next.js : architecture composants, optimisation performance, patterns shadcn/ui, animations Motion et React 19+ | [react-best-practices.md](docs/react-best-practices.md) |
-| **security-review** | Audit de sécurité approfondi : gestion secrets, validation inputs, authentification, protection OWASP Top 10 et bonnes pratiques | [security-review.md](docs/security-review.md) |
-| **vue-best-practices** | Best practices Vue.js 3/Nuxt : Composition API, design composants, patterns réactivité, intégration Tailwind CSS et PrimeVue | [vue-best-practices.md](docs/vue-best-practices.md) |
-| **web-design-guidelines** | Audit complet UI/UX avec inspection visuelle : conformité Web Interface Guidelines, accessibilité et corrections automatiques | [web-design-guidelines.md](docs/web-design-guidelines.md) |
+| Skill | Description | Documentation |
+|-------|-------------|---------------|
+| **backend-patterns** | Patterns d'architecture backend : API RESTful, repository pattern, optimisation DB, caching | [backend-patterns.md](docs/backend-patterns.md) |
+| **changelog-generator** | Génération automatique de changelogs à partir de l'historique git | [changelog-generator.md](docs/changelog-generator.md) |
+| **coding-standards** | Standards de code universels : conventions de nommage, principes SOLID, TypeScript/JavaScript | [coding-standards.md](docs/coding-standards.md) |
+| **create-design-system-rules** | Règles de design system pour workflows Figma-to-code | [create-design-system-rules.md](docs/create-design-system-rules.md) |
+| **frontend-design** | Interfaces frontend de qualité production avec direction esthétique audacieuse | [frontend-design.md](docs/frontend-design.md) |
+| **github-issues** | Gestion complète des issues GitHub : création, recherche, mise à jour et commentaires | [github-issues.md](docs/github-issues.md) |
+| **gitlab-code-review** | Revue de code des merge requests GitLab : qualité, sécurité, performance | [gitlab-code-review.md](docs/gitlab-code-review.md) |
+| **meeting-personas** | Réunion simulée avec personas pour analyser un sujet et décider avant d'implémenter | [meeting-personas.md](docs/meeting-personas.md) |
+| **gitlab-issue** | Gestion des issues GitLab sur instances auto-hébergées | [gitlab-issue.md](docs/gitlab-issue.md) |
+| **hl7-pam-parser** | Parsing des messages HL7 v2.5 IHE PAM d'administration des patients | [hl7-pam-parser.md](docs/hl7-pam-parser.md) |
+| **hpk-parser** | Parsing des messages HPK propriétaires (identité, mouvements, couverture) | [hpk-parser.md](docs/hpk-parser.md) |
+| **mcp-builder** | Guide pour créer des serveurs MCP en Python (FastMCP) ou TypeScript (MCP SDK) | [mcp-builder.md](docs/mcp-builder.md) |
+| **playwright-skill** | Tests et automatisation web avec Playwright : screenshots, validation UX, tests responsifs | [playwright-skill.md](docs/playwright-skill.md) |
+| **postgres** | Requêtes SQL lecture seule sur PostgreSQL avec support multi-bases | [postgres.md](docs/postgres.md) |
+| **react-best-practices** | Best practices React/Next.js : architecture, performance, shadcn/ui, React 19+ | [react-best-practices.md](docs/react-best-practices.md) |
+| **security-review** | Audit de sécurité : secrets, validation inputs, authentification, OWASP Top 10 | [security-review.md](docs/security-review.md) |
+| **vue-best-practices** | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue | [vue-best-practices.md](docs/vue-best-practices.md) |
+| **web-design-guidelines** | Audit UI/UX : conformité Web Interface Guidelines, accessibilité | [web-design-guidelines.md](docs/web-design-guidelines.md) |
 
 ### Skills de traitement de contenu et documents
 
-| Skill | Description | How to use |
-|-------|-------------|------------|
-| **article-extractor** | Extrait le contenu principal d'articles web (blogs, tutoriels) en texte propre, éliminant publicités, navigation et éléments superflus | [article-extractor.md](docs/article-extractor.md) |
-| **docx** | Création, édition et analyse complètes de documents Word (.docx) : tracked changes, commentaires, formatage et extraction de texte | [docx.md](docs/docx.md) |
-| **pdf** | Manipulation complète de PDF : extraction de texte/tables, création, fusion/division, remplissage de formulaires avec Python | [pdf.md](docs/pdf.md) |
-| **pptx** | Création, édition et analyse de présentations PowerPoint (.pptx) : layouts, animations, speaker notes et conversion HTML-to-PPTX | [pptx.md](docs/pptx.md) |
-| **readme** | Génère ou met à jour un README.md en français orienté Product Owner avec diagrammes Mermaid, et génère CLAUDE.md/AGENT.md si absents | [readme.md](docs/readme.md) |
-| **toxic-manager-translator** | 🎭 Transforme les messages émotionnels ou frustrés en réponses professionnelles et stratégiques pour gérer les situations difficiles au travail | [toxic-manager-translator.md](docs/toxic-manager-translator.md) |
-| **xlsx** | Création, édition et analyse de fichiers Excel (.xlsx) : formules complexes, formatage professionnel, visualisation et recalcul | [xlsx.md](docs/xlsx.md) |
+| Skill | Description | Documentation |
+|-------|-------------|---------------|
+| **article-extractor** | Extraction du contenu d'articles web en texte propre, sans publicités | [article-extractor.md](docs/article-extractor.md) |
+| **docx** | Création, édition et analyse de documents Word (.docx) avec tracked changes | [docx.md](docs/docx.md) |
+| **pdf** | Manipulation de PDF : extraction de texte/tables, création, fusion, formulaires | [pdf.md](docs/pdf.md) |
+| **pptx** | Création, édition et analyse de présentations PowerPoint (.pptx) | [pptx.md](docs/pptx.md) |
+| **readme** | Génération de README.md en français orienté Product Owner avec diagrammes Mermaid | [readme.md](docs/readme.md) |
+| **toxic-manager-translator** | Transformation de messages émotionnels en réponses professionnelles et stratégiques | [toxic-manager-translator.md](docs/toxic-manager-translator.md) |
+| **xlsx** | Création, édition et analyse de fichiers Excel (.xlsx) avec formules et formatage | [xlsx.md](docs/xlsx.md) |
 
 ## Ressources
 
-- **[📖 Guide complet d'utilisation](docs/comment-utiliser.md)** - Documentation détaillée
-- [Agent Skills](https://agentskills.io) - Standard ouvert pour les skills d'agents IA
-- [add-skill CLI](https://github.com/vercel-labs/add-skill) - Outil d'installation des skills
+- **[Guide complet d'utilisation](docs/comment-utiliser.md)** — Documentation détaillée sur l'installation et l'utilisation
+- [Agent Skills](https://agentskills.io) — Standard ouvert pour les skills d'agents IA
+- [add-skill CLI](https://github.com/vercel-labs/add-skill) — Outil d'installation des skills
 
 ## Licence
 
