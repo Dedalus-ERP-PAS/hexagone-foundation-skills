@@ -66,7 +66,6 @@ Index de toute la documentation disponible pour les Foundation Skills.
 | [mcp-builder](mcp-builder.md) | Création de serveurs MCP |
 | [article-extractor](article-extractor.md) | Extraction d'articles web |
 | [create-design-system-rules](create-design-system-rules.md) | Génération de règles de design system |
-| [toxic-manager-translator](toxic-manager-translator.md) | Communication professionnelle |
 
 ## 🚀 Démarrage rapide
 

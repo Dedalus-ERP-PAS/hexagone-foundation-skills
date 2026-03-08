@@ -37,7 +37,7 @@ foundation-skills/
 2. **Healthcare parsers:** hpk-parser, hl7-pam-parser (domain-specific message formats)
 3. **Issue/review management:** gitlab-code-review, gitlab-issue, github-issues
 4. **Document processing:** docx, pdf, pptx, xlsx, article-extractor
-5. **Utilities:** changelog-generator, toxic-manager-translator, readme
+5. **Utilities:** changelog-generator, docs
 
 ## Conventions
 

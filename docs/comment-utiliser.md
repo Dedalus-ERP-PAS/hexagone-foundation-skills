@@ -330,7 +330,6 @@ Commencez simple, puis ajoutez de la complexité :
 ### Outils spécialisés
 - `mcp-builder` - Serveurs MCP
 - `article-extractor` - Extraction articles web
-- `toxic-manager-translator` - Communication professionnelle
 - `create-design-system-rules` - Design systems
 
 ## Dépannage
