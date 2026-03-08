@@ -68,7 +68,7 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 | [PowerPoint](docs/pptx.md) | Manipulation de présentations PowerPoint (lecture, création et modification) |
 | [Excel](docs/xlsx.md) | Manipulation de fichiers Excel (création, lecture et formatage) |
 | [Toxic manager translator](docs/toxic-manager-translator.md) | Transformation de messages émotionnels en réponses professionnelles |
-| [README generator](docs/readme.md) | Génération automatique de README.md en français orienté Product Owner |
+| [Docs generator](docs/docs.md) | Génération automatique de README.md et documentation en français orienté Product Owner |
 | [Fast meeting](docs/fast-meeting.md) | Réunion rapide autonome avec personas : analyse, implémentation et création de MR/PR |
 | [Meeting](docs/meeting.md) | Simulation de réunion avec personas pour analyser un sujet et converger vers une décision |
 
@@ -153,7 +153,7 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **docx** | Création, édition et analyse de documents Word (.docx) avec tracked changes | [docx.md](docs/docx.md) |
 | **pdf** | Manipulation de PDF : extraction de texte/tables, création, fusion, formulaires | [pdf.md](docs/pdf.md) |
 | **pptx** | Création, édition et analyse de présentations PowerPoint (.pptx) | [pptx.md](docs/pptx.md) |
-| **readme** | Génération de README.md en français orienté Product Owner avec diagrammes Mermaid | [readme.md](docs/readme.md) |
+| **docs** | Génération de README.md et documentation en français orienté Product Owner avec diagrammes Mermaid | [docs.md](docs/docs.md) |
 | **toxic-manager-translator** | Transformation de messages émotionnels en réponses professionnelles et stratégiques | [toxic-manager-translator.md](docs/toxic-manager-translator.md) |
 | **xlsx** | Création, édition et analyse de fichiers Excel (.xlsx) avec formules et formatage | [xlsx.md](docs/xlsx.md) |
 
