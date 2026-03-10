@@ -66,18 +66,18 @@ Automatically select 3-4 personas based on the subject matter. Use these heurist
 
 | Subject involves... | Auto-select personas |
 |---------------------|---------------------|
-| Backend / API / database | Alex (Backend), Didier (Architect), Isabelle (Oracle DBA) |
-| Frontend / UI / UX | Mohammed (Frontend), Sarah (PO), Didier (Architect) |
-| Security / auth / access control | Shug (Security), Alex (Backend), Didier (Architect) |
-| Infrastructure / deploy / CI-CD | Priya (DevOps), Alex (Backend), Didier (Architect) |
-| Data / migration / ETL | Jean-Baptiste (Data), Isabelle (Oracle DBA), Didier (Architect) |
-| Interoperability / HL7 / FHIR / HPK | Santiago (Interop PO), Victor (Interop Dev), Alex (Backend) |
-| Legacy / Uniface / modernization | Gilles (Uniface), Didier (Architect), Alex (Backend) |
-| Testing / quality / regression | Nicolas (QA), Alex (Backend), Priya (DevOps) |
-| Product / feature / UX decision | Sarah (PO), Mohammed (Frontend), Didier (Architect) |
-| Full-stack / mixed concern | Didier (Architect), Alex (Backend), Sarah (PO), Nicolas (QA) |
+| Backend / API / database | SOLID Alex (Backend), Whiteboard Damien (Architect), Isabelle (Oracle DBA) |
+| Frontend / UI / UX | Pixel-Perfect Mo (Frontend), Sarah (PO), Whiteboard Damien (Architect) |
+| Security / auth / access control | Paranoid Shug (Security), SOLID Alex (Backend), Whiteboard Damien (Architect) |
+| Infrastructure / deploy / CI-CD | Pipeline Paco (DevOps), SOLID Alex (Backend), Whiteboard Damien (Architect) |
+| Data / migration / ETL | Jean-Baptiste (Data), Isabelle (Oracle DBA), Whiteboard Damien (Architect) |
+| Interoperability / HL7 / FHIR / HPK | RFC Santiago (Interop PO), Victor (Interop Dev), SOLID Alex (Backend) |
+| Legacy / Uniface / modernization | Legacy Larry (Uniface), Whiteboard Damien (Architect), SOLID Alex (Backend) |
+| Testing / quality / regression | Edge-Case Nico (QA), SOLID Alex (Backend), Pipeline Paco (DevOps) |
+| Product / feature / UX decision | Sarah (PO), Pixel-Perfect Mo (Frontend), Whiteboard Damien (Architect) |
+| Full-stack / mixed concern | Whiteboard Damien (Architect), SOLID Alex (Backend), Sarah (PO), Edge-Case Nico (QA) |
 
-If the subject spans multiple areas, pick the most relevant 3-4 personas. Always include **Didier (Architect)** for technical decisions. Always include **Sarah (PO)** for product decisions.
+If the subject spans multiple areas, pick the most relevant 3-4 personas. Always include **Whiteboard Damien (Architect)** for technical decisions. Always include **Sarah (PO)** for product decisions.
 
 **Custom personas:** If the subject is domain-specific (healthcare, finance, legal...), create a relevant domain expert persona automatically.
 
@@ -85,17 +85,17 @@ If the subject spans multiple areas, pick the most relevant 3-4 personas. Always
 
 | Persona | Role | Perspective | Bias |
 |---------|------|-------------|------|
-| **Alex** | Senior Backend Engineer | Code quality, maintainability, technical debt | Prefers proven patterns, cautious about new tech |
+| **SOLID Alex** | Senior Backend Engineer | Code quality, maintainability, technical debt | Prefers proven patterns, cautious about new tech |
 | **Sarah** | Product Owner | User value, delivery speed, business impact | Prefers shipping fast, pragmatic trade-offs |
-| **Shug** | Security Engineer (OWASP certified) | Attack surface analysis, web security (OWASP Top 10), authentication standards (OAuth2, OpenID Connect, JWT), data protection, penetration testing, compliance | Prefers the most secure option, systematically challenges exposed surfaces, risk-averse |
-| **Priya** | DevOps/SRE Engineer | Operability, monitoring, deployment, scalability | Prefers simple infrastructure, observable systems |
-| **Mohammed** | Frontend Engineer | User experience, performance, accessibility, Vue.js 2 & 3, React, shadcn/ui, PrimeVue LTS, component libraries, responsive design | Prefers user-centric solutions, design-first, advocates for consistent UI component systems |
-| **Didier** | Tech Lead / Architect | System design, long-term vision, team capacity | Prefers sustainable architecture, balanced approach |
-| **Nicolas** | QA Engineer | Testability, edge cases, regression risk, E2E testing with Playwright, unit/integration testing with Vitest | Prefers thorough coverage, cautious about untested paths, advocates for automated test pipelines |
+| **Paranoid Shug** | Security Engineer (OWASP certified) | Attack surface analysis, web security (OWASP Top 10), authentication standards (OAuth2, OpenID Connect, JWT), data protection, penetration testing, compliance | Prefers the most secure option, systematically challenges exposed surfaces, risk-averse |
+| **Pipeline Paco** | DevOps/SRE Engineer | Operability, monitoring, deployment, scalability | Prefers simple infrastructure, observable systems |
+| **Pixel-Perfect Mo** | Frontend Engineer | User experience, performance, accessibility, Vue.js 2 & 3, React, shadcn/ui, PrimeVue LTS, component libraries, responsive design | Prefers user-centric solutions, design-first, advocates for consistent UI component systems |
+| **Whiteboard Damien** | Tech Lead / Architect | System design, long-term vision, team capacity | Prefers sustainable architecture, balanced approach |
+| **Edge-Case Nico** | QA Engineer | Testability, edge cases, regression risk, E2E testing with Playwright, unit/integration testing with Vitest | Prefers thorough coverage, cautious about untested paths, advocates for automated test pipelines |
 | **Isabelle** | Senior Database Engineer (Oracle specialist) | Oracle database administration and optimization (11.2 to 19c+), PL/SQL, performance tuning, partitioning, RAC, Data Guard, migration between Oracle versions | Prefers robust schema design, careful about query performance and data integrity |
 | **Jean-Baptiste** | Data Engineer | Data integrity, analytics, migration risks | Prefers schema stability, careful migrations |
-| **Santiago** | Senior Interoperability PO | Standards compliance (HL7, FHIR, HPK), cross-system integration, data flow consistency | Prefers standard-based approaches, careful about breaking upstream/downstream systems |
-| **Gilles** | Senior Fullstack Developer (Uniface specialist) | Uniface application development, legacy system modernization, 4GL/RAD patterns, database-driven UI, migration strategies. Documentation: https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/uniface/ | Prefers pragmatic evolution over rewrite, deep knowledge of Uniface runtime and deployment |
+| **RFC Santiago** | Senior Interoperability PO | Standards compliance (HL7, FHIR, HPK), cross-system integration, data flow consistency | Prefers standard-based approaches, careful about breaking upstream/downstream systems |
+| **Legacy Larry** | Senior Fullstack Developer (Uniface specialist) | Uniface application development, legacy system modernization, 4GL/RAD patterns, database-driven UI, migration strategies. Documentation: https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/uniface/ | Prefers pragmatic evolution over rewrite, deep knowledge of Uniface runtime and deployment |
 | **Victor** | Senior Interoperability Fullstack Developer | End-to-end integration (API, middleware, frontend), message parsing (HL7, FHIR, HPK), system connectors, data mapping and transformation | Prefers pragmatic solutions that work across the full stack, bridges the gap between standards and implementation |
 
 **Announce the selected personas and their roles before starting the meeting.**
@@ -142,7 +142,7 @@ This is a research task — do NOT write or edit any files.
 
 **Collect all positions** and present them as quotes:
 
-> **Alex (Senior Backend Engineer):** "I recommend..."
+> **SOLID Alex (Senior Backend Engineer):** "I recommend..."
 
 #### Anti-Groupthink Check
 
@@ -366,7 +366,7 @@ If the subject is linked to a GitLab or GitHub issue:
 ```
 User: fast-meeting : est-ce qu'on doit utiliser GraphQL ou REST pour la nouvelle API
 
-→ Auto-selects: Alex (Backend), Mohammed (Frontend), Didier (Architect)
+→ Auto-selects: SOLID Alex (Backend), Pixel-Perfect Mo (Frontend), Whiteboard Damien (Architect)
 → Runs fast meeting (1 round + synthesis)
 → Implements the recommended approach
 → Creates branch fast-meeting/graphql-vs-rest-api
@@ -379,7 +379,7 @@ User: fast-meeting : est-ce qu'on doit utiliser GraphQL ou REST pour la nouvelle
 User: fast-meeting sur l'issue #42 - les notifications ne s'affichent pas
 
 → Fetches issue #42 details
-→ Auto-selects: Mohammed (Frontend), Alex (Backend), Nicolas (QA)
+→ Auto-selects: Pixel-Perfect Mo (Frontend), SOLID Alex (Backend), Edge-Case Nico (QA)
 → Runs fast meeting
 → Implements the fix
 → Creates MR/PR, posts link on issue #42
@@ -390,7 +390,7 @@ User: fast-meeting sur l'issue #42 - les notifications ne s'affichent pas
 ```
 User: fast-meeting : refactorer le module d'authentification pour supporter OAuth2
 
-→ Auto-selects: Shug (Security), Alex (Backend), Didier (Architect), Priya (DevOps)
+→ Auto-selects: Paranoid Shug (Security), SOLID Alex (Backend), Whiteboard Damien (Architect), Pipeline Paco (DevOps)
 → Runs fast meeting
 → Implements the refactoring
 → Creates MR/PR with French analysis
