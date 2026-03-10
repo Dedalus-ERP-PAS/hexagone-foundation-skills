@@ -290,7 +290,7 @@ If the subject is linked to a GitLab or GitHub issue and the user asks to post:
 
 1. Format the analysis for the issue comment (keep the French markdown format)
 2. Add a header: `## Analyse de réunion avec personas IA`
-3. Add a footer: `---\n_Analyse générée par simulation de réunion avec personas IA_`
+3. Add a footer: `---\n_Analyse générée automatiquement par IA 🤖_\n_Version : meeting v1.0.0_`
 4. Post as a comment on the issue using the appropriate tool:
    - **GitLab:** Use `gitlab-mcp(create_issue_note)`
    - **GitHub:** Use `gh issue comment`

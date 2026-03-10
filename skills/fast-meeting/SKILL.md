@@ -322,9 +322,8 @@ Use `gh pr create` to create a pull request with:
 - [ ] Merge après approbation
 
 ---
-_Analyse et implémentation générées automatiquement par fast-meeting avec personas IA_
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+_Analyse et implémentation générées automatiquement par IA 🤖_
+_Version : fast-meeting v1.0.0_
 ```
 
 ### Step 7: Post to Issue (If Applicable)
