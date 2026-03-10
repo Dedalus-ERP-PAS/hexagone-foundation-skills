@@ -403,6 +403,7 @@ User: fast-meeting : refactorer le module d'authentification pour supporter OAut
 
 ## Important Notes
 
+- **Never create new labels** on GitLab or GitHub. When adding labels to issues or merge requests, only use labels that already exist in the project. If unsure which labels exist, list them first (`gh label list` for GitHub, or check existing issue labels for GitLab) and pick from the available ones. If no suitable label exists, skip labeling rather than creating a new one.
 - **This skill does NOT ask for user confirmation** — it runs the full pipeline autonomously
 - If tests fail after one fix attempt, mark the MR/PR as **Draft** and document the failures
 - If the implementation scope is too large (architectural, multi-service), abort and suggest `/meeting` instead

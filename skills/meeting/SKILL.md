@@ -406,6 +406,7 @@ Decision question: "Quelle approche adopter pour les notifications temps réel ?
 
 ## Important Notes
 
+- **Never create new labels** on GitLab or GitHub. When adding labels to issues or merge requests, only use labels that already exist in the project. If unsure which labels exist, list them first (`gh label list` for GitHub, or check existing issue labels for GitLab) and pick from the available ones. If no suitable label exists, skip labeling rather than creating a new one.
 - **Never implement before the user validates the recommendation (option 1 in Step 5)**
 - The meeting is a thinking tool, not a decision-making authority
 - Keep meetings focused — one decision per meeting
