@@ -289,16 +289,64 @@ Present the analysis to the user and ask:
 
 **Do NOT start implementing anything until the user explicitly selects option 1.**
 
-### Step 6: Post to Issue (If Applicable)
+### Step 6: Post to Issue (If Applicable — PO / Consultant Oriented)
 
-If the subject is linked to a GitLab or GitHub issue and the user asks to post:
+If the subject is linked to a GitLab or GitHub issue and the user asks to post, format the comment for **Product Owners and stakeholders** — focus on business value, user impact, and strategic reasoning, not technical implementation details.
 
-1. Format the analysis for the issue comment (keep the French markdown format)
-2. Add a header: `## Analyse de réunion avec personas IA`
-3. Add a footer: `---\n_Analyse générée automatiquement par IA 🤖_\n_Version : meeting v1.0.0_`
-4. Post as a comment on the issue using the appropriate tool:
-   - **GitLab:** Use `gitlab-mcp(create_issue_note)`
-   - **GitHub:** Use `gh issue comment`
+#### Issue Comment Template (French)
+
+```markdown
+## Analyse de réunion avec personas IA
+
+### Question posée
+[La question de décision formulée en termes métier]
+
+### Participants
+| Expert | Rôle | Position |
+|--------|------|----------|
+| ... | ... | [Position résumée en termes d'impact métier] |
+
+### Synthèse
+[2-3 paragraphes résumant les arguments clés en termes de valeur utilisateur, impact business et risques projet — pas de détails techniques]
+
+### Décision recommandée
+
+**Niveau de confiance :** [Élevé / Moyen / Faible]
+
+**Approche retenue :** [Explication en termes de bénéfice utilisateur et valeur métier]
+
+**Pourquoi cette décision :**
+- [Bénéfice utilisateur / métier 1]
+- [Bénéfice utilisateur / métier 2]
+- [Alignement avec les objectifs produit]
+
+### Risques projet
+- [Risque 1 formulé en impact métier → Mitigation]
+- [Risque 2 formulé en impact métier → Mitigation]
+
+### Impact
+- **Utilisateurs concernés :** [Qui est impacté et comment]
+- **Dépendances :** [Autres équipes ou fonctionnalités impactées]
+
+### Alternatives considérées
+| Option | Valeur métier | Risques | Verdict |
+|--------|--------------|---------|---------|
+| Option A | ... | ... | Recommandée / Rejetée / À explorer |
+| Option B | ... | ... | Recommandée / Rejetée / À explorer |
+
+### Prochaines étapes
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+---
+_Analyse générée automatiquement par IA 🤖_
+_Version : meeting v1.0.0_
+```
+
+Post the comment using the appropriate tool:
+- **GitLab:** Use `gitlab-mcp(create_issue_note)`
+- **GitHub:** Use `gh issue comment`
 
 ### Step 7: Follow-Up Meeting (If Option 2 Selected)
 
@@ -345,7 +393,43 @@ When the user selects option 1 ("Valider cette recommandation et passer à l'imp
    - Create a branch `meeting/<short-kebab-case-topic>`
    - Implement the validated recommendation directly (skip the meeting phase — it's already done)
    - Run tests, commit, push, create MR/PR following the same protocol as fast-meeting Steps 5-6
-   - Include the meeting analysis in the MR/PR description
+   - The MR/PR description must be **developer / technically oriented** (see template below) — focus on code changes, technical rationale, and review points, not the business analysis
+
+   **MR/PR Description Template (French — Developer / Technically Oriented):**
+
+   ```markdown
+   ## Résumé technique
+
+   ### Contexte
+   [Brève description du problème technique ou de la décision d'architecture qui a motivé ces changements]
+
+   ### Approche retenue
+   [L'approche technique choisie et pourquoi — patterns utilisés, alternatives considérées et rejetées techniquement]
+
+   ### Changements implémentés
+   | Fichier | Modification | Justification technique |
+   |---------|-------------|------------------------|
+   | `path/to/file` | [Ce qui a changé] | [Pourquoi ce choix technique] |
+   | ... | ... | ... |
+
+   ### Points d'attention pour la revue
+   - [Point technique à vérifier — ex: gestion d'erreurs, performance, rétrocompatibilité]
+   - [Impact potentiel sur d'autres modules]
+   - [Cas limites à valider]
+
+   ### Tests
+   - [Résultats des tests : nombre exécutés, passés, échoués]
+   - [Couverture des cas limites identifiés]
+
+   ### Prochaines étapes
+   - [ ] Revue de code par l'équipe
+   - [ ] Validation des tests
+   - [ ] Merge après approbation
+
+   ---
+   _Implémentation générée automatiquement par IA 🤖_
+   _Version : meeting v1.0.0_
+   ```
 
 3. **If option 2 (guided implementation):**
    - Present the implementation plan step by step

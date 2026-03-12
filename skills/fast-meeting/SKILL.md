@@ -52,6 +52,7 @@ Before starting, clean up any stale worktrees from previous meetings that may ha
 
 1. Run `git worktree prune` to remove stale worktree references
 2. Check `git worktree list` — if any entries match `.claude/worktrees/fast-meeting-*` or sibling directories named `fast-meeting-*`, remove them with `git worktree remove <path> --force`
+3. Also clean up any legacy `fast-meeting/*` branches: `git branch --list 'fast-meeting/*' | xargs -r git branch -D`
 
 This ensures a clean starting state regardless of previous failures.
 
@@ -242,12 +243,17 @@ Before implementing, estimate the scope of the recommended changes:
 Implementation runs in a **git worktree**, which creates an isolated copy of the repository. The user's working tree is **never modified** — no stash, no branch switch, no risk of state corruption.
 
 1. **Record the current branch** for reference (e.g., `main`)
-2. **Create a worktree** with a dedicated branch:
-   - Branch name: `fast-meeting/<short-kebab-case-topic>` (e.g., `fast-meeting/jwt-auth-migration`)
+2. **Determine the branch type** based on the meeting recommendation:
+   - Bug fix → `fix/`
+   - New feature → `feature/`
+   - Refactoring → `refactor/`
+   - Default → `feature/`
+3. **Create a worktree** with a dedicated branch:
+   - Branch name: `<type>/<short-kebab-case-topic>` (e.g., `feature/jwt-auth-migration`, `fix/notification-display`, `refactor/auth-oauth2`)
    - Worktree path: `$(git rev-parse --show-toplevel)/../fast-meeting-<topic>`
-   - Run: `git worktree add ../fast-meeting-<topic> -b fast-meeting/<topic>`
-3. **If worktree creation fails** (e.g., branch already exists from a previous crash):
-   - Try: `git branch -D fast-meeting/<topic>` then retry the worktree creation
+   - Run: `git worktree add ../fast-meeting-<topic> -b <type>/<topic>`
+4. **If worktree creation fails** (e.g., branch already exists from a previous crash):
+   - Try: `git branch -D <type>/<topic>` then retry the worktree creation
    - If it still fails, fall back to the legacy approach: stash, checkout -b, implement, restore
 
 #### 5b: Implement in the Worktree
@@ -283,7 +289,7 @@ After committing, validate the implementation against the project's test suite:
 #### 5d: Push and Clean Up Worktree
 
 4. **Push the branch** from within the worktree:
-   - Run: `git push -u origin fast-meeting/<topic>` (from the worktree path)
+   - Run: `git push -u origin <type>/<topic>` (from the worktree path)
 5. **Remove the worktree:**
    - Return to the original repository path
    - Run: `git worktree remove ../fast-meeting-<topic>`
@@ -306,33 +312,33 @@ Use `gh pr create` to create a pull request with:
 - **Title:** Short description (under 70 chars, in English)
 - **Body:** The French meeting analysis and implementation summary (see template below)
 
-#### MR/PR Description Template (French)
+#### MR/PR Description Template (French — Developer / Technically Oriented)
+
+The MR/PR description targets **developers reviewing the code**. Focus on technical details: what changed, why this approach was chosen technically, and what to watch during review.
 
 ```markdown
-## Analyse de réunion rapide
+## Résumé technique
 
-### Question posée
-[La question de décision]
+### Contexte
+[Brève description du problème technique ou de la décision d'architecture qui a motivé ces changements]
 
-### Participants
-| Persona | Rôle | Position |
-|---------|------|----------|
-| ... | ... | ... |
-
-### Recommandation retenue
-[L'approche recommandée]
-
-**Justification :**
-- [Raison 1]
-- [Raison 2]
-- [Raison 3]
-
-### Risques identifiés
-- [Risque 1 → Mitigation]
-- [Risque 2 → Mitigation]
+### Approche retenue
+[L'approche technique choisie et pourquoi — patterns utilisés, alternatives considérées et rejetées techniquement]
 
 ### Changements implémentés
-- [Description des modifications fichier par fichier]
+| Fichier | Modification | Justification technique |
+|---------|-------------|------------------------|
+| `path/to/file` | [Ce qui a changé] | [Pourquoi ce choix technique] |
+| ... | ... | ... |
+
+### Points d'attention pour la revue
+- [Point technique à vérifier — ex: gestion d'erreurs, performance, rétrocompatibilité]
+- [Impact potentiel sur d'autres modules]
+- [Cas limites à valider]
+
+### Tests
+- [Résultats des tests : nombre exécutés, passés, échoués]
+- [Couverture des cas limites identifiés]
 
 ### Prochaines étapes
 - [ ] Revue de code par l'équipe
@@ -340,19 +346,55 @@ Use `gh pr create` to create a pull request with:
 - [ ] Merge après approbation
 
 ---
-_Analyse et implémentation générées automatiquement par IA 🤖_
+_Implémentation générée automatiquement par IA 🤖_
 _Version : fast-meeting v1.1.0_
 ```
 
-### Step 7: Post to Issue (If Applicable)
+### Step 7: Post to Issue (If Applicable — PO / Consultant Oriented)
 
-If the subject is linked to a GitLab or GitHub issue:
+If the subject is linked to a GitLab or GitHub issue, post a **Product Owner / consultant oriented** comment. This comment targets stakeholders, not developers — focus on business value, user impact, and strategic reasoning rather than technical details.
 
-1. Post a comment on the issue linking to the MR/PR
-2. Format: `Réunion rapide terminée. MR/PR créée : [link]. Voir la description de la MR/PR pour l'analyse complète.`
-3. Use the appropriate tool:
-   - **GitLab:** `gitlab-mcp(create_issue_note)`
-   - **GitHub:** `gh issue comment`
+#### Issue Comment Template (French)
+
+```markdown
+## Analyse de réunion rapide
+
+### Question posée
+[La question de décision formulée en termes métier]
+
+### Participants
+| Expert | Rôle | Position |
+|--------|------|----------|
+| ... | ... | [Position résumée en termes d'impact métier] |
+
+### Décision retenue
+[L'approche recommandée expliquée en termes de valeur utilisateur et impact business]
+
+**Pourquoi cette décision :**
+- [Bénéfice utilisateur / métier 1]
+- [Bénéfice utilisateur / métier 2]
+- [Alignement avec les objectifs produit]
+
+### Risques projet
+- [Risque 1 formulé en impact métier → Mitigation]
+- [Risque 2 formulé en impact métier → Mitigation]
+
+### Impact
+- **Utilisateurs concernés :** [Qui est impacté et comment]
+- **Délai estimé :** [Si applicable]
+- **Dépendances :** [Autres équipes ou fonctionnalités impactées]
+
+### MR/PR
+[Lien vers la MR/PR] — Les détails techniques d'implémentation sont dans la description de la MR/PR.
+
+---
+_Analyse générée automatiquement par IA 🤖_
+_Version : fast-meeting v1.1.0_
+```
+
+Post the comment using the appropriate tool:
+- **GitLab:** `gitlab-mcp(create_issue_note)`
+- **GitHub:** `gh issue comment`
 
 ## Meeting Quality Rules
 
@@ -387,7 +429,7 @@ User: fast-meeting : est-ce qu'on doit utiliser GraphQL ou REST pour la nouvelle
 → Auto-selects: SOLID Alex (Backend), Pixel-Perfect Hugo (Frontend), Whiteboard Damien (Architect)
 → Runs fast meeting (1 round + synthesis)
 → Implements the recommended approach
-→ Creates branch fast-meeting/graphql-vs-rest-api
+→ Creates branch feature/graphql-vs-rest-api
 → Commits, pushes, creates MR/PR with French description
 ```
 
@@ -422,8 +464,8 @@ User: fast-meeting : refactorer le module d'authentification pour supporter OAut
 - If the implementation scope is too large (architectural, multi-service), abort and suggest `/meeting` instead
 - The user's working tree is always protected: implementation runs in an isolated git worktree — no stash, no branch switch, no risk of state corruption
 - Multiple fast-meetings can run in parallel on different worktrees without conflicts (each gets its own isolated copy)
-- When creating a MR/PR, check for other active `fast-meeting/*` branches with `git branch -r --list 'origin/fast-meeting/*'`. If other branches exist, add a warning in the MR/PR description: _"Attention : d'autres branches fast-meeting sont actives. Vérifier les conflits potentiels avant merge."_
+- When creating a MR/PR, check for other active branches created by fast-meeting by looking at recent remote branches. If potential conflicts are detected, add a warning in the MR/PR description: _"Attention : d'autres branches sont actives. Vérifier les conflits potentiels avant merge."_
 - The MR/PR description is always in French
-- Branch names use the pattern `fast-meeting/<topic>`
+- Branch names follow GitLab flow conventions: `feature/<topic>`, `fix/<topic>`, or `refactor/<topic>` — determined automatically from the meeting recommendation
 - If the remote type cannot be determined, default to `gh pr create` (GitHub)
 - Never force-push or modify existing branches — always create a new branch

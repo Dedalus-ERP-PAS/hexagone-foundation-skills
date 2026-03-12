@@ -49,7 +49,7 @@ fast-meeting : refactorer le module d'authentification pour OAuth2
 8. **Produit une analyse concise** — Recommandation, risques, plan d'implémentation
 9. **Implémente la recommandation** — Code, tests, modifications de fichiers
 10. **Exécute les tests** — Lance la suite de tests du projet, tente une correction si échec
-11. **Crée une branche, commit et push** — Branche `fast-meeting/<sujet>`
+11. **Crée une branche, commit et push** — Branche `feature/<sujet>`, `fix/<sujet>` ou `refactor/<sujet>` selon le type de changement
 12. **Crée la MR/PR** — Avec description complète en français (en Draft si les tests échouent)
 13. **Restaure l'état initial** — Retour sur la branche d'origine et restauration du stash
 14. **Poste sur l'issue** — Si applicable, ajoute un lien vers la MR/PR
@@ -86,6 +86,6 @@ La sélection est automatique selon le contexte. Des personas spécialisées son
 
 Le skill produit :
 - Une **analyse affichée** dans la conversation (question, participants, recommandation, risques)
-- Une **branche** `fast-meeting/<sujet>` avec le code implémenté
-- Une **MR/PR** avec description complète en français incluant l'analyse, les changements et les résultats de tests
-- Un **commentaire sur l'issue** (si applicable) avec lien vers la MR/PR
+- Une **branche** `feature/<sujet>`, `fix/<sujet>` ou `refactor/<sujet>` avec le code implémenté
+- Une **MR/PR** avec description technique orientée développeur (changements fichier par fichier, justifications techniques, points d'attention pour la revue)
+- Un **commentaire sur l'issue** (si applicable) orienté Product Owner / consultant (valeur métier, impact utilisateur, risques projet) avec lien vers la MR/PR
