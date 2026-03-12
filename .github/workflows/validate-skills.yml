@@ -1,0 +1,74 @@
+name: Validate Skills
+
+on:
+  push:
+    paths:
+      - 'skills/**'
+  pull_request:
+    paths:
+      - 'skills/**'
+
+jobs:
+  validate-frontmatter:
+    runs-on: ubuntu-latest
+    name: Check SKILL.md frontmatter
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate frontmatter in all SKILL.md files
+        run: |
+          python3 - << 'EOF'
+          import os
+          import sys
+
+          REQUIRED_FIELDS = ['name', 'description']
+          errors = []
+
+          skills_dir = 'skills'
+          for skill in sorted(os.listdir(skills_dir)):
+              skill_path = os.path.join(skills_dir, skill)
+              if not os.path.isdir(skill_path) or skill.startswith('_'):
+                  continue
+              skill_file = os.path.join(skill_path, 'SKILL.md')
+              if not os.path.exists(skill_file):
+                  errors.append(f'  MISSING file: {skill_file}')
+                  continue
+              with open(skill_file, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              lines = content.splitlines()
+              if not lines or lines[0].strip() != '---':
+                  errors.append(f'  NO FRONTMATTER: {skill_file} (must start with ---)')
+                  continue
+              # Extract frontmatter block
+              end = None
+              for i, line in enumerate(lines[1:], 1):
+                  if line.strip() == '---':
+                      end = i
+                      break
+              if end is None:
+                  errors.append(f'  UNCLOSED FRONTMATTER: {skill_file} (missing closing ---)')
+                  continue
+              frontmatter_lines = lines[1:end]
+              fields = {}
+              for line in frontmatter_lines:
+                  if ':' in line:
+                      key, _, val = line.partition(':')
+                      fields[key.strip()] = val.strip()
+              for field in REQUIRED_FIELDS:
+                  if field not in fields:
+                      errors.append(f'  MISSING field "{field}": {skill_file}')
+                  elif not fields[field]:
+                      errors.append(f'  EMPTY field "{field}": {skill_file}')
+
+          if errors:
+              print('❌ Frontmatter validation failed:')
+              for e in errors:
+                  print(e)
+              sys.exit(1)
+          else:
+              skill_count = sum(
+                  1 for s in os.listdir(skills_dir)
+                  if os.path.isdir(os.path.join(skills_dir, s)) and not s.startswith('_')
+              )
+              print(f'✅ All {skill_count} skills have valid frontmatter.')
+          EOF
