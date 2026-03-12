@@ -5,7 +5,7 @@ allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue_note), gitlab-mcp(
 license: MIT
 metadata:
   author: Foundation Skills
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Fast Meeting
@@ -45,6 +45,15 @@ Activate when the user:
 - The MR/PR description in French summarizes the meeting analysis and implementation
 
 ## Workflow
+
+### Step 0: Worktree Hygiene
+
+Before starting, clean up any stale worktrees from previous meetings that may have crashed:
+
+1. Run `git worktree prune` to remove stale worktree references
+2. Check `git worktree list` — if any entries match `.claude/worktrees/fast-meeting-*` or sibling directories named `fast-meeting-*`, remove them with `git worktree remove <path> --force`
+
+This ensures a clean starting state regardless of previous failures.
 
 ### Step 1: Understand the Subject and Gather Context
 
@@ -228,25 +237,27 @@ Before implementing, estimate the scope of the recommended changes:
 
 **Immediately proceed to implementation without asking the user.** This is the key difference from meeting.
 
-#### 5a: Protect the Working Tree
+#### 5a: Create an Isolated Worktree
 
-Before creating a branch, safeguard any existing work:
+Implementation runs in a **git worktree**, which creates an isolated copy of the repository. The user's working tree is **never modified** — no stash, no branch switch, no risk of state corruption.
 
-1. Run `git status` to check for uncommitted changes (staged, unstaged, or untracked)
-2. **If the working tree is dirty:**
-   - Run `git stash push -m "fast-meeting: auto-stash before <topic>"` to save the user's in-progress work
-   - Remember the original branch name for later restoration
-3. **If the working tree is clean:** proceed normally
-
-#### 5b: Create Branch and Implement
-
-1. **Create a new branch** from the current branch:
+1. **Record the current branch** for reference (e.g., `main`)
+2. **Create a worktree** with a dedicated branch:
    - Branch name: `fast-meeting/<short-kebab-case-topic>` (e.g., `fast-meeting/jwt-auth-migration`)
-   - Run: `git checkout -b fast-meeting/<topic>`
+   - Worktree path: `$(git rev-parse --show-toplevel)/../fast-meeting-<topic>`
+   - Run: `git worktree add ../fast-meeting-<topic> -b fast-meeting/<topic>`
+3. **If worktree creation fails** (e.g., branch already exists from a previous crash):
+   - Try: `git branch -D fast-meeting/<topic>` then retry the worktree creation
+   - If it still fails, fall back to the legacy approach: stash, checkout -b, implement, restore
+
+#### 5b: Implement in the Worktree
+
+1. **All file modifications happen inside the worktree path** — use the worktree's absolute path for all read/write operations
 2. **Implement the changes** as described in the implementation plan from Step 4
    - Write code, modify files, add tests as needed
    - Follow the project's existing conventions and patterns
-3. **Stage and commit** all changes:
+3. **Stage and commit** all changes from within the worktree:
+   - `cd` into the worktree path before running git commands
    - Use a conventional commit message: `feat(<scope>): <description>`
    - Include `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>` in the commit message
 
@@ -269,13 +280,15 @@ After committing, validate the implementation against the project's test suite:
      - Push anyway so the team can review
 5. **Include test results summary** in the MR/PR description: number of tests run, passed, failed
 
-#### 5d: Push and Restore
+#### 5d: Push and Clean Up Worktree
 
-4. **Push the branch** to the remote:
-   - Run: `git push -u origin fast-meeting/<topic>`
-5. **Restore the user's working state:**
-   - Run `git checkout <original-branch>` to return to the branch the user was on
-   - If a stash was created in Step 5a, run `git stash pop` to restore the user's uncommitted work
+4. **Push the branch** from within the worktree:
+   - Run: `git push -u origin fast-meeting/<topic>` (from the worktree path)
+5. **Remove the worktree:**
+   - Return to the original repository path
+   - Run: `git worktree remove ../fast-meeting-<topic>`
+   - If removal fails (e.g., uncommitted changes in worktree), run: `git worktree remove ../fast-meeting-<topic> --force`
+6. **No restoration needed:** the user's working tree was never modified — they remain on their original branch with all their uncommitted changes intact
 
 ### Step 6: Create the MR/PR
 
@@ -328,7 +341,7 @@ Use `gh pr create` to create a pull request with:
 
 ---
 _Analyse et implémentation générées automatiquement par IA 🤖_
-_Version : fast-meeting v1.0.0_
+_Version : fast-meeting v1.1.0_
 ```
 
 ### Step 7: Post to Issue (If Applicable)
@@ -362,7 +375,7 @@ If the subject is linked to a GitLab or GitHub issue:
 - Run the project's test suite after implementation; attempt one fix cycle on failures
 - Keep changes focused on the recommendation — do not over-engineer
 - Scope guard: if changes exceed 10 files / 500 lines, scope down to the critical first step; if the scope is architectural, abort implementation and suggest `/meeting`
-- Protect the user's working tree: stash uncommitted changes before branching, restore after push
+- Protect the user's working tree: implementation runs in an isolated git worktree — the user's working directory is never modified
 
 ## Examples
 
@@ -407,7 +420,9 @@ User: fast-meeting : refactorer le module d'authentification pour supporter OAut
 - **This skill does NOT ask for user confirmation** — it runs the full pipeline autonomously
 - If tests fail after one fix attempt, mark the MR/PR as **Draft** and document the failures
 - If the implementation scope is too large (architectural, multi-service), abort and suggest `/meeting` instead
-- The user's working tree is always protected: uncommitted changes are stashed before branching and restored after push
+- The user's working tree is always protected: implementation runs in an isolated git worktree — no stash, no branch switch, no risk of state corruption
+- Multiple fast-meetings can run in parallel on different worktrees without conflicts (each gets its own isolated copy)
+- When creating a MR/PR, check for other active `fast-meeting/*` branches with `git branch -r --list 'origin/fast-meeting/*'`. If other branches exist, add a warning in the MR/PR description: _"Attention : d'autres branches fast-meeting sont actives. Vérifier les conflits potentiels avant merge."_
 - The MR/PR description is always in French
 - Branch names use the pattern `fast-meeting/<topic>`
 - If the remote type cannot be determined, default to `gh pr create` (GitHub)
