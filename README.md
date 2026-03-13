@@ -72,6 +72,7 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 | [Meeting](docs/meeting.md) | Simulation de réunion avec personas pour analyser un sujet et converger vers une décision |
 | [Uniface ProcScript](docs/uniface-procscript.md) | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation) |
 | [Hexagone Web Services](docs/hexagone-swdoc.md) | Documentation des web services Hexagone depuis le dépôt swdoc GitLab |
+| [Hexagone Frontend](docs/hexagone-frontend.md) | Documentation des composants frontend Hexagone (@his/hexa-components) |
 
 ## A quoi sert ce produit ?
 
@@ -146,6 +147,7 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **vue-best-practices** | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue | [vue-best-practices.md](docs/vue-best-practices.md) |
 | **web-design-guidelines** | Audit UI/UX : conformité Web Interface Guidelines, accessibilité | [web-design-guidelines.md](docs/web-design-guidelines.md) |
 | **hexagone-swdoc** | Documentation des web services Hexagone : endpoints, formats, contrats de service | [hexagone-swdoc.md](docs/hexagone-swdoc.md) |
+| **hexagone-frontend** | Documentation des composants frontend Hexagone (@his/hexa-components) : props, events, patterns | [hexagone-frontend.md](docs/hexagone-frontend.md) |
 
 ### Skills de traitement de contenu et documents
 

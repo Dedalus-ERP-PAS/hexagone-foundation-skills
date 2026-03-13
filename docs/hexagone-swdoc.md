@@ -73,5 +73,6 @@ Le skill utilise **WebFetch** pour consulter directement les pages de documentat
 |-------|----------|
 | [hpk-parser](hpk-parser.md) | Parsing des messages HPK échangés via les web services |
 | [hl7-pam-parser](hl7-pam-parser.md) | Parsing des messages HL7 PAM d'administration des patients |
+| [hexagone-frontend](hexagone-frontend.md) | Documentation des composants frontend Hexagone (@his/hexa-components) |
 | [backend-patterns](backend-patterns.md) | Patterns d'architecture pour implémenter des clients de web services |
 | [uniface-procscript](uniface-procscript.md) | Référence ProcScript pour le code Uniface appelant les web services |
