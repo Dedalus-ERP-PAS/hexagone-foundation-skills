@@ -28,12 +28,12 @@ foundation-skills/
 
 ## Key Directories
 
-- `skills/` — Contains 34 skill directories, each with a `SKILL.md` file defining the skill's instructions
+- `skills/` — Contains 36 skill directories, each with a `SKILL.md` file defining the skill's instructions
 - `docs/` — Contains documentation files: one per skill plus general guides (healthcare parsers, installation, etc.)
 
 ## Skill Categories
 
-1. **Development skills:** coding-standards, backend-patterns, react-best-practices, vue-best-practices, frontend-design, web-design-guidelines, create-design-system-rules, mcp-builder, playwright-skill, postgres, security-review, tdd, git-guardrails, write-a-skill
+1. **Development skills:** coding-standards, backend-patterns, react-best-practices, vue-best-practices, frontend-design, web-design-guidelines, create-design-system-rules, mcp-builder, playwright-skill, postgres, security-review, tdd, testing-patterns, typescript-migration, git-guardrails, write-a-skill
 2. **Healthcare & legacy:** hpk-parser, hl7-pam-parser, hexagone-frontend, hexagone-swdoc, uniface-procscript
 3. **Issue/review management:** gitlab-code-review, gitlab-issue, github-issues, triage-issue
 4. **Document processing:** docx, pdf, pptx, xlsx, article-extractor

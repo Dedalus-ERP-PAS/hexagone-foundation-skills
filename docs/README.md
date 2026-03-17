@@ -33,8 +33,10 @@ Index de toute la documentation disponible pour les Foundation Skills.
 | --------------------------------------- | ------------------------------------------------ |
 | [security-review](security-review.md)   | Audit de sécurité et OWASP Top 10                |
 | [coding-standards](coding-standards.md) | Standards de code                                |
-| [tdd](tdd.md)                           | Développement piloté par les tests (TDD)         |
-| [git-guardrails](git-guardrails.md)     | Garde-fous Git pour des commits propres          |
+| [tdd](tdd.md)                                     | Développement piloté par les tests (TDD)         |
+| [testing-patterns](testing-patterns.md)           | Patterns de test : unitaire, intégration, E2E    |
+| [typescript-migration](typescript-migration.md)   | Migration incrémentale JS → TypeScript           |
+| [git-guardrails](git-guardrails.md)               | Garde-fous Git pour des commits propres          |
 
 ### Automatisation & Tests
 
