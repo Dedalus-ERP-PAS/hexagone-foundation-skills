@@ -4,77 +4,78 @@ Index de toute la documentation disponible pour les Foundation Skills.
 
 ## 📚 Guides généraux
 
-| Document | Description |
-|----------|-------------|
+| Document                                   | Description                                                                               |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------- |
 | [comment-utiliser.md](comment-utiliser.md) | **Guide complet** - Installation, utilisation avec différents agents, exemples, dépannage |
-| [coding-standards.md](coding-standards.md) | Standards de code universels pour TypeScript/JavaScript |
+| [coding-standards.md](coding-standards.md) | Standards de code universels pour TypeScript/JavaScript                                   |
 
 ## 🎯 Documentation par skill
 
 ### Backend & APIs
 
-| Skill | Documentation |
-|-------|---------------|
+| Skill                                   | Documentation                                                  |
+| --------------------------------------- | -------------------------------------------------------------- |
 | [backend-patterns](backend-patterns.md) | Patterns d'architecture backend, API design, DB, caching, auth |
-| [postgres](postgres.md) | Requêtes SQL lecture seule sur PostgreSQL |
+| [postgres](postgres.md)                 | Requêtes SQL lecture seule sur PostgreSQL                      |
 
 ### Frontend
 
-| Skill | Documentation |
-|-------|---------------|
-| [react-best-practices](react-best-practices.md) | Guidelines performance React/Next.js |
-| [vue-best-practices](vue-best-practices.md) | Best practices Vue.js 3/Nuxt |
-| [frontend-design](frontend-design.md) | Interfaces frontend de qualité production |
-| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilité et UX |
+| Skill                                             | Documentation                             |
+| ------------------------------------------------- | ----------------------------------------- |
+| [react-best-practices](react-best-practices.md)   | Guidelines performance React/Next.js      |
+| [vue-best-practices](vue-best-practices.md)       | Best practices Vue.js 3/Nuxt              |
+| [frontend-design](frontend-design.md)             | Interfaces frontend de qualité production |
+| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilité et UX             |
 
 ### Sécurité & Qualité
 
-| Skill | Documentation |
-|-------|---------------|
-| [security-review](security-review.md) | Audit de sécurité et OWASP Top 10 |
-| [coding-standards](coding-standards.md) | Standards de code |
+| Skill                                   | Documentation                     |
+| --------------------------------------- | --------------------------------- |
+| [security-review](security-review.md)   | Audit de sécurité et OWASP Top 10 |
+| [coding-standards](coding-standards.md) | Standards de code                 |
 
 ### Automatisation & Tests
 
-| Skill | Documentation |
-|-------|---------------|
+| Skill                                   | Documentation                             |
+| --------------------------------------- | ----------------------------------------- |
 | [playwright-skill](playwright-skill.md) | Automatisation navigateur avec Playwright |
-| [webapp-testing](webapp-testing.md) | Tests d'applications web |
+| [webapp-testing](webapp-testing.md)     | Tests d'applications web                  |
 
 ### Documents Office
 
-| Skill | Documentation |
-|-------|---------------|
-| [docx](docx.md) | Documents Word (.docx) |
+| Skill           | Documentation                    |
+| --------------- | -------------------------------- |
+| [docx](docx.md) | Documents Word (.docx)           |
 | [pptx](pptx.md) | Présentations PowerPoint (.pptx) |
-| [xlsx](xlsx.md) | Fichiers Excel avec formules |
-| [pdf](pdf.md) | Manipulation de PDF |
+| [xlsx](xlsx.md) | Fichiers Excel avec formules     |
+| [pdf](pdf.md)   | Manipulation de PDF              |
 
 ### Gestion de projet
 
-| Skill | Documentation |
-|-------|---------------|
-| [github-issues](github-issues.md) | Gestion des issues GitHub |
-| [gitlab-issue](gitlab-issue.md) | Gestion des issues GitLab |
-| [gitlab-code-review](gitlab-code-review.md) | Code review GitLab |
-| [changelog-generator](changelog-generator.md) | Génération de changelogs |
+| Skill                                         | Documentation                                                 |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| [github-issues](github-issues.md)             | Gestion des issues GitHub                                     |
+| [gitlab-issue](gitlab-issue.md)               | Gestion des issues GitLab                                     |
+| [gitlab-code-review](gitlab-code-review.md)   | Code review GitLab                                            |
+| [changelog-generator](changelog-generator.md) | Génération de changelogs                                      |
+| [grill-me](grill-me.md)                       | Interview approfondie pour validation de plans et conceptions |
 
 ### Hexagone / Domaine santé
 
-| Skill | Documentation |
-|-------|---------------|
-| [hexagone-swdoc](hexagone-swdoc.md) | Documentation des web services Hexagone (endpoints, formats, contrats) |
-| [hexagone-frontend](hexagone-frontend.md) | Documentation des composants frontend Hexagone (@his/hexa-components) |
-| [hpk-parser](hpk-parser.md) | Parsing des messages HPK propriétaires |
-| [hl7-pam-parser](hl7-pam-parser.md) | Parsing des messages HL7 v2.5 IHE PAM |
-| [uniface-procscript](uniface-procscript.md) | Référence ProcScript pour Uniface 9.7 |
+| Skill                                       | Documentation                                                          |
+| ------------------------------------------- | ---------------------------------------------------------------------- |
+| [hexagone-swdoc](hexagone-swdoc.md)         | Documentation des web services Hexagone (endpoints, formats, contrats) |
+| [hexagone-frontend](hexagone-frontend.md)   | Documentation des composants frontend Hexagone (@his/hexa-components)  |
+| [hpk-parser](hpk-parser.md)                 | Parsing des messages HPK propriétaires                                 |
+| [hl7-pam-parser](hl7-pam-parser.md)         | Parsing des messages HL7 v2.5 IHE PAM                                  |
+| [uniface-procscript](uniface-procscript.md) | Référence ProcScript pour Uniface 9.7                                  |
 
 ### Outils spécialisés
 
-| Skill | Documentation |
-|-------|---------------|
-| [mcp-builder](mcp-builder.md) | Création de serveurs MCP |
-| [article-extractor](article-extractor.md) | Extraction d'articles web |
+| Skill                                                       | Documentation                         |
+| ----------------------------------------------------------- | ------------------------------------- |
+| [mcp-builder](mcp-builder.md)                               | Création de serveurs MCP              |
+| [article-extractor](article-extractor.md)                   | Extraction d'articles web             |
 | [create-design-system-rules](create-design-system-rules.md) | Génération de règles de design system |
 
 ## 🚀 Démarrage rapide

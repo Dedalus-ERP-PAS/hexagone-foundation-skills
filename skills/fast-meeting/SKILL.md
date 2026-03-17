@@ -2,7 +2,7 @@
 name: fast-meeting
 description: Run a fast autonomous meeting with auto-selected personas, implement the decision, create a MR/PR, commit, push, and post a French summary — all without user intervention.
 allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue_note), gitlab-mcp(update_issue), gitlab-mcp(list_issues), gitlab-mcp(create_merge_request), gitlab-mcp(update_merge_request)
-version: 1.1.0
+version: 1.2.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -97,21 +97,21 @@ If the subject spans multiple areas, pick the most relevant 3-4 personas. Always
 
 | Persona | Role | Perspective | Bias |
 |---------|------|-------------|------|
-| **SOLID Alex** | Senior Backend Engineer, clean code evangelist & design patterns enforcer | Code quality, maintainability, technical debt | Prefers proven patterns, cautious about new tech |
-| **Sprint Zero Sarah** | Product Owner, backlog tyrant & velocity obsessed | User value, delivery speed, business impact | Prefers shipping fast, pragmatic trade-offs |
-| **Paranoid Shug** | Security Engineer (OWASP certified) | Attack surface analysis, web security (OWASP Top 10), authentication standards (OAuth2, OpenID Connect, JWT), penetration testing, vulnerability scanning, secure coding practices | Prefers the most secure option, systematically challenges exposed surfaces, assumes every input is hostile |
-| **Pipeline Mo** | DevOps/SRE Engineer, CI/CD perfectionist & zero-downtime deployer | Operability, monitoring, deployment, scalability, Docker, Kubernetes, IaC (Terraform/Ansible), observability (Grafana, Prometheus, ELK), incident response | Prefers simple infrastructure, observable systems, won't approve anything without a rollback plan |
-| **Pixel-Perfect Hugo** | Frontend Engineer, CSS wizard & component library champion | User experience, frontend performance, Vue.js 2 & 3, React, shadcn/ui, PrimeVue LTS, component libraries, responsive design, state management | Prefers user-centric solutions, advocates for consistent UI component systems, won't merge without pixel-perfect alignment |
-| **Whiteboard Damien** | Tech Lead / Architect, diagram-first thinker & ADR collector | System design, long-term vision, team capacity, trade-off analysis, technical debt prioritization, API contract design, system boundaries, C4 model | Prefers sustainable architecture, balanced approach, won't start coding before the diagram is on the wall |
-| **Edge-Case Nico** | QA Engineer, regression hunter & boundary value analyst | Testability, edge cases, regression risk, E2E testing with Playwright, unit/integration testing with Vitest | Prefers thorough coverage, cautious about untested paths, advocates for automated test pipelines |
-| **EXPLAIN PLAN Isabelle** | Senior Database Engineer (Oracle specialist) | Oracle database administration and optimization (11.2 to 19c+), PL/SQL, performance tuning, partitioning, RAC, Data Guard, migration between Oracle versions | Prefers robust schema design, careful about query performance and data integrity |
-| **Schema JB** | Data Engineer, migration gatekeeper & referential integrity guardian | Data integrity, analytics, migration risks, ETL pipelines, data quality, data lineage, data governance | Prefers schema stability, careful migrations, won't approve a deploy without a rollback script |
-| **RFC Santiago** | Senior Interoperability PO, standards compliance officer & spec-first negotiator | Standards compliance (HL7, FHIR, HPK), cross-system integration, data flow consistency | Prefers standard-based approaches, careful about breaking upstream/downstream systems |
-| **Legacy Larry** | Senior Fullstack Developer (Uniface specialist) | Uniface application development, legacy system modernization, 4GL/RAD patterns, database-driven UI, migration strategies. Documentation: https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/uniface/ | Prefers pragmatic evolution over rewrite, deep knowledge of Uniface runtime and deployment |
-| **HL7 Victor** | Senior Interoperability Fullstack Developer, message parser & protocol translator | End-to-end integration (API, middleware, frontend), message parsing (HL7, FHIR, HPK), system connectors, data mapping and transformation | Prefers pragmatic solutions that work across the full stack, bridges the gap between standards and implementation |
-| **RGPD Raphaël** | DPO / Compliance Officer, health data regulation specialist & consent watchdog | GDPR/RGPD compliance, HDS certification, patient data protection, consent management, data retention policies, audit trails | Prefers the most compliant option, blocks anything that touches personal data without proper justification, risk-averse on legal exposure |
-| **Dr. Workflow Wendy** | Healthcare Domain Expert, clinical process analyst & patient journey guardian | Hospital workflows, patient administration, medical terminology, clinical use cases, end-user adoption, functional specifications | Prefers solutions that match real clinical reality, pushes back on tech-first approaches that ignore how hospitals actually work |
-| **Figma Fiona** | UX/UI Designer, user research advocate & design system curator | User research, wireframes, design consistency, design tokens, accessibility (WCAG), user testing, information architecture | Prefers design-first approaches, challenges any UI decision made without user validation, advocates for consistent design systems |
+| **SOLID Alex** | Senior Backend Engineer | Code quality, maintainability, technical debt, design patterns | Proven patterns, cautious about new tech |
+| **Sprint Zero Sarah** | Product Owner | User value, delivery speed, business impact | Ships fast, pragmatic trade-offs |
+| **Paranoid Shug** | Security Engineer (OWASP) | Attack surface, OWASP Top 10, OAuth2/OIDC/JWT, secure coding | Most secure option, assumes hostile input |
+| **Pipeline Mo** | DevOps/SRE Engineer | Operability, CI/CD, Docker/K8s, IaC, observability | Simple infra, observable systems, requires rollback plan |
+| **Pixel-Perfect Hugo** | Frontend Engineer | UX, frontend perf, Vue.js, React, PrimeVue, shadcn/ui | User-centric, consistent UI component systems |
+| **Whiteboard Damien** | Tech Lead / Architect | System design, trade-offs, API contracts, C4 model | Sustainable architecture, diagram before code |
+| **Edge-Case Nico** | QA Engineer | Testability, edge cases, regression, Playwright, Vitest | Thorough coverage, automated test pipelines |
+| **EXPLAIN PLAN Isabelle** | Oracle DBA | Oracle 11.2-19c+, PL/SQL, perf tuning, RAC, Data Guard | Robust schema, query performance, data integrity |
+| **Schema JB** | Data Engineer | Data integrity, ETL, migrations, data lineage/governance | Schema stability, requires rollback script |
+| **RFC Santiago** | Interoperability PO | HL7, FHIR, HPK standards, cross-system integration | Standard-based, protects upstream/downstream |
+| **Legacy Larry** | Uniface Specialist | Uniface apps, legacy modernization, 4GL/RAD, DB-driven UI | Pragmatic evolution over rewrite |
+| **HL7 Victor** | Interop Fullstack Dev | HL7/FHIR/HPK parsing, middleware, data mapping | Pragmatic full-stack, bridges standards and implementation |
+| **RGPD Raphaël** | DPO / Compliance | GDPR, HDS, patient data, consent, audit trails | Most compliant option, risk-averse on legal exposure |
+| **Dr. Workflow Wendy** | Healthcare Domain Expert | Hospital workflows, patient admin, clinical use cases | Matches clinical reality, pushes back on tech-first |
+| **Figma Fiona** | UX/UI Designer | User research, design tokens, WCAG, information architecture | Design-first, requires user validation |
 
 **Announce the selected personas and their roles before starting the meeting.**
 
@@ -248,13 +248,16 @@ Implementation runs in a **git worktree**, which creates an isolated copy of the
    - New feature → `feat/`
    - Refactoring → `refactor/`
    - Default → `feat/`
-3. **Create a worktree** with a dedicated branch:
-   - Branch name: `<type>/fm-<short-kebab-case-topic>` (e.g., `feat/fm-jwt-auth-migration`, `fix/fm-notification-display`)
+3. **Check for branch name collisions** before creating the worktree:
+   - Run `git branch -a` and check if `<type>/fm-<topic>` already exists (locally or as `remotes/origin/<type>/fm-<topic>`)
+   - If the branch exists: append a numeric suffix (`-2`, `-3`, etc.) until a unique name is found. Do not force-delete existing branches — they may contain reviewed or in-progress work
+4. **Create a worktree** with a dedicated branch:
+   - Branch name: `<type>/fm-<short-kebab-case-topic>` (e.g., `feat/fm-jwt-auth-migration`, `fix/fm-notification-display`) — with suffix if collision was detected
    - Worktree path: `$(git rev-parse --show-toplevel)/../fm-<topic>`
    - Run: `git worktree add ../fm-<topic> -b <type>/fm-<topic>`
-4. **If worktree creation fails** (e.g., branch already exists from a previous crash):
-   - Try: `git branch -D <type>/fm-<topic>` then retry the worktree creation
-   - If it still fails, fall back to the legacy approach: stash, checkout -b, implement, restore
+5. **If worktree creation fails:**
+   - If the error indicates the branch already exists: run `git branch -D <type>/fm-<topic>` then retry the worktree creation
+   - If it still fails (disk space, permissions, path length, submodules, or any other reason): **abort the implementation pipeline**. Output the complete meeting analysis from Step 4, the exact error message, and stop. The user can fix the underlying issue and re-run. **Never fall back to stash/checkout** — the user's working tree must never be modified
 
 #### 5b: Implement in the Worktree
 
@@ -290,10 +293,17 @@ After committing, validate the implementation against the project's test suite:
 
 4. **Push the branch** from within the worktree:
    - Run: `git push -u origin <type>/fm-<topic>` (from the worktree path)
-5. **Remove the worktree:**
+   - **If push fails** (auth error, no remote, permission denied, network issue):
+     - **Do NOT remove the worktree** — the committed work must be preserved
+     - Output the worktree path, branch name, and the exact error message
+     - Output a manual recovery command: `cd <worktree-path> && git push -u origin <branch>`
+     - Skip Steps 6 and 7 entirely — there is nothing to link to
+     - Proceed directly to the Run Summary (Step 8) with push status = "failed"
+5. **Remove the worktree** (only after a successful push):
    - Return to the original repository path
    - Run: `git worktree remove ../fm-<topic>`
    - If removal fails (e.g., uncommitted changes in worktree), run: `git worktree remove ../fm-<topic> --force`
+   - **Post-cleanup verification:** run `git worktree list` and verify the fast-meeting worktree no longer appears. If it does, output the cleanup command for the user: `git worktree remove <path> --force`
 6. **No restoration needed:** the user's working tree was never modified — they remain on their original branch with all their uncommitted changes intact
 
 ### Step 6: Create the MR/PR
@@ -311,6 +321,17 @@ Use `gitlab-mcp(create_merge_request)` to create a merge request with:
 Use `gh pr create` to create a pull request with:
 - **Title:** Short description (under 70 chars, in English)
 - **Body:** The French meeting analysis and implementation summary (see template below)
+
+#### If MR/PR creation fails:
+
+If the MR/PR creation fails (API timeout, rate limit, authentication, MCP tool error):
+- Output the remote URL and branch name
+- Output a pre-formatted manual command the user can paste:
+  - GitLab: provide the web URL to create the MR manually
+  - GitHub: `gh pr create --head <branch> --title "<title>" --body "<body>"`
+- Include the full MR/PR description text in the conversation output so nothing is lost
+- Proceed to Step 7 (issue comment) if applicable — the issue comment is still valuable even without the MR/PR link
+- Record the failure in the Run Summary (Step 8)
 
 #### MR/PR Description Template (French — Developer / Technically Oriented)
 
@@ -347,7 +368,7 @@ The MR/PR description targets **developers reviewing the code**. Focus on techni
 
 ---
 _Implémentation générée automatiquement par IA 🤖_
-_Version : fast-meeting v1.1.0_
+_Version : fast-meeting v1.2.0_
 ```
 
 ### Step 7: Post to Issue (If Applicable — PO / Consultant Oriented)
@@ -389,12 +410,30 @@ If the subject is linked to a GitLab or GitHub issue, post a **Product Owner / c
 
 ---
 _Analyse générée automatiquement par IA 🤖_
-_Version : fast-meeting v1.1.0_
+_Version : fast-meeting v1.2.0_
 ```
 
 Post the comment using the appropriate tool:
 - **GitLab:** `gitlab-mcp(create_issue_note)`
 - **GitHub:** `gh issue comment`
+
+### Step 8: Run Summary
+
+**Always output a structured run summary at the end of every fast-meeting run**, regardless of whether the pipeline succeeded or failed at any step. This provides observability for an autonomous pipeline.
+
+```markdown
+### Fast Meeting — Run Summary
+- **Sujet :** [topic]
+- **Branche :** `<type>/fm-<topic>`
+- **Worktree :** [path] (nettoyé : oui/non)
+- **Push :** succès / échec ([erreur si applicable])
+- **MR/PR :** [URL] / non créé ([raison si applicable])
+- **Tests :** [N exécutés, N passés, N échoués] / non détectés
+- **Commentaire issue :** publié / ignoré (pas d'issue liée)
+- **Durée totale :** [durée wall-clock de l'ensemble du pipeline]
+```
+
+If any step failed, the summary must include the failure reason and any manual recovery commands already provided in earlier steps.
 
 ## Meeting Quality Rules
 
@@ -462,8 +501,8 @@ User: fast-meeting : refactorer le module d'authentification pour supporter OAut
 - **This skill does NOT ask for user confirmation** — it runs the full pipeline autonomously
 - If tests fail after one fix attempt, mark the MR/PR as **Draft** and document the failures
 - If the implementation scope is too large (architectural, multi-service), abort and suggest `/meeting` instead
-- The user's working tree is always protected: implementation runs in an isolated git worktree — no stash, no branch switch, no risk of state corruption
-- Multiple fast-meetings can run in parallel on different worktrees without conflicts (each gets its own isolated copy)
+- The user's working tree is always protected: implementation runs in an isolated git worktree — no stash, no branch switch, no risk of state corruption. If worktree creation fails, the pipeline aborts cleanly rather than falling back to stash/checkout
+- Multiple fast-meetings can run in parallel on different worktrees, but beware of file overlap — two meetings touching the same files will create merge conflicts on MR
 - When creating a MR/PR, check for other active fast-meeting branches with `git branch -r | grep '/fm-'`. If other branches exist, add a warning in the MR/PR description: _"Attention : d'autres branches fast-meeting sont actives. Vérifier les conflits potentiels avant merge."_
 - The MR/PR description is always in French
 - Branch names follow Git flow conventions: `<type>/fm-<topic>` (e.g., `feat/fm-<topic>`, `fix/fm-<topic>`) — determined automatically from the meeting recommendation
