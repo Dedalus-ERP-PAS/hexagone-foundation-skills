@@ -58,18 +58,21 @@ fast-meeting : refactorer le module d'authentification pour OAuth2
 
 | Persona | Rôle | Ce qui compte pour elle |
 |---------|------|------------------------|
-| Alex | Ingénieur Backend Senior | Qualité de code, maintenabilité |
-| Sarah | Product Owner | Valeur utilisateur, rapidité de livraison |
-| Shug | Ingénieur Sécurité (certifié OWASP) | Surface d'attaque, sécurité web, standards d'authentification |
-| Priya | Ingénieure DevOps/SRE | Opérabilité, déploiement, scalabilité |
-| Mohammed | Ingénieur Frontend | Expérience utilisateur, Vue.js, React, PrimeVue |
-| Didier | Tech Lead / Architecte | Vision long terme, capacité de l'équipe |
-| Nicolas | Ingénieur QA | Testabilité, cas limites, Playwright, Vitest |
-| Isabelle | Ingénieure Base de Données Senior (Oracle) | Administration Oracle, PL/SQL, tuning |
-| Jean-Baptiste | Ingénieur Data | Intégrité des données, migrations |
-| Santiago | PO Interopérabilité Senior | Standards HL7, FHIR, HPK |
-| Gilles | Développeur Fullstack Senior (Uniface) | Modernisation legacy, patterns 4GL/RAD |
-| Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages |
+| SOLID Alex | Ingénieur Backend Senior | Qualité de code, maintenabilité |
+| Sprint Zero Sarah | Product Owner | Valeur utilisateur, rapidité de livraison |
+| Paranoid Shug | Ingénieur Sécurité (certifié OWASP) | Surface d'attaque, sécurité web, standards d'authentification |
+| Pipeline Mo | Ingénieur DevOps/SRE | Opérabilité, déploiement, scalabilité |
+| Pixel-Perfect Hugo | Ingénieur Frontend | Expérience utilisateur, Vue.js, React, PrimeVue |
+| Whiteboard Damien | Tech Lead / Architecte | Vision long terme, capacité de l'équipe |
+| Edge-Case Nico | Ingénieur QA | Testabilité, cas limites, Playwright, Vitest |
+| EXPLAIN PLAN Isabelle | Ingénieure Base de Données Senior (Oracle) | Administration Oracle, PL/SQL, tuning |
+| Schema JB | Ingénieur Data | Intégrité des données, migrations |
+| RFC Santiago | PO Interopérabilité Senior | Standards HL7, FHIR, HPK |
+| Legacy Larry | Développeur Fullstack Senior (Uniface) | Modernisation legacy, patterns 4GL/RAD |
+| HL7 Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages |
+| RGPD Raphaël | DPO / Compliance | RGPD, HDS, données patients, consentement |
+| Dr. Workflow Wendy | Experte Domaine Santé | Workflows hospitaliers, administration patient |
+| Figma Fiona | Designer UX/UI | Recherche utilisateur, tokens de design, WCAG |
 
 La sélection est automatique selon le contexte. Des personas spécialisées sont créées si le sujet le nécessite.
 
@@ -81,6 +84,7 @@ La sélection est automatique selon le contexte. Des personas spécialisées son
 | **Consensus trop facile** | Lancement d'un avocat du diable si toutes les personas sont d'accord |
 | **Scope trop large** | Réduction au premier pas critique, ou abandon + suggestion de `/meeting` |
 | **Tests en échec** | Une tentative de correction, puis MR/PR en Draft avec détails des échecs |
+| **Exécutions parallèles** | Step 0 vérifie les processus actifs avant de nettoyer — pas de risque de supprimer un worktree en cours d'utilisation |
 
 ## Exemple de résultat
 
