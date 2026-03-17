@@ -74,6 +74,8 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 | [Hexagone Web Services](docs/hexagone-swdoc.md)           | Documentation des web services Hexagone depuis le dépôt swdoc GitLab                      |
 | [Hexagone Frontend](docs/hexagone-frontend.md)            | Documentation des composants frontend Hexagone (@his/hexa-components)                     |
 | [TDD](docs/tdd.md)                                        | Développement piloté par les tests avec boucle red-green-refactor                         |
+| [Testing patterns](docs/testing-patterns.md)               | Patterns de test : unitaire, intégration, E2E, mocking et organisation                    |
+| [TypeScript migration](docs/typescript-migration.md)       | Guide de migration incrémentale JavaScript vers TypeScript                                |
 | [Triage issue](docs/triage-issue.md)                      | Investigation de bugs et création automatique d'issues GitLab/GitHub                      |
 | [Ubiquitous language](docs/ubiquitous-language.md)        | Extraction de glossaire DDD adapté au domaine santé                                       |
 | [Git guardrails](docs/git-guardrails.md)                  | Hooks de sécurité pour bloquer les commandes git dangereuses                              |
@@ -154,6 +156,8 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **react-best-practices**       | Best practices React/Next.js : architecture, performance, shadcn/ui, React 19+                     | [react-best-practices.md](docs/react-best-practices.md)             |
 | **security-review**            | Audit de sécurité : secrets, validation inputs, authentification, OWASP Top 10                     | [security-review.md](docs/security-review.md)                       |
 | **vue-best-practices**         | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue                 | [vue-best-practices.md](docs/vue-best-practices.md)                 |
+| **testing-patterns**           | Patterns de test complets : unitaire, intégration, E2E, mocking, anti-patterns                     | [testing-patterns.md](docs/testing-patterns.md)                     |
+| **typescript-migration**       | Migration incrémentale JS → TypeScript : tsconfig, typage, élimination de `any`                    | [typescript-migration.md](docs/typescript-migration.md)             |
 | **web-design-guidelines**      | Audit UI/UX : conformité Web Interface Guidelines, accessibilité                                   | [web-design-guidelines.md](docs/web-design-guidelines.md)           |
 | **hexagone-swdoc**             | Documentation des web services Hexagone : endpoints, formats, contrats de service                  | [hexagone-swdoc.md](docs/hexagone-swdoc.md)                         |
 | **hexagone-frontend**          | Documentation des composants frontend Hexagone (@his/hexa-components) : props, events, patterns    | [hexagone-frontend.md](docs/hexagone-frontend.md)                   |
