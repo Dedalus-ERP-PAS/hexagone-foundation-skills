@@ -2,7 +2,7 @@
 name: fast-meeting
 description: Run a fast autonomous meeting with auto-selected personas, implement the decision, create a MR/PR, commit, push, and post a French summary — all without user intervention.
 allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue_note), gitlab-mcp(update_issue), gitlab-mcp(list_issues), gitlab-mcp(create_merge_request), gitlab-mcp(update_merge_request)
-version: 1.2.0
+version: 1.3.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -48,15 +48,17 @@ Activate when the user:
 
 ### Step 0: Worktree Hygiene
 
-Before starting, clean up any stale worktrees from previous meetings that may have crashed:
+Before starting, clean up stale worktrees from previous meetings that may have crashed:
 
 1. Run `git worktree prune` to remove stale worktree references
-2. Check `git worktree list` — if any entries match sibling directories named `fast-meeting-*` or `fm-*`, remove them with `git worktree remove <path> --force`
+2. Check `git worktree list` — if any entries match sibling directories named `fast-meeting-*` or `fm-*`:
+   - **Parallel safety:** before removing, verify the worktree directory has no active git processes (`fuser -s <worktree-path> 2>/dev/null`). If the directory is in active use, **skip it** — it belongs to another running fast-meeting
+   - Only remove worktrees confirmed to be stale: `git worktree remove <path> --force`
 3. Also clean up any legacy `fast-meeting/*` branches: `git branch --list 'fast-meeting/*' | xargs -r git branch -D`
 
-This ensures a clean starting state regardless of previous failures.
+This ensures a clean starting state without disrupting parallel fast-meeting runs.
 
-### Step 1: Understand the Subject and Gather Context
+### Step 1: Gather Context
 
 1. **Read the user's prompt** — extract the topic, constraints, and goals
 2. **If an issue is referenced** (GitLab `#123` or GitHub `#123`):
@@ -64,7 +66,7 @@ This ensures a clean starting state regardless of previous failures.
 3. **If code is involved**, read relevant files to understand the current state
 4. **Detect the remote repository type:**
    - Run `git remote -v` to determine if the remote is GitLab or GitHub
-   - Store this for Step 6 (MR/PR creation)
+   - Store this for Step 8 (MR/PR creation)
 5. **Identify the decision to make** — frame it as a clear one-line question
 
 Output the decision question before proceeding. Example:
@@ -91,27 +93,7 @@ Automatically select 3-4 personas based on the subject matter. Use these heurist
 
 If the subject spans multiple areas, pick the most relevant 3-4 personas. Always include **Whiteboard Damien (Architect)** for technical decisions. Always include **Sprint Zero Sarah (PO)** for product decisions.
 
-**Custom personas:** If the subject is domain-specific (healthcare, finance, legal...), create a relevant domain expert persona automatically.
-
-#### Persona Pool
-
-| Persona | Role | Perspective | Bias |
-|---------|------|-------------|------|
-| **SOLID Alex** | Senior Backend Engineer | Code quality, maintainability, technical debt, design patterns | Proven patterns, cautious about new tech |
-| **Sprint Zero Sarah** | Product Owner | User value, delivery speed, business impact | Ships fast, pragmatic trade-offs |
-| **Paranoid Shug** | Security Engineer (OWASP) | Attack surface, OWASP Top 10, OAuth2/OIDC/JWT, secure coding | Most secure option, assumes hostile input |
-| **Pipeline Mo** | DevOps/SRE Engineer | Operability, CI/CD, Docker/K8s, IaC, observability | Simple infra, observable systems, requires rollback plan |
-| **Pixel-Perfect Hugo** | Frontend Engineer | UX, frontend perf, Vue.js, React, PrimeVue, shadcn/ui | User-centric, consistent UI component systems |
-| **Whiteboard Damien** | Tech Lead / Architect | System design, trade-offs, API contracts, C4 model | Sustainable architecture, diagram before code |
-| **Edge-Case Nico** | QA Engineer | Testability, edge cases, regression, Playwright, Vitest | Thorough coverage, automated test pipelines |
-| **EXPLAIN PLAN Isabelle** | Oracle DBA | Oracle 11.2-19c+, PL/SQL, perf tuning, RAC, Data Guard | Robust schema, query performance, data integrity |
-| **Schema JB** | Data Engineer | Data integrity, ETL, migrations, data lineage/governance | Schema stability, requires rollback script |
-| **RFC Santiago** | Interoperability PO | HL7, FHIR, HPK standards, cross-system integration | Standard-based, protects upstream/downstream |
-| **Legacy Larry** | Uniface Specialist | Uniface apps, legacy modernization, 4GL/RAD, DB-driven UI | Pragmatic evolution over rewrite |
-| **HL7 Victor** | Interop Fullstack Dev | HL7/FHIR/HPK parsing, middleware, data mapping | Pragmatic full-stack, bridges standards and implementation |
-| **RGPD Raphaël** | DPO / Compliance | GDPR, HDS, patient data, consent, audit trails | Most compliant option, risk-averse on legal exposure |
-| **Dr. Workflow Wendy** | Healthcare Domain Expert | Hospital workflows, patient admin, clinical use cases | Matches clinical reality, pushes back on tech-first |
-| **Figma Fiona** | UX/UI Designer | User research, design tokens, WCAG, information architecture | Design-first, requires user validation |
+**Full persona pool with roles, perspectives, and biases:** see `reference/personas.md`.
 
 **Announce the selected personas and their roles before starting the meeting.**
 
@@ -223,24 +205,24 @@ Write a compact analysis displayed to the user:
 3. [Step 3]
 ```
 
-### Step 4b: Implementation Scope Guard
+### Step 5: Scope Guard
 
 Before implementing, estimate the scope of the recommended changes:
 
 1. **Assess the scope:** count the estimated number of files to change, lines of code to add/modify, and whether new dependencies or infrastructure are needed
 2. **Apply thresholds:**
-   - **Small scope** (≤10 files, ≤500 lines, no new infrastructure): proceed to Step 5 normally
+   - **Small scope** (≤10 files, ≤500 lines, no new infrastructure): proceed to Step 6 normally
    - **Medium scope** (>10 files OR >500 lines): proceed but **scope down** to the most critical first step only. Add the remaining steps as a checklist in the MR/PR description under a `### Étapes restantes` section
    - **Large scope** (multi-service changes, architectural migration, new infrastructure required): **abort implementation**. Output the meeting analysis from Step 4, and suggest the user run the full `/meeting` skill for proper planning with validation before implementation
 3. **If scoping down:** clearly state in the analysis what is being implemented now vs. deferred
 
-### Step 5: Implement the Recommendation
+### Step 6: Create Worktree and Implement
 
 **Immediately proceed to implementation without asking the user.** This is the key difference from meeting.
 
-#### 5a: Create an Isolated Worktree
-
 Implementation runs in a **git worktree**, which creates an isolated copy of the repository. The user's working tree is **never modified** — no stash, no branch switch, no risk of state corruption.
+
+#### Create the Worktree
 
 1. **Record the current branch** for reference (e.g., `main`)
 2. **Determine the branch type** based on the meeting recommendation:
@@ -248,18 +230,20 @@ Implementation runs in a **git worktree**, which creates an isolated copy of the
    - New feature → `feat/`
    - Refactoring → `refactor/`
    - Default → `feat/`
-3. **Check for branch name collisions** before creating the worktree:
+3. **Fetch remote state** before checking for collisions:
+   - Run `git fetch origin` to ensure branch information is up-to-date
+4. **Check for branch name collisions** before creating the worktree:
    - Run `git branch -a` and check if `<type>/fm-<topic>` already exists (locally or as `remotes/origin/<type>/fm-<topic>`)
    - If the branch exists: append a numeric suffix (`-2`, `-3`, etc.) until a unique name is found. Do not force-delete existing branches — they may contain reviewed or in-progress work
-4. **Create a worktree** with a dedicated branch:
+5. **Create a worktree** with a dedicated branch:
    - Branch name: `<type>/fm-<short-kebab-case-topic>` (e.g., `feat/fm-jwt-auth-migration`, `fix/fm-notification-display`) — with suffix if collision was detected
    - Worktree path: `$(git rev-parse --show-toplevel)/../fm-<topic>`
    - Run: `git worktree add ../fm-<topic> -b <type>/fm-<topic>`
-5. **If worktree creation fails:**
+6. **If worktree creation fails:**
    - If the error indicates the branch already exists: run `git branch -D <type>/fm-<topic>` then retry the worktree creation
    - If it still fails (disk space, permissions, path length, submodules, or any other reason): **abort the implementation pipeline**. Output the complete meeting analysis from Step 4, the exact error message, and stop. The user can fix the underlying issue and re-run. **Never fall back to stash/checkout** — the user's working tree must never be modified
 
-#### 5b: Implement in the Worktree
+#### Implement in the Worktree
 
 1. **All file modifications happen inside the worktree path** — use the worktree's absolute path for all read/write operations
 2. **Implement the changes** as described in the implementation plan from Step 4
@@ -269,8 +253,11 @@ Implementation runs in a **git worktree**, which creates an isolated copy of the
    - `cd` into the worktree path before running git commands
    - Use a conventional commit message: `feat(<scope>): <description>`
    - Include `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>` in the commit message
+   - **If `git commit` fails due to a pre-commit hook:** analyze the hook output, fix the code to pass the hook, and retry the commit once. If it still fails, treat it like a test failure — push as Draft with the hook error documented in the MR/PR description. Never use `--no-verify`
 
-#### 5c: Run Tests
+### Step 7: Test, Push, and Clean Up
+
+#### Run Tests
 
 After committing, validate the implementation against the project's test suite:
 
@@ -289,24 +276,27 @@ After committing, validate the implementation against the project's test suite:
      - Push anyway so the team can review
 5. **Include test results summary** in the MR/PR description: number of tests run, passed, failed
 
-#### 5d: Push and Clean Up Worktree
+#### Push the Branch
 
-4. **Push the branch** from within the worktree:
+1. **Push the branch** from within the worktree:
    - Run: `git push -u origin <type>/fm-<topic>` (from the worktree path)
    - **If push fails** (auth error, no remote, permission denied, network issue):
      - **Do NOT remove the worktree** — the committed work must be preserved
      - Output the worktree path, branch name, and the exact error message
      - Output a manual recovery command: `cd <worktree-path> && git push -u origin <branch>`
-     - Skip Steps 6 and 7 entirely — there is nothing to link to
-     - Proceed directly to the Run Summary (Step 8) with push status = "failed"
-5. **Remove the worktree** (only after a successful push):
+     - Skip Steps 8 and 9 entirely — there is nothing to link to
+     - Proceed directly to the Run Summary (Step 10) with push status = "failed"
+
+#### Clean Up Worktree
+
+2. **Remove the worktree** (only after a successful push):
    - Return to the original repository path
    - Run: `git worktree remove ../fm-<topic>`
    - If removal fails (e.g., uncommitted changes in worktree), run: `git worktree remove ../fm-<topic> --force`
    - **Post-cleanup verification:** run `git worktree list` and verify the fast-meeting worktree no longer appears. If it does, output the cleanup command for the user: `git worktree remove <path> --force`
-6. **No restoration needed:** the user's working tree was never modified — they remain on their original branch with all their uncommitted changes intact
+3. **No restoration needed:** the user's working tree was never modified — they remain on their original branch with all their uncommitted changes intact
 
-### Step 6: Create the MR/PR
+### Step 8: Create the MR/PR
 
 Based on the remote type detected in Step 1:
 
@@ -330,8 +320,8 @@ If the MR/PR creation fails (API timeout, rate limit, authentication, MCP tool e
   - GitLab: provide the web URL to create the MR manually
   - GitHub: `gh pr create --head <branch> --title "<title>" --body "<body>"`
 - Include the full MR/PR description text in the conversation output so nothing is lost
-- Proceed to Step 7 (issue comment) if applicable — the issue comment is still valuable even without the MR/PR link
-- Record the failure in the Run Summary (Step 8)
+- Proceed to Step 9 (issue comment) if applicable — the issue comment is still valuable even without the MR/PR link
+- Record the failure in the Run Summary (Step 10)
 
 #### MR/PR Description Template (French — Developer / Technically Oriented)
 
@@ -367,11 +357,10 @@ The MR/PR description targets **developers reviewing the code**. Focus on techni
 - [ ] Merge après approbation
 
 ---
-_Implémentation générée automatiquement par IA 🤖_
-_Version : fast-meeting v1.2.0_
+_Implémentation générée automatiquement par IA_
 ```
 
-### Step 7: Post to Issue (If Applicable — PO / Consultant Oriented)
+### Step 9: Post to Issue (If Applicable — PO / Consultant Oriented)
 
 If the subject is linked to a GitLab or GitHub issue, post a **Product Owner / consultant oriented** comment. This comment targets stakeholders, not developers — focus on business value, user impact, and strategic reasoning rather than technical details.
 
@@ -409,15 +398,14 @@ If the subject is linked to a GitLab or GitHub issue, post a **Product Owner / c
 [Lien vers la MR/PR] — Les détails techniques d'implémentation sont dans la description de la MR/PR.
 
 ---
-_Analyse générée automatiquement par IA 🤖_
-_Version : fast-meeting v1.2.0_
+_Analyse générée automatiquement par IA_
 ```
 
 Post the comment using the appropriate tool:
 - **GitLab:** `gitlab-mcp(create_issue_note)`
 - **GitHub:** `gh issue comment`
 
-### Step 8: Run Summary
+### Step 10: Run Summary
 
 **Always output a structured run summary at the end of every fast-meeting run**, regardless of whether the pipeline succeeded or failed at any step. This provides observability for an autonomous pipeline.
 
@@ -502,7 +490,7 @@ User: fast-meeting : refactorer le module d'authentification pour supporter OAut
 - If tests fail after one fix attempt, mark the MR/PR as **Draft** and document the failures
 - If the implementation scope is too large (architectural, multi-service), abort and suggest `/meeting` instead
 - The user's working tree is always protected: implementation runs in an isolated git worktree — no stash, no branch switch, no risk of state corruption. If worktree creation fails, the pipeline aborts cleanly rather than falling back to stash/checkout
-- Multiple fast-meetings can run in parallel on different worktrees, but beware of file overlap — two meetings touching the same files will create merge conflicts on MR
+- Multiple fast-meetings can run in parallel on different worktrees — Step 0 only cleans up worktrees with no active processes, so parallel runs are safe
 - When creating a MR/PR, check for other active fast-meeting branches with `git branch -r | grep '/fm-'`. If other branches exist, add a warning in the MR/PR description: _"Attention : d'autres branches fast-meeting sont actives. Vérifier les conflits potentiels avant merge."_
 - The MR/PR description is always in French
 - Branch names follow Git flow conventions: `<type>/fm-<topic>` (e.g., `feat/fm-<topic>`, `fix/fm-<topic>`) — determined automatically from the meeting recommendation

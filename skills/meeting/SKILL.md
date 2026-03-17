@@ -2,7 +2,7 @@
 name: meeting
 description: Run a simulated meeting with multiple expert personas to analyze a subject from diverse perspectives, reach a decision, and propose a solution before implementation. Optionally posts the meeting analysis to a linked GitLab or GitHub issue.
 allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue_note), gitlab-mcp(update_issue), gitlab-mcp(list_issues), gitlab-mcp(create_merge_request), gitlab-mcp(update_merge_request)
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -93,27 +93,7 @@ If the subject spans multiple areas, pick the 3-5 most relevant personas. Always
 
 #### Default Persona Pool
 
-Pick from this pool or create custom ones based on the subject:
-
-| Persona | Role | Perspective | Bias |
-|---------|------|-------------|------|
-| **SOLID Alex** | Senior Backend Engineer, clean code evangelist & design patterns enforcer | Code quality, maintainability, technical debt | Prefers proven patterns, cautious about new tech |
-| **Sprint Zero Sarah** | Product Owner, backlog tyrant & velocity obsessed | User value, delivery speed, business impact | Prefers shipping fast, pragmatic trade-offs |
-| **Paranoid Shug** | Security Engineer (OWASP certified) | Attack surface analysis, web security (OWASP Top 10), authentication standards (OAuth2, OpenID Connect, JWT), penetration testing, vulnerability scanning, secure coding practices | Prefers the most secure option, systematically challenges exposed surfaces, assumes every input is hostile |
-| **Pipeline Mo** | DevOps/SRE Engineer, CI/CD perfectionist & zero-downtime deployer | Operability, monitoring, deployment, scalability, Docker, Kubernetes, IaC (Terraform/Ansible), observability (Grafana, Prometheus, ELK), incident response | Prefers simple infrastructure, observable systems, won't approve anything without a rollback plan |
-| **Pixel-Perfect Hugo** | Frontend Engineer, CSS wizard & component library champion | User experience, frontend performance, Vue.js 2 & 3, React, shadcn/ui, PrimeVue LTS, component libraries, responsive design, state management | Prefers user-centric solutions, advocates for consistent UI component systems, won't merge without pixel-perfect alignment |
-| **Whiteboard Damien** | Tech Lead / Architect, diagram-first thinker & ADR collector | System design, long-term vision, team capacity, trade-off analysis, technical debt prioritization, API contract design, system boundaries, C4 model | Prefers sustainable architecture, balanced approach, won't start coding before the diagram is on the wall |
-| **Edge-Case Nico** | QA Engineer, regression hunter & boundary value analyst | Testability, edge cases, regression risk, E2E testing with Playwright, unit/integration testing with Vitest | Prefers thorough coverage, cautious about untested paths, advocates for automated test pipelines |
-| **EXPLAIN PLAN Isabelle** | Senior Database Engineer (Oracle specialist) | Oracle database administration and optimization (11.2 to 19c+), PL/SQL, performance tuning, partitioning, RAC, Data Guard, migration between Oracle versions | Prefers robust schema design, careful about query performance and data integrity |
-| **Schema JB** | Data Engineer, migration gatekeeper & referential integrity guardian | Data integrity, analytics, migration risks, ETL pipelines, data quality, data lineage, data governance | Prefers schema stability, careful migrations, won't approve a deploy without a rollback script |
-| **RFC Santiago** | Senior Interoperability PO, standards compliance officer & spec-first negotiator | Standards compliance (HL7, FHIR, HPK), cross-system integration, data flow consistency | Prefers standard-based approaches, careful about breaking upstream/downstream systems |
-| **Legacy Larry** | Senior Fullstack Developer (Uniface specialist) | Uniface application development, legacy system modernization, 4GL/RAD patterns, database-driven UI, migration strategies. Documentation: https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/uniface/ | Prefers pragmatic evolution over rewrite, deep knowledge of Uniface runtime and deployment |
-| **HL7 Victor** | Senior Interoperability Fullstack Developer, message parser & protocol translator | End-to-end integration (API, middleware, frontend), message parsing (HL7, FHIR, HPK), system connectors, data mapping and transformation | Prefers pragmatic solutions that work across the full stack, bridges the gap between standards and implementation |
-| **RGPD Raphaël** | DPO / Compliance Officer, health data regulation specialist & consent watchdog | GDPR/RGPD compliance, HDS certification, patient data protection, consent management, data retention policies, audit trails | Prefers the most compliant option, blocks anything that touches personal data without proper justification, risk-averse on legal exposure |
-| **Dr. Workflow Wendy** | Healthcare Domain Expert, clinical process analyst & patient journey guardian | Hospital workflows, patient administration, medical terminology, clinical use cases, end-user adoption, functional specifications | Prefers solutions that match real clinical reality, pushes back on tech-first approaches that ignore how hospitals actually work |
-| **Figma Fiona** | UX/UI Designer, user research advocate & design system curator | User research, wireframes, design consistency, design tokens, accessibility (WCAG), user testing, information architecture | Prefers design-first approaches, challenges any UI decision made without user validation, advocates for consistent design systems |
-
-**Custom personas:** If the subject is domain-specific (healthcare, finance, legal...), create a relevant domain expert persona.
+**Full persona pool with roles, perspectives, and biases:** see `reference/personas.md`.
 
 **Announce the selected personas and their roles before starting the meeting.**
 
@@ -341,7 +321,7 @@ If the subject is linked to a GitLab or GitHub issue and the user asks to post, 
 
 ---
 _Analyse générée automatiquement par IA 🤖_
-_Version : meeting v1.0.0_
+_Analyse générée automatiquement par IA_
 ```
 
 Post the comment using the appropriate tool:
@@ -428,7 +408,7 @@ When the user selects option 1 ("Valider cette recommandation et passer à l'imp
 
    ---
    _Implémentation générée automatiquement par IA 🤖_
-   _Version : meeting v1.0.0_
+   _Implémentation générée automatiquement par IA_
    ```
 
 3. **If option 2 (guided implementation):**
