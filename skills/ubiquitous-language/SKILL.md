@@ -1,6 +1,6 @@
 ---
 name: ubiquitous-language
-description: Extract a DDD-style ubiquitous language glossary from the current conversation, flagging ambiguities and proposing canonical terms. Saves to UBIQUITOUS_LANGUAGE.md. Use when user wants to define domain terms, build a glossary, harden terminology, create a ubiquitous language, or mentions "domain model", "DDD", "glossaire", or "langage ubiquitaire".
+description: "Extrait un glossaire de langage ubiquitaire style DDD de la conversation en cours, signale les ambiguïtés et propose des termes canoniques. Sauvegarde dans UBIQUITOUS_LANGUAGE.md. À utiliser quand l'utilisateur veut définir des termes métier, construire un glossaire, durcir la terminologie, créer un langage ubiquitaire ou mentionne « domain model », « DDD », « glossaire » ou « langage ubiquitaire »."
 version: 1.0.0
 license: MIT
 ---

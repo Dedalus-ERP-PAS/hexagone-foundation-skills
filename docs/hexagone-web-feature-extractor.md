@@ -1,19 +1,19 @@
 # Hexagone Web Feature Extractor
 
-Skill permettant d'explorer **n'importe quel** espace Hexagone Web via Claude in Chrome, de capturer systématiquement chaque page/onglet, et de produire un document Word (.docx) orienté Product Owner avec descriptions fonctionnelles et captures d'écran embarquées.
+Explore **n'importe quel** espace Hexagone Web via Claude in Chrome. Capture chaque page/onglet et produit un document Word (.docx) orienté PO (Product Owner) avec descriptions fonctionnelles et captures d'écran.
 
 ## Cas d'usage
 
-- Explorer et documenter un espace fonctionnel Hexagone Web (tout espace, pas uniquement Structures / Nomenclatures)
-- Produire une fiche produit ou une présentation client à partir des écrans Hexagone
-- Capturer l'intégralité des pages et onglets d'un module pour audit fonctionnel
+- Documenter un espace fonctionnel Hexagone Web (tout espace, pas uniquement Structures / Nomenclatures)
+- Produire une fiche produit ou présentation client depuis les écrans
+- Capturer les pages et onglets d'un module pour audit fonctionnel
 
 ## Prérequis
 
 - **Claude in Chrome** activé et connecté
 - Accès réseau au serveur Hexagone Web (URL interne type `https://wsXXXXXX.dedalus.lan:PORT/hexagone-XX/vue/login`)
-- Certificat SSL accepté manuellement si auto-signé
-- Le skill **docx** doit être disponible pour la génération du document final
+- Certificat SSL (Secure Sockets Layer) accepté si auto-signé
+- Le skill **docx** doit être disponible
 - Dépendances Node.js : exécuter `npm install` dans le répertoire `scripts/`
 
 ## Workflow
@@ -42,7 +42,7 @@ Le skill produit un fichier `.docx` structuré :
 
 - **Page de couverture** aux couleurs Dedalus (teal/orange)
 - **Sommaire** automatique
-- **Une section par feature** : titre, description fonctionnelle PO, screenshot embarqué, tableau des fonctionnalités clés, valeur métier
+- **Une section par feature** : titre, description fonctionnelle, screenshot, tableau des fonctionnalités clés, valeur métier
 
 ## Dépendances
 

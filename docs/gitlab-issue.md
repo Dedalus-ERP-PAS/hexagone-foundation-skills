@@ -1,12 +1,12 @@
 # GitLab Issue
 
-Création, consultation, mise à jour et gestion des issues GitLab avec intégration de contexte et workflows structurés.
+Gestion des issues GitLab : création, consultation, mise à jour et workflows structurés.
 
 ## Configuration
 
 **Instance GitLab utilisée :** https://gitlab-erp-pas.dedalus.lan
 
-Cette compétence est configurée pour fonctionner avec l'instance GitLab auto-hébergée de Dedalus. Tous les projets, identifiants et références doivent utiliser cette instance.
+Configuré pour l'instance GitLab auto-hébergée de Dedalus.
 
 ## Utilisation
 
@@ -50,65 +50,17 @@ Ajoute le label "priority::high" à l'issue #45
 
 ## Prérequis
 
-- Serveur MCP GitLab configuré (`gitlab-mcp`)
+- Serveur MCP (Model Context Protocol) GitLab configuré (`gitlab-mcp`)
 - Accès à l'instance GitLab auto-hébergée : https://gitlab-erp-pas.dedalus.lan
 - Identifiants et permissions appropriés sur les projets GitLab concernés
 
 ## Types d'issues
 
-### Bug Report
-
-```markdown
-## Description du bug
-[Description claire du problème]
-
-## Environnement
-- Version : [version]
-- OS : [système d'exploitation]
-- Navigateur : [si applicable]
-
-## Étapes pour reproduire
-1. [Première étape]
-2. [Deuxième étape]
-3. [Observer l'erreur]
-
-## Comportement attendu
-[Ce qui devrait se passer]
-
-## Comportement actuel
-[Ce qui se passe réellement]
-```
-
-### Feature Request
-
-```markdown
-## Description de la fonctionnalité
-[Description claire de la fonctionnalité demandée]
-
-## Problème à résoudre
-[Quel problème cela résout ?]
-
-## Solution proposée
-[Comment cela devrait fonctionner ?]
-
-## Critères d'acceptation
-- [ ] [Critère 1]
-- [ ] [Critère 2]
-```
-
-### Task
-
-```markdown
-## Description de la tâche
-[Ce qui doit être fait]
-
-## Contexte
-[Pourquoi est-ce nécessaire ?]
-
-## Définition de "terminé"
-- [ ] [Critère 1]
-- [ ] [Critère 2]
-```
+| Type | Préfixe | Sections attendues |
+|------|---------|-------------------|
+| **Bug Report** | `[BUG]` | Description, environnement, étapes de reproduction, comportement attendu/actuel |
+| **Feature Request** | `[FEATURE]` | Description, problème à résoudre, solution proposée, critères d'acceptation |
+| **Task** | `[TASK]` | Description, contexte, définition de "terminé" |
 
 ## Exemples
 
@@ -117,66 +69,30 @@ Ajoute le label "priority::high" à l'issue #45
 ```
 Utilisateur : Crée une issue pour le bug de login OAuth
 
-Assistant : Pour créer cette issue, j'ai besoin de quelques informations :
-- Quel est le comportement actuel ?
-- Quelles sont les étapes pour reproduire ?
-- Quelle version est concernée ?
+Assistant : J'ai besoin de quelques informations :
+- Comportement actuel ? Étapes de reproduction ? Version ?
 
-Utilisateur : Quand la session expire, on ne peut plus se reconnecter 
-avec Google. Ça affiche "Invalid state parameter".
+Utilisateur : Session expirée → reconnexion Google impossible.
+             Erreur "Invalid state parameter".
 
-Assistant : 
-Création de l'issue dans groupe/projet :
-
+Assistant :
 Titre : [BUG] Login OAuth échoue après expiration de session
 Labels : bug, priority::high, auth
-
-Description :
-## Description du bug
-Les utilisateurs ne peuvent pas se reconnecter via OAuth2 (Google) 
-après expiration de leur session.
-
-## Étapes pour reproduire
-1. Se connecter avec OAuth2 (Google)
-2. Attendre l'expiration de session (ou effacer les cookies)
-3. Tenter de se reconnecter
-4. Observer l'erreur : "Invalid state parameter"
-
-## Comportement attendu
-L'utilisateur devrait être redirigé vers le fournisseur OAuth 
-et se connecter avec succès.
-
 Confirmer la création ?
 ```
 
-### Liste des issues
+### Liste et fermeture
 
 ```
 Utilisateur : Montre-moi les bugs ouverts qui me sont assignés
 
 Assistant :
-3 bugs ouverts vous sont assignés :
+#142 - [BUG] Timeout API        | priority::medium | 15/01/2024
+#138 - [BUG] Graphiques Safari  | frontend         | 12/01/2024
+#125 - [BUG] Notifications mail | priority::high   | 08/01/2024
 
-#142 - [BUG] Timeout API sur gros fichiers
-       Labels: bug, priority::medium
-       Créé le: 15/01/2024
-
-#138 - [BUG] Graphiques non affichés sur Safari
-       Labels: bug, frontend, priority::low
-       Créé le: 12/01/2024
-
-#125 - [BUG] Notifications email retardées
-       Labels: bug, priority::high
-       Créé le: 08/01/2024
-```
-
-### Fermeture d'une issue
-
-```
 Utilisateur : Ferme l'issue #142, corrigé dans la v2.4.0
-
-Assistant :
-Issue #142 "[BUG] Timeout API sur gros fichiers" fermée.
+Assistant : Issue #142 fermée.
 ```
 
 ## Bonnes pratiques
@@ -206,3 +122,13 @@ Issue #142 "[BUG] Timeout API sur gros fichiers" fermée.
 - Utiliser les milestones pour la planification
 - Mettre à jour le statut au fur et à mesure
 - Fermer avec référence à la MR : "Closes #XX"
+
+## Démarrage rapide
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill gitlab-issue -g -y
+```
+
+## Ressources
+
+- [SKILL.md complet](../skills/gitlab-issue/SKILL.md) -- Guide détaillé

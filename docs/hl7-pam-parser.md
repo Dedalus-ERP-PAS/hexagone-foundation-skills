@@ -1,38 +1,36 @@
 # hl7-pam-parser
 
-Parsing et explication des messages HL7 v2.5 IHE PAM (Patient Administration Management) — le format standard d'interopérabilité pour l'administration des patients.
+Parsing et explication des messages HL7 v2.5 IHE PAM (Patient Administration Management). Standard d'interoperabilite pour l'administration des patients.
 
 ## Quand utiliser ce skill
 
-Utilisez ce skill pour :
 - Comprendre le contenu d'un message HL7 ADT
-- Débugger des problèmes d'interopérabilité HL7
-- Valider la structure d'un message selon les spécifications IHE PAM 2.10
+- Deboguer des problemes d'interoperabilite HL7
+- Valider un message selon IHE PAM 2.10
 - Documenter des exemples de messages HL7
-- Former des développeurs aux spécifications HL7/IHE PAM
 
 ## Ce que fait le skill
 
-- **Parse** les messages HL7 ADT et identifie le type/code événement
-- **Extrait** tous les segments (MSH, EVN, PID, PV1, PV2) avec les libellés des champs
+- **Parse** les messages HL7 ADT et identifie le type
+- **Extrait** les segments (MSH, EVN, PID, PV1, PV2) avec libelles
 - **Valide** la structure selon IHE PAM 2.10
-- **Explique** le message en langage humain compréhensible
-- **Documente** les règles métier et la conformité IHE PAM
+- **Explique** le message en langage comprehensible
+- **Documente** les regles metier et la conformite
 
-## Types de messages supportés
+## Types de messages supportes
 
 ### Messages ADT (Admission, Transfert, Sortie)
 
 | Code | Description |
 |------|-------------|
-| **ADT^A01** | Notification d'admission (entrée du patient) |
-| **ADT^A02** | Transfert de patient (changement d'unité/chambre) |
-| **ADT^A03** | Sortie du patient (sortie d'hospitalisation) |
-| **ADT^A04** | Enregistrement patient (pré-admission/ambulatoire) |
-| **ADT^A05** | Pré-admission d'un patient |
-| **ADT^A06** | Passage ambulatoire → hospitalisation |
-| **ADT^A07** | Passage hospitalisation → ambulatoire |
-| **ADT^A08** | Mise à jour des informations patient |
+| **ADT^A01** | Admission (entree du patient) |
+| **ADT^A02** | Transfert (changement d'unite/chambre) |
+| **ADT^A03** | Sortie d'hospitalisation |
+| **ADT^A04** | Pre-admission / ambulatoire |
+| **ADT^A05** | Pre-admission d'un patient |
+| **ADT^A06** | Passage ambulatoire vers hospitalisation |
+| **ADT^A07** | Passage hospitalisation vers ambulatoire |
+| **ADT^A08** | Mise a jour des informations patient |
 | **ADT^A11** | Annulation d'admission |
 | **ADT^A12** | Annulation de transfert |
 | **ADT^A13** | Annulation de sortie |
@@ -41,7 +39,7 @@ Utilisez ce skill pour :
 
 ## Exemple d'utilisation
 
-**Message en entrée** :
+**Message en entree** :
 ```
 MSH|^~\&|HEXAFLUX|CHU_PARIS|TARGET|DEST|20260122140000||ADT^A01^ADT_A01|MSG001|P|2.5
 EVN|A01|20260122140000|||USER001
@@ -49,56 +47,57 @@ PID|1||PAT12345^^^CHU_PARIS^PI||DUPONT^JEAN^^M.||19750315|M|||15 RUE DE LA PAIX^
 PV1|1|I|CHU_PARIS^CARDIO^LIT_001^CHU_PARIS||||PR_MARTIN^MARTIN^SOPHIE|||CARDIO||||||||||VIS20260122001|||||||||||||||||||||||||20260122140000
 ```
 
-**Résultat** :
+**Resultat** :
 ```
 Type : ADT^A01 (Notification d'admission)
-Événement : A01 — Admission en hospitalisation
-Patient : JEAN DUPONT, né le 15/03/1975, Masculin (ID : PAT12345)
-Séjour : VIS20260122001
+Evenement : A01 -- Admission en hospitalisation
+Patient : JEAN DUPONT, ne le 15/03/1975, Masculin (ID : PAT12345)
+Sejour : VIS20260122001
 Admission : 22/01/2026 14:00:00
 Localisation : CHU_PARIS, Cardiologie, Lit LIT_001
-Médecin : Dr. MARTIN SOPHIE
-Classe patient : Hospitalisé
+Medecin : Dr. MARTIN SOPHIE
+Classe patient : Hospitalise
 ```
 
 ## Structure d'un message HL7
 
-Tous les messages HL7 v2.5 utilisent ces délimiteurs :
+Delimiteurs HL7 v2.5 :
 
-| Caractère | Rôle |
+| Caractere | Role |
 |-----------|------|
-| `\|` | Séparateur de champs |
-| `^` | Séparateur de composants |
-| `~` | Séparateur de répétitions |
-| `\` | Caractère d'échappement |
-| `&` | Séparateur de sous-composants |
+| `\|` | Separateur de champs |
+| `^` | Separateur de composants |
+| `~` | Separateur de repetitions |
+| `\` | Caractere d'echappement |
+| `&` | Separateur de sous-composants |
 
 ## Segments principaux
 
-| Segment | Rôle | Obligatoire |
+| Segment | Role | Obligatoire |
 |---------|------|-------------|
-| **MSH** | En-tête du message (routage, métadonnées) | Oui |
-| **EVN** | Type d'événement (code, horodatage, déclencheur) | Oui |
-| **PID** | Identification patient (identité, démographie, contact) | Oui |
-| **PV1** | Visite patient (classe, localisation, séjour, médecin) | Oui |
-| **PV2** | Informations complémentaires de visite (motif, sortie prévue) | Non |
+| **MSH** | En-tete du message (routage, metadonnees) | Oui |
+| **EVN** | Type d'evenement (code, horodatage) | Oui |
+| **PID** | Identification patient (identite, demographie) | Oui |
+| **PV1** | Visite patient (classe, localisation, medecin) | Oui |
+| **PV2** | Informations complementaires de visite | Non |
 
-## Conformité IHE PAM 2.10
+## Conformite IHE PAM 2.10
 
 Le parser valide les champs obligatoires :
-- **MSH** : Application émettrice, établissement, date, type message, ID contrôle, version
-- **EVN** : Code événement, date d'enregistrement
+
+- **MSH** : application emettrice, etablissement, date, type, ID controle, version
+- **EVN** : code evenement, date d'enregistrement
 - **PID** : ID patient, nom, date de naissance, sexe
-- **PV1** : Classe patient, localisation, numéro de séjour (pour les admissions)
+- **PV1** : classe patient, localisation, numero de sejour
 
-## Références
+## References
 
-- [Spécification IHE PAM 2.10](https://github.com/Interop-Sante/ihe.iti.pam.fr) (français)
+- [Specification IHE PAM 2.10](https://github.com/Interop-Sante/ihe.iti.pam.fr) (francais)
 - [Profil IHE PAM](https://profiles.ihe.net/ITI/TF/Volume1/ch-14.html) (international)
 - [Standard HL7 v2.5](http://www.hl7.eu/HL7v2x/v25/std25/ch02.html)
-- [SKILL.md](../skills/hl7-pam-parser/SKILL.md) — Structures détaillées des segments et champs
+- [SKILL.md](../skills/hl7-pam-parser/SKILL.md) -- structures detaillees des segments
 
 ## Skills connexes
 
-- **hpk-parser** — Parse les messages HPK (format propriétaire français souvent mappé vers HL7)
-- Les formats HPK et HL7 sont souvent utilisés ensemble dans les flux d'interopérabilité santé en France
+- **hpk-parser** -- messages HPK (format proprietaire francais mappe vers HL7)
+- **hexagone-swdoc** -- web services Hexagone

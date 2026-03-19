@@ -1,6 +1,6 @@
 ---
 name: hpk-parser
-description: Comprehensive HPK (proprietary healthcare message format) parser and explainer. Supports 100+ message types across patient administration (ID, MV, CV), supply chain (PR, FO, MA, CO, LI, RO, FA), inventory (SO, IM), organizational structure (ST, UT), and financial operations (RD, DD). Uses @erp-pas/hpk-dictionary as source of truth. Validates structure, extracts fields, explains business context, maps to HL7 v2.5/IHE PAM, and troubleshoots integration issues.
+description: "Parseur et explicateur complet du format HPK (format de message propriétaire santé). Supporte plus de 100 types de messages couvrant l'administration des patients (ID, MV, CV), la chaîne logistique (PR, FO, MA, CO, LI, RO, FA), les stocks (SO, IM), la structure organisationnelle (ST, UT) et les opérations financières (RD, DD). Utilise @erp-pas/hpk-dictionary comme source de vérité. Valide la structure, extrait les champs, explique le contexte métier, mappe vers HL7 v2.5/IHE PAM et aide au dépannage des problèmes d'intégration."
 version: 1.0.0
 license: MIT
 ---

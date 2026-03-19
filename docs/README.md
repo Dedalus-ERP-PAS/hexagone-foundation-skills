@@ -1,22 +1,22 @@
 # Documentation Foundation Skills
 
-Index de toute la documentation disponible pour les Foundation Skills.
+Index de la documentation disponible pour les Foundation Skills.
 
-## 📚 Guides généraux
+## Guides generaux
 
 | Document                                   | Description                                                                               |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| [comment-utiliser.md](comment-utiliser.md) | **Guide complet** - Installation, utilisation avec différents agents, exemples, dépannage |
+| [comment-utiliser.md](comment-utiliser.md) | **Guide complet** - Installation, utilisation avec differents agents, exemples, depannage |
 | [coding-standards.md](coding-standards.md) | Standards de code universels pour TypeScript/JavaScript                                   |
 
-## 🎯 Documentation par skill
+## Documentation par skill
 
 ### Backend & APIs
 
 | Skill                                   | Documentation                                                  |
 | --------------------------------------- | -------------------------------------------------------------- |
 | [backend-patterns](backend-patterns.md) | Patterns d'architecture backend, API design, DB, caching, auth |
-| [postgres](postgres.md)                 | Requêtes SQL lecture seule sur PostgreSQL                      |
+| [postgres](postgres.md)                 | Requetes SQL lecture seule sur PostgreSQL                      |
 
 ### Frontend
 
@@ -24,19 +24,19 @@ Index de toute la documentation disponible pour les Foundation Skills.
 | ------------------------------------------------- | ----------------------------------------- |
 | [react-best-practices](react-best-practices.md)   | Guidelines performance React/Next.js      |
 | [vue-best-practices](vue-best-practices.md)       | Best practices Vue.js 3/Nuxt              |
-| [frontend-design](frontend-design.md)             | Interfaces frontend de qualité production |
-| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilité et UX             |
+| [frontend-design](frontend-design.md)             | Interfaces frontend de qualite production |
+| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilite et UX             |
 
-### Sécurité & Qualité
+### Securite & Qualite
 
-| Skill                                   | Documentation                                    |
-| --------------------------------------- | ------------------------------------------------ |
-| [security-review](security-review.md)   | Audit de sécurité et OWASP Top 10                |
-| [coding-standards](coding-standards.md) | Standards de code                                |
-| [tdd](tdd.md)                                     | Développement piloté par les tests (TDD)         |
-| [testing-patterns](testing-patterns.md)           | Patterns de test : unitaire, intégration, E2E    |
-| [typescript-migration](typescript-migration.md)   | Migration incrémentale JS → TypeScript           |
-| [git-guardrails](git-guardrails.md)               | Garde-fous Git pour des commits propres          |
+| Skill                                             | Documentation                                 |
+| ------------------------------------------------- | --------------------------------------------- |
+| [security-review](security-review.md)             | Audit de securite et OWASP Top 10             |
+| [coding-standards](coding-standards.md)           | Standards de code                             |
+| [tdd](tdd.md)                                     | Developpement pilote par les tests (TDD)      |
+| [testing-patterns](testing-patterns.md)           | Patterns de test : unitaire, integration, E2E |
+| [typescript-migration](typescript-migration.md)   | Migration incrementale JS vers TypeScript     |
+| [git-guardrails](git-guardrails.md)               | Garde-fous Git pour des commits propres       |
 
 ### Automatisation & Tests
 
@@ -46,10 +46,10 @@ Index de toute la documentation disponible pour les Foundation Skills.
 
 ### Documents Office
 
-| Skill           | Documentation                    |
-| --------------- | -------------------------------- |
+| Skill            | Documentation                    |
+| ---------------- | -------------------------------- |
 | [docx](docx.md) | Documents Word (.docx)           |
-| [pptx](pptx.md) | Présentations PowerPoint (.pptx) |
+| [pptx](pptx.md) | Presentations PowerPoint (.pptx) |
 | [xlsx](xlsx.md) | Fichiers Excel avec formules     |
 | [pdf](pdf.md)   | Manipulation de PDF              |
 
@@ -60,35 +60,35 @@ Index de toute la documentation disponible pour les Foundation Skills.
 | [github-issues](github-issues.md)             | Gestion des issues GitHub                                     |
 | [gitlab-issue](gitlab-issue.md)               | Gestion des issues GitLab                                     |
 | [gitlab-code-review](gitlab-code-review.md)   | Code review GitLab                                            |
-| [changelog-generator](changelog-generator.md) | Génération de changelogs                                      |
+| [changelog-generator](changelog-generator.md) | Generation de changelogs                                      |
 | [grill-me](grill-me.md)                       | Interview approfondie pour validation de plans et conceptions |
 | [triage-issue](triage-issue.md)               | Triage de bugs avec plan de fix TDD                           |
-| [meeting](meeting.md)                         | Réunion simulée avec personas experts                         |
-| [fast-meeting](fast-meeting.md)               | Réunion autonome rapide avec décision et MR/PR                |
+| [meeting](meeting.md)                         | Reunion simulee avec personas experts                         |
+| [fast-meeting](fast-meeting.md)               | Reunion autonome rapide avec decision et MR/PR                |
 
-### Hexagone / Domaine santé
+### Hexagone / Domaine sante
 
 | Skill                                       | Documentation                                                          |
 | ------------------------------------------- | ---------------------------------------------------------------------- |
 | [hexagone-swdoc](hexagone-swdoc.md)         | Documentation des web services Hexagone (endpoints, formats, contrats) |
 | [hexagone-frontend](hexagone-frontend.md)   | Documentation des composants frontend Hexagone (@his/hexa-components)  |
 | [hexagone-web-feature-extractor](hexagone-web-feature-extractor.md) | Exploration et capture d'un espace Hexagone Web en document Word PO |
-| [hpk-parser](hpk-parser.md)                 | Parsing des messages HPK propriétaires                                 |
+| [hpk-parser](hpk-parser.md)                 | Parsing des messages HPK proprietaires                                 |
 | [hl7-pam-parser](hl7-pam-parser.md)         | Parsing des messages HL7 v2.5 IHE PAM                                  |
-| [uniface-procscript](uniface-procscript.md) | Référence ProcScript pour Uniface 9.7                                  |
+| [uniface-procscript](uniface-procscript.md) | Reference ProcScript pour Uniface 9.7                                  |
 
-### Outils spécialisés
+### Outils specialises
 
-| Skill                                                       | Documentation                         |
-| ----------------------------------------------------------- | ------------------------------------- |
-| [mcp-builder](mcp-builder.md)                               | Création de serveurs MCP              |
-| [article-extractor](article-extractor.md)                   | Extraction d'articles web             |
-| [create-design-system-rules](create-design-system-rules.md) | Génération de règles de design system                      |
-| [docs](docs.md)                                             | Génération de README et documentation projet               |
-| [write-a-skill](write-a-skill.md)                           | Guide pour créer un nouveau skill                          |
-| [ubiquitous-language](ubiquitous-language.md)                | Extraction de glossaire DDD (langage ubiquitaire)          |
+| Skill                                                       | Documentation                                     |
+| ----------------------------------------------------------- | ------------------------------------------------- |
+| [mcp-builder](mcp-builder.md)                               | Creation de serveurs MCP                           |
+| [article-extractor](article-extractor.md)                   | Extraction d'articles web                          |
+| [create-design-system-rules](create-design-system-rules.md) | Generation de regles de design system              |
+| [docs](docs.md)                                             | Generation de README et documentation projet       |
+| [write-a-skill](write-a-skill.md)                           | Guide pour creer un nouveau skill                  |
+| [ubiquitous-language](ubiquitous-language.md)                | Extraction de glossaire DDD (langage ubiquitaire)  |
 
-## 🚀 Démarrage rapide
+## Demarrage rapide
 
 ### 1. Installation
 
@@ -96,7 +96,7 @@ Index de toute la documentation disponible pour les Foundation Skills.
 # Tous les skills
 npx skills add Dedalus-ERP-PAS/foundation-skills -g -y
 
-# Skill spécifique
+# Skill specifique
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 ```
 
@@ -104,131 +104,26 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 
 ```
 # Dans GitHub Copilot, Claude, Cursor ou Windsurf
-@workspace avec backend-patterns, crée une API REST pour les users
+@workspace avec backend-patterns, cree une API REST pour les users
 ```
 
 ### 3. Consulter le guide complet
 
-[📖 Guide complet d'utilisation](comment-utiliser.md)
+Voir le [guide complet d'utilisation](comment-utiliser.md).
 
-## 📊 Skills par cas d'usage
+## Bonnes pratiques
 
-### Développement Backend
-- backend-patterns
-- postgres
-- security-review
-- coding-standards
+- **Mentionner explicitement le skill** dans vos prompts
+- **Combiner plusieurs skills** pour des taches complexes
+- **Commencer simple** puis iterer
+- **Consulter la doc** du skill avant utilisation
 
-### Développement Frontend
-- react-best-practices / vue-best-practices
-- frontend-design
-- web-design-guidelines
-
-### Fullstack
-- backend-patterns
-- react-best-practices
-- security-review
-- postgres
-
-### Automatisation
-- playwright-skill
-
-### Documentation
-- docx
-- pptx
-- xlsx
-- pdf
-
-### DevOps & Gestion
-- github-issues / gitlab-issue
-- gitlab-code-review
-- changelog-generator
-
-### Hexagone / Santé
-- hexagone-swdoc
-- hexagone-frontend
-- hexagone-web-feature-extractor
-- hpk-parser
-- hl7-pam-parser
-- uniface-procscript
-
-## 🔍 Recherche par technologie
-
-### Node.js / Express / Next.js
-- backend-patterns
-- coding-standards
-- security-review
-
-### React / Next.js
-- react-best-practices
-- frontend-design
-- web-design-guidelines
-
-### Vue.js / Nuxt
-- vue-best-practices
-- frontend-design
-- web-design-guidelines
-
-### PostgreSQL
-- postgres
-- backend-patterns (transactions, optimization)
-
-### TypeScript / JavaScript
-- coding-standards
-- backend-patterns
-- react-best-practices
-
-### Python
-- postgres (scripts)
-- playwright-skill
-- xlsx (recalc)
-
-## 📖 Patterns courants
-
-### Créer une API complète
-
-Skills à utiliser :
-1. backend-patterns - Architecture et patterns
-2. security-review - Sécurité
-3. postgres - Base de données
-4. coding-standards - Qualité du code
-
-### Créer une application web
-
-Skills à utiliser :
-1. react-best-practices ou vue-best-practices
-2. frontend-design - UI/UX
-3. backend-patterns - API
-4. security-review - Sécurité
-5. playwright-skill - Tests
-
-### Automatiser des tâches
-
-Skills à utiliser :
-1. playwright-skill - Automatisation navigateur
-2. docx/xlsx/pdf - Génération de rapports
-
-### Gestion de projet
-
-Skills à utiliser :
-1. github-issues ou gitlab-issue
-2. gitlab-code-review
-3. changelog-generator
-
-## 💡 Bonnes pratiques
-
-1. **Mentionner explicitement le skill** dans vos prompts
-2. **Combiner plusieurs skills** pour des tâches complexes
-3. **Commencer simple** puis itérer
-4. **Consulter la doc** du skill avant utilisation
-5. **Utiliser le guide complet** pour l'installation et le dépannage
-
-## 🆘 Support
+## Support
 
 - Issues : [foundation-skills/issues](https://github.com/Dedalus-ERP-PAS/foundation-skills/issues)
 - Guide : [comment-utiliser.md](comment-utiliser.md)
 - Standard : [agentskills.io](https://agentskills.io)
 
-## 📝 Licence
+## Licence
 
 MIT

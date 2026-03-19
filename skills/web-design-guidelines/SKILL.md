@@ -1,6 +1,6 @@
 ---
 name: web-design-guidelines
-description: 'Visual inspection and code review for Web Interface Guidelines compliance. Triggers on "review my UI", "check accessibility", "audit design", "review UX", "fix the layout", "find design problems". Supports both static code analysis and visual browser inspection with auto-fixing.'
+description: "Inspection visuelle et revue de code pour la conformité aux Web Interface Guidelines. Se déclenche sur « review my UI », « check accessibility », « audit design », « review UX », « fix the layout », « find design problems ». Supporte l'analyse statique du code et l'inspection visuelle dans le navigateur avec correction automatique."
 version: 2.0.0
 license: MIT
 metadata:

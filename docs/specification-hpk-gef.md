@@ -1,12 +1,10 @@
-# REFERENTIEL MESSAGES
+# Referentiel des messages HPK - Gestion Economique et Financiere (GEF)
 
-# GESTION ECONOMIQUE ET
+Specification de reference des messages HPK pour la gestion economique et financiere dans Hexagone. Ce document decrit les formats de messages entrants et sortants (produits, fournisseurs, commandes, livraisons, etc.).
 
-# FINANCIERE
+> **Note technique** : ce document est une conversion automatique de la specification Word officielle. Il sert de reference pour le skill `hpk-parser`.
 
-## 09.04.22 6
-
-##### HISTORIQUE
+## Historique des versions
 
 ```
 Numéro de

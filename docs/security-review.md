@@ -1,6 +1,6 @@
 # security-review
 
-Audit de sécurité complet couvrant l'authentification, l'injection SQL, l'exposition de secrets, CSRF et les vulnérabilités OWASP Top 10.
+Audit de sécurité couvrant l'authentification, l'injection SQL, l'exposition de secrets, CSRF (Cross-Site Request Forgery) et les vulnérabilités OWASP (Open Web Application Security Project) Top 10.
 
 ## Quand utiliser ce skill
 
@@ -19,9 +19,9 @@ Utilisez ce skill pour :
 |---|-----------|-------------|
 | 1 | **Gestion des secrets** | Variables d'environnement, jamais de credentials en dur |
 | 2 | **Validation des entrées** | Schémas Zod, restrictions sur les uploads |
-| 3 | **Injection SQL** | Requêtes paramétrées, utilisation d'ORM |
-| 4 | **Authentification & Autorisation** | JWT, RBAC, Row Level Security |
-| 5 | **Prévention XSS** | Sanitization HTML, Content Security Policy |
+| 3 | **Injection SQL** | Requêtes paramétrées, utilisation d'ORM (Object-Relational Mapping) |
+| 4 | **Authentification & Autorisation** | JWT (JSON Web Token), RBAC (Role-Based Access Control), Row Level Security |
+| 5 | **Prévention XSS** (Cross-Site Scripting) | Sanitization HTML, CSP (Content Security Policy) |
 | 6 | **Protection CSRF** | Tokens CSRF, cookies SameSite |
 | 7 | **Rate Limiting** | Throttling API, limites sur les opérations coûteuses |
 | 8 | **Exposition de données** | Logging sûr, messages d'erreur génériques |
@@ -41,7 +41,6 @@ Le skill inclut une checklist de **17 points critiques** à vérifier avant chaq
 - Rate limiting sur les endpoints publics
 - Logging sans données sensibles
 - Dépendances à jour sans vulnérabilités connues
-- ...et plus
 
 ## Tests de sécurité
 

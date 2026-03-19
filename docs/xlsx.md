@@ -1,45 +1,46 @@
-# xlsx
+# Fichiers Excel (xlsx)
 
-Création, édition et analyse de fichiers Excel (.xlsx) avec support complet des formules, formatage et conventions de modélisation financière.
+Creation, edition et analyse de fichiers Excel (.xlsx) avec formules, formatage et conventions de modelisation financiere.
 
-## Quand utiliser ce skill
+## Contexte
 
-Utilisez ce skill pour :
-- Créer des fichiers Excel avec formules et formatage
-- Lire et analyser des données depuis un fichier Excel
-- Modifier des fichiers existants en préservant les formules
-- Appliquer des conventions de modélisation financière
-- Recalculer les formules après modification
+Ce skill permet a l'agent de manipuler des fichiers Excel. Il applique les conventions de modelisation financiere (code couleur, formules obligatoires, recalcul systematique).
 
-## Règles fondamentales
+## Cas d'utilisation
 
-| Règle | Description |
+- **Creer** des fichiers Excel avec formules et formatage
+- **Lire et analyser** des donnees depuis un fichier existant
+- **Modifier** en preservant les formules
+- **Appliquer** les conventions de modelisation financiere
+
+## Regles fondamentales
+
+| Regle | Description |
 |-------|-------------|
-| **Zéro erreur de formule** | Toutes les formules doivent être valides |
+| **Zero erreur de formule** | Toutes les formules doivent etre valides |
 | **Formules, pas de valeurs en dur** | Toujours utiliser des formules pour les calculs |
-| **Recalcul obligatoire** | Lancer `recalc.py` après chaque modification |
+| **Recalcul obligatoire** | Lancer `recalc.py` apres chaque modification |
 
-## Code couleur (convention financière)
+## Code couleur (convention financiere)
 
 | Couleur | Signification |
 |---------|---------------|
-| **Bleu** | Inputs (données saisies) |
-| **Noir** | Formules (calculées) |
+| **Bleu** | Inputs (donnees saisies) |
+| **Noir** | Formules (calculees) |
 | **Vert** | Liens internes (entre onglets) |
 | **Rouge** | Liens externes (entre fichiers) |
 | **Jaune** | Points d'attention |
 
-## Exemples
+## Exemples (section technique)
 
-### Création
+### Creation
 
 ```python
 from openpyxl import Workbook
-
 wb = Workbook()
 sheet = wb.active
-sheet['A1'] = 'Données'
-sheet['B1'] = '=SUM(A1:A10)'  # Toujours utiliser des formules
+sheet['A1'] = 'Donnees'
+sheet['B1'] = '=SUM(A1:A10)'
 wb.save('output.xlsx')
 ```
 
@@ -47,50 +48,38 @@ wb.save('output.xlsx')
 
 ```python
 from openpyxl import load_workbook
-
 wb = load_workbook('fichier.xlsx')
-sheet = wb.active
-
-for row in sheet.iter_rows(values_only=True):
+for row in wb.active.iter_rows(values_only=True):
     print(row)
-```
-
-### Formatage
-
-```python
-from openpyxl.styles import Font, Alignment
-
-sheet['A1'].font = Font(bold=True, size=14)
-sheet['A1'].alignment = Alignment(horizontal='center')
 ```
 
 ## Recalcul des formules
 
-Après toute modification, il est **obligatoire** de recalculer les formules :
+Apres toute modification, le recalcul est **obligatoire** :
 
 ```bash
 python recalc.py fichier.xlsx
 ```
 
-Sans recalcul, les formules peuvent afficher des valeurs incorrectes dans certaines applications (Excel, LibreOffice).
+Sans recalcul, les formules affichent des valeurs incorrectes dans Excel ou LibreOffice.
 
 ## Formatage des nombres
 
 | Type | Format | Exemple |
 |------|--------|---------|
-| Monétaire | `#,##0` | 1 234 567 |
+| Monetaire | `#,##0` | 1 234 567 |
 | Pourcentage | `0.0%` | 12.5% |
-| Années | Sans séparateur de milliers | 2026 |
+| Annees | Sans separateur de milliers | 2026 |
 
-## Exemples d'utilisation
+## Utilisation
 
 ```
-@workspace avec xlsx, crée un tableau de bord financier avec formules
-@workspace avec xlsx, analyse les données de ce fichier Excel
-@workspace avec xlsx, ajoute une colonne calculée à ce classeur
+@workspace avec xlsx, cree un tableau de bord financier avec formules
+@workspace avec xlsx, analyse les donnees de ce fichier Excel
+@workspace avec xlsx, ajoute une colonne calculee a ce classeur
 ```
 
-## Démarrage rapide
+## Demarrage rapide
 
 ```bash
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill xlsx -g -y
@@ -98,4 +87,4 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill xlsx -g -y
 
 ## Ressources
 
-- [SKILL.md complet](../skills/xlsx/SKILL.md) — Guide détaillé avec conventions de formatage
+- [SKILL.md complet](../skills/xlsx/SKILL.md) — Guide detaille avec conventions de formatage

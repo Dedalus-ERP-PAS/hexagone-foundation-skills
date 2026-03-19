@@ -166,6 +166,7 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **tdd**                        | Développement piloté par les tests : boucle red-green-refactor, vertical slices, tracer bullets    | [tdd.md](docs/tdd.md)                                               |
 | **triage-issue**               | Investigation de bugs : diagnostic, analyse root cause, plan TDD et création d'issue (GitLab/GitHub) | [triage-issue.md](docs/triage-issue.md)                           |
 | **ubiquitous-language**        | Extraction de glossaire DDD depuis les conversations, adapté au domaine santé (HL7, HPK, FHIR)     | [ubiquitous-language.md](docs/ubiquitous-language.md)               |
+| **uniface-procscript**         | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation)           | [uniface-procscript.md](docs/uniface-procscript.md)                 |
 | **git-guardrails**             | Hooks de sécurité bloquant les commandes git dangereuses (push --force, reset --hard, etc.)        | [git-guardrails.md](docs/git-guardrails.md)                         |
 | **write-a-skill**              | Méta-skill guidant la création de nouveaux skills avec les conventions du projet                    | [write-a-skill.md](docs/write-a-skill.md)                           |
 

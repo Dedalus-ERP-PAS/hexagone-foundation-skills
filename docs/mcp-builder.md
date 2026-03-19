@@ -1,6 +1,6 @@
 # mcp-builder
 
-Guide pour créer des serveurs MCP (Model Context Protocol) de qualité, permettant aux LLMs d'interagir avec des services externes via des outils bien conçus.
+Guide pour créer des serveurs MCP (Model Context Protocol) de qualité, permettant aux LLM (Large Language Models) d'interagir avec des services externes via des outils bien conçus.
 
 ## Quand utiliser ce skill
 
@@ -18,7 +18,7 @@ Utilisez ce skill pour :
 - Planifier les resources (données consultables)
 
 ### 2. Implémentation
-- **TypeScript** (recommandé) : meilleur support, SDK officiel `@modelcontextprotocol/sdk`
+- **TypeScript** (recommandé) : meilleur support, SDK (Software Development Kit) officiel `@modelcontextprotocol/sdk`
 - **Python** : SDK `fastmcp` pour un développement rapide
 
 ### 3. Tests
@@ -57,7 +57,7 @@ my-mcp-server/
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill mcp-builder -g -y
 ```
 
-## Ressources de référence
+## Ressources
 
 Le skill inclut des guides détaillés dans `reference/` :
 
@@ -67,8 +67,6 @@ Le skill inclut des guides détaillés dans `reference/` :
 | `node_mcp_server.md` | Guide complet TypeScript |
 | `python_mcp_server.md` | Guide complet Python |
 | `evaluation.md` | Guide d'évaluation et tests |
-
-## Ressources
 
 - [SKILL.md complet](../skills/mcp-builder/SKILL.md) — Guide détaillé de création
 - [Model Context Protocol](https://modelcontextprotocol.io) — Spécification officielle

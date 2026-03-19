@@ -1,10 +1,6 @@
 ---
 name: hexagone-swdoc
-description: >-
-  Navigate and query Hexagone web services documentation (Reference Appels
-  Externes). Use when the user asks about Hexagone web services, SOAP methods,
-  EWPT services, XML DTDs, request/response formats, error codes, or integration
-  with Hexagone. Fetches documentation from GitLab Pages — no git clone needed.
+description: "Navigue et interroge la documentation des web services Hexagone (Référence Appels Externes). À utiliser quand l'utilisateur pose des questions sur les web services Hexagone, les méthodes SOAP, les services EWPT, les DTD XML, les formats requête/réponse, les codes d'erreur ou l'intégration avec Hexagone. Récupère la documentation depuis GitLab Pages — pas de git clone nécessaire."
 version: 1.1.0
 license: Proprietary
 metadata:

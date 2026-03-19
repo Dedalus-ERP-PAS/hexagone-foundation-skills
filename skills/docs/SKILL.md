@@ -1,6 +1,6 @@
 ---
 name: docs
-description: "Generate or update a README.md in French, oriented Product Owner, with Mermaid diagrams. Reviews and improves technical documentation in docs/. Also generates CLAUDE.md and AGENT.md if missing. Triggers on: create readme, update readme, generate readme, générer le readme, mettre à jour le readme, generate docs, update docs, /docs."
+description: "Génère ou met à jour un README.md en français, orienté Product Owner, avec diagrammes Mermaid. Revoit et améliore la documentation technique dans docs/. Génère aussi CLAUDE.md et AGENT.md si absents. Se déclenche sur : create readme, update readme, generate readme, générer le readme, mettre à jour le readme, generate docs, update docs, /docs."
 version: 1.0.0
 license: MIT
 ---

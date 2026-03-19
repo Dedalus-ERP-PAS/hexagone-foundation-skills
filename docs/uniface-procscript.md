@@ -36,16 +36,16 @@ Utilisez ce skill quand vous avez besoin de :
 | Struct Functions | 13 | Fonctions struct (`$name`, `$parent`, `$scalar`, `$tags`, ...) |
 | Predefined Operations | 8 | Opérations prédéfinies (`Exec`, `Init`, `Cleanup`, `Quit`, ...) |
 
-## Comment ça fonctionne
+## Comment ca fonctionne
 
-La documentation est organisée en fichiers fusionnés par catégorie. Chaque fichier contient toutes les entrées de sa catégorie, séparées par des règles horizontales (`---`). L'agent IA utilise Grep pour localiser une entrée spécifique dans le fichier de catégorie approprié.
+La documentation est organisée en fichiers fusionnés par catégorie. Chaque fichier contient toutes les entrées, séparées par des règles horizontales (`---`). L'agent utilise Grep pour localiser une entrée spécifique.
 
-Un fichier d'index (`llms.txt`) liste toutes les entrées avec un résumé d'une ligne pour faciliter la navigation.
+Un fichier d'index (`llms.txt`) liste toutes les entrées avec un résumé d'une ligne.
 
-## Version
+## Version cible
 
 Ce skill couvre **Uniface 9.7** exclusivement. Ne pas extrapoler vers d'autres versions.
 
 ## Source
 
-Généré automatiquement à partir des fichiers HTML MadCap Flare de la documentation officielle Uniface 9.7 via `doc/scripts/convert.py` dans le dépôt source (`erp-pas/hexagone/uniface-doc`, branche DOC).
+Généré à partir des fichiers HTML (MadCap Flare) de la documentation officielle Uniface 9.7 via `doc/scripts/convert.py` (dépôt `erp-pas/hexagone/uniface-doc`, branche DOC).

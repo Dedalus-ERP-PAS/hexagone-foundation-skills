@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Security audit covering authentication, SQL injection, secrets exposure, CSRF, and OWASP Top 10 vulnerabilities.
+description: "Audit de sécurité couvrant l'authentification, l'injection SQL, l'exposition de secrets, le CSRF et les vulnérabilités du Top 10 OWASP."
 version: 1.0.0
 license: MIT
 metadata:

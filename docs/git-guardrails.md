@@ -1,25 +1,25 @@
-# Git Guardrails
+# Git Guardrails — Protection contre les commandes Git destructrices
 
 ## Description
 
-Le skill **git-guardrails** met en place des garde-fous pour empêcher l'agent IA (Claude Code) d'exécuter des commandes Git destructrices. Il intercepte les opérations dangereuses comme `git push`, `git reset --hard` ou `git branch -D` avant qu'elles ne soient exécutées.
+Le skill **git-guardrails** empêche l'agent IA (Claude Code) d'exécuter des commandes Git destructrices. Il intercepte les opérations dangereuses avant leur exécution.
 
 ## Pourquoi ce skill ?
 
-Quand un agent IA travaille sur du code, il peut être amené à exécuter des commandes Git. Certaines de ces commandes sont irréversibles et peuvent causer des pertes de données :
+Un agent IA peut exécuter des commandes Git irréversibles. Certaines causent des pertes de données :
 
-- **`git push --force`** : écrase l'historique distant, potentiellement le travail d'autres développeurs
+- **`git push --force`** : écrase l'historique distant et le travail d'autres développeurs
 - **`git reset --hard`** : supprime toutes les modifications non commitées
 - **`git clean -f`** : supprime définitivement les fichiers non suivis
 - **`git branch -D`** : supprime une branche sans vérifier si elle a été fusionnée
 
-Ce skill garantit que l'agent ne peut pas exécuter ces commandes. Si une opération dangereuse est nécessaire, l'utilisateur doit la lancer manuellement dans son terminal.
+Ce skill bloque ces commandes. Si une opération dangereuse est nécessaire, l'utilisateur la lance manuellement.
 
 ## Cas d'usage
 
-- **Sécurisation d'un projet** : Empêcher l'agent de pousser du code non relu vers le dépôt distant
-- **Protection contre les erreurs** : Bloquer les commandes qui suppriment des données de manière irréversible
-- **Conformité Git Flow** : S'assurer que les push et force-push passent par un processus de revue humain
+- **Sécurisation d'un projet** : empêcher l'agent de pousser du code non relu
+- **Protection contre les erreurs** : bloquer les suppressions irréversibles de données
+- **Conformité Git Flow** : garantir que les push passent par une revue humaine
 
 ## Fonctionnement
 
@@ -31,8 +31,14 @@ Ce skill garantit que l'agent ne peut pas exécuter ces commandes. Si une opéra
 ## Personnalisation
 
 Le script de blocage peut être adapté pour chaque projet :
-- Ajouter des patterns supplémentaires (ex: `git stash drop`, `git tag -d`)
-- Retirer des patterns si certaines commandes doivent être autorisées (ex: autoriser `git push` mais bloquer `--force`)
+- Ajouter des patterns (ex : `git stash drop`, `git tag -d`)
+- Retirer des patterns si besoin (ex : autoriser `git push` mais bloquer `--force`)
+
+## Installation
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill git-guardrails -g -y
+```
 
 ## Version
 

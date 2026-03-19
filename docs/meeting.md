@@ -1,11 +1,11 @@
 # Meeting
 
-Simule une réunion structurée avec des experts virtuels pour analyser un sujet sous différents angles, débattre des options et converger vers une recommandation avant toute implémentation.
+Simule une réunion structurée avec des experts virtuels (personas IA). Analyse un sujet sous différents angles, débat des options et converge vers une recommandation.
 
 ## Quand l'utiliser
 
-- Avant de prendre une décision technique ou produit importante
-- Pour explorer les compromis d'une architecture, migration ou refactoring
+- Avant une décision technique ou produit importante
+- Pour explorer les compromis d'une architecture ou migration
 - Pour challenger une idée avec des points de vue diversifiés
 - Quand une issue GitLab/GitHub nécessite une analyse multi-perspectives
 
@@ -33,8 +33,8 @@ Discutons avec des personas : doit-on ajouter des notifications temps réel ?
 4. **Évalue la confiance** — Niveau élevé, moyen ou faible selon le consensus et les dissidences
 5. **Produit une analyse en français** — Recommandation, risques, alternatives, points non résolus, prochaines étapes
 6. **Attend votre validation** — Rien n'est implémenté sans votre accord
-7. **Réunion de suivi** — Si vous voulez approfondir un point, une réunion ciblée produit une analyse delta
-8. **Implémente après validation** — Choix entre implémentation rapide (MR/PR automatique) ou guidée (pas à pas)
+7. **Réunion de suivi** — Approfondir un point via une réunion ciblée (analyse delta)
+8. **Implémente après validation** — MR/PR (Merge Request / Pull Request) automatique ou pas à pas
 9. **Poste sur l'issue** — Si demandé, l'analyse est ajoutée en commentaire sur l'issue liée
 
 ## Personas disponibles
@@ -43,16 +43,16 @@ Discutons avec des personas : doit-on ajouter des notifications temps réel ?
 |---------|------|------------------------|
 | Alex | Ingénieur Backend Senior | Qualité de code, maintenabilité |
 | Sarah | Product Owner | Valeur utilisateur, rapidité de livraison |
-| Shug | Ingénieur Sécurité (certifié OWASP) | Surface d'attaque, sécurité web (OWASP Top 10), standards d'authentification, pentest |
-| Priya | Ingénieure DevOps/SRE | Opérabilité, déploiement, scalabilité |
-| Mohammed | Ingénieur Frontend | Expérience utilisateur, performance, Vue.js 2 & 3, React, shadcn/ui, PrimeVue LTS |
+| Shug | Ingénieur Sécurité (certifié OWASP -- Open Web Application Security Project) | Surface d'attaque, sécurité web, pentest |
+| Priya | Ingénieure DevOps / SRE (Site Reliability Engineer) | Opérabilité, déploiement, scalabilité |
+| Mohammed | Ingénieur Frontend | UX, performance, Vue.js 2 & 3, React, PrimeVue |
 | Didier | Tech Lead / Architecte | Vision long terme, capacité de l'équipe |
-| Nicolas | Ingénieur QA | Testabilité, cas limites, régression, tests E2E (Playwright), tests unitaires/intégration (Vitest) |
-| Isabelle | Ingénieure Base de Données Senior (spécialiste Oracle) | Administration et optimisation Oracle (11.2 à 19c+), PL/SQL, tuning, RAC, Data Guard, migration inter-versions |
+| Nicolas | Ingénieur QA (Quality Assurance) | Testabilité, cas limites, tests E2E (Playwright), tests unitaires (Vitest) |
+| Isabelle | Ingénieure BDD Senior (Oracle) | Oracle (11.2 a 19c+), PL/SQL, tuning, RAC, Data Guard |
 | Jean-Baptiste | Ingénieur Data | Intégrité des données, migrations |
-| Santiago | PO Interopérabilité Senior | Standards (HL7, FHIR, HPK), intégration inter-systèmes |
-| Gilles | Développeur Fullstack Senior (spécialiste Uniface) | Développement Uniface, modernisation de systèmes legacy, patterns 4GL/RAD, stratégies de migration. [Documentation Uniface](https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/uniface/) |
-| Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages (HL7, FHIR, HPK), connecteurs et transformation de données |
+| Santiago | PO (Product Owner) Interopérabilité Senior | Standards (HL7, FHIR, HPK), intégration inter-systèmes |
+| Gilles | Développeur Fullstack Senior (Uniface) | Modernisation legacy, patterns 4GL/RAD, migration |
+| Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing HL7/FHIR/HPK |
 
 Des personas spécialisées (santé, finance, juridique) sont créées automatiquement si le sujet le nécessite.
 
@@ -60,11 +60,11 @@ Des personas spécialisées (santé, finance, juridique) sont créées automatiq
 
 | Amélioration | Description |
 |---|---|
-| **Heuristiques de sélection** | Table de suggestions automatiques selon le domaine (backend, frontend, sécurité, etc.) — vous confirmez avant le lancement |
-| **Convergence pondérée** | Les positions sont pondérées par pertinence d'expertise. Un DBA pèse plus qu'un frontend sur une question de migration Oracle |
-| **Niveau de confiance** | Chaque analyse inclut un niveau (élevé / moyen / faible). Si faible, une réunion de suivi est recommandée plutôt qu'une recommandation forcée |
-| **Réunion de suivi** | Approfondir un point non résolu avec un panel ajusté. Produit une analyse delta, pas une ré-analyse complète |
-| **Chemin vers l'implémentation** | Après validation : choix entre implémentation rapide (branche + MR/PR automatique) ou guidée (pas à pas avec validation) |
+| **Heuristiques de sélection** | Suggestions automatiques selon le domaine. Vous confirmez avant le lancement. |
+| **Convergence pondérée** | Positions pondérées par pertinence d'expertise (ex : un DBA pèse plus sur une question Oracle). |
+| **Niveau de confiance** | Chaque analyse inclut un niveau : élevé, moyen ou faible. Si faible, réunion de suivi recommandée. |
+| **Réunion de suivi** | Approfondir un point non résolu avec un panel ajusté. Produit une analyse delta. |
+| **Chemin vers l'implémentation** | Choix entre implémentation rapide (MR/PR automatique) ou guidée (pas à pas). |
 
 ## Exemple de résultat
 

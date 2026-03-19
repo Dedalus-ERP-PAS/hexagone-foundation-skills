@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Test-driven development with red-green-refactor loop. Use when the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development.
+description: "Développement piloté par les tests avec boucle red-green-refactor. À utiliser quand l'utilisateur veut construire des fonctionnalités ou corriger des bugs en TDD, mentionne « red-green-refactor », veut des tests d'intégration ou demande du développement test-first."
 version: 1.0.0
 license: MIT
 ---

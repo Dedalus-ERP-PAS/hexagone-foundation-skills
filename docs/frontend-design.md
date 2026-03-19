@@ -11,6 +11,12 @@ Utilisez ce skill pour :
 - Générer du code frontend de qualité production
 - Éviter les pièges courants du design généré par IA
 
+## Démarrage rapide
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill frontend-design -g -y
+```
+
 ## Ce que le skill applique automatiquement
 
 - **Typographie distinctive** — évite les polices génériques (Arial, Inter, Roboto)
@@ -55,12 +61,6 @@ Utilisez ce skill pour :
 @workspace avec frontend-design, design un composant de pricing avec un style luxury
 ```
 
-## Démarrage rapide
-
-```bash
-npx skills add Dedalus-ERP-PAS/foundation-skills --skill frontend-design -g -y
-```
-
 ## Skills complémentaires
 
 - **react-best-practices** / **vue-best-practices** — Patterns de code pour les frameworks
@@ -69,4 +69,5 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill frontend-design -g -y
 
 ## Ressources
 
+- [Skill source](https://github.com/Dedalus-ERP-PAS/foundation-skills/tree/main/skills/frontend-design)
 - [SKILL.md complet](../skills/frontend-design/SKILL.md) — Guide détaillé avec standards d'implémentation

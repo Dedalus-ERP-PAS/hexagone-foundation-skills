@@ -1,18 +1,33 @@
-# changelog-generator
+# Changelog Generator
 
-Génère des changelogs à partir de l'historique git.
+Generation automatique de changelogs a partir de l'historique Git.
+
+## Contexte
+
+Rediger manuellement des notes de version est fastidieux et source d'oublis. Ce skill analyse les commits Git et genere un changelog structure automatiquement.
 
 ## Utilisation
 
 Demandez simplement :
 
-```
-Crée un changelog depuis le dernier release
-Génère les notes de version pour les commits de la semaine
+- `Cree un changelog depuis le dernier release`
+- `Genere les notes de version pour les commits de la semaine`
+
+## Fonctionnement
+
+Le skill s'appuie sur la convention **Conventional Commits** (messages de commit structures du type `feat:`, `fix:`, `docs:`). Il regroupe les commits par categorie pour produire un document lisible.
+
+```mermaid
+graph LR
+    A[Commits Git] --> B[Analyse]
+    B --> C[Regroupement par type]
+    C --> D[Changelog genere]
 ```
 
-## Fonctionnalités
+Le changelog regroupe les commits en categories : nouvelles fonctionnalites, corrections, et autres changements.
 
-- Analyse des commits git
-- Génération automatique de notes de version
-- Support des formats conventionnels (Conventional Commits)
+## Fonctionnalites
+
+- **Analyse des commits** Git depuis un tag ou une date
+- **Generation automatique** de notes de version
+- **Support Conventional Commits** — regroupe par `feat`, `fix`, `docs`, etc.

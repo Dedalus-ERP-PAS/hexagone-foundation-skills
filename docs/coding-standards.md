@@ -11,15 +11,21 @@ Utilisez ce skill pour :
 - Refactorer du code existant
 - Former des développeurs juniors aux bonnes pratiques
 
+## Démarrage rapide
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill coding-standards -g -y
+```
+
 ## Principes fondamentaux
 
 | Principe | Description |
 |----------|-------------|
 | **KISS** | Keep It Simple — pas de complexité inutile |
 | **DRY** | Don't Repeat Yourself — factoriser le code dupliqué |
-| **YAGNI** | You Ain't Gonna Need It — ne pas anticiper des besoins futurs hypothétiques |
+| **YAGNI** | You Ain't Gonna Need It — ne pas anticiper des besoins hypothétiques |
 | **Readability First** | Le code est lu bien plus souvent qu'il n'est écrit |
-| **Immutability** | Toujours utiliser les spread operators, ne jamais muter directement |
+| **Immutability** | Utiliser les spread operators, ne jamais muter directement |
 
 ## Contenu du skill
 
@@ -58,12 +64,6 @@ Utilisez ce skill pour :
 @workspace avec coding-standards, refactore ce service pour suivre les bonnes pratiques
 @workspace avec coding-standards, revois ce fichier et signale les code smells
 @workspace avec coding-standards, établis les conventions pour ce nouveau projet
-```
-
-## Démarrage rapide
-
-```bash
-npx skills add Dedalus-ERP-PAS/foundation-skills --skill coding-standards -g -y
 ```
 
 ## Ressources

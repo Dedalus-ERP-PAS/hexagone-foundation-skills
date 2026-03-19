@@ -1,41 +1,40 @@
-# docx
+# Documents Word (docx)
 
-Manipulation de documents Word (.docx).
+Manipulation de documents Word (.docx) : lecture, creation, edition et suivi des modifications.
 
-## Lire un document
+## Contexte
 
-```bash
-pandoc --track-changes=all fichier.docx -o output.md
-```
+Ce skill permet a l'agent de travailler avec des fichiers Word. Il couvre la lecture, la creation et l'edition, y compris le **redlining** (suivi des modifications pour revision collaborative).
 
-## Créer un document
+## Operations disponibles
 
-Utilise `docx-js` pour générer des documents via JavaScript :
+| Operation | Outil | Commande |
+|-----------|-------|----------|
+| **Lire** | pandoc | `pandoc --track-changes=all fichier.docx -o output.md` |
+| **Creer** | docx-js (JavaScript) | Via l'API `Document`, `Packer`, `Paragraph` |
+| **Editer** | python-docx (Python) | Decompresser, modifier le XML, recompresser |
+| **Redlining** | pandoc / python-docx | Tracked changes pour revision |
+
+## Creer un document (section technique)
 
 ```javascript
 const { Document, Packer, Paragraph } = require('docx')
-
 const doc = new Document({
-  sections: [{
-    children: [
-      new Paragraph("Hello World")
-    ]
-  }]
+  sections: [{ children: [new Paragraph("Contenu")] }]
 })
-
-Packer.toBuffer(doc).then(buffer => {
-  fs.writeFileSync("output.docx", buffer)
-})
+Packer.toBuffer(doc).then(buf =>
+  fs.writeFileSync("output.docx", buf)
+)
 ```
 
-## Éditer un document
+## Editer un document (section technique)
 
-Workflow unpack/edit/pack avec la librairie Document Python :
+Le format `.docx` est une archive ZIP contenant du XML. Le workflow d'edition :
 
-1. Décompresser le .docx (archive ZIP)
-2. Modifier les fichiers XML
-3. Recompresser
+1. **Decompresser** le fichier .docx
+2. **Modifier** les fichiers XML internes
+3. **Recompresser** en .docx
 
 ## Redlining
 
-Ajout de tracked changes pour révision de documents. Permet de marquer les insertions/suppressions pour révision ultérieure.
+Le **redlining** (tracked changes) permet de marquer les insertions et suppressions. Utile pour la revision collaborative de documents.

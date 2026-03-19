@@ -1,6 +1,6 @@
 # backend-patterns
 
-Patterns d'architecture backend, API design, optimisation de base de données et bonnes pratiques server-side pour Node.js, Express et Next.js API Routes.
+Patterns d'architecture backend et bonnes pratiques server-side pour Node.js, Express et Next.js API Routes.
 
 ## Quand utiliser ce skill
 
@@ -57,10 +57,10 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 ## Principes clés
 
 1. **Separation of Concerns** — Séparer les couches (API, logique métier, accès données)
-2. **Start Simple** — Commencer simple, ajouter de la complexité quand nécessaire
+2. **Start Simple** — Commencer simple, complexifier au besoin
 3. **Type Safety** — Utiliser TypeScript et validation de schémas
 4. **Error First** — Gérer les erreurs de manière proactive
-5. **Cache Wisely** — Cacher les données fréquemment accédées et rarement modifiées
+5. **Cache Wisely** — Cacher les données fréquemment lues, rarement modifiées
 6. **Secure by Default** — Toujours valider, authentifier et autoriser
 
 ## Exemples d'utilisation
@@ -68,30 +68,16 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns -g -y
 ### Créer une API avec Repository Pattern
 
 ```typescript
-// 1. Définir l'interface du repository
 interface UserRepository {
   findById(id: string): Promise<User | null>
   create(data: CreateUserDto): Promise<User>
 }
 
-// 2. Implémenter avec votre DB
 class SupabaseUserRepository implements UserRepository {
-  async findById(id: string): Promise<User | null> {
+  async findById(id: string) {
     const { data } = await supabase
-      .from('users')
-      .select('*')
-      .eq('id', id)
-      .single()
+      .from('users').select('*').eq('id', id).single()
     return data
-  }
-}
-
-// 3. Utiliser dans le service
-class UserService {
-  constructor(private repo: UserRepository) {}
-
-  async getUser(id: string) {
-    return this.repo.findById(id)
   }
 }
 ```
@@ -100,19 +86,13 @@ class UserService {
 
 ```typescript
 class CachedUserRepository implements UserRepository {
-  constructor(
-    private baseRepo: UserRepository,
-    private redis: RedisClient
-  ) {}
+  constructor(private repo: UserRepository, private redis: RedisClient) {}
 
   async findById(id: string): Promise<User | null> {
     const cached = await this.redis.get(`user:${id}`)
     if (cached) return JSON.parse(cached)
-
-    const user = await this.baseRepo.findById(id)
-    if (user) {
-      await this.redis.setex(`user:${id}`, 300, JSON.stringify(user))
-    }
+    const user = await this.repo.findById(id)
+    if (user) await this.redis.setex(`user:${id}`, 300, JSON.stringify(user))
     return user
   }
 }

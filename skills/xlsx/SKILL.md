@@ -1,6 +1,6 @@
 ---
 name: xlsx
-description: "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for: (1) Creating new spreadsheets with formulas and formatting, (2) Reading or analyzing data, (3) Modify existing spreadsheets while preserving formulas, (4) Data analysis and visualization in spreadsheets, or (5) Recalculating formulas"
+description: "Création, édition et analyse complète de tableurs avec support des formules, du formatage, de l'analyse de données et de la visualisation. Quand Claude doit travailler avec des tableurs (.xlsx, .xlsm, .csv, .tsv, etc.) pour : (1) Créer de nouveaux tableurs avec formules et formatage, (2) Lire ou analyser des données, (3) Modifier des tableurs existants en préservant les formules, (4) Analyse et visualisation de données dans les tableurs, ou (5) Recalculer des formules."
 version: 1.0.0
 license: Proprietary. LICENSE.txt has complete terms
 ---

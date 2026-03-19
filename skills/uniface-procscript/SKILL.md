@@ -1,12 +1,6 @@
 ---
 name: uniface-procscript
-description: >-
-  Navigate and query the official Uniface 9.7 ProcScript reference documentation
-  (594 entries covering statements, functions, triggers, data types, preprocessor
-  directives, and struct functions). Use when the user asks about ProcScript
-  syntax, Uniface triggers, database operations, list handling, entity
-  manipulation, string functions, error handling, or any Uniface 9.7 programming
-  topic.
+description: "Navigue et interroge la documentation de référence officielle Uniface 9.7 ProcScript (594 entrées couvrant les instructions, fonctions, triggers, types de données, directives préprocesseur et fonctions struct). À utiliser quand l'utilisateur pose des questions sur la syntaxe ProcScript, les triggers Uniface, les opérations base de données, la gestion des listes, la manipulation d'entités, les fonctions de chaînes, la gestion d'erreurs ou tout sujet de programmation Uniface 9.7."
 version: 3.1.0
 license: Proprietary
 metadata:

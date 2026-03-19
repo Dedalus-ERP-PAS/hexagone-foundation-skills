@@ -1,49 +1,49 @@
-# Write a Skill
+# Write a Skill — Créer un nouveau skill
 
 ## Description
 
-Le skill **write-a-skill** guide l'agent IA dans la creation d'un nouveau skill pour le depot foundation-skills. Il garantit le respect de toutes les conventions du projet : structure de fichiers, frontmatter YAML, versioning, et documentation.
+Le skill **write-a-skill** guide l'agent IA dans la création d'un nouveau skill pour le dépôt foundation-skills. Il garantit le respect de toutes les conventions : structure de fichiers, frontmatter YAML, versioning et documentation.
 
-Adapte du skill original de [Damien Battistella](https://github.com/DamienBattistella/skills).
+Adapté du skill original de [Damien Battistella](https://github.com/DamienBattistella/skills).
 
 ## Cas d'usage
 
-- **Creation de skill** : Scaffolder un nouveau skill complet (SKILL.md + documentation)
-- **Respect des conventions** : S'assurer que chaque skill respecte le format et la structure du depot
-- **Onboarding** : Aider un nouveau contributeur a creer son premier skill
+- **Création de skill** : scaffolder un nouveau skill complet (SKILL.md + documentation)
+- **Respect des conventions** : s'assurer que chaque skill respecte le format du dépôt
+- **Onboarding** : aider un nouveau contributeur à créer son premier skill
 
-## Declenchement
+## Déclenchement
 
 Ce skill s'active quand l'utilisateur :
-- Demande a creer un nouveau skill
-- Veut ajouter un skill au depot
+- Demande à créer un nouveau skill
+- Veut ajouter un skill au dépôt
 - Utilise les phrases : **"write a skill"** / **"create a skill"** / **"new skill"** / **"scaffold a skill"**
 
 ## Fonctionnement
 
 L'agent va :
-1. Recueillir les besoins aupres de l'utilisateur (domaine, cas d'usage, declencheurs)
-2. Choisir un nom en kebab-case et verifier qu'il n'existe pas deja
-3. Creer `skills/<nom>/SKILL.md` avec le frontmatter obligatoire (`name`, `description`, `version` au niveau racine)
-4. Creer les fichiers de reference dans `reference/` si le contenu depasse 100 lignes
-5. Creer `docs/<nom>.md` en francais
-6. Verifier le respect de toutes les conventions via une checklist de revue
+1. Recueillir les besoins auprès de l'utilisateur (domaine, cas d'usage, déclencheurs)
+2. Choisir un nom en kebab-case et vérifier qu'il n'existe pas déjà
+3. Créer `skills/<nom>/SKILL.md` avec le frontmatter obligatoire (`name`, `description`, `version`)
+4. Créer les fichiers de référence dans `reference/` si le contenu dépasse 100 lignes
+5. Créer `docs/<nom>.md` en français
+6. Vérifier le respect de toutes les conventions via une checklist de revue
 
-## Conventions appliquees
+## Conventions appliquées
 
-| Regle | Detail |
+| Règle | Détail |
 |-------|--------|
-| Frontmatter | `name`, `description`, `version` obligatoires, au niveau racine |
-| Description | Max 1024 caracteres, inclut les declencheurs ("Use when...") |
-| SKILL.md | Moins de 100 lignes, en anglais |
-| Documentation | `docs/<nom>.md`, en francais |
-| Version | Demarre a `1.0.0`, suit les regles semver (patch/minor/major) |
-| Structure | Un repertoire par skill sous `skills/`, materiaux de reference dans `reference/` |
+| **Frontmatter** | `name`, `description`, `version` obligatoires, au niveau racine |
+| **Description** | Max 1024 caractères, inclut les déclencheurs ("Use when...") |
+| **SKILL.md** | Moins de 100 lignes, en anglais |
+| **Documentation** | `docs/<nom>.md`, en français |
+| **Version** | Démarre à `1.0.0`, suit les règles semver (patch/minor/major) |
+| **Structure** | Un répertoire par skill sous `skills/`, matériaux de référence dans `reference/` |
 
 ## Exemples
 
 **English:**
-```
+```text
 User: "I want to create a new skill for generating changelogs"
 
 Agent: [Activates write-a-skill]
@@ -55,17 +55,23 @@ Agent: [Activates write-a-skill]
 -> Runs review checklist
 ```
 
-**Francais:**
-```
-Utilisateur: "Je veux creer un nouveau skill pour la revue de code"
+**Français :**
+```text
+Utilisateur : "Je veux créer un nouveau skill pour la revue de code"
 
-Agent: [Active le skill write-a-skill]
+Agent : [Active le skill write-a-skill]
 - Quels cas d'usage ce skill doit-il couvrir ?
-- Quels declencheurs doivent l'activer ?
-- Des materiaux de reference ?
--> Cree skills/code-review/SKILL.md
--> Cree docs/code-review.md
--> Execute la checklist de revue
+- Quels déclencheurs doivent l'activer ?
+- Des matériaux de référence ?
+-> Crée skills/code-review/SKILL.md
+-> Crée docs/code-review.md
+-> Exécute la checklist de revue
+```
+
+## Installation
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill write-a-skill -g -y
 ```
 
 ## Version

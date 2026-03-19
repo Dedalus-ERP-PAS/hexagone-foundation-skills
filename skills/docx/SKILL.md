@@ -1,6 +1,6 @@
 ---
 name: docx
-description: "Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When Claude needs to work with professional documents (.docx files) for: (1) Creating new documents, (2) Modifying or editing content, (3) Working with tracked changes, (4) Adding comments, or any other document tasks"
+description: "Boîte à outils complète pour la création, l'édition et l'analyse de documents avec support du suivi de modifications, commentaires, préservation du formatage et extraction de texte. Quand Claude doit travailler avec des documents professionnels (.docx) pour : (1) Créer de nouveaux documents, (2) Modifier ou éditer du contenu, (3) Travailler avec le suivi de modifications, (4) Ajouter des commentaires, ou toute autre tâche documentaire."
 version: 1.0.0
 license: Proprietary. LICENSE.txt has complete terms
 ---

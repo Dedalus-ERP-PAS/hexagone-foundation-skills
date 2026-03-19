@@ -1,6 +1,6 @@
 ---
 name: article-extractor
-description: Extract clean article content from URLs (blog posts, articles, tutorials) and save as readable text. Use when user wants to download, extract, or save an article/blog post from a URL without ads, navigation, or clutter.
+description: "Extraire le contenu propre d'articles depuis des URLs (billets de blog, articles, tutoriels) et sauvegarder en texte lisible. À utiliser quand l'utilisateur veut télécharger, extraire ou sauvegarder un article/billet de blog depuis une URL sans publicités, navigation ou encombrement."
 allowed-tools: Bash,Write
 version: 1.0.0
 license: MIT

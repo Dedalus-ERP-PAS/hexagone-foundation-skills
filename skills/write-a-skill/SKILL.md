@@ -1,6 +1,6 @@
 ---
 name: write-a-skill
-description: Guide the creation of a new AI agent skill for the foundation-skills repository. Scaffolds the SKILL.md and docs file, enforces repo conventions (frontmatter, versioning, structure). Use when user asks to create a new skill, write a skill, add a skill, or scaffold a skill.
+description: "Guide la création d'un nouveau skill d'agent IA pour le dépôt foundation-skills. Génère le squelette du SKILL.md et du fichier docs, applique les conventions du dépôt (frontmatter, versionnage, structure). À utiliser quand l'utilisateur demande de créer un nouveau skill, écrire un skill, ajouter un skill ou générer le squelette d'un skill."
 version: 1.0.0
 license: MIT
 ---
