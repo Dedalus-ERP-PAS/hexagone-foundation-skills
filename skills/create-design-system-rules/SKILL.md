@@ -1,6 +1,6 @@
 ---
 name: create-design-system-rules
-description: Generates custom design system rules for the user's codebase. Use when user says "create design system rules", "generate rules for my project", "set up design rules", "customize design system guidelines", or wants to establish project-specific conventions for Figma-to-code workflows. Requires Figma MCP server connection.
+description: "Génère des règles de design system personnalisées pour le codebase de l'utilisateur. À utiliser quand l'utilisateur dit « créer des règles de design system », « générer des règles pour mon projet », « configurer les règles de design », « personnaliser les guidelines du design system », ou veut établir des conventions spécifiques au projet pour les workflows Figma-vers-code. Nécessite une connexion au serveur MCP Figma."
 version: 1.0.0
 license: MIT
 metadata:

@@ -1,12 +1,12 @@
 # Fast Meeting
 
-Réunion rapide et autonome avec personas IA : analyse, décision, implémentation, et création de MR/PR — le tout sans intervention humaine.
+Réunion rapide et autonome avec personas IA. Analyse, décision, implémentation et création de MR/PR (Merge Request / Pull Request) sans intervention humaine.
 
 ## Quand l'utiliser
 
-- Quand vous voulez une décision ET une implémentation automatique sans interruption
-- Pour des décisions techniques ou produit où vous faites confiance à l'analyse IA
-- Quand vous voulez aller vite : un seul prompt déclenche l'analyse, le code et la MR/PR
+- Vous voulez une décision ET une implémentation automatique
+- Vous faites confiance a l'analyse IA pour une décision technique ou produit
+- Vous voulez aller vite : un prompt déclenche analyse, code et MR/PR
 
 ## Différence avec meeting
 
@@ -43,15 +43,15 @@ fast-meeting : refactorer le module d'authentification pour OAuth2
 2. **Détecte le remote** — GitLab ou GitHub pour la création de MR/PR
 3. **Sélectionne 3-4 personas automatiquement** — Selon le domaine du sujet
 4. **Anime une réunion rapide** — 1 tour de positions parallèles + synthèse
-5. **Vérifie le consensus** — Si toutes les personas sont d'accord, lance un avocat du diable pour challenger la décision
-6. **Évalue le périmètre** — Si le scope est trop large, réduit à la première étape critique ou suggère `/meeting`
-7. **Protège le working tree** — Implémentation dans un git worktree isolé, aucune modification du répertoire de travail
+5. **Vérifie le consensus** — Lance un avocat du diable si toutes les personas sont d'accord
+6. **Évalue le périmètre** — Réduit au premier pas critique si le scope est trop large
+7. **Protège le working tree** — Implémentation dans un worktree Git isolé
 8. **Produit une analyse concise** — Recommandation, risques, plan d'implémentation
 9. **Implémente la recommandation** — Code, tests, modifications de fichiers
 10. **Exécute les tests** — Lance la suite de tests du projet, tente une correction si échec
-11. **Crée une branche, commit et push** — Branche `feat/fm-<sujet>`, `fix/fm-<sujet>` ou `refactor/fm-<sujet>` selon le type de changement
-12. **Crée la MR/PR** — Avec description complète en français (en Draft si les tests échouent)
-13. **Nettoie le worktree** — Suppression automatique du worktree isolé (le répertoire de travail n'a jamais été modifié)
+11. **Crée une branche, commit et push** — Branche `feat/fm-*`, `fix/fm-*` ou `refactor/fm-*`
+12. **Crée la MR/PR** — Description en francais, Draft si les tests echouent
+13. **Nettoie le worktree** — Suppression automatique apres execution
 14. **Poste sur l'issue** — Si applicable, ajoute un lien vers la MR/PR
 
 ## Personas disponibles
@@ -59,20 +59,20 @@ fast-meeting : refactorer le module d'authentification pour OAuth2
 | Persona | Rôle | Ce qui compte pour elle |
 |---------|------|------------------------|
 | SOLID Alex | Ingénieur Backend Senior | Qualité de code, maintenabilité |
-| Sprint Zero Sarah | Product Owner | Valeur utilisateur, rapidité de livraison |
-| Paranoid Shug | Ingénieur Sécurité (certifié OWASP) | Surface d'attaque, sécurité web, standards d'authentification |
-| Pipeline Mo | Ingénieur DevOps/SRE | Opérabilité, déploiement, scalabilité |
+| Sprint Zero Sarah | Product Owner (PO) | Valeur utilisateur, rapidité de livraison |
+| Paranoid Shug | Ingénieur Sécurité (certifié OWASP -- Open Web Application Security Project) | Surface d'attaque, sécurité web |
+| Pipeline Mo | Ingénieur DevOps / SRE (Site Reliability Engineer) | Opérabilité, déploiement, scalabilité |
 | Pixel-Perfect Hugo | Ingénieur Frontend | Expérience utilisateur, Vue.js, React, PrimeVue |
 | Whiteboard Damien | Tech Lead / Architecte | Vision long terme, capacité de l'équipe |
-| Edge-Case Nico | Ingénieur QA | Testabilité, cas limites, Playwright, Vitest |
+| Edge-Case Nico | Ingénieur QA (Quality Assurance) | Testabilité, cas limites, Playwright, Vitest |
 | EXPLAIN PLAN Isabelle | Ingénieure Base de Données Senior (Oracle) | Administration Oracle, PL/SQL, tuning |
 | Schema JB | Ingénieur Data | Intégrité des données, migrations |
 | RFC Santiago | PO Interopérabilité Senior | Standards HL7, FHIR, HPK |
 | Legacy Larry | Développeur Fullstack Senior (Uniface) | Modernisation legacy, patterns 4GL/RAD |
 | HL7 Victor | Développeur Fullstack Interopérabilité Senior | Intégration bout-en-bout, parsing de messages |
-| RGPD Raphaël | DPO / Compliance | RGPD, HDS, données patients, consentement |
+| RGPD Raphaël | DPO (Data Protection Officer) / Compliance | RGPD (Reg. Generale Protection Donnees), HDS (Hebergement Donnees de Sante), consentement |
 | Dr. Workflow Wendy | Experte Domaine Santé | Workflows hospitaliers, administration patient |
-| Figma Fiona | Designer UX/UI | Recherche utilisateur, tokens de design, WCAG |
+| Figma Fiona | Designer UX/UI | Recherche utilisateur, tokens de design, WCAG (Web Content Accessibility Guidelines) |
 
 La sélection est automatique selon le contexte. Des personas spécialisées sont créées si le sujet le nécessite.
 

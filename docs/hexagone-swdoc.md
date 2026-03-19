@@ -2,32 +2,32 @@
 
 ## Vue d'ensemble
 
-Le skill Hexagone swdoc donne aux agents IA un acces a la documentation complete des web services Hexagone ("Reference Appels Externes"), publiee en tant que GitLab Pages. Il permet de consulter les specifications des services SOAP, les formats XML (DTDs), les codes d'erreur et les regles metier associees -- sans avoir a cloner le depot.
+Le skill **hexagone-swdoc** donne aux agents IA un accès à la documentation des web services Hexagone ("Référence Appels Externes"), publiée sur GitLab Pages. Il permet de consulter les spécifications SOAP (Simple Object Access Protocol), les formats XML, les codes d'erreur et les règles métier -- sans cloner le dépôt.
 
 ## Ce qu'il fait
 
-- **Consulte a la demande** la documentation publiee sur GitLab Pages (aucun clone de depot necessaire)
-- **Explique** les methodes SOAP, parametres, interfaces et formats de requete/reponse XML
-- **Liste** les web services disponibles par domaine (patients, urgences, hospitalisations, sejours, produits, etc.)
-- **Aide au debogage** en comparant les appels reels avec les specifications documentees
-- **Reference croisee** avec les skills HPK et HL7 PAM pour les aspects interoperabilite
+- **Consulte à la demande** la documentation publiée sur GitLab Pages
+- **Explique** les méthodes SOAP, paramètres et formats de requête/réponse XML
+- **Liste** les web services disponibles par domaine fonctionnel
+- **Aide au débogage** en comparant les appels réels avec les spécifications
+- **Référence croisée** avec les skills HPK et HL7 PAM (interopérabilité)
 
 ## Quand l'utiliser
 
 Utilisez ce skill quand vous avez besoin de :
 
-- Connaitre les methodes et parametres d'un web service Hexagone (EWPT0001 a EWPT0014)
-- Comprendre le format XML (DTD) de requete ou de reponse d'une methode SOAP
+- Connaître les méthodes et paramètres d'un web service Hexagone (EWPT0001 à EWPT0014)
+- Comprendre le format XML / DTD (Document Type Definition) d'une méthode SOAP
 - Lister les web services disponibles pour un domaine fonctionnel
-- Deboguer une integration avec un web service Hexagone (codes retour, statuts)
-- Comprendre les regles metier associees a un service
-- Verifier la configuration requise par application (CODEGEST, PSACC, etc.)
+- Déboguer une intégration avec un web service Hexagone
+- Comprendre les règles métier associées à un service
+- Vérifier la configuration requise par application (CODEGEST, PSACC, etc.)
 
-## Prerequis
+## Prérequis
 
-- Acces au reseau interne Dedalus (pour atteindre les GitLab Pages)
+- Accès au réseau interne Dedalus (pour atteindre les GitLab Pages)
 
-## Demarrage rapide
+## Démarrage rapide
 
 ```bash
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill hexagone-swdoc -g -y
@@ -35,37 +35,37 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill hexagone-swdoc -g -y
 
 ## Fonctionnement
 
-Le skill utilise **WebFetch** pour consulter directement les pages de documentation publiees sur GitLab Pages :
+Le skill utilise **WebFetch** pour consulter les pages publiées sur GitLab Pages :
 
-1. **Identification du service** : a partir de la question de l'utilisateur, le skill identifie le service EWPT concerne grace a un catalogue integre de tous les services et methodes.
+1. **Identification du service** : à partir de la question, le skill identifie le service EWPT concerné grâce à un catalogue intégré.
 
-2. **Recuperation de la page** : il appelle WebFetch sur l'URL de la page du service concerne (ex: `https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/swdoc/01-ewpt0001-gestion-des-patients/`).
+2. **Récupération de la page** : appel WebFetch sur l'URL du service concerné.
 
-3. **Extraction et presentation** : il extrait la section pertinente (methode, DTD, codes d'erreur) et la presente de maniere structuree.
+3. **Extraction et présentation** : extraction de la section pertinente (méthode, DTD, codes d'erreur) et présentation structurée.
 
 ## Services disponibles
 
-| Service | Domaine | Methodes principales |
+| Service | Domaine | Méthodes principales |
 |---------|---------|---------------------|
 | EWPT0001 | Gestion des patients | READ/FIND/NEW/UPDATE_PATIENT, READ_COVERAGES, READ_KINS, etc. |
 | EWPT0002 | Gestion des urgences | READ/NEW/UPDATE/DELETE_EMERGENCY, TO_OUTPATIENT, TO_INPATIENT |
 | EWPT0003 | Consultations externes | NEW/READ/UPDATE/DELETE_OUTPATIENT |
 | EWPT0004 | Dossiers d'hospitalisation | READ/NEW/UPDATE/DELETE_INPATIENT, READ/NEW/UPDATE/DELETE_MOVEMENT |
 | EWPT0005 | Lecture des occupations | UF_OCC, AVAILABLE_BEDS, IN_HOSPITAL, etc. |
-| EWPT0007 | Gestion des sejours | PATIENT_CASES, CASE_MVTS, CHG_CASE_TYPE, etc. |
+| EWPT0007 | Gestion des séjours | PATIENT_CASES, CASE_MVTS, CHG_CASE_TYPE, etc. |
 | EWPT0008 | Produits | PRODUCT_CREATION, PRODUCT_VERIFICATION, GET_*, etc. |
-| EWPT0009 | Gestion du DMP | NEW/UPDATE_REJECTION, ACCESS_CODE, INFO_VITALE, etc. |
+| EWPT0009 | Gestion du DMP (Dossier Médical Partagé) | NEW/UPDATE_REJECTION, ACCESS_CODE, INFO_VITALE, etc. |
 | EWPT0010 | Gestion des praticiens | FIND/NEW/UPDATE_PRACT |
-| EWPT0012 | Integration d'actes | INTEGR_CCAM |
-| EWPT0013 | Re-generation Identites/mouvements | REGEN_IDMVT |
+| EWPT0012 | Intégration d'actes | INTEGR_CCAM |
+| EWPT0013 | Régénération identités/mouvements | REGEN_IDMVT |
 | EWPT0014 | Structures physiques | FIND/READ/NEW/UPDATE/DELETE pour BUILDING, FLOOR, BEDROOM, BED, LOCALIZATION |
 
 ## Source
 
 - **GitLab Pages** : `https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/swdoc/`
-- **Depot GitLab** : `https://gitlab-erp-pas.dedalus.lan/erp-pas/hexagone/swdoc`
-- **Format** : fichiers Markdown publies en site statique
-- **Maintenance** : equipe Hexagone, Dedalus ERP-PAS
+- **Dépôt GitLab** : `https://gitlab-erp-pas.dedalus.lan/erp-pas/hexagone/swdoc`
+- **Format** : fichiers Markdown publiés en site statique
+- **Maintenance** : équipe Hexagone, Dedalus ERP-PAS
 
 ## Skills complémentaires
 

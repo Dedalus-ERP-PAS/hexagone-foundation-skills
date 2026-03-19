@@ -1,18 +1,18 @@
-# Ubiquitous Language
+# Ubiquitous Language — Glossaire métier DDD
 
 ## Description
 
-Le skill **ubiquitous-language** permet à l'agent IA d'extraire et de formaliser la terminologie métier à partir d'une conversation, en suivant l'approche du **Domain-Driven Design (DDD)**. Il produit un glossaire structuré sauvegardé dans un fichier `UBIQUITOUS_LANGUAGE.md`.
+Le skill **ubiquitous-language** extrait et formalise la terminologie métier à partir d'une conversation. Il suit l'approche du **DDD** (Domain-Driven Design) et produit un glossaire structuré dans un fichier `UBIQUITOUS_LANGUAGE.md`.
 
-Ce skill est adapté du skill [ubiquitous-language de Damien Battistella](https://github.com/DamienBattistella/skills), enrichi pour le contexte santé et le bilinguisme français/anglais.
+Adapté du skill [ubiquitous-language de Damien Battistella](https://github.com/DamienBattistella/skills). Enrichi pour le contexte santé et le bilinguisme français/anglais.
 
 ## Cas d'usage
 
-- **Harmonisation du vocabulaire** : Établir un langage commun entre développeurs, experts métier et PO
-- **Domaine santé** : Clarifier les termes HL7, FHIR, HPK, IHE qui se recoupent entre standards
-- **Détection d'ambiguïtés** : Identifier quand un même mot désigne des concepts différents
-- **Élimination des synonymes** : Choisir un terme canonique et lister les alternatives à éviter
-- **Support bilingue** : Cartographier les termes français et anglais côte à côte
+- **Harmonisation du vocabulaire** : établir un langage commun entre développeurs, experts métier et PO
+- **Domaine santé** : clarifier les termes HL7, FHIR, HPK, IHE entre standards
+- **Détection d'ambiguïtés** : identifier quand un même mot désigne des concepts différents
+- **Élimination des synonymes** : choisir un terme canonique et lister les alternatives à éviter
+- **Support bilingue** : cartographier les termes français et anglais côte à côte
 
 ## Déclenchement
 
@@ -43,16 +43,16 @@ Le fichier `UBIQUITOUS_LANGUAGE.md` contient :
 
 ## Spécificités santé
 
-Ce skill est particulièrement adapté au contexte santé où la terminologie varie entre standards :
+Ce skill est adapté au contexte santé, où la terminologie varie entre standards :
 - Un même concept peut s'appeler différemment en HL7v2, FHIR, HPK ou IHE
-- Les conséquences d'un malentendu terminologique sont coûteuses et potentiellement dangereuses en milieu clinique
-- Le glossaire permet d'ancrer le vocabulaire de l'équipe sur des définitions partagées
+- Un malentendu terminologique est coûteux et potentiellement dangereux en milieu clinique
+- Le glossaire ancre le vocabulaire de l'équipe sur des définitions partagées
 
 ## Support bilingue
 
 - Le terme **canonique** est choisi selon la langue la plus naturelle pour l'équipe
 - Une colonne **Terme français** accompagne chaque définition
-- Quand un standard impose un terme anglais (ex : "Encounter", "Observation"), celui-ci est préféré comme canonique avec l'équivalent français en regard
+- Quand un standard impose un terme anglais (ex : "Encounter", "Observation"), celui-ci est préféré comme canonique
 
 ## Mise à jour incrémentale
 
@@ -66,7 +66,7 @@ Lorsque le skill est invoqué à nouveau dans la même conversation :
 ## Exemples
 
 **English:**
-```
+```text
 User: "Let's build a ubiquitous language for our patient management module."
 
 Agent: [Scans conversation, extracts terms, writes UBIQUITOUS_LANGUAGE.md]
@@ -76,15 +76,21 @@ Agent: [Scans conversation, extracts terms, writes UBIQUITOUS_LANGUAGE.md]
 - Writes example dialogue showing precise term usage
 ```
 
-**Français:**
-```
-Utilisateur: "Construisons un glossaire pour notre module de gestion des patients."
+**Français :**
+```text
+Utilisateur : "Construisons un glossaire pour notre module de gestion des patients."
 
 Agent: [Scanne la conversation, extrait les termes, écrit UBIQUITOUS_LANGUAGE.md]
 - Identifie les termes clés : Encounter, Admission, Patient, Prescription...
 - Signale les ambiguïtés : "séjour" utilisé à la fois pour Encounter et Hospitalization
 - Groupe les termes par sous-domaine : Cycle de vie patient, Concepts cliniques...
 - Écrit un dialogue d'exemple montrant l'usage précis des termes
+```
+
+## Installation
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill ubiquitous-language -g -y
 ```
 
 ## Version

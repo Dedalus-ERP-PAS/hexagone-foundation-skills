@@ -1,6 +1,6 @@
 ---
 name: playwright-skill
-description: Complete browser automation and web testing with Playwright. Auto-detects dev servers, manages server lifecycle, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, debug dynamic webapps, automate any browser task. Use when user wants to test websites, automate browser interactions, validate web functionality, or perform any browser-based testing.
+description: "Automatisation complète du navigateur et tests web avec Playwright. Détecte automatiquement les serveurs de développement, gère le cycle de vie des serveurs, écrit des scripts de test propres dans /tmp. Tester des pages, remplir des formulaires, capturer des screenshots, vérifier le responsive design, valider l'UX, tester les flux de connexion, vérifier les liens, déboguer des webapps dynamiques, automatiser toute tâche navigateur. À utiliser quand l'utilisateur veut tester des sites web, automatiser des interactions navigateur, valider des fonctionnalités web ou effectuer tout test basé sur le navigateur."
 version: 1.0.0
 license: MIT
 ---

@@ -1,6 +1,6 @@
 ---
 name: testing-patterns
-description: Comprehensive testing patterns and strategies for JavaScript/TypeScript projects. Covers unit, integration, and E2E testing, mocking strategies, test organization, and common anti-patterns. Use when the user wants to write tests, improve test coverage, establish a testing strategy, or fix flaky tests.
+description: "Patrons et stratégies de test complets pour les projets JavaScript/TypeScript. Couvre les tests unitaires, d'intégration et E2E, les stratégies de mocking, l'organisation des tests et les anti-patrons courants. À utiliser quand l'utilisateur veut écrire des tests, améliorer la couverture de tests, établir une stratégie de test ou corriger des tests instables."
 version: 1.0.0
 license: MIT
 metadata:

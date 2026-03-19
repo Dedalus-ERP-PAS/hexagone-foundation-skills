@@ -1,6 +1,6 @@
 ---
 name: gitlab-issue
-description: Creates, retrieves, updates, and manages GitLab issues with comprehensive context gathering. Use when the user wants to create a new issue, view issue details, update existing issues, list project issues, or manage issue workflows in GitLab.
+description: "Crée, récupère, met à jour et gère les issues GitLab avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet ou gérer les workflows d'issues dans GitLab."
 allowed-tools: gitlab-mcp(create_issue), gitlab-mcp(get_issue), gitlab-mcp(list_issues), gitlab-mcp(update_issue), gitlab-mcp(get_project), gitlab-mcp(list_merge_requests)
 version: 1.0.0
 license: MIT

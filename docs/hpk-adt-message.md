@@ -1,22 +1,18 @@
-Service Echange
+# Specification des messages HPK ADT - Service Echange
 
-[]{#_Toc36009210 .anchor}Maîtrise du document
+Specification de reference des messages HPK ADT (Admission, Discharge, Transfer) du Service Echange Hexagone. Ce document decrit les structures de donnees pour les messages d'identite (ID), mouvements (MV), couverture (CV) et autres types HPK.
 
-Rédacteurs Fonctions
+> **Note technique** : ce document est une conversion automatique de la specification Word officielle. Il sert de reference pour le skill `hpk-parser`.
 
-  -------------------------- --------------------------------------------
-  P. LAUNAY                  Responsable Unité de développement
+## Maitrise du document
 
-                             
-  -------------------------- --------------------------------------------
+| | |
+|---|---|
+| **Redacteur** | P. LAUNAY -- Responsable Unite de developpement |
+| **Date de creation** | 27/08/1999 |
+| **Derniere mise a jour** | 22/01/2026 |
 
-Date de création Date de mise à jour
-
-+-------------------------+--------------------------------------------+
-| > 27/08/1999            | > 22/01/2026                               |
-+-------------------------+--------------------------------------------+
-|                         |                                            |
-+-------------------------+--------------------------------------------+
+## Historique des versions
 
 +------+---+------+----------------------------------------+------+------+
 | Date |   | Op   |                                        | Révi | D    |

@@ -1,6 +1,6 @@
 ---
 name: postgres
-description: "Execute read-only SQL queries against multiple PostgreSQL databases. Use when: (1) querying PostgreSQL databases, (2) exploring database schemas/tables, (3) running SELECT queries for data analysis, (4) checking database contents. Supports multiple database connections with descriptions for intelligent auto-selection. Blocks all write operations (INSERT, UPDATE, DELETE, DROP, etc.) for safety."
+description: "Exécute des requêtes SQL en lecture seule sur plusieurs bases de données PostgreSQL. À utiliser pour : (1) interroger des bases PostgreSQL, (2) explorer les schémas/tables, (3) exécuter des requêtes SELECT pour l'analyse de données, (4) vérifier le contenu des bases. Supporte plusieurs connexions avec descriptions pour une sélection automatique intelligente. Bloque toutes les opérations d'écriture (INSERT, UPDATE, DELETE, DROP, etc.) par sécurité."
 version: 1.0.0
 license: MIT
 ---

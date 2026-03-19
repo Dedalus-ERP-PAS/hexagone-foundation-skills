@@ -1,6 +1,6 @@
 ---
 name: hl7-pam-parser
-description: Parse and explain HL7 v2.5 IHE PAM (Patient Administration Management) messages. Identifies message type, extracts segments (MSH, EVN, PID, PV1, PV2), validates structure, and provides detailed explanations of ADT messages for patient administration workflows.
+description: "Parse et explique les messages HL7 v2.5 IHE PAM (Patient Administration Management). Identifie le type de message, extrait les segments (MSH, EVN, PID, PV1, PV2), valide la structure et fournit des explications détaillées des messages ADT pour les workflows d'administration des patients."
 version: 1.0.0
 license: MIT
 ---

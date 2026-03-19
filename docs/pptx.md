@@ -1,73 +1,69 @@
-# pptx
+# Presentations PowerPoint (pptx)
 
-Création et manipulation de présentations PowerPoint (.pptx) avec support de templates, design avancé et génération HTML-to-PPTX.
+Creation et manipulation de presentations PowerPoint (.pptx) avec templates, design avance et generation HTML vers PPTX.
 
-## Quand utiliser ce skill
+## Contexte
 
-Utilisez ce skill pour :
-- Créer des présentations PowerPoint depuis zéro
-- Modifier des présentations existantes avec template
-- Générer des présentations à partir de HTML
-- Appliquer un design professionnel (palettes, typographie, layouts)
-- Créer des thumbnails de présentations
+Ce skill permet de creer, modifier et exporter des presentations PowerPoint. Il propose deux workflows : creation libre ou modification de templates existants.
 
-## Deux workflows disponibles
+## Cas d'utilisation
 
-### 1. Sans template (HTML → PPTX)
+- **Creer** des presentations depuis zero
+- **Modifier** des presentations existantes avec template
+- **Generer** des presentations a partir de HTML
+- **Appliquer** un design professionnel (palettes, typographie)
+- **Creer des thumbnails** pour apercu visuel
 
-Création libre à partir de HTML — idéal pour des présentations entièrement nouvelles.
+## Deux workflows
+
+```mermaid
+graph LR
+    A[Besoin] -->|Sans template| B[HTML vers PPTX]
+    A -->|Avec template| C[Inventory]
+    C --> D[Replace]
+    D --> E[Rearrange]
+```
+
+- **Sans template** : creation libre a partir de HTML, ideal pour du contenu nouveau.
+- **Avec template** : modification d'un fichier existant, ideal pour respecter une charte graphique.
+
+### Sans template (section technique)
 
 ```bash
 node scripts/html2pptx.js input.html output.pptx
 ```
 
-### 2. Avec template (Inventory → Replace → Rearrange)
-
-Modification de templates existants — idéal pour respecter une charte graphique.
+### Avec template (section technique)
 
 ```bash
-# 1. Analyser le template
 python scripts/inventory.py template.pptx
-
-# 2. Remplacer le contenu
-python scripts/replace.py template.pptx output.pptx --data data.json
-
-# 3. Réorganiser les slides
-python scripts/rearrange.py input.pptx output.pptx --order "1,3,2,5"
+python scripts/replace.py template.pptx out.pptx --data data.json
+python scripts/rearrange.py in.pptx out.pptx --order "1,3,2,5"
 ```
 
 ## Design et mise en forme
 
-Le skill inclut des guidelines de design :
-- **16 palettes de couleurs** prédéfinies pour différents contextes
-- **Typographie** adaptée aux présentations professionnelles
-- **Layouts** optimisés (deux colonnes préféré au stacking)
-- **Géométrie, bordures, arrière-plans** configurables
-- **Graphiques et diagrammes** intégrés
+- **16 palettes de couleurs** predefinies
+- **Typographie** adaptee aux presentations professionnelles
+- **Layouts** optimises (deux colonnes prefere au stacking)
+- **Graphiques et diagrammes** integres
 
-## Thumbnails
+## Commandes utiles (section technique)
 
-Génération d'une mosaïque visuelle de la présentation :
+| Action | Commande |
+|--------|----------|
+| **Thumbnails** | `python scripts/thumbnail.py fichier.pptx --cols 4` |
+| **Lecture** | `python -m markitdown fichier.pptx` |
 
-```bash
-python scripts/thumbnail.py presentation.pptx --cols 4 --output thumbnails.png
-```
-
-## Lecture d'une présentation existante
-
-```bash
-python -m markitdown fichier.pptx
-```
-
-## Exemples d'utilisation
+## Utilisation
 
 ```
-@workspace avec pptx, crée une présentation de 10 slides sur [sujet]
-@workspace avec pptx, modifie ce template avec les données du JSON
-@workspace avec pptx, génère des thumbnails de cette présentation
+@workspace avec pptx, cree une presentation de 10 slides sur [sujet]
+@workspace avec pptx, modifie ce template avec les donnees du JSON
+@workspace avec pptx, genere des thumbnails de cette presentation
 ```
 
-## Démarrage rapide
+## Demarrage rapide
 
 ```bash
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill pptx -g -y
@@ -75,4 +71,4 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill pptx -g -y
 
 ## Ressources
 
-- [SKILL.md complet](../skills/pptx/SKILL.md) — Guide détaillé avec palettes de couleurs et options visuelles
+- [SKILL.md complet](../skills/pptx/SKILL.md) — Guide detaille avec palettes et options visuelles

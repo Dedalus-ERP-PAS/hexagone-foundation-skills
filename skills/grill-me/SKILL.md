@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me" / "interroge-moi" / "challenge-moi" / "questionne-moi".
+description: "Interroge l'utilisateur sans relâche sur un plan ou un design jusqu'à atteindre une compréhension partagée, en résolvant chaque branche de l'arbre de décision. À utiliser quand l'utilisateur veut stress-tester un plan, se faire challenger sur son design, ou mentionne « grill me » / « interroge-moi » / « challenge-moi » / « questionne-moi »."
 version: 1.1.0
 license: MIT
 ---

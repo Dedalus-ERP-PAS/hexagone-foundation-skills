@@ -2,7 +2,7 @@
 
 ## Qu'est-ce que le TDD ?
 
-Le TDD (Test-Driven Development) est une méthode de développement où l'on écrit les tests **avant** le code de production. Le cycle fondamental est le **red-green-refactor** :
+Le **TDD** (Test-Driven Development) est une méthode où l'on écrit les tests **avant** le code de production. Le cycle fondamental est le **red-green-refactor** :
 
 1. **RED** — Écrire un test qui échoue (il décrit un comportement attendu)
 2. **GREEN** — Écrire le minimum de code pour faire passer le test
@@ -40,4 +40,4 @@ Demandez simplement à votre agent IA de développer une fonctionnalité en TDD 
 
 > « Implémente la validation du formulaire de commande en TDD. »
 
-L'agent suivra automatiquement le cycle red-green-refactor, en vous demandant de valider le plan et les comportements à tester avant de commencer.
+L'agent suivra automatiquement le cycle red-green-refactor. Il vous demandera de valider le plan et les comportements avant de commencer.

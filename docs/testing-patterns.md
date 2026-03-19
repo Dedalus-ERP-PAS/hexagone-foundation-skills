@@ -1,6 +1,6 @@
-# testing-patterns
+# Testing Patterns — Stratégies de test JS/TS
 
-Patterns et stratégies de test complets pour les projets JavaScript/TypeScript : tests unitaires, d'intégration, E2E, mocking, organisation et anti-patterns.
+Patterns et stratégies de test pour les projets JavaScript/TypeScript. Couvre les tests unitaires, d'intégration, E2E, le mocking et les anti-patterns.
 
 ## Quand utiliser ce skill
 
@@ -32,7 +32,7 @@ Les deux skills se complètent. Utilisez `tdd` quand vous développez en TDD, et
    /____________________\
 ```
 
-**Règle générale** : ~70% unitaires, ~20% intégration, ~10% E2E. Les codebases legacy bénéficient souvent de plus de tests d'intégration au départ.
+**Règle générale** : ~70 % unitaires, ~20 % intégration, ~10 % E2E. Les codebases legacy bénéficient de plus de tests d'intégration au départ.
 
 ## Contenu du skill
 
@@ -72,7 +72,7 @@ Les deux skills se complètent. Utilisez `tdd` quand vous développez en TDD, et
 
 ## Exemples d'utilisation
 
-```
+```text
 @workspace avec testing-patterns, écris les tests pour ce service patient
 @workspace avec testing-patterns, cette suite de tests est flaky, aide-moi à la stabiliser
 @workspace avec testing-patterns, établis une stratégie de test pour ce projet

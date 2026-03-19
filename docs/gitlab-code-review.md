@@ -1,10 +1,10 @@
 # GitLab Code Review
 
-Revue de code complète des merge requests GitLab avec analyse de la qualité, sécurité, performance et bonnes pratiques.
+Revue de code des merge requests (MR) GitLab couvrant qualité, sécurité, performance et bonnes pratiques.
 
 **Instance GitLab utilisée :** https://gitlab-erp-pas.dedalus.lan
 
-Cette compétence est configurée pour fonctionner avec l'instance GitLab auto-hébergée de Dedalus. Tous les projets, identifiants et références doivent utiliser cette instance.
+Configuré pour l'instance GitLab auto-hébergée de Dedalus.
 
 ## Utilisation
 
@@ -28,7 +28,7 @@ Montre-moi les MR ouvertes à reviewer
 
 ## Prérequis
 
-- Serveur MCP GitLab configuré (`gitlab-mcp`)
+- Serveur MCP (Model Context Protocol) GitLab configuré (`gitlab-mcp`)
 - Accès à l'instance GitLab auto-hébergée : https://gitlab-erp-pas.dedalus.lan
 - Identifiants et permissions appropriés sur les projets GitLab concernés
 
@@ -42,9 +42,9 @@ Montre-moi les MR ouvertes à reviewer
 
 ### Analyse complète
 
-- **Qualité du code** : style, nommage, organisation, principes DRY
+- **Qualité du code** : style, nommage, organisation, principes DRY (Don't Repeat Yourself)
 - **Revue technique** : logique, gestion d'erreurs, edge cases
-- **Sécurité** : validation des entrées, injections SQL, XSS
+- **Sécurité** : validation des entrées, injections SQL, XSS (Cross-Site Scripting)
 - **Performance** : implications sur les performances
 - **Bonnes pratiques** : patterns, SOLID, tests, documentation
 
@@ -71,8 +71,8 @@ Les retours sont formulés sous forme de questions pour encourager le dialogue :
 - "Que se passe-t-il si cet appel API échoue ?"
 
 ❌ **À éviter** :
-- "Tu devrais utiliser un early return"
-- "Ajoute une gestion d'erreur"
+- "Vous devriez utiliser un early return"
+- "Ajoutez une gestion d'erreur"
 
 ## Exemples
 
@@ -83,32 +83,11 @@ Utilisateur : Review !42 dans groupe/projet
 
 Assistant :
 # Code Review : !42 - "Ajout authentification utilisateur"
-
-## Résumé
-Cette MR ajoute un système d'authentification JWT...
-
-## Statistiques
-| Métrique | Nombre |
-|----------|--------|
-| Fichiers modifiés | 8 |
-| Lignes ajoutées | +245 |
-| Lignes supprimées | -12 |
-
-## Points forts
-- Bonne séparation des responsabilités
-- Tests unitaires complets
-
-## Problèmes trouvés
-### 🔴 Critique
-Aucun
-
-### 🟡 Important
-- Le token JWT n'a pas d'expiration configurée
-
-### 🟢 Suggestions
-- Envisager l'utilisation de refresh tokens
-
-Souhaitez-vous que j'ajoute ces commentaires sur la MR ?
+## Résumé — MR ajoute authentification JWT (JSON Web Token)
+## Points forts — Bonne séparation, tests complets
+## Problèmes
+  🟡 Le token JWT n'a pas d'expiration configurée
+  🟢 Envisager l'utilisation de refresh tokens
 ```
 
 ### Liste des MR à reviewer
@@ -117,18 +96,9 @@ Souhaitez-vous que j'ajoute ces commentaires sur la MR ?
 Utilisateur : Montre-moi les MR ouvertes
 
 Assistant :
-MR ouvertes dans groupe/projet :
-
-!45 - "Fix: Correction bug de pagination"
-     Auteur: @alice | Pipeline: ✅ Passed
-
-!43 - "Feature: Export CSV"
-     Auteur: @bob | Pipeline: ⏳ Running
-
-!42 - "Refactor: Module authentification"
-     Auteur: @charlie | Pipeline: ❌ Failed
-
-Quelle MR souhaitez-vous reviewer ?
+!45 - "Fix: Pagination"     @alice  | Pipeline: Passed
+!43 - "Feature: Export CSV"  @bob    | Pipeline: Running
+!42 - "Refactor: Auth"       @charlie| Pipeline: Failed
 ```
 
 ## Notes importantes
@@ -136,3 +106,13 @@ Quelle MR souhaitez-vous reviewer ?
 - Seuls les changements de la MR sont analysés (pas le code existant)
 - Les commentaires ne sont ajoutés qu'avec votre confirmation
 - Le statut du pipeline est vérifié avant de conclure la revue
+
+## Démarrage rapide
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill gitlab-code-review -g -y
+```
+
+## Ressources
+
+- [SKILL.md complet](../skills/gitlab-code-review/SKILL.md) -- Guide détaillé

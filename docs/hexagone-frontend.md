@@ -2,33 +2,33 @@
 
 ## Vue d'ensemble
 
-Le skill Hexagone frontend donne aux agents IA un acces a la documentation complete de la bibliotheque de composants `@his/hexa-components` utilisee dans les applications web Hexagone. Il permet de consulter les specifications des composants Vue.js, les patterns d'utilisation, les classes CSS utilitaires et les modules du store Vuex -- sans avoir a cloner le depot.
+Le skill **hexagone-frontend** donne aux agents IA un accès à la documentation de la bibliothèque `@his/hexa-components` utilisée dans les applications web Hexagone. Il couvre les composants Vue.js, les patterns d'utilisation, les classes CSS utilitaires et les modules du store Vuex -- sans cloner le dépôt.
 
 ## Ce qu'il fait
 
-- **Consulte a la demande** la documentation LLM-optimisee depuis le depot GitLab (fichiers `docs/llm/`)
-- **Explique** les composants Hexagone : props, events, slots et exemples d'utilisation
-- **Liste** les 36 composants disponibles par categorie (formulaires, navigation, affichage, feedback)
-- **Documente** les patterns (API, Store Vuex) et references (directives, evenements, regles de validation)
+- **Consulte à la demande** la documentation optimisée LLM (Large Language Model) depuis le dépôt GitLab (`docs/llm/`)
+- **Explique** les composants Hexagone : props, events, slots et exemples
+- **Liste** les 36 composants par catégorie (formulaires, navigation, affichage, feedback)
+- **Documente** les patterns (API, Store Vuex) et références (directives, événements, validation)
 - **Rappelle** les conventions critiques (balises custom, beta-scss, vuex-pathify)
 
 ## Quand l'utiliser
 
 Utilisez ce skill quand vous avez besoin de :
 
-- Connaitre les props et events d'un composant Hexagone (`<btn>`, `<multiselect>`, `<data-table>`, etc.)
-- Construire un formulaire Hexagone avec les bons composants et la bonne structure
+- Connaître les props et events d'un composant Hexagone (`<btn>`, `<multiselect>`, `<data-table>`, etc.)
+- Construire un formulaire Hexagone avec les bons composants
 - Utiliser les classes CSS utilitaires beta-scss (`flex:6/12`, `p:1`, `m:1`, etc.)
-- Acceder aux modules du store Vuex partage (user, session, environment, navigation, establishment)
-- Appeler des web services depuis le frontend avec `Api()` ou `StandardApi()`
+- Accéder aux modules du store Vuex partagé (user, session, environment, etc.)
+- Appeler des web services avec `Api()` ou `StandardApi()`
 - Utiliser les directives custom (`v-focus`, `v-uppercase`)
-- Appliquer les regles de validation de formulaires Hexagone
+- Appliquer les règles de validation de formulaires
 
-## Prerequis
+## Prérequis
 
-- Acces au reseau interne Dedalus (pour atteindre le depot GitLab)
+- Accès au réseau interne Dedalus (pour atteindre le dépôt GitLab)
 
-## Demarrage rapide
+## Démarrage rapide
 
 ```bash
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill hexagone-frontend -g -y
@@ -36,13 +36,13 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill hexagone-frontend -g -y
 
 ## Fonctionnement
 
-Le skill utilise **WebFetch** pour consulter les fichiers markdown optimises LLM directement depuis le depot GitLab :
+Le skill utilise **WebFetch** pour consulter les fichiers Markdown directement depuis le dépôt GitLab :
 
-1. **Identification du composant/pattern** : a partir de la question de l'utilisateur, le skill identifie le fichier de documentation concerne grace a un catalogue integre de tous les composants, patterns et references.
+1. **Identification du composant/pattern** : à partir de la question, le skill identifie le fichier concerné grâce à un catalogue intégré.
 
-2. **Recuperation du fichier** : il appelle WebFetch sur l'URL brute du fichier dans le depot GitLab (ex: `https://gitlab-erp-pas.dedalus.lan/.../docs/llm/components/button.md`).
+2. **Récupération du fichier** : appel WebFetch sur l'URL brute du fichier dans le dépôt GitLab.
 
-3. **Extraction et presentation** : il extrait les props, events et exemples pertinents et les presente de maniere structuree.
+3. **Extraction et présentation** : extraction des props, events et exemples pertinents, puis présentation structurée.
 
 ## Composants disponibles
 
@@ -52,20 +52,20 @@ Le skill utilise **WebFetch** pour consulter les fichiers markdown optimises LLM
 |-----------|--------|-------------|
 | Input | `<input>` + wrapper | Champ de texte |
 | Textarea | `<textarea>` + wrapper | Zone de texte multiligne |
-| Number | `<number>` | Champ numerique |
-| Currency | `<currency>` | Champ monetaire |
-| Select | `<multiselect>` | Selecteur simple ou multiple |
-| Autocomplete | `<autocomplete>` | Champ avec autocompletion |
-| Checkbox | `<checkbox>` | Case a cocher |
+| Number | `<number>` | Champ numérique |
+| Currency | `<currency>` | Champ monétaire |
+| Select | `<multiselect>` | Sélecteur simple ou multiple |
+| Autocomplete | `<autocomplete>` | Champ avec autocomplétion |
+| Checkbox | `<checkbox>` | Case à cocher |
 | Radio | `<radio>` | Boutons radio |
 | ButtonSwitch | `<btn-switch>` | Bouton basculeur on/off |
-| Datepicker | `<datepicker>` | Selecteur de date |
-| Timepicker | `<timepicker>` | Selecteur d'heure |
-| Colorpicker | `<colorpicker>` | Selecteur de couleur |
+| Datepicker | `<datepicker>` | Sélecteur de date |
+| Timepicker | `<timepicker>` | Sélecteur d'heure |
+| Colorpicker | `<colorpicker>` | Sélecteur de couleur |
 | File | `<file>` | Upload de fichier |
 | Iban | `<iban>` | Champ IBAN |
 | Bic | `<bic>` | Champ BIC |
-| Radical | `<radical>` | Champ avec prefixe |
+| Radical | `<radical>` | Champ avec préfixe |
 
 ### Navigation et actions (8 composants)
 
@@ -77,15 +77,15 @@ Le skill utilise **WebFetch** pour consulter les fichiers markdown optimises LLM
 | Action | `<action>` | Composant d'action |
 | Link | `<link>` | Lien de navigation |
 | Bookmark | `<bookmark>` | Signet de page |
-| Tabs | `<tabs>` | Systeme d'onglets |
-| Steps | `<steps>` | Etapes de progression |
+| Tabs | `<tabs>` | Système d'onglets |
+| Steps | `<steps>` | Étapes de progression |
 
-### Affichage de donnees (4 composants)
+### Affichage de données (4 composants)
 
 | Composant | Balise | Description |
 |-----------|--------|-------------|
 | DataTable | `<data-table>` | Tableau avec pagination et tri |
-| SimpleTable | `<simple-table>` | Tableau simple avec selection |
+| SimpleTable | `<simple-table>` | Tableau simple avec sélection |
 | Card | `<card>` | Conteneur de carte |
 | ProgressBar | `<progress-bar>` | Barre de progression |
 
@@ -93,26 +93,26 @@ Le skill utilise **WebFetch** pour consulter les fichiers markdown optimises LLM
 
 | Composant | Balise | Description |
 |-----------|--------|-------------|
-| Alert | `<alert>` | Alerte avec etats |
-| Modal | `<modal>` | Fenetre modale |
-| Notification | `$notification()` | Notifications programmatiques |
-| Question | `<question>` | Dialogue de question |
-| Tooltips | `<tooltips>` | Infobulle au survol |
+| Alert | `<alert>` | Alerte avec états |
+| Modal | `<modal>` | Fenêtre modale |
+| Notification | `$notification()` | Notification programmatique |
+| Question | `<question>` | Dialogue de confirmation |
+| Tooltips | `<tooltips>` | Info-bulle au survol |
 | PostIt | `<post-it>` | Note type post-it |
 | Spinner | `<spinner>` | Indicateur de chargement |
 
 ## Source
 
 - **Site de documentation** : `https://erp-pas.gitlab-pages-erp-pas.dedalus.lan/hexagone/frontend/hexagone-documentation`
-- **Depot GitLab** : `https://gitlab-erp-pas.dedalus.lan/erp-pas/hexagone/frontend/hexagone-documentation`
-- **Fichiers LLM** : `docs/llm/` dans le depot (composants, patterns, references)
-- **Maintenance** : equipe Hexagone Frontend, Dedalus ERP-PAS
+- **Dépôt GitLab** : `https://gitlab-erp-pas.dedalus.lan/erp-pas/hexagone/frontend/hexagone-documentation`
+- **Fichiers LLM** : `docs/llm/` dans le dépôt (composants, patterns, références)
+- **Maintenance** : équipe Hexagone Frontend, Dedalus ERP-PAS
 
-## Skills complementaires
+## Skills complémentaires
 
 | Skill | Relation |
 |-------|----------|
 | [hexagone-swdoc](hexagone-swdoc.md) | Documentation des web services SOAP pour le backend Hexagone |
-| [vue-best-practices](vue-best-practices.md) | Best practices Vue.js generales (le frontend Hexagone utilise Vue.js 2) |
-| [hpk-parser](hpk-parser.md) | Parsing des messages HPK echanges via les web services |
-| [uniface-procscript](uniface-procscript.md) | Reference ProcScript pour le code Uniface backend |
+| [vue-best-practices](vue-best-practices.md) | Best practices Vue.js générales (le frontend Hexagone utilise Vue.js 2) |
+| [hpk-parser](hpk-parser.md) | Parsing des messages HPK échangés via les web services |
+| [uniface-procscript](uniface-procscript.md) | Référence ProcScript pour le code Uniface backend |

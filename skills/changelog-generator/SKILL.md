@@ -1,6 +1,6 @@
 ---
 name: changelog-generator
-description: Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns hours of manual changelog writing into minutes of automated generation.
+description: "Crée automatiquement des changelogs orientés utilisateur à partir des commits git en analysant l'historique, catégorisant les changements et transformant les commits techniques en notes de version claires et compréhensibles. Transforme des heures de rédaction manuelle en minutes de génération automatisée."
 version: 1.0.0
 license: MIT
 ---

@@ -1,6 +1,6 @@
 ---
 name: github-issues
-description: Creates, retrieves, updates, and manages GitHub issues with comprehensive context gathering. Use when the user wants to create a new issue, view issue details, update existing issues, list project issues, add comments, or manage issue workflows in GitHub.
+description: "Crée, récupère, met à jour et gère les issues GitHub avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet, ajouter des commentaires ou gérer les workflows d'issues dans GitHub."
 allowed-tools: github-mcp(create_issue), github-mcp(get_issue), github-mcp(list_issues), github-mcp(update_issue), github-mcp(search_issues), github-mcp(add_issue_comment)
 version: 1.0.0
 license: MIT

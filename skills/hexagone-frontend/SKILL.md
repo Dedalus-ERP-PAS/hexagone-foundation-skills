@@ -1,10 +1,6 @@
 ---
 name: hexagone-frontend
-description: >-
-  Navigate and query Hexagone frontend component documentation (@his/hexa-components).
-  Use when the user asks about Hexagone Vue.js components, UI patterns, beta-scss CSS
-  classes, Vuex store modules, custom directives, form validation rules, or the Hexagone
-  frontend design system. Fetches LLM-optimized docs from the GitLab repository.
+description: "Navigue et interroge la documentation des composants frontend Hexagone (@his/hexa-components). À utiliser quand l'utilisateur pose des questions sur les composants Vue.js Hexagone, les patrons UI, les classes CSS beta-scss, les modules de store Vuex, les directives personnalisées, les règles de validation de formulaires ou le design system frontend Hexagone. Récupère la documentation optimisée LLM depuis le dépôt GitLab."
 version: 1.0.0
 license: Proprietary
 metadata:

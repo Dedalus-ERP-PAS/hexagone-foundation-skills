@@ -1,6 +1,6 @@
 ---
 name: typescript-migration
-description: Guide for incrementally migrating JavaScript codebases to TypeScript. Covers tsconfig setup, file-by-file migration, typing strategies for legacy code, handling `any`, and common pitfalls. Use when the user wants to convert JS to TS, add types to existing code, set up TypeScript in a JS project, or improve type safety.
+description: "Guide pour la migration incrémentale de codebases JavaScript vers TypeScript. Couvre la configuration tsconfig, la migration fichier par fichier, les stratégies de typage pour le code legacy, la gestion du `any` et les pièges courants. À utiliser quand l'utilisateur veut convertir du JS en TS, ajouter des types au code existant, configurer TypeScript dans un projet JS ou améliorer la sûreté de typage."
 version: 1.0.0
 license: MIT
 metadata:

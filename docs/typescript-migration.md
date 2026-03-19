@@ -1,6 +1,6 @@
-# typescript-migration
+# TypeScript Migration — Migration incrémentale JS vers TS
 
-Guide de migration incrémentale de codebases JavaScript vers TypeScript. Stratégie fichier par fichier, configuration tsconfig, typage du code legacy et élimination progressive de `any`.
+Guide de migration incrémentale de codebases JavaScript vers TypeScript. Stratégie fichier par fichier, configuration tsconfig et élimination progressive de `any`.
 
 ## Quand utiliser ce skill
 
@@ -13,7 +13,7 @@ Utilisez ce skill pour :
 
 ## Principe fondamental
 
-**Ne jamais tout réécrire d'un coup.** Migrer fichier par fichier, en partant des feuilles de l'arbre de dépendances. Chaque état intermédiaire doit être une codebase fonctionnelle.
+**Ne jamais tout réécrire d'un coup.** Migrer fichier par fichier, en partant des feuilles de l'arbre de dépendances. Chaque état intermédiaire doit rester fonctionnel.
 
 ## Les 5 phases de migration
 
@@ -79,7 +79,7 @@ Le skill inclut 3 checklists :
 
 ## Exemples d'utilisation
 
-```
+```text
 @workspace avec typescript-migration, configure TypeScript pour ce projet JS
 @workspace avec typescript-migration, migre ce fichier en TypeScript
 @workspace avec typescript-migration, élimine les `any` de ce module

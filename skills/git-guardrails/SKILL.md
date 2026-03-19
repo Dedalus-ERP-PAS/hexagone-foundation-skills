@@ -1,6 +1,6 @@
 ---
 name: git-guardrails
-description: Set up Claude Code hooks to block dangerous git commands (push, force-push, reset --hard, clean, branch -D, checkout/restore) before they execute. Prevents destructive git operations at the agent level.
+description: "Configure des hooks Claude Code pour bloquer les commandes git dangereuses (push, force-push, reset --hard, clean, branch -D, checkout/restore) avant leur exécution. Empêche les opérations git destructrices au niveau de l'agent."
 version: 1.0.0
 license: MIT
 metadata:

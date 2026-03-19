@@ -1,6 +1,6 @@
 # react-best-practices
 
-Guide complet des bonnes pratiques React et Next.js : architecture composants, performance, shadcn/ui, animations Motion et patterns modernes (React 19+).
+Bonnes pratiques React et Next.js : architecture composants, performance, shadcn/ui et patterns modernes (React 19+).
 
 ## Quand utiliser ce skill
 
@@ -10,6 +10,12 @@ Utilisez ce skill pour :
 - Utiliser shadcn/ui correctement avec des variants CVA
 - Ajouter des animations avec Motion (ex-Framer Motion)
 - Adopter les patterns React 19+ (Server Components, Server Actions, `useOptimistic`)
+
+## Démarrage rapide
+
+```bash
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill react-best-practices -g -y
+```
 
 ## Catégories par priorité
 
@@ -142,12 +148,6 @@ const [state, formAction, isPending] = useActionState(submitFn, null)
 @workspace avec react-best-practices, optimise ce composant Dashboard
 @workspace avec react-best-practices, convertis cette page en Server Component
 @workspace avec react-best-practices, ajoute des animations Motion à cette liste
-```
-
-## Démarrage rapide
-
-```bash
-npx skills add Dedalus-ERP-PAS/foundation-skills --skill react-best-practices -g -y
 ```
 
 ## Ressources

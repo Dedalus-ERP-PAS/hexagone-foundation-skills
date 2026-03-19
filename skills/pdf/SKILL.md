@@ -1,6 +1,6 @@
 ---
 name: pdf
-description: Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.
+description: "Boîte à outils complète pour la manipulation de PDF : extraction de texte et tableaux, création de nouveaux PDF, fusion/découpage de documents et gestion de formulaires. Quand Claude doit remplir un formulaire PDF ou traiter, générer ou analyser des documents PDF de manière programmatique et à grande échelle."
 version: 1.0.0
 license: Proprietary. LICENSE.txt has complete terms
 ---

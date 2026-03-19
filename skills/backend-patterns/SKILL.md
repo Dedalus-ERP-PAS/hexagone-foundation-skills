@@ -1,6 +1,6 @@
 ---
 name: backend-patterns
-description: Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.
+description: "Patrons d'architecture backend, conception d'API, optimisation de bases de données et bonnes pratiques côté serveur pour Node.js, Express et les routes API Next.js."
 version: 1.0.0
 license: MIT
 metadata:
