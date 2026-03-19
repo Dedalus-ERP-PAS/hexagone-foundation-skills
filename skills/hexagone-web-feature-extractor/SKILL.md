@@ -10,7 +10,7 @@ Skill permettant d'explorer un espace Hexagone Web, d'en capturer les écrans et
 ## Prérequis
 
 - **Claude in Chrome** activé et connecté
-- Accès réseau au serveur Hexagone Web (URL interne type `https://wsXXXXXX.dedalus.lan:PORT/hexagone-XX/vue/login`)
+- Accès réseau au serveur Hexagone Web (par défaut : `https://ws004202.dedalus.lan:8065/hexagone-01/vue/login`)
 - Acceptation manuelle du certificat SSL si auto-signé (l'utilisateur doit le faire avant de lancer le skill)
 - Le skill **docx** doit être disponible pour la génération du document final
 
@@ -34,7 +34,7 @@ Skill permettant d'explorer un espace Hexagone Web, d'en capturer les écrans et
 ```
 1. Appeler tabs_context_mcp(createIfEmpty=true) pour obtenir un onglet
 2. Créer un nouvel onglet dédié : tabs_create_mcp()
-3. Naviguer vers l'URL de login fournie par l'utilisateur
+3. Naviguer vers l'URL de login (par défaut `https://ws004202.dedalus.lan:8065/hexagone-01/vue/login`, sauf si l'utilisateur en fournit une autre)
 ```
 
 **IMPORTANT** : La navigation initiale peut échouer (timeout) si le certificat SSL n'est pas accepté. Dans ce cas :
@@ -44,7 +44,7 @@ Skill permettant d'explorer un espace Hexagone Web, d'en capturer les écrans et
 
 ### 1.2 Remplir le formulaire de login
 
-Le formulaire Hexagone Web a 3 champs : Nom utilisateur, Mot de passe, Code gestionnaire.
+Le formulaire Hexagone Web a 3 champs : Nom utilisateur, Mot de passe, Code gestionnaire. Par défaut, utiliser l'utilisateur `apvhn` avec un mot de passe aléatoire, sauf si l'utilisateur en fournit d'autres.
 
 **Méthode recommandée** : Utiliser JavaScript natif pour remplir les champs. La méthode `form_input` fonctionne mais le clic sur le bouton peut échouer (`chrome-extension:// URL` error). Utiliser JavaScript pour tout le processus :
 
@@ -54,15 +54,15 @@ const nativeSetter = Object.getOwnPropertyDescriptor(
   window.HTMLInputElement.prototype, 'value'
 ).set;
 
-// Username
+// Username (default: apvhn, unless user specifies another)
 const userInput = document.querySelector('input[type="text"]');
-nativeSetter.call(userInput, 'NOM_UTILISATEUR');
+nativeSetter.call(userInput, 'apvhn');
 userInput.dispatchEvent(new Event('input', { bubbles: true }));
 userInput.dispatchEvent(new Event('change', { bubbles: true }));
 
-// Password (mettre une valeur aléatoire si non contrôlé)
+// Password (random by default, unless user specifies one)
 const pwdInput = document.querySelector('input[type="password"]');
-nativeSetter.call(pwdInput, 'MotDePasse123');
+nativeSetter.call(pwdInput, 'Rand' + Math.random().toString(36).slice(2, 10));
 pwdInput.dispatchEvent(new Event('input', { bubbles: true }));
 pwdInput.dispatchEvent(new Event('change', { bubbles: true }));
 
@@ -233,9 +233,9 @@ cp output.docx /mnt/user-data/outputs/
 ## Paramètres d'entrée attendus
 
 L'utilisateur doit fournir :
-- **URL de login** : `https://wsXXXXXX.dedalus.lan:PORT/hexagone-XX/vue/login`
-- **Nom utilisateur** : code utilisateur Hexagone
-- **Mot de passe** : mot de passe (ou "aléatoire" si non contrôlé)
+- **URL de login** *(optionnel)* : par défaut `https://ws004202.dedalus.lan:8065/hexagone-01/vue/login` (environnement de développement). L'utilisateur peut fournir une autre URL si nécessaire.
+- **Nom utilisateur** *(optionnel)* : par défaut `apvhn`. L'utilisateur peut fournir un autre code si nécessaire.
+- **Mot de passe** *(optionnel)* : par défaut une valeur aléatoire. L'utilisateur peut fournir un mot de passe spécifique si nécessaire.
 - **Espace cible** : nom exact de l'espace à explorer (ex: "STRUCTURES / NOMENCLATURES")
 
 ## Troubleshooting
