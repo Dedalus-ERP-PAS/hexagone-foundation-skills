@@ -76,25 +76,25 @@ Output the decision question before proceeding. Example:
 
 Automatically select 3-4 personas based on the subject matter. Use these heuristics:
 
-| Subject involves... | Auto-select personas |
+| Le sujet concerne... | Personas auto-sélectionnés |
 |---------------------|---------------------|
-| Backend / API / database | SOLID Alex (Backend), Whiteboard Damien (Architect), EXPLAIN PLAN Isabelle (Oracle DBA) |
-| Frontend / UI / UX | Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Sprint Zero Sarah (PO), Whiteboard Damien (Architect) |
-| Security / auth / access control | Paranoid Shug (Security), RGPD Raphaël (DPO), SOLID Alex (Backend), Whiteboard Damien (Architect) |
-| Infrastructure / deploy / CI-CD | Pipeline Mo (DevOps), SOLID Alex (Backend), Whiteboard Damien (Architect) |
-| Data / migration / ETL | Schema JB (Data), EXPLAIN PLAN Isabelle (Oracle DBA), Whiteboard Damien (Architect) |
-| Interoperability / HL7 / FHIR / HPK | RFC Santiago (Interop PO), HL7 Victor (Interop Dev), SOLID Alex (Backend) |
-| Legacy / Uniface / modernization | Legacy Larry (Uniface), Whiteboard Damien (Architect), SOLID Alex (Backend) |
-| Testing / quality / regression | Edge-Case Nico (QA), SOLID Alex (Backend), Pipeline Mo (DevOps) |
-| Product / feature / UX decision | Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Whiteboard Damien (Architect) |
-| Healthcare / clinical workflows | Dr. Workflow Wendy (Healthcare), Sprint Zero Sarah (PO), RGPD Raphaël (DPO) |
-| GDPR / data privacy / compliance | RGPD Raphaël (DPO), Paranoid Shug (Security), Whiteboard Damien (Architect) |
-| BI / dashboards / reporting / finance / comptabilité | Dashboard Delphine (BI Finance), Pixel-Perfect Hugo (Frontend), EXPLAIN PLAN Isabelle (Oracle DBA), Whiteboard Damien (Architect) |
-| Full-stack / mixed concern | Whiteboard Damien (Architect), SOLID Alex (Backend), Sprint Zero Sarah (PO), Edge-Case Nico (QA) |
+| Backend / API / base de données | SOLID Alex (Backend), Whiteboard Damien (Architecte), EXPLAIN PLAN Isabelle (DBA Oracle) |
+| Frontend / UI / UX | Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Sprint Zero Sarah (PO), Whiteboard Damien (Architecte) |
+| Sécurité / auth / contrôle d'accès | Paranoid Shug (Sécurité), RGPD Raphaël (DPO), SOLID Alex (Backend), Whiteboard Damien (Architecte) |
+| Infrastructure / déploiement / CI-CD | Pipeline Mo (DevOps), SOLID Alex (Backend), Whiteboard Damien (Architecte) |
+| Données / migration / ETL | Schema JB (Data), EXPLAIN PLAN Isabelle (DBA Oracle), Whiteboard Damien (Architecte) |
+| Interopérabilité / HL7 / FHIR / HPK | RFC Santiago (PO Interop), HL7 Victor (Dev Interop), SOLID Alex (Backend) |
+| Legacy / Uniface / modernisation | Legacy Larry (Uniface), Whiteboard Damien (Architecte), SOLID Alex (Backend) |
+| Tests / qualité / régression | Edge-Case Nico (QA), SOLID Alex (Backend), Pipeline Mo (DevOps) |
+| Produit / fonctionnalité / décision UX | Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Whiteboard Damien (Architecte) |
+| Santé / workflows cliniques | Dr. Workflow Wendy (Santé), Sprint Zero Sarah (PO), RGPD Raphaël (DPO) |
+| RGPD / données personnelles / conformité | RGPD Raphaël (DPO), Paranoid Shug (Sécurité), Whiteboard Damien (Architecte) |
+| BI / tableaux de bord / reporting / finance / comptabilité | Dashboard Delphine (BI Finance), Pixel-Perfect Hugo (Frontend), EXPLAIN PLAN Isabelle (DBA Oracle), Whiteboard Damien (Architecte) |
+| Full-stack / sujet transverse | Whiteboard Damien (Architecte), SOLID Alex (Backend), Sprint Zero Sarah (PO), Edge-Case Nico (QA) |
 
-If the subject spans multiple areas, pick the most relevant 3-4 personas. Always include **Whiteboard Damien (Architect)** for technical decisions. Always include **Sprint Zero Sarah (PO)** for product decisions.
+Si le sujet couvre plusieurs domaines, choisir les 3-4 personas les plus pertinents. Toujours inclure **Whiteboard Damien (Architecte)** pour les décisions techniques. Toujours inclure **Sprint Zero Sarah (PO)** pour les décisions produit.
 
-**Full persona pool with roles, perspectives, and biases:** see `reference/personas.md`.
+**Pool complet des personas avec rôles, perspectives et biais :** voir `reference/personas.md`.
 
 **Announce the selected personas and their roles before starting the meeting.**
 
@@ -454,11 +454,11 @@ If any step failed, the summary must include the failure reason and any manual r
 ```
 User: fast-meeting : est-ce qu'on doit utiliser GraphQL ou REST pour la nouvelle API
 
-→ Auto-selects: SOLID Alex (Backend), Pixel-Perfect Hugo (Frontend), Whiteboard Damien (Architect)
-→ Runs fast meeting (1 round + synthesis)
-→ Implements the recommended approach
-→ Creates branch feat/fm-graphql-vs-rest-api
-→ Commits, pushes, creates MR/PR with French description
+→ Auto-sélection : SOLID Alex (Backend), Pixel-Perfect Hugo (Frontend), Whiteboard Damien (Architecte)
+→ Lance le fast meeting (1 tour + synthèse)
+→ Implémente l'approche recommandée
+→ Crée la branche feat/fm-graphql-vs-rest-api
+→ Commit, push, crée la MR/PR avec description en français
 ```
 
 ### Example 2: Bug Fix with Issue
@@ -466,11 +466,11 @@ User: fast-meeting : est-ce qu'on doit utiliser GraphQL ou REST pour la nouvelle
 ```
 User: fast-meeting sur l'issue #42 - les notifications ne s'affichent pas
 
-→ Fetches issue #42 details
-→ Auto-selects: Pixel-Perfect Hugo (Frontend), SOLID Alex (Backend), Edge-Case Nico (QA)
-→ Runs fast meeting
-→ Implements the fix
-→ Creates MR/PR, posts link on issue #42
+→ Récupère les détails de l'issue #42
+→ Auto-sélection : Pixel-Perfect Hugo (Frontend), SOLID Alex (Backend), Edge-Case Nico (QA)
+→ Lance le fast meeting
+→ Implémente le correctif
+→ Crée la MR/PR, poste le lien sur l'issue #42
 ```
 
 ### Example 3: Refactoring
@@ -478,10 +478,10 @@ User: fast-meeting sur l'issue #42 - les notifications ne s'affichent pas
 ```
 User: fast-meeting : refactorer le module d'authentification pour supporter OAuth2
 
-→ Auto-selects: Paranoid Shug (Security), SOLID Alex (Backend), Whiteboard Damien (Architect), Pipeline Mo (DevOps)
-→ Runs fast meeting
-→ Implements the refactoring
-→ Creates MR/PR with French analysis
+→ Auto-sélection : Paranoid Shug (Sécurité), SOLID Alex (Backend), Whiteboard Damien (Architecte), Pipeline Mo (DevOps)
+→ Lance le fast meeting
+→ Implémente le refactoring
+→ Crée la MR/PR avec analyse en français
 ```
 
 ## Important Notes

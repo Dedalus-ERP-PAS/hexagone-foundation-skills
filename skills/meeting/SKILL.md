@@ -72,23 +72,23 @@ Choose 3-5 personas relevant to the subject. Each persona has:
 
 Use these heuristics as a starting point. The user can override the selection before the meeting starts.
 
-| Subject involves... | Suggested personas |
+| Le sujet concerne... | Personas suggérés |
 |---------------------|-------------------|
-| Backend / API / database | SOLID Alex (Backend), Whiteboard Damien (Architect), EXPLAIN PLAN Isabelle (Oracle DBA) |
-| Frontend / UI / UX | Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Sprint Zero Sarah (PO), Whiteboard Damien (Architect) |
-| Security / auth / access control | Paranoid Shug (Security), RGPD Raphaël (DPO), SOLID Alex (Backend), Whiteboard Damien (Architect) |
-| Infrastructure / deploy / CI-CD | Pipeline Mo (DevOps), SOLID Alex (Backend), Whiteboard Damien (Architect) |
-| Data / migration / ETL | Schema JB (Data), EXPLAIN PLAN Isabelle (Oracle DBA), Whiteboard Damien (Architect) |
-| Interoperability / HL7 / FHIR / HPK | RFC Santiago (Interop PO), HL7 Victor (Interop Dev), SOLID Alex (Backend) |
-| Legacy / Uniface / modernization | Legacy Larry (Uniface), Whiteboard Damien (Architect), SOLID Alex (Backend) |
-| Testing / quality / regression | Edge-Case Nico (QA), SOLID Alex (Backend), Pipeline Mo (DevOps) |
-| Product / feature / UX decision | Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Whiteboard Damien (Architect) |
-| Healthcare / clinical workflows | Dr. Workflow Wendy (Healthcare), Sprint Zero Sarah (PO), RGPD Raphaël (DPO) |
-| GDPR / data privacy / compliance | RGPD Raphaël (DPO), Paranoid Shug (Security), Whiteboard Damien (Architect) |
-| BI / dashboards / reporting / finance / comptabilité | Dashboard Delphine (BI Finance), Pixel-Perfect Hugo (Frontend), EXPLAIN PLAN Isabelle (Oracle DBA), Whiteboard Damien (Architect) |
-| Full-stack / mixed concern | Whiteboard Damien (Architect), SOLID Alex (Backend), Sprint Zero Sarah (PO), Edge-Case Nico (QA) |
+| Backend / API / base de données | SOLID Alex (Backend), Whiteboard Damien (Architecte), EXPLAIN PLAN Isabelle (DBA Oracle) |
+| Frontend / UI / UX | Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Sprint Zero Sarah (PO), Whiteboard Damien (Architecte) |
+| Sécurité / auth / contrôle d'accès | Paranoid Shug (Sécurité), RGPD Raphaël (DPO), SOLID Alex (Backend), Whiteboard Damien (Architecte) |
+| Infrastructure / déploiement / CI-CD | Pipeline Mo (DevOps), SOLID Alex (Backend), Whiteboard Damien (Architecte) |
+| Données / migration / ETL | Schema JB (Data), EXPLAIN PLAN Isabelle (DBA Oracle), Whiteboard Damien (Architecte) |
+| Interopérabilité / HL7 / FHIR / HPK | RFC Santiago (PO Interop), HL7 Victor (Dev Interop), SOLID Alex (Backend) |
+| Legacy / Uniface / modernisation | Legacy Larry (Uniface), Whiteboard Damien (Architecte), SOLID Alex (Backend) |
+| Tests / qualité / régression | Edge-Case Nico (QA), SOLID Alex (Backend), Pipeline Mo (DevOps) |
+| Produit / fonctionnalité / décision UX | Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), Figma Fiona (UX/UI), Whiteboard Damien (Architecte) |
+| Santé / workflows cliniques | Dr. Workflow Wendy (Santé), Sprint Zero Sarah (PO), RGPD Raphaël (DPO) |
+| RGPD / données personnelles / conformité | RGPD Raphaël (DPO), Paranoid Shug (Sécurité), Whiteboard Damien (Architecte) |
+| BI / tableaux de bord / reporting / finance / comptabilité | Dashboard Delphine (BI Finance), Pixel-Perfect Hugo (Frontend), EXPLAIN PLAN Isabelle (DBA Oracle), Whiteboard Damien (Architecte) |
+| Full-stack / sujet transverse | Whiteboard Damien (Architecte), SOLID Alex (Backend), Sprint Zero Sarah (PO), Edge-Case Nico (QA) |
 
-If the subject spans multiple areas, pick the 3-5 most relevant personas. Always include **Whiteboard Damien (Architect)** for technical decisions. Always include **Sprint Zero Sarah (PO)** for product decisions.
+Si le sujet couvre plusieurs domaines, choisir les 3-5 personas les plus pertinents. Toujours inclure **Whiteboard Damien (Architecte)** pour les décisions techniques. Toujours inclure **Sprint Zero Sarah (PO)** pour les décisions produit.
 
 **After announcing the selected personas, ask the user to confirm or adjust before starting the meeting.**
 
@@ -189,7 +189,7 @@ After collecting all Round 2 responses, **you** (the facilitator, not a sub-agen
    - For each persona, assess how central the decision question is to their expertise
    - A database migration question: EXPLAIN PLAN Isabelle's position carries more weight than Pixel-Perfect Hugo's
    - A UI redesign question: Pixel-Perfect Hugo's position carries more weight than EXPLAIN PLAN Isabelle's
-   - Whiteboard Damien (Architect) and Sprint Zero Sarah (PO) act as balancing voices across all topics
+   - Whiteboard Damien (Architecte) et Sprint Zero Sarah (PO) jouent le rôle de voix équilibrantes sur tous les sujets
 
 2. **Identify consensus and disagreements:**
    - Points of agreement across all personas
@@ -446,7 +446,7 @@ When the user selects option 1 ("Valider cette recommandation et passer à l'imp
 ```
 User: Lance une réunion pour savoir si on doit utiliser GraphQL ou REST pour la nouvelle API
 
-Meeting would include: SOLID Alex (Backend), Sprint Zero Sarah (PO), Pipeline Mo (DevOps), Pixel-Perfect Hugo (Frontend)
+Participants : SOLID Alex (Backend), Sprint Zero Sarah (PO), Pipeline Mo (DevOps), Pixel-Perfect Hugo (Frontend)
 Decision question: "Devons-nous utiliser GraphQL ou REST pour la nouvelle API ?"
 ```
 
@@ -455,7 +455,7 @@ Decision question: "Devons-nous utiliser GraphQL ou REST pour la nouvelle API ?"
 ```
 User: Fais une réunion sur l'issue #234 - migration du monolithe vers des microservices
 
-Meeting would include: Whiteboard Damien (Architect), SOLID Alex (Backend), Pipeline Mo (DevOps), Sprint Zero Sarah (PO), Edge-Case Nico (QA)
+Participants : Whiteboard Damien (Architecte), SOLID Alex (Backend), Pipeline Mo (DevOps), Sprint Zero Sarah (PO), Edge-Case Nico (QA)
 Decision question: "Comment migrer du monolithe vers des microservices pour le module facturation ?"
 Analysis posted to GitLab issue #234 after user validation
 ```
@@ -465,7 +465,7 @@ Analysis posted to GitLab issue #234 after user validation
 ```
 User: Organisons une réunion sur l'ajout de notifications temps réel dans l'application
 
-Meeting would include: Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), SOLID Alex (Backend), Paranoid Shug (Security)
+Participants : Sprint Zero Sarah (PO), Pixel-Perfect Hugo (Frontend), SOLID Alex (Backend), Paranoid Shug (Sécurité)
 Decision question: "Quelle approche adopter pour les notifications temps réel ?"
 ```
 
