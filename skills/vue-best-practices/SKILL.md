@@ -1,7 +1,7 @@
 ---
 name: vue-best-practices
-description: "Guide des bonnes pratiques Vue.js 3 couvrant la Composition API, la conception de composants, les patrons de réactivité, le styling utility-first avec Tailwind CSS, l'intégration de la bibliothèque de composants PrimeVue et l'organisation du code. À utiliser lors de l'écriture, la revue ou le refactoring de code Vue.js pour garantir des patrons idiomatiques et un code maintenable."
-version: 1.0.0
+description: "Guide des bonnes pratiques Vue.js 3 couvrant la Composition API, la conception de composants, les patrons de réactivité, le styling utility-first avec Tailwind CSS, l'intégration native de la bibliothèque de composants PrimeVue et l'organisation du code. À utiliser lors de l'écriture, la revue ou le refactoring de code Vue.js pour garantir des patrons idiomatiques et un code maintenable."
+version: 2.0.0
 license: MIT
 ---
 
@@ -20,8 +20,8 @@ Reference these guidelines when:
 - Working with Nuxt.js applications
 - Styling Vue components with Tailwind CSS utility classes
 - Creating design systems with Tailwind and Vue
-- Using PrimeVue component library
-- Customizing PrimeVue components with PassThrough API
+- Using PrimeVue component library natively
+- Customizing PrimeVue theme through design tokens and definePreset()
 
 ## Rule Categories
 
@@ -127,13 +127,13 @@ Reference these guidelines when:
 
 ### 10. PrimeVue
 
-- `primevue-design-tokens` - Use design tokens over CSS overrides for theming
-- `primevue-passthrough-api` - Use PassThrough (pt) API for component customization
-- `primevue-wrapper-components` - Wrap PrimeVue components for consistent styling across apps
-- `primevue-unstyled-mode` - Use unstyled mode with Tailwind for full styling control
-- `primevue-global-pt-config` - Define shared PassThrough properties at app level
-- `primevue-merge-strategies` - Choose appropriate merge strategies for PT customization
-- `primevue-use-passthrough-utility` - Use `usePassThrough` for extending presets
+- `primevue-use-natively` - Use PrimeVue components as-is with their documented props and API
+- `primevue-design-tokens` - Customize appearance exclusively through design tokens and `definePreset()`
+- `primevue-no-pt-overrides` - NEVER use PassThrough (pt) API to restyle components
+- `primevue-no-unstyled-mode` - NEVER use unstyled mode to strip and rebuild component styles
+- `primevue-no-wrapper-components` - NEVER wrap PrimeVue components just to override their styling
+- `primevue-props-api` - Use built-in props (severity, size, outlined, rounded, raised, text) for variants
+- `primevue-css-layers` - Configure CSS layer ordering for clean Tailwind coexistence
 - `primevue-typed-components` - Leverage PrimeVue's TypeScript support for type safety
 - `primevue-accessibility` - Maintain WCAG compliance with proper aria attributes
 - `primevue-lazy-loading` - Use async components for large PrimeVue imports
@@ -811,11 +811,15 @@ const props = defineProps<{
 
 ## PrimeVue Best Practices
 
-PrimeVue is a comprehensive Vue UI component library with 90+ components. Follow these patterns for effective integration and customization.
+PrimeVue is a comprehensive Vue UI component library with 90+ components. **Use it natively. Do not fight the framework.**
+
+### Core Principle
+
+PrimeVue v4 has a complete theming system based on design tokens and presets. This is the ONLY supported customization path. Do not bypass it.
 
 ### Installation & Setup
 
-**Correct: PrimeVue v4 setup with Vue 3**
+**Correct: PrimeVue v4 setup with theme preset**
 ```typescript
 // main.ts
 import { createApp } from 'vue'
@@ -829,7 +833,13 @@ app.use(PrimeVue, {
   theme: {
     preset: Aura,
     options: {
-      darkModeSelector: '.dark-mode'
+      prefix: 'p',
+      darkModeSelector: '.dark-mode',
+      // Ensure clean coexistence with Tailwind
+      cssLayer: {
+        name: 'primevue',
+        order: 'tailwind-base, primevue, tailwind-utilities'
+      }
     }
   }
 })
@@ -849,277 +859,189 @@ app.component('DataTable', DataTable)
 app.component('Column', Column)
 ```
 
-### PassThrough (PT) API
+### Theme Customization with Design Tokens
 
-The PassThrough API allows customization of internal DOM elements without modifying component source:
+Customize PrimeVue appearance through the design token system, NOT by overriding component internals:
 
-**Correct: Component-level PassThrough**
-```vue
-<script setup lang="ts">
-import Panel from 'primevue/panel'
-</script>
-
-<template>
-  <Panel
-    header="User Profile"
-    toggleable
-    :pt="{
-      header: {
-        class: 'bg-primary-100 dark:bg-primary-900'
-      },
-      content: {
-        class: 'p-6'
-      },
-      title: {
-        class: 'text-xl font-semibold'
-      },
-      toggler: {
-        class: 'hover:bg-primary-200 dark:hover:bg-primary-800 rounded-full'
-      }
-    }"
-  >
-    <p>Panel content here</p>
-  </Panel>
-</template>
-```
-
-**Correct: Dynamic PassThrough with state**
-```vue
-<script setup lang="ts">
-import Panel from 'primevue/panel'
-</script>
-
-<template>
-  <Panel
-    header="Collapsible Panel"
-    toggleable
-    :pt="{
-      header: (options) => ({
-        class: [
-          'transition-colors duration-200',
-          {
-            'bg-primary-500 text-white': options.state.d_collapsed,
-            'bg-surface-100 dark:bg-surface-800': !options.state.d_collapsed
-          }
-        ]
-      })
-    }"
-  >
-    <p>Content changes header style when collapsed</p>
-  </Panel>
-</template>
-```
-
-### Global PassThrough Configuration
-
-Define shared styles at the application level:
-
-**Correct: Global PT configuration**
+**Correct: Custom preset using definePreset()**
 ```typescript
-// main.ts
-import PrimeVue from 'primevue/config'
+// theme/my-preset.ts
+import { definePreset } from '@primevue/themes'
 import Aura from '@primevue/themes/aura'
+
+const MyPreset = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50: '{indigo.50}',
+      100: '{indigo.100}',
+      200: '{indigo.200}',
+      300: '{indigo.300}',
+      400: '{indigo.400}',
+      500: '{indigo.500}',
+      600: '{indigo.600}',
+      700: '{indigo.700}',
+      800: '{indigo.800}',
+      900: '{indigo.900}',
+      950: '{indigo.950}'
+    },
+    colorScheme: {
+      light: {
+        surface: {
+          0: '#ffffff',
+          50: '{slate.50}',
+          100: '{slate.100}',
+          // ...
+        }
+      },
+      dark: {
+        surface: {
+          0: '#0a0a0a',
+          50: '{slate.950}',
+          // ...
+        }
+      }
+    }
+  }
+})
+
+export default MyPreset
+```
+
+**Usage in main.ts:**
+```typescript
+import MyPreset from './theme/my-preset'
 
 app.use(PrimeVue, {
   theme: {
-    preset: Aura
-  },
-  pt: {
-    // All buttons get consistent styling
-    button: {
-      root: {
-        class: 'rounded-lg font-medium transition-all duration-200'
-      }
-    },
-    // All inputs get consistent styling
-    inputtext: {
-      root: {
-        class: 'rounded-lg border-2 focus:ring-2 focus:ring-primary-500'
-      }
-    },
-    // All panels share styling
-    panel: {
-      header: {
-        class: 'bg-surface-50 dark:bg-surface-900'
-      }
-    },
-    // Global CSS injection
-    global: {
-      css: `
-        .p-component {
-          font-family: 'Inter', sans-serif;
-        }
-      `
-    }
+    preset: MyPreset
   }
 })
 ```
 
-### usePassThrough Utility
+### Using Components Natively
 
-Extend existing presets with custom modifications:
+Use PrimeVue components with their built-in props — do not restyle them:
 
-**Correct: Extending Tailwind preset**
-```typescript
-// presets/custom-tailwind.ts
-import { usePassThrough } from 'primevue/passthrough'
-import Tailwind from 'primevue/passthrough/tailwind'
-
-export const CustomTailwind = usePassThrough(
-  Tailwind,
-  {
-    panel: {
-      header: {
-        class: ['bg-gradient-to-r from-primary-500 to-primary-600']
-      },
-      title: {
-        class: ['text-white font-bold']
-      }
-    },
-    button: {
-      root: {
-        class: ['shadow-lg hover:shadow-xl transition-shadow']
-      }
-    }
-  },
-  {
-    mergeSections: true,  // Keep original sections
-    mergeProps: false     // Replace props (don't merge arrays)
-  }
-)
-```
-
-**Merge Strategy Reference:**
-
-| mergeSections | mergeProps | Behavior |
-|---------------|------------|----------|
-| `true` | `false` | Custom value replaces original (default) |
-| `true` | `true` | Custom values merge with original |
-| `false` | `true` | Only custom sections included |
-| `false` | `false` | Minimal - only custom sections, no merging |
-
-### Unstyled Mode with Tailwind
-
-Use unstyled PrimeVue components with full Tailwind control:
-
-**Correct: Unstyled mode configuration**
-```typescript
-// main.ts
-import PrimeVue from 'primevue/config'
-
-app.use(PrimeVue, {
-  unstyled: true  // Remove all default styles
-})
-```
-
-**Correct: Custom styled button with unstyled mode**
+**Correct: Use built-in severity and variant props**
 ```vue
-<script setup lang="ts">
-import Button from 'primevue/button'
-</script>
-
 <template>
-  <Button
-    label="Submit"
-    :pt="{
-      root: {
-        class: [
-          'inline-flex items-center justify-center',
-          'px-4 py-2 rounded-lg font-medium',
-          'bg-primary-600 text-white',
-          'hover:bg-primary-700 active:bg-primary-800',
-          'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-          'transition-colors duration-150',
-          'disabled:opacity-50 disabled:cursor-not-allowed'
-        ]
-      },
-      label: {
-        class: 'font-medium'
-      },
-      icon: {
-        class: 'mr-2'
-      }
-    }"
-    :ptOptions="{ mergeSections: false, mergeProps: false }"
-  />
+  <!-- Use severity prop for color variants -->
+  <Button label="Save" severity="success" />
+  <Button label="Delete" severity="danger" />
+  <Button label="Info" severity="info" outlined />
+
+  <!-- Use size prop -->
+  <Button label="Small" size="small" />
+  <Button label="Large" size="large" />
+
+  <!-- Use style variant props -->
+  <Button label="Text" text />
+  <Button label="Outlined" outlined />
+  <Button label="Rounded" rounded />
+  <Button label="Raised" raised />
+
+  <!-- Use icon prop -->
+  <Button label="Search" icon="pi pi-search" />
+  <Button icon="pi pi-check" rounded aria-label="Confirm" />
 </template>
 ```
 
-### Wrapper Components Pattern
-
-Create reusable wrapper components for consistent styling:
-
-**Correct: Button wrapper component**
+**Correct: Use slot API for content customization**
 ```vue
-<!-- components/ui/AppButton.vue -->
-<script setup lang="ts">
-import Button from 'primevue/button'
-
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost'
-type ButtonSize = 'sm' | 'md' | 'lg'
-
-const props = withDefaults(defineProps<{
-  variant?: ButtonVariant
-  size?: ButtonSize
-  loading?: boolean
-}>(), {
-  variant: 'primary',
-  size: 'md',
-  loading: false
-})
-
-const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500',
-  secondary: 'bg-surface-200 text-surface-900 hover:bg-surface-300 focus:ring-surface-500',
-  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
-  ghost: 'bg-transparent text-primary-600 hover:bg-primary-50 focus:ring-primary-500'
-}
-
-const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg'
-}
-</script>
-
 <template>
-  <Button
-    v-bind="$attrs"
-    :loading="loading"
-    :pt="{
-      root: {
-        class: [
-          'inline-flex items-center justify-center rounded-lg font-medium',
-          'transition-all duration-200',
-          'focus:outline-none focus:ring-2 focus:ring-offset-2',
-          'disabled:opacity-50 disabled:cursor-not-allowed',
-          variantClasses[variant],
-          sizeClasses[size]
-        ]
-      }
-    }"
-    :ptOptions="{ mergeSections: false, mergeProps: false }"
-  >
-    <slot />
-  </Button>
+  <DataTable :value="users" stripedRows paginator :rows="10">
+    <Column field="name" header="Name" sortable />
+    <Column field="status" header="Status">
+      <template #body="{ data }">
+        <Tag :value="data.status" :severity="getStatusSeverity(data.status)" />
+      </template>
+    </Column>
+  </DataTable>
 </template>
-
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
 ```
 
-**Usage:**
+### What NEVER to Do with PrimeVue
+
+**NEVER use PassThrough (pt) to restyle components:**
+```vue
+<!-- INCORRECT: Fighting the framework -->
+<Button
+  label="Submit"
+  :pt="{
+    root: { class: 'bg-blue-600 rounded-lg px-4 py-2' },
+    label: { class: 'font-medium' }
+  }"
+/>
+
+<!-- CORRECT: Use the component natively -->
+<Button label="Submit" />
+```
+
+**NEVER use unstyled mode to rebuild components:**
+```typescript
+// INCORRECT: Stripping the framework and rebuilding it
+app.use(PrimeVue, { unstyled: true })
+
+// CORRECT: Use a theme preset
+app.use(PrimeVue, { theme: { preset: Aura } })
+```
+
+**NEVER create wrapper components to override styling:**
+```vue
+<!-- INCORRECT: Unnecessary abstraction -->
+<!-- components/AppButton.vue -->
+<Button v-bind="$attrs" :pt="{ root: { class: customClasses } }">
+  <slot />
+</Button>
+
+<!-- CORRECT: Use Button directly everywhere -->
+<Button label="Submit" severity="primary" />
+```
+
+**NEVER target PrimeVue internal CSS classes:**
+```css
+/* INCORRECT: Fragile, breaks on updates */
+.p-button-label { font-weight: 700; }
+.p-datatable-header { background: #f0f0f0; }
+
+/* CORRECT: Customize through design tokens in definePreset() */
+```
+
+### Tailwind and PrimeVue Coexistence
+
+Tailwind and PrimeVue serve different roles — do not mix their responsibilities:
+
+- **PrimeVue owns**: component appearance, internal spacing, interactive states, component variants
+- **Tailwind owns**: page layout, spacing between components, custom non-library elements, typography on non-library elements
+
+**Correct: Tailwind for layout, PrimeVue components used natively**
 ```vue
 <template>
-  <AppButton variant="primary" size="lg" @click="handleSubmit">
-    Submit Form
-  </AppButton>
-  <AppButton variant="ghost" size="sm">
-    Cancel
-  </AppButton>
+  <!-- Tailwind handles the page layout -->
+  <div class="mx-auto max-w-4xl space-y-6 p-6">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Users</h1>
+
+    <!-- PrimeVue components used as-is -->
+    <DataTable :value="users" stripedRows paginator :rows="10">
+      <Column field="name" header="Name" sortable />
+      <Column field="email" header="Email" sortable />
+      <Column field="role" header="Role" />
+    </DataTable>
+
+    <!-- Tailwind for spacing between PrimeVue components -->
+    <div class="flex gap-3">
+      <Button label="Add User" icon="pi pi-plus" />
+      <Button label="Export" icon="pi pi-download" severity="secondary" outlined />
+    </div>
+  </div>
+</template>
+```
+
+**INCORRECT: Using Tailwind to restyle PrimeVue components**
+```vue
+<template>
+  <!-- WRONG: Tailwind classes overriding PrimeVue button appearance -->
+  <Button label="Submit" class="rounded-full bg-indigo-600 px-8 py-3 shadow-xl" />
 </template>
 ```
 

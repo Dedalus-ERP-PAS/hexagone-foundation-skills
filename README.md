@@ -38,49 +38,49 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 
 ### Documentation technique
 
-| Document                                                  | Description                                                                               |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [Guide d'utilisation](docs/comment-utiliser.md)           | Guide complet d'installation et d'utilisation des skills avec différents agents IA        |
-| [Index documentation](docs/README.md)                     | Index de la documentation avec liste des guides et skills disponibles                     |
-| [Guide parseurs santé](docs/healthcare-parsers-guide.md)  | Guide complet pour parser les messages HPK et HL7 PAM dans les systèmes hospitaliers      |
-| [Spécification HPK/GEF](docs/specification-hpk-gef.md)    | Référentiel technique des messages de gestion économique et financière HPK/GEF            |
-| [Messages HPK ADT](docs/hpk-adt-message.md)               | Spécification technique des messages de gestion économique au format HPK                  |
-| [Parseur HPK](docs/hpk-parser.md)                         | Parsing et explication des messages HPK propriétaires au format délimité par pipes        |
-| [Parseur HL7 PAM](docs/hl7-pam-parser.md)                 | Parsing et explication des messages HL7 v2.5 IHE PAM d'administration des patients        |
-| [Backend patterns](docs/backend-patterns.md)              | Patterns d'architecture backend (Repository, Service Layer) et optimisations API          |
-| [Coding standards](docs/coding-standards.md)              | Standards de code universels pour TypeScript, JavaScript, React et Node.js                |
-| [React best practices](docs/react-best-practices.md)      | Guide des best practices React et Next.js (architecture, performance, shadcn/ui)          |
-| [Vue best practices](docs/vue-best-practices.md)          | Best practices Vue.js 3 et Nuxt avec Composition API et patterns d'organisation           |
-| [Frontend design](docs/frontend-design.md)                | Création d'interfaces web distinctives et professionnelles                                |
-| [Web design guidelines](docs/web-design-guidelines.md)    | Audit et revue de code UI pour conformité aux guidelines web                              |
-| [Design system rules](docs/create-design-system-rules.md) | Génération de règles de design system pour workflows Figma-to-code                        |
-| [MCP builder](docs/mcp-builder.md)                        | Guide pour créer des serveurs MCP (Model Context Protocol) en TypeScript ou Python        |
-| [Playwright skill](docs/playwright-skill.md)              | Tests et automatisation web complète avec Playwright                                      |
-| [PostgreSQL](docs/postgres.md)                            | Exécution de requêtes SQL en lecture seule sur PostgreSQL                                 |
-| [GitLab code review](docs/gitlab-code-review.md)          | Revue de code des merge requests GitLab avec analyse qualité et sécurité                  |
-| [GitLab issue](docs/gitlab-issue.md)                      | Création et gestion d'issues GitLab sur instance auto-hébergée                            |
-| [GitHub issues](docs/github-issues.md)                    | Création et gestion d'issues GitHub avec workflows structurés                             |
-| [Security review](docs/security-review.md)                | Audit de sécurité couvrant authentification, injection SQL, secrets et CSRF               |
-| [Article extractor](docs/article-extractor.md)            | Extraction du contenu propre d'articles web sans publicités                               |
-| [Changelog generator](docs/changelog-generator.md)        | Génération automatique de changelogs à partir de l'historique git                         |
-| [Documents Word](docs/docx.md)                            | Manipulation et génération de documents Word (.docx)                                      |
-| [PDF](docs/pdf.md)                                        | Manipulation de fichiers PDF (extraction de texte, tableaux et création)                  |
-| [PowerPoint](docs/pptx.md)                                | Manipulation de présentations PowerPoint (lecture, création et modification)              |
-| [Excel](docs/xlsx.md)                                     | Manipulation de fichiers Excel (création, lecture et formatage)                           |
-| [Docs generator](docs/docs.md)                            | Génération automatique de README.md et documentation en français orienté Product Owner    |
-| [Fast meeting](docs/fast-meeting.md)                      | Réunion rapide autonome avec personas : analyse, implémentation et création de MR/PR      |
-| [Meeting](docs/meeting.md)                                | Simulation de réunion avec personas pour analyser un sujet et converger vers une décision |
-| [Uniface ProcScript](docs/uniface-procscript.md)          | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation)  |
-| [Hexagone Web Services](docs/hexagone-swdoc.md)           | Documentation des web services Hexagone depuis le dépôt swdoc GitLab                      |
-| [Hexagone Frontend](docs/hexagone-frontend.md)            | Documentation des composants frontend Hexagone (@his/hexa-components)                     |
+| Document                                                                 | Description                                                                                      |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| [Guide d'utilisation](docs/comment-utiliser.md)                          | Guide complet d'installation et d'utilisation des skills avec différents agents IA               |
+| [Index documentation](docs/README.md)                                    | Index de la documentation avec liste des guides et skills disponibles                            |
+| [Guide parseurs santé](docs/healthcare-parsers-guide.md)                 | Guide complet pour parser les messages HPK et HL7 PAM dans les systèmes hospitaliers             |
+| [Spécification HPK/GEF](docs/specification-hpk-gef.md)                   | Référentiel technique des messages de gestion économique et financière HPK/GEF                   |
+| [Messages HPK ADT](docs/hpk-adt-message.md)                              | Spécification technique des messages de gestion économique au format HPK                         |
+| [Parseur HPK](docs/hpk-parser.md)                                        | Parsing et explication des messages HPK propriétaires au format délimité par pipes               |
+| [Parseur HL7 PAM](docs/hl7-pam-parser.md)                                | Parsing et explication des messages HL7 v2.5 IHE PAM d'administration des patients               |
+| [Backend patterns](docs/backend-patterns.md)                             | Patterns d'architecture backend (Repository, Service Layer) et optimisations API                 |
+| [Coding standards](docs/coding-standards.md)                             | Standards de code universels pour TypeScript, JavaScript, React et Node.js                       |
+| [React best practices](docs/react-best-practices.md)                     | Guide des best practices React et Next.js (architecture, performance, shadcn/ui)                 |
+| [Vue best practices](docs/vue-best-practices.md)                         | Best practices Vue.js 3 et Nuxt avec Composition API et patterns d'organisation                  |
+| [Frontend](docs/frontend.md)                                             | Règles de développement frontend natif — respect du framework et du design system                |
+| [Web design guidelines](docs/web-design-guidelines.md)                   | Audit et revue de code UI pour conformité aux guidelines web                                     |
+| [Design system rules](docs/create-design-system-rules.md)                | Génération de règles de design system pour workflows Figma-to-code                               |
+| [MCP builder](docs/mcp-builder.md)                                       | Guide pour créer des serveurs MCP (Model Context Protocol) en TypeScript ou Python               |
+| [Playwright skill](docs/playwright-skill.md)                             | Tests et automatisation web complète avec Playwright                                             |
+| [PostgreSQL](docs/postgres.md)                                           | Exécution de requêtes SQL en lecture seule sur PostgreSQL                                        |
+| [GitLab code review](docs/gitlab-code-review.md)                         | Revue de code des merge requests GitLab avec analyse qualité et sécurité                         |
+| [GitLab issue](docs/gitlab-issue.md)                                     | Création et gestion d'issues GitLab sur instance auto-hébergée                                   |
+| [GitHub issues](docs/github-issues.md)                                   | Création et gestion d'issues GitHub avec workflows structurés                                    |
+| [Security review](docs/security-review.md)                               | Audit de sécurité couvrant authentification, injection SQL, secrets et CSRF                      |
+| [Article extractor](docs/article-extractor.md)                           | Extraction du contenu propre d'articles web sans publicités                                      |
+| [Changelog generator](docs/changelog-generator.md)                       | Génération automatique de changelogs à partir de l'historique git                                |
+| [Documents Word](docs/docx.md)                                           | Manipulation et génération de documents Word (.docx)                                             |
+| [PDF](docs/pdf.md)                                                       | Manipulation de fichiers PDF (extraction de texte, tableaux et création)                         |
+| [PowerPoint](docs/pptx.md)                                               | Manipulation de présentations PowerPoint (lecture, création et modification)                     |
+| [Excel](docs/xlsx.md)                                                    | Manipulation de fichiers Excel (création, lecture et formatage)                                  |
+| [Docs generator](docs/docs.md)                                           | Génération automatique de README.md et documentation en français orienté Product Owner           |
+| [Fast meeting](docs/fast-meeting.md)                                     | Réunion rapide autonome avec personas : analyse, implémentation et création de MR/PR             |
+| [Meeting](docs/meeting.md)                                               | Simulation de réunion avec personas pour analyser un sujet et converger vers une décision        |
+| [Uniface ProcScript](docs/uniface-procscript.md)                         | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation)         |
+| [Hexagone Web Services](docs/hexagone-swdoc.md)                          | Documentation des web services Hexagone depuis le dépôt swdoc GitLab                             |
+| [Hexagone Frontend](docs/hexagone-frontend.md)                           | Documentation des composants frontend Hexagone (@his/hexa-components)                            |
 | [Hexagone Web Feature Extractor](docs/hexagone-web-feature-extractor.md) | Exploration d'un espace Hexagone Web avec capture d'écrans et génération de document Markdown PO |
-| [TDD](docs/tdd.md)                                        | Développement piloté par les tests avec boucle red-green-refactor                         |
-| [Testing patterns](docs/testing-patterns.md)               | Patterns de test : unitaire, intégration, E2E, mocking et organisation                    |
-| [TypeScript migration](docs/typescript-migration.md)       | Guide de migration incrémentale JavaScript vers TypeScript                                |
-| [Triage issue](docs/triage-issue.md)                      | Investigation de bugs et création automatique d'issues GitLab/GitHub                      |
-| [Ubiquitous language](docs/ubiquitous-language.md)        | Extraction de glossaire DDD adapté au domaine santé                                       |
-| [Git guardrails](docs/git-guardrails.md)                  | Hooks de sécurité pour bloquer les commandes git dangereuses                              |
-| [Write a skill](docs/write-a-skill.md)                    | Guide de création de nouveaux skills pour le projet                                       |
+| [TDD](docs/tdd.md)                                                       | Développement piloté par les tests avec boucle red-green-refactor                                |
+| [Testing patterns](docs/testing-patterns.md)                             | Patterns de test : unitaire, intégration, E2E, mocking et organisation                           |
+| [TypeScript migration](docs/typescript-migration.md)                     | Guide de migration incrémentale JavaScript vers TypeScript                                       |
+| [Triage issue](docs/triage-issue.md)                                     | Investigation de bugs et création automatique d'issues GitLab/GitHub                             |
+| [Ubiquitous language](docs/ubiquitous-language.md)                       | Extraction de glossaire DDD adapté au domaine santé                                              |
+| [Git guardrails](docs/git-guardrails.md)                                 | Hooks de sécurité pour bloquer les commandes git dangereuses                                     |
+| [Write a skill](docs/write-a-skill.md)                                   | Guide de création de nouveaux skills pour le projet                                              |
 
 ## A quoi sert ce produit ?
 
@@ -136,39 +136,39 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 
 ### Skills de développement
 
-| Skill                          | Description                                                                                        | Documentation                                                       |
-| ------------------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **backend-patterns**           | Patterns d'architecture backend : API RESTful, repository pattern, optimisation DB, caching        | [backend-patterns.md](docs/backend-patterns.md)                     |
-| **changelog-generator**        | Génération automatique de changelogs à partir de l'historique git                                  | [changelog-generator.md](docs/changelog-generator.md)               |
-| **coding-standards**           | Standards de code universels : conventions de nommage, principes SOLID, TypeScript/JavaScript      | [coding-standards.md](docs/coding-standards.md)                     |
-| **create-design-system-rules** | Règles de design system pour workflows Figma-to-code                                               | [create-design-system-rules.md](docs/create-design-system-rules.md) |
-| **frontend-design**            | Interfaces frontend de qualité production avec direction esthétique audacieuse                     | [frontend-design.md](docs/frontend-design.md)                       |
-| **github-issues**              | Gestion complète des issues GitHub : création, recherche, mise à jour et commentaires              | [github-issues.md](docs/github-issues.md)                           |
-| **gitlab-code-review**         | Revue de code des merge requests GitLab : qualité, sécurité, performance                           | [gitlab-code-review.md](docs/gitlab-code-review.md)                 |
-| **fast-meeting**               | Réunion rapide autonome : analyse, décision, implémentation et création de MR/PR sans intervention | [fast-meeting.md](docs/fast-meeting.md)                             |
-| **meeting**                    | Réunion simulée avec personas pour analyser un sujet et décider avant d'implémenter                | [meeting.md](docs/meeting.md)                                       |
-| **gitlab-issue**               | Gestion des issues GitLab sur instances auto-hébergées                                             | [gitlab-issue.md](docs/gitlab-issue.md)                             |
-| **grill-me**                   | Interview approfondie pour valider plans et conceptions jusqu'à compréhension partagée             | [grill-me.md](docs/grill-me.md)                                     |
-| **hl7-pam-parser**             | Parsing des messages HL7 v2.5 IHE PAM d'administration des patients                                | [hl7-pam-parser.md](docs/hl7-pam-parser.md)                         |
-| **hpk-parser**                 | Parsing des messages HPK propriétaires (identité, mouvements, couverture)                          | [hpk-parser.md](docs/hpk-parser.md)                                 |
-| **mcp-builder**                | Guide pour créer des serveurs MCP en Python (FastMCP) ou TypeScript (MCP SDK)                      | [mcp-builder.md](docs/mcp-builder.md)                               |
-| **playwright-skill**           | Tests et automatisation web avec Playwright : screenshots, validation UX, tests responsifs         | [playwright-skill.md](docs/playwright-skill.md)                     |
-| **postgres**                   | Requêtes SQL lecture seule sur PostgreSQL avec support multi-bases                                 | [postgres.md](docs/postgres.md)                                     |
-| **react-best-practices**       | Best practices React/Next.js : architecture, performance, shadcn/ui, React 19+                     | [react-best-practices.md](docs/react-best-practices.md)             |
-| **security-review**            | Audit de sécurité : secrets, validation inputs, authentification, OWASP Top 10                     | [security-review.md](docs/security-review.md)                       |
-| **vue-best-practices**         | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue                 | [vue-best-practices.md](docs/vue-best-practices.md)                 |
-| **testing-patterns**           | Patterns de test complets : unitaire, intégration, E2E, mocking, anti-patterns                     | [testing-patterns.md](docs/testing-patterns.md)                     |
-| **typescript-migration**       | Migration incrémentale JS → TypeScript : tsconfig, typage, élimination de `any`                    | [typescript-migration.md](docs/typescript-migration.md)             |
-| **web-design-guidelines**      | Audit UI/UX : conformité Web Interface Guidelines, accessibilité                                   | [web-design-guidelines.md](docs/web-design-guidelines.md)           |
-| **hexagone-swdoc**             | Documentation des web services Hexagone : endpoints, formats, contrats de service                  | [hexagone-swdoc.md](docs/hexagone-swdoc.md)                         |
-| **hexagone-frontend**          | Documentation des composants frontend Hexagone (@his/hexa-components) : props, events, patterns    | [hexagone-frontend.md](docs/hexagone-frontend.md)                   |
+| Skill                              | Description                                                                                            | Documentation                                                               |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| **backend-patterns**               | Patterns d'architecture backend : API RESTful, repository pattern, optimisation DB, caching            | [backend-patterns.md](docs/backend-patterns.md)                             |
+| **changelog-generator**            | Génération automatique de changelogs à partir de l'historique git                                      | [changelog-generator.md](docs/changelog-generator.md)                       |
+| **coding-standards**               | Standards de code universels : conventions de nommage, principes SOLID, TypeScript/JavaScript          | [coding-standards.md](docs/coding-standards.md)                             |
+| **create-design-system-rules**     | Règles de design system pour workflows Figma-to-code                                                   | [create-design-system-rules.md](docs/create-design-system-rules.md)         |
+| **frontend**                       | Règles de développement frontend natif — respect du framework et du design system                      | [frontend.md](docs/frontend.md)                                             |
+| **github-issues**                  | Gestion complète des issues GitHub : création, recherche, mise à jour et commentaires                  | [github-issues.md](docs/github-issues.md)                                   |
+| **gitlab-code-review**             | Revue de code des merge requests GitLab : qualité, sécurité, performance                               | [gitlab-code-review.md](docs/gitlab-code-review.md)                         |
+| **fast-meeting**                   | Réunion rapide autonome : analyse, décision, implémentation et création de MR/PR sans intervention     | [fast-meeting.md](docs/fast-meeting.md)                                     |
+| **meeting**                        | Réunion simulée avec personas pour analyser un sujet et décider avant d'implémenter                    | [meeting.md](docs/meeting.md)                                               |
+| **gitlab-issue**                   | Gestion des issues GitLab sur instances auto-hébergées                                                 | [gitlab-issue.md](docs/gitlab-issue.md)                                     |
+| **grill-me**                       | Interview approfondie pour valider plans et conceptions jusqu'à compréhension partagée                 | [grill-me.md](docs/grill-me.md)                                             |
+| **hl7-pam-parser**                 | Parsing des messages HL7 v2.5 IHE PAM d'administration des patients                                    | [hl7-pam-parser.md](docs/hl7-pam-parser.md)                                 |
+| **hpk-parser**                     | Parsing des messages HPK propriétaires (identité, mouvements, couverture)                              | [hpk-parser.md](docs/hpk-parser.md)                                         |
+| **mcp-builder**                    | Guide pour créer des serveurs MCP en Python (FastMCP) ou TypeScript (MCP SDK)                          | [mcp-builder.md](docs/mcp-builder.md)                                       |
+| **playwright-skill**               | Tests et automatisation web avec Playwright : screenshots, validation UX, tests responsifs             | [playwright-skill.md](docs/playwright-skill.md)                             |
+| **postgres**                       | Requêtes SQL lecture seule sur PostgreSQL avec support multi-bases                                     | [postgres.md](docs/postgres.md)                                             |
+| **react-best-practices**           | Best practices React/Next.js : architecture, performance, shadcn/ui, React 19+                         | [react-best-practices.md](docs/react-best-practices.md)                     |
+| **security-review**                | Audit de sécurité : secrets, validation inputs, authentification, OWASP Top 10                         | [security-review.md](docs/security-review.md)                               |
+| **vue-best-practices**             | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue                     | [vue-best-practices.md](docs/vue-best-practices.md)                         |
+| **testing-patterns**               | Patterns de test complets : unitaire, intégration, E2E, mocking, anti-patterns                         | [testing-patterns.md](docs/testing-patterns.md)                             |
+| **typescript-migration**           | Migration incrémentale JS → TypeScript : tsconfig, typage, élimination de `any`                        | [typescript-migration.md](docs/typescript-migration.md)                     |
+| **web-design-guidelines**          | Audit UI/UX : conformité Web Interface Guidelines, accessibilité                                       | [web-design-guidelines.md](docs/web-design-guidelines.md)                   |
+| **hexagone-swdoc**                 | Documentation des web services Hexagone : endpoints, formats, contrats de service                      | [hexagone-swdoc.md](docs/hexagone-swdoc.md)                                 |
+| **hexagone-frontend**              | Documentation des composants frontend Hexagone (@his/hexa-components) : props, events, patterns        | [hexagone-frontend.md](docs/hexagone-frontend.md)                           |
 | **hexagone-web-feature-extractor** | Exploration d'un espace Hexagone Web : capture d'écrans, description fonctionnelle et document Word PO | [hexagone-web-feature-extractor.md](docs/hexagone-web-feature-extractor.md) |
-| **tdd**                        | Développement piloté par les tests : boucle red-green-refactor, vertical slices, tracer bullets    | [tdd.md](docs/tdd.md)                                               |
-| **triage-issue**               | Investigation de bugs : diagnostic, analyse root cause, plan TDD et création d'issue (GitLab/GitHub) | [triage-issue.md](docs/triage-issue.md)                           |
-| **ubiquitous-language**        | Extraction de glossaire DDD depuis les conversations, adapté au domaine santé (HL7, HPK, FHIR)     | [ubiquitous-language.md](docs/ubiquitous-language.md)               |
-| **uniface-procscript**         | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation)           | [uniface-procscript.md](docs/uniface-procscript.md)                 |
-| **git-guardrails**             | Hooks de sécurité bloquant les commandes git dangereuses (push --force, reset --hard, etc.)        | [git-guardrails.md](docs/git-guardrails.md)                         |
-| **write-a-skill**              | Méta-skill guidant la création de nouveaux skills avec les conventions du projet                    | [write-a-skill.md](docs/write-a-skill.md)                           |
+| **tdd**                            | Développement piloté par les tests : boucle red-green-refactor, vertical slices, tracer bullets        | [tdd.md](docs/tdd.md)                                                       |
+| **triage-issue**                   | Investigation de bugs : diagnostic, analyse root cause, plan TDD et création d'issue (GitLab/GitHub)   | [triage-issue.md](docs/triage-issue.md)                                     |
+| **ubiquitous-language**            | Extraction de glossaire DDD depuis les conversations, adapté au domaine santé (HL7, HPK, FHIR)         | [ubiquitous-language.md](docs/ubiquitous-language.md)                       |
+| **uniface-procscript**             | Référence complète du langage ProcScript pour Uniface 9.7 (594 entrées de documentation)               | [uniface-procscript.md](docs/uniface-procscript.md)                         |
+| **git-guardrails**                 | Hooks de sécurité bloquant les commandes git dangereuses (push --force, reset --hard, etc.)            | [git-guardrails.md](docs/git-guardrails.md)                                 |
+| **write-a-skill**                  | Méta-skill guidant la création de nouveaux skills avec les conventions du projet                       | [write-a-skill.md](docs/write-a-skill.md)                                   |
 
 ### Skills de traitement de contenu et documents
 

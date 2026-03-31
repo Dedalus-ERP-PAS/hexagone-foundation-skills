@@ -20,23 +20,23 @@ Index de la documentation disponible pour les Foundation Skills.
 
 ### Frontend
 
-| Skill                                             | Documentation                             |
-| ------------------------------------------------- | ----------------------------------------- |
-| [react-best-practices](react-best-practices.md)   | Guidelines performance React/Next.js      |
-| [vue-best-practices](vue-best-practices.md)       | Best practices Vue.js 3/Nuxt              |
-| [frontend-design](frontend-design.md)             | Interfaces frontend de qualite production |
-| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilite et UX             |
+| Skill                                             | Documentation                          |
+| ------------------------------------------------- | -------------------------------------- |
+| [react-best-practices](react-best-practices.md)   | Guidelines performance React/Next.js   |
+| [vue-best-practices](vue-best-practices.md)       | Best practices Vue.js 3/Nuxt           |
+| [frontend](frontend.md)                           | Regles de developpement frontend natif |
+| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilite et UX          |
 
 ### Securite & Qualite
 
-| Skill                                             | Documentation                                 |
-| ------------------------------------------------- | --------------------------------------------- |
-| [security-review](security-review.md)             | Audit de securite et OWASP Top 10             |
-| [coding-standards](coding-standards.md)           | Standards de code                             |
-| [tdd](tdd.md)                                     | Developpement pilote par les tests (TDD)      |
-| [testing-patterns](testing-patterns.md)           | Patterns de test : unitaire, integration, E2E |
-| [typescript-migration](typescript-migration.md)   | Migration incrementale JS vers TypeScript     |
-| [git-guardrails](git-guardrails.md)               | Garde-fous Git pour des commits propres       |
+| Skill                                           | Documentation                                 |
+| ----------------------------------------------- | --------------------------------------------- |
+| [security-review](security-review.md)           | Audit de securite et OWASP Top 10             |
+| [coding-standards](coding-standards.md)         | Standards de code                             |
+| [tdd](tdd.md)                                   | Developpement pilote par les tests (TDD)      |
+| [testing-patterns](testing-patterns.md)         | Patterns de test : unitaire, integration, E2E |
+| [typescript-migration](typescript-migration.md) | Migration incrementale JS vers TypeScript     |
+| [git-guardrails](git-guardrails.md)             | Garde-fous Git pour des commits propres       |
 
 ### Automatisation & Tests
 
@@ -46,8 +46,8 @@ Index de la documentation disponible pour les Foundation Skills.
 
 ### Documents Office
 
-| Skill            | Documentation                    |
-| ---------------- | -------------------------------- |
+| Skill           | Documentation                    |
+| --------------- | -------------------------------- |
 | [docx](docx.md) | Documents Word (.docx)           |
 | [pptx](pptx.md) | Presentations PowerPoint (.pptx) |
 | [xlsx](xlsx.md) | Fichiers Excel avec formules     |
@@ -68,25 +68,25 @@ Index de la documentation disponible pour les Foundation Skills.
 
 ### Hexagone / Domaine sante
 
-| Skill                                       | Documentation                                                          |
-| ------------------------------------------- | ---------------------------------------------------------------------- |
-| [hexagone-swdoc](hexagone-swdoc.md)         | Documentation des web services Hexagone (endpoints, formats, contrats) |
-| [hexagone-frontend](hexagone-frontend.md)   | Documentation des composants frontend Hexagone (@his/hexa-components)  |
-| [hexagone-web-feature-extractor](hexagone-web-feature-extractor.md) | Exploration et capture d'un espace Hexagone Web en document Word PO |
-| [hpk-parser](hpk-parser.md)                 | Parsing des messages HPK proprietaires                                 |
-| [hl7-pam-parser](hl7-pam-parser.md)         | Parsing des messages HL7 v2.5 IHE PAM                                  |
-| [uniface-procscript](uniface-procscript.md) | Reference ProcScript pour Uniface 9.7                                  |
+| Skill                                                               | Documentation                                                          |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [hexagone-swdoc](hexagone-swdoc.md)                                 | Documentation des web services Hexagone (endpoints, formats, contrats) |
+| [hexagone-frontend](hexagone-frontend.md)                           | Documentation des composants frontend Hexagone (@his/hexa-components)  |
+| [hexagone-web-feature-extractor](hexagone-web-feature-extractor.md) | Exploration et capture d'un espace Hexagone Web en document Word PO    |
+| [hpk-parser](hpk-parser.md)                                         | Parsing des messages HPK proprietaires                                 |
+| [hl7-pam-parser](hl7-pam-parser.md)                                 | Parsing des messages HL7 v2.5 IHE PAM                                  |
+| [uniface-procscript](uniface-procscript.md)                         | Reference ProcScript pour Uniface 9.7                                  |
 
 ### Outils specialises
 
 | Skill                                                       | Documentation                                     |
 | ----------------------------------------------------------- | ------------------------------------------------- |
-| [mcp-builder](mcp-builder.md)                               | Creation de serveurs MCP                           |
-| [article-extractor](article-extractor.md)                   | Extraction d'articles web                          |
-| [create-design-system-rules](create-design-system-rules.md) | Generation de regles de design system              |
-| [docs](docs.md)                                             | Generation de README et documentation projet       |
-| [write-a-skill](write-a-skill.md)                           | Guide pour creer un nouveau skill                  |
-| [ubiquitous-language](ubiquitous-language.md)                | Extraction de glossaire DDD (langage ubiquitaire)  |
+| [mcp-builder](mcp-builder.md)                               | Creation de serveurs MCP                          |
+| [article-extractor](article-extractor.md)                   | Extraction d'articles web                         |
+| [create-design-system-rules](create-design-system-rules.md) | Generation de regles de design system             |
+| [docs](docs.md)                                             | Generation de README et documentation projet      |
+| [write-a-skill](write-a-skill.md)                           | Guide pour creer un nouveau skill                 |
+| [ubiquitous-language](ubiquitous-language.md)               | Extraction de glossaire DDD (langage ubiquitaire) |
 
 ## Demarrage rapide
 

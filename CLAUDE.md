@@ -33,7 +33,7 @@ foundation-skills/
 
 ## Skill Categories
 
-1. **Development skills:** coding-standards, backend-patterns, react-best-practices, vue-best-practices, frontend-design, web-design-guidelines, create-design-system-rules, mcp-builder, playwright-skill, postgres, security-review, tdd, testing-patterns, typescript-migration, git-guardrails, write-a-skill
+1. **Development skills:** coding-standards, backend-patterns, react-best-practices, vue-best-practices, frontend, web-design-guidelines, create-design-system-rules, mcp-builder, playwright-skill, postgres, security-review, tdd, testing-patterns, typescript-migration, git-guardrails, write-a-skill
 2. **Healthcare & legacy:** hpk-parser, hl7-pam-parser, hexagone-frontend, hexagone-swdoc, uniface-procscript
 3. **Issue/review management:** gitlab-code-review, gitlab-issue, github-issues, triage-issue
 4. **Document processing:** docx, pdf, pptx, xlsx, article-extractor

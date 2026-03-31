@@ -74,7 +74,7 @@ Avec backend-patterns, implémentez un système de caching Redis
 ### Windsurf
 
 ```
-Appliquez frontend-design pour créer une page de login
+Appliquez frontend pour créer une page de login
 ```
 
 ## Exemples d'utilisation
@@ -122,7 +122,7 @@ ls .skills/                  # locale
 ## Astuces
 
 - **Mentionnez le skill explicitement** pour de meilleurs résultats
-- **Combinez plusieurs skills** dans un même prompt (ex : `react-best-practices` + `frontend-design`)
+- **Combinez plusieurs skills** dans un même prompt (ex : `react-best-practices` + `frontend`)
 - **Commencez simple** puis itérez progressivement
 - **Demandez des explications** quand un pattern n'est pas clair
 
