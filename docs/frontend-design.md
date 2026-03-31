@@ -1,15 +1,15 @@
 # frontend-design
 
-Création d'interfaces web distinctives et professionnelles, avec un design de qualité production qui évite l'esthétique "IA générique".
+Création d'interfaces web distinctives et professionnelles. Le skill détecte automatiquement le design system et le framework du projet pour s'y conformer en priorité, puis exprime la créativité dans la composition, le layout et le motion. En mode greenfield, il applique une direction esthétique audacieuse.
 
 ## Quand utiliser ce skill
 
 Utilisez ce skill pour :
 - Créer une landing page, un dashboard ou un composant UI
-- Obtenir un design distinctif et non générique
+- Obtenir un design distinctif tout en respectant le design system existant
 - Appliquer une direction esthétique spécifique (minimaliste, brutalist, art déco...)
 - Générer du code frontend de qualité production
-- Éviter les pièges courants du design généré par IA
+- Créer des interfaces créatives dans un projet Vue + PrimeVue, React + shadcn/ui, ou tout autre stack
 
 ## Démarrage rapide
 
@@ -17,15 +17,41 @@ Utilisez ce skill pour :
 npx skills add Dedalus-ERP-PAS/foundation-skills --skill frontend-design -g -y
 ```
 
+## Fonctionnement en 2 phases
+
+### Phase 1 : Détection du contexte (automatique)
+
+Le skill scanne le codebase avant toute décision de design :
+- **Framework** — React, Vue, Angular, Svelte, Next, Nuxt...
+- **Bibliothèque de composants** — PrimeVue, shadcn/ui, MUI, Vuetify, Ant Design...
+- **Framework CSS** — Tailwind, CSS Modules, styled-components, SCSS...
+- **Design tokens** — Variables CSS, thème Tailwind, variables SCSS
+- **Typographie et palette** — Polices et couleurs déjà définies
+
+### Phase 2 : Design adaptatif (3 niveaux)
+
+| Niveau | Condition | Comportement |
+|--------|-----------|-------------|
+| **Tier 1 : Greenfield** | Aucun framework, aucun design system | Liberté créative totale — esthétique audacieuse et distinctive |
+| **Tier 2 : Framework présent** | Framework détecté, pas de design system complet | Utilise les idiomes du framework, créativité via le theming et la composition |
+| **Tier 3 : Design system présent** | Bibliothèque de composants + tokens + patterns établis | Adhérence stricte au système existant ; créativité via composition, motion et micro-interactions |
+
 ## Ce que le skill applique automatiquement
 
-- **Typographie distinctive** — évite les polices génériques (Arial, Inter, Roboto)
-- **Palettes de couleurs cohérentes** — pas de gris par défaut
-- **Animations et micro-interactions** — transitions fluides et feedback visuel
-- **Compositions spatiales créatives** — layouts non conventionnels
-- **Textures et effets visuels** — profondeur et personnalité
+### Avec un design system existant (Tier 2 & 3)
+- **Respect strict** des tokens, composants et conventions du projet
+- **Composition créative** — layouts inattendus avec les composants existants
+- **Motion et micro-interactions** — animations de qualité (le levier créatif principal)
+- **Hiérarchie de contenu** — contrastes de taille, espacement intentionnel
+- **Stratégie d'accents** — utilisation intentionnelle de la palette existante
 
-## Directions esthétiques supportées
+### Sans design system (Tier 1 — Greenfield)
+- **Typographie distinctive** — polices uniques et mémorables
+- **Palettes de couleurs audacieuses** — dominant + accents forts
+- **Textures et effets visuels** — gradients, noise, overlays
+- **Compositions spatiales créatives** — asymétrie, chevauchement, flow diagonal
+
+## Directions esthétiques (Tier 1 uniquement)
 
 | Direction | Style |
 |-----------|-------|
@@ -38,34 +64,42 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill frontend-design -g -y
 | Art deco / geometric | Motifs géométriques, dorures |
 | Et d'autres... | Le skill adapte la direction à la demande |
 
-## Principes de design
-
-1. **Purpose** — Chaque élément a une raison d'être
-2. **Tone** — Le design communique une émotion cohérente
-3. **Constraints** — Travailler avec les contraintes, pas contre elles
-4. **Differentiation** — Se distinguer du "AI slop" générique
-
 ## Anti-patterns évités
 
+### Tous les niveaux
+- Layouts sans rythme visuel
+- Composants identiques empilés sans variation
+- Animations sans intention
+
+### Avec un design system (Tier 2 & 3)
+- Surcharger les design tokens avec des valeurs en dur
+- Importer des polices absentes du projet
+- Créer des composants qui dupliquent la bibliothèque existante
+- Utiliser une méthodologie CSS différente de celle du projet
+
+### Sans design system (Tier 1)
+- Polices génériques (Arial, Inter, Roboto, system fonts)
 - Palettes bleu/gris génériques
-- Polices system par défaut
-- Layouts en grille uniforme sans personnalité
-- Animations identiques partout
-- Cards identiques empilées sans variation
+- Gradients violets sur fond blanc
 
 ## Exemples d'utilisation
 
 ```
+# Projet avec design system existant
+@workspace avec frontend-design, crée un dashboard pour le suivi des patients
+
+# Projet greenfield
 @workspace avec frontend-design, crée une landing page minimaliste pour [produit]
-@workspace avec frontend-design, génère un dashboard avec un style art déco
+
+# Direction esthétique spécifique
 @workspace avec frontend-design, design un composant de pricing avec un style luxury
 ```
 
 ## Skills complémentaires
 
+- **create-design-system-rules** — Génère des règles de design system que frontend-design consomme automatiquement
 - **react-best-practices** / **vue-best-practices** — Patterns de code pour les frameworks
 - **web-design-guidelines** — Audit et revue d'interfaces existantes
-- **create-design-system-rules** — Génération de règles de design system
 
 ## Ressources
 
