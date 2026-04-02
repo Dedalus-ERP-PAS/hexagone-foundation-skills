@@ -1,12 +1,10 @@
 ---
 name: github-issues
 description: "Crée, récupère, met à jour et gère les issues GitHub avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet, ajouter des commentaires ou gérer les workflows d'issues dans GitHub."
-allowed-tools: github-mcp(create_issue), github-mcp(get_issue), github-mcp(list_issues), github-mcp(update_issue), github-mcp(search_issues), github-mcp(add_issue_comment)
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
-  mcp-server: github-mcp
 ---
 
 # GitHub Issues Management
@@ -33,16 +31,16 @@ Activate this skill when:
 
 **Never create duplicate issues - search existing issues first when appropriate**
 
-## Available MCP Tools
+## Available CLI Commands
 
-| Tool | Purpose |
-|------|---------|
-| `github-mcp(create_issue)` | Create new issues |
-| `github-mcp(update_issue)` | Update existing issues |
-| `github-mcp(get_issue)` | Fetch issue details |
-| `github-mcp(search_issues)` | Search issues |
-| `github-mcp(add_issue_comment)` | Add comments |
-| `github-mcp(list_issues)` | List repository issues |
+| Command | Purpose |
+|---------|---------|
+| `gh issue create` | Create new issues |
+| `gh issue edit <number>` | Update existing issues |
+| `gh issue view <number>` | Fetch issue details |
+| `gh search issues "<query>"` | Search issues |
+| `gh issue comment <number>` | Add comments |
+| `gh issue list` | List repository issues |
 
 ## Workflow
 
@@ -75,8 +73,8 @@ When creating issues, gather complete context:
 
 **Optional but Recommended:**
 - `body`: Detailed description in Markdown format
-- `labels`: Array of label names (e.g., ["bug", "enhancement"])
-- `assignees`: Array of usernames to assign
+- `labels`: Label names (e.g., "bug,enhancement")
+- `assignees`: Usernames to assign
 - `milestone`: Milestone number (integer)
 
 **Human-in-the-Loop - Ask for Context**
@@ -128,10 +126,8 @@ Structure descriptions for clarity:
 
 #### Retrieving Issue Details
 
-Use `github-mcp(get_issue)` with:
-- `owner`: Repository owner
-- `repo`: Repository name
-- `issue_number`: Issue number (e.g., 42)
+Use `gh issue view <number>` with:
+- `<number>`: Issue number (e.g., 42)
 
 This returns complete issue information including:
 - Title and body
@@ -142,19 +138,18 @@ This returns complete issue information including:
 
 #### Listing Issues
 
-Use `github-mcp(list_issues)` with filters:
-- `owner`: Repository owner
-- `repo`: Repository name
-- `state`: "open", "closed", or "all"
-- `labels`: Filter by labels (comma-separated)
-- `assignee`: Filter by assignee username
-- `sort`: Sort by "created", "updated", "comments"
-- `direction`: "asc" or "desc"
-- `per_page`: Results per page (max 100)
+Use `gh issue list` with filters:
+- `--state`: "open", "closed", or "all"
+- `--label`: Filter by labels (comma-separated)
+- `--assignee`: Filter by assignee username
+- `--search`: Search in title and description
+- `--sort`: Sort by "created", "updated", "comments"
+- `--order`: "asc" or "desc"
+- `--limit`: Results per page (default 30)
 
 #### Searching Issues
 
-Use `github-mcp(search_issues)` for advanced queries:
+Use `gh search issues "<query>"` for advanced queries:
 - Search across repositories
 - Use GitHub search qualifiers (is:open, label:bug, etc.)
 - Full-text search in titles and bodies
@@ -163,23 +158,17 @@ Use `github-mcp(search_issues)` for advanced queries:
 
 When updating issues, only provide changed fields:
 
-Use `github-mcp(update_issue)` with:
-- `owner`: Repository owner
-- `repo`: Repository name
-- `issue_number`: Issue number
-- Plus any fields to update (title, body, labels, state, etc.)
+Use `gh issue edit <number>` with flags for fields to update (--title, --body, --add-label, --remove-label, --add-assignee, --milestone, etc.)
 
 **State Changes:**
-- `state: "open"` - Open/reopen the issue
-- `state: "closed"` - Close the issue
+- `gh issue reopen <number>` - Open/reopen the issue
+- `gh issue close <number>` - Close the issue
 
 #### Adding Comments
 
-Use `github-mcp(add_issue_comment)` with:
-- `owner`: Repository owner
-- `repo`: Repository name
-- `issue_number`: Issue number
-- `body`: Comment content in Markdown
+Use `gh issue comment <number> --body "<comment>"` with:
+- `<number>`: Issue number
+- `<comment>`: Comment content in Markdown
 
 ### 4. Execute Operations (Requires Confirmation)
 
@@ -282,17 +271,30 @@ The [component] is experiencing [issue] when [condition].
 2. Ask clarifying questions about the bug
 3. Generate structured description
 4. Present summary for confirmation
-5. Create issue with github-mcp(create_issue)
+5. Create issue with `gh issue create --title "[Bug] Login page crashes when using SSO" --body "<description>" --label "bug"`
 
 **Result:**
-```json
-{
-  "owner": "myorg",
-  "repo": "webapp",
-  "title": "[Bug] Login page crashes when using SSO",
-  "body": "## Description\nThe login page crashes when users attempt to authenticate using SSO.\n\n## Steps to Reproduce\n1. Navigate to login page\n2. Click 'Sign in with SSO'\n3. Page crashes\n\n## Expected Behavior\nSSO authentication should complete and redirect to dashboard.\n\n## Actual Behavior\nPage becomes unresponsive and displays error.\n\n## Environment\n- Browser: [To be filled]\n- OS: [To be filled]",
-  "labels": ["bug"]
-}
+```
+gh issue create \
+  --title "[Bug] Login page crashes when using SSO" \
+  --body "## Description
+The login page crashes when users attempt to authenticate using SSO.
+
+## Steps to Reproduce
+1. Navigate to login page
+2. Click 'Sign in with SSO'
+3. Page crashes
+
+## Expected Behavior
+SSO authentication should complete and redirect to dashboard.
+
+## Actual Behavior
+Page becomes unresponsive and displays error.
+
+## Environment
+- Browser: [To be filled]
+- OS: [To be filled]" \
+  --label "bug"
 ```
 
 ### Example 2: Feature Request with Priority
@@ -306,14 +308,26 @@ The [component] is experiencing [issue] when [condition].
 4. Confirm and create
 
 **Result:**
-```json
-{
-  "owner": "myorg",
-  "repo": "webapp",
-  "title": "[Feature] Add dark mode support",
-  "body": "## Summary\nAdd dark mode theme option for improved user experience and accessibility.\n\n## Motivation\n- Reduces eye strain in low-light environments\n- Increasingly expected by users\n- Improves accessibility\n\n## Proposed Solution\nImplement theme toggle with system preference detection.\n\n## Acceptance Criteria\n- [ ] Toggle switch in settings\n- [ ] Persists user preference\n- [ ] Respects system preference by default\n- [ ] All UI components support both themes",
-  "labels": ["enhancement", "high-priority"]
-}
+```
+gh issue create \
+  --title "[Feature] Add dark mode support" \
+  --body "## Summary
+Add dark mode theme option for improved user experience and accessibility.
+
+## Motivation
+- Reduces eye strain in low-light environments
+- Increasingly expected by users
+- Improves accessibility
+
+## Proposed Solution
+Implement theme toggle with system preference detection.
+
+## Acceptance Criteria
+- [ ] Toggle switch in settings
+- [ ] Persists user preference
+- [ ] Respects system preference by default
+- [ ] All UI components support both themes" \
+  --label "enhancement,high-priority"
 ```
 
 ### Example 3: Listing and Filtering Issues
@@ -321,10 +335,7 @@ The [component] is experiencing [issue] when [condition].
 **User:** "Show me all open bugs assigned to me"
 
 **AI Workflow:**
-1. Use github-mcp(list_issues) with filters:
-   - state: "open"
-   - labels: "bug"
-   - assignee: [current user]
+1. Use `gh issue list --state open --label bug --assignee @me`
 
 **Result:**
 ```
@@ -348,27 +359,12 @@ Found 3 open bug issues assigned to you:
 **User:** "Close issue #142 and add a comment that it's fixed in v2.4.0"
 
 **AI Workflow:**
-1. First, add a comment to the issue
-2. Then update issue state to closed
+1. First, add a comment to the issue: `gh issue comment 142 --body "Fixed in v2.4.0. Closing this issue."`
+2. Then close the issue: `gh issue close 142`
 
-**Using github-mcp(add_issue_comment):**
-```json
-{
-  "owner": "myorg",
-  "repo": "webapp",
-  "issue_number": 142,
-  "body": "Fixed in v2.4.0. Closing this issue."
-}
+**Result:**
 ```
-
-**Using github-mcp(update_issue):**
-```json
-{
-  "owner": "myorg",
-  "repo": "webapp",
-  "issue_number": 142,
-  "state": "closed"
-}
+Issue #142 has been commented and closed.
 ```
 
 ## Common Labels

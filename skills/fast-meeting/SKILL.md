@@ -1,8 +1,7 @@
 ---
 name: fast-meeting
 description: "Lance une réunion autonome rapide avec des personas sélectionnés automatiquement, implémente la décision, crée une MR/PR, commite, pousse et publie un résumé en français — le tout sans intervention de l'utilisateur."
-allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue), gitlab-mcp(create_issue_note), gitlab-mcp(update_issue), gitlab-mcp(list_issues), gitlab-mcp(create_merge_request), gitlab-mcp(update_merge_request)
-version: 1.5.0
+version: 1.6.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -218,7 +217,7 @@ If **no issue was referenced**, create one automatically for traceability — no
    - **Title:** Short form of the decision question (under 70 chars, in French)
    - **Description:** PO-oriented summary using the template below
 2. **Create the issue immediately:**
-   - **GitLab:** Use `gitlab-mcp(create_issue)` with `project_id`, `title`, and `description`
+   - **GitLab:** Use `glab issue create --title "<title>" --description "<description>"`
    - **GitHub:** Use `gh issue create --title "<title>" --body "<description>"`
    - Store the newly created issue number and URL for Steps 8 and 9
    - **Do not add labels** unless you have verified they already exist in the project (list them first)
@@ -347,7 +346,7 @@ Based on the remote type detected in Step 1:
 
 #### If GitLab:
 
-Use `gitlab-mcp(create_merge_request)` to create a merge request with:
+Use `glab mr create --title "<title>" --description "<description>" --target-branch main` to create a merge request with:
 - **Title:** Short description (under 70 chars, in English)
 - **Description:** The French meeting analysis and implementation summary (see template below)
 - **Issue link:** If an issue exists (referenced or created in Step 4b), include `Closes #XX` in the description to auto-close the issue on merge
@@ -456,8 +455,8 @@ _Analyse générée automatiquement par IA_
 ```
 
 Post the comment using the appropriate tool:
-- **GitLab:** `gitlab-mcp(create_issue_note)`
-- **GitHub:** `gh issue comment`
+- **GitLab:** `glab issue note <iid> --message "<comment>"`
+- **GitHub:** `gh issue comment <number> --body "<comment>"`
 
 ### Step 10: Run Summary
 

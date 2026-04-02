@@ -1,7 +1,7 @@
 ---
 name: triage-issue
 description: "Trier un bug ou une issue en explorant le codebase pour trouver la cause racine, puis créer une issue GitLab ou GitHub avec un plan de correction basé sur le TDD. À utiliser quand l'utilisateur signale un bug, veut créer une issue, mentionne « triage » ou veut investiguer et planifier la correction d'un problème."
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -90,7 +90,7 @@ Use `gh issue create` with the issue template below.
 
 #### For GitLab
 
-Use the GitLab MCP tools (`gitlab-mcp(create_issue)`) or the GitLab API via CLI. You will need the `project_id` (URL-encoded path like `group/project` or numeric ID). If uncertain, derive it from the git remote URL.
+Use the GitLab CLI (`glab issue create`) or the GitLab API via CLI. You will need the `project_id` (URL-encoded path like `group/project` or numeric ID). If uncertain, derive it from the git remote URL.
 
 #### Issue Template
 

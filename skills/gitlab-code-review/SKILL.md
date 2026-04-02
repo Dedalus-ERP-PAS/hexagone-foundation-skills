@@ -1,12 +1,10 @@
 ---
 name: gitlab-code-review
 description: "Effectue des revues de code complètes des merge requests GitLab, analysant la qualité du code, la sécurité, les performances et les bonnes pratiques. À utiliser quand l'utilisateur dit « review » ou « code review » ou demande de revoir des merge requests ou d'analyser les changements d'une branche avant fusion."
-allowed-tools: gitlab-mcp(get_merge_request), gitlab-mcp(get_merge_request_diffs), gitlab-mcp(list_merge_requests), gitlab-mcp(create_note), gitlab-mcp(create_merge_request_thread), gitlab-mcp(mr_discussions), gitlab-mcp(get_issue), gitlab-mcp(list_commits), gitlab-mcp(get_commit), gitlab-mcp(get_commit_diff), gitlab-mcp(get_branch_diffs), gitlab-mcp(get_file_contents), gitlab-mcp(get_project), gitlab-mcp(list_pipelines), gitlab-mcp(list_pipeline_jobs), gitlab-mcp(get_pipeline), gitlab-mcp(get_pipeline_job_output)
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
-  mcp-server: gitlab-mcp
 ---
 
 # GitLab Code Review
@@ -50,14 +48,14 @@ Activate this skill when:
 
 1. Extract the MR IID from the user input
 2. Verify the project context (ask user if not clear)
-3. Fetch merge request details using `gitlab-mcp(get_merge_request)`
+3. Fetch merge request details using `glab mr view <iid>`
 
 #### GitLab Issue ID Provided
 
 **If a GitLab issue ID is provided** (e.g., "review #456"):
 
-1. Fetch issue details using `gitlab-mcp(get_issue)` to understand context
-2. Find related merge requests using `gitlab-mcp(list_merge_requests)` with search filter
+1. Fetch issue details using `glab issue view <iid>` to understand context
+2. Find related merge requests using `glab mr list --search "<issue reference>"`
 3. If multiple MRs found, ask user to select the one to review
 4. Proceed with the selected MR
 
@@ -65,7 +63,7 @@ Activate this skill when:
 
 **If no MR is specified** (e.g., just "review"):
 
-1. List recent open merge requests using `gitlab-mcp(list_merge_requests)` with `state: "opened"`
+1. List recent open merge requests using `glab mr list --state opened`
 2. Present the list to the user
 3. Ask user to select which MR to review
 
@@ -73,7 +71,7 @@ Activate this skill when:
 
 **Self-hosted GitLab Instance:** https://gitlab-erp-pas.dedalus.lan
 
-Use `gitlab-mcp(get_merge_request)` to retrieve:
+Use `glab mr view <iid>` to retrieve:
 
 - Title and description
 - Source and target branches
@@ -97,39 +95,34 @@ Status: Open | Pipeline: Passed | Approvals: 1/2
 
 #### Get File Changes
 
-Use `gitlab-mcp(get_merge_request_diffs)` to retrieve:
+Use `glab mr diff <iid>` to retrieve:
 - List of changed files
 - Additions and deletions per file
 - Diff content for each file
 
-**Pagination**: If many files changed, use pagination parameters (`page`, `per_page`) to retrieve all changes.
+**Pagination**: If many files changed, the diff output may be large — review it in sections.
 
 #### Get Detailed File Content
 
-For complex changes, use `gitlab-mcp(get_file_contents)` to:
+For complex changes, use `git show <ref>:<file_path>` to:
 - View the complete file context
 - Understand surrounding code
 - Check for consistency with existing patterns
 
 **Parameters:**
-- `project_id`: Project identifier
-- `file_path`: Path to the file
-- `ref`: Use the source branch or head_sha from diff_refs
+- `<ref>`: Use the source branch or head_sha from diff_refs
+- `<file_path>`: Path to the file
 
 #### Analyze Commits
 
-Use `gitlab-mcp(list_commits)` with:
-- `project_id`: Project identifier
-- `ref_name`: Source branch name
-
-Then use `gitlab-mcp(get_commit)` and `gitlab-mcp(get_commit_diff)` to:
+Use `git log --oneline <source_branch>` to list commits, then use `git show <sha>` to:
 - Understand commit history
 - Review individual commit changes
 - Check commit message quality
 
 ### 4. Check Existing Discussions
 
-Use `gitlab-mcp(mr_discussions)` to:
+Use `glab api /projects/:id/merge_requests/:iid/discussions` to:
 - Review existing feedback and discussions
 - Avoid duplicate comments
 - Understand ongoing conversations
@@ -137,12 +130,12 @@ Use `gitlab-mcp(mr_discussions)` to:
 
 ### 5. Check Pipeline Status
 
-Use `gitlab-mcp(list_pipelines)` and `gitlab-mcp(get_pipeline)` to:
+Use `glab ci list` and `glab ci view <pipeline_id>` to:
 - Verify CI/CD pipeline status
 - Check for failed jobs
 - Review test results
 
-If pipeline failed, use `gitlab-mcp(get_pipeline_job_output)` to understand failures.
+If pipeline failed, use `glab ci trace <job_id>` to understand failures.
 
 ### 6. Perform Comprehensive Code Review
 
@@ -221,16 +214,13 @@ If user wants to add feedback directly to the MR:
 
 #### General Comment
 
-Use `gitlab-mcp(create_note)` to add a general comment:
-- `project_id`: Project identifier
-- `merge_request_iid`: MR internal ID
-- `body`: Comment content in Markdown
+Use `glab mr note <iid> --message "<comment>"` to add a general comment:
+- `<iid>`: MR internal ID
+- `<comment>`: Comment content in Markdown
 
 #### Line-Specific Discussion
 
-Use `gitlab-mcp(create_merge_request_thread)` for code-specific feedback:
-- `project_id`: Project identifier
-- `merge_request_iid`: MR internal ID
+Use `glab api POST /projects/:id/merge_requests/:iid/discussions` for code-specific feedback with:
 - `body`: Discussion content
 - `position`: Object with diff position details:
   - `base_sha`: From diff_refs
@@ -329,10 +319,10 @@ Use `gitlab-mcp(create_merge_request_thread)` for code-specific feedback:
 User: Review !42 in namespace/project
 
 Assistant actions:
-1. gitlab-mcp(get_merge_request) with project_id="namespace/project", merge_request_iid=42
-2. gitlab-mcp(get_merge_request_diffs) with project_id="namespace/project", merge_request_iid=42
-3. gitlab-mcp(mr_discussions) to check existing feedback
-4. gitlab-mcp(list_pipelines) to check CI status
+1. glab mr view 42 — fetch MR details
+2. glab mr diff 42 — get file changes
+3. glab api /projects/:id/merge_requests/42/discussions — check existing feedback
+4. glab ci list — check CI status
 5. Analyze changes and generate report
 6. Present review to user
 7. Ask if user wants comments added to the MR
@@ -344,8 +334,8 @@ Assistant actions:
 User: Review the MR for issue #123
 
 Assistant actions:
-1. gitlab-mcp(get_issue) with project_id="namespace/project", issue_iid=123
-2. gitlab-mcp(list_merge_requests) with search for "#123" or issue reference
+1. glab issue view 123 — fetch issue details
+2. glab mr list --search "#123" — find related MRs
 3. Present found MRs and ask user to confirm
 4. Proceed with code review workflow
 ```
@@ -356,7 +346,7 @@ Assistant actions:
 User: Show me open merge requests to review
 
 Assistant actions:
-1. gitlab-mcp(list_merge_requests) with state="opened"
+1. glab mr list --state opened — list open MRs
 2. Present list with key details (title, author, pipeline status)
 3. Ask user which MR to review
 ```

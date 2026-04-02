@@ -1,12 +1,10 @@
 ---
 name: gitlab-issue
 description: "Crée, récupère, met à jour et gère les issues GitLab avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet ou gérer les workflows d'issues dans GitLab."
-allowed-tools: gitlab-mcp(create_issue), gitlab-mcp(get_issue), gitlab-mcp(list_issues), gitlab-mcp(update_issue), gitlab-mcp(get_project), gitlab-mcp(list_merge_requests)
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
-  mcp-server: gitlab-mcp
 ---
 
 # GitLab Issue Management
@@ -55,7 +53,7 @@ Before any operation, verify the project exists and you have the correct identif
 
 **Self-hosted GitLab Instance:** https://gitlab-erp-pas.dedalus.lan
 
-Use `gitlab-mcp(get_project)` to:
+Use `glab repo view` to:
 - Confirm project exists on the self-hosted GitLab instance
 - Get project details (default branch, visibility, etc.)
 - Understand project structure
@@ -119,9 +117,8 @@ Structure descriptions for clarity:
 
 #### Retrieving Issue Details
 
-Use `gitlab-mcp(get_issue)` with:
-- `project_id`: Project identifier
-- `issue_iid`: Internal issue ID (the number shown in GitLab, e.g., #42)
+Use `glab issue view <iid>` with:
+- `<iid>`: Internal issue ID (the number shown in GitLab, e.g., 42)
 
 This returns complete issue information including:
 - Title and description
@@ -133,35 +130,31 @@ This returns complete issue information including:
 
 #### Listing Issues
 
-Use `gitlab-mcp(list_issues)` with filters:
-- `project_id`: Project identifier
-- `state`: "opened", "closed", or "all"
-- `labels`: Filter by labels
-- `milestone`: Filter by milestone title
-- `assignee_id`: Filter by assignee
-- `search`: Search in title and description
-- `order_by`: Sort by "created_at", "updated_at", "priority", etc.
-- `sort`: "asc" or "desc"
-- `per_page`: Results per page (max 100)
+Use `glab issue list` with filters:
+- `--state`: "opened", "closed", or "all"
+- `--label`: Filter by labels
+- `--milestone`: Filter by milestone title
+- `--assignee`: Filter by assignee
+- `--search`: Search in title and description
+- `--order-by`: Sort by "created_at", "updated_at", "priority", etc.
+- `--sort`: "asc" or "desc"
+- `--per-page`: Results per page (max 100)
 
 #### Updating an Issue
 
 When updating issues, only provide changed fields:
 
-Use `gitlab-mcp(update_issue)` with:
-- `project_id`: Project identifier
-- `issue_iid`: Internal issue ID
-- Plus any fields to update (title, description, labels, state_event, etc.)
+Use `glab issue update <iid>` with the relevant flags for fields to change (title, description, labels, etc.)
 
 **State Changes:**
-- `state_event: "close"` - Close the issue
-- `state_event: "reopen"` - Reopen the issue
+- `glab issue close <iid>` - Close the issue
+- `glab issue reopen <iid>` - Reopen the issue
 
 ### 4. Linking to Merge Requests
 
 To find related merge requests:
 
-Use `gitlab-mcp(list_merge_requests)` with filters to find MRs that reference the issue:
+Use `glab mr list` with filters to find MRs that reference the issue:
 - Search for issue number in MR titles/descriptions
 - Check MR descriptions for "Closes #XX" or "Fixes #XX" patterns
 
@@ -268,7 +261,7 @@ Proceed with issue creation?
 2. Ask clarifying questions about the bug
 3. Generate structured description
 4. Present summary for confirmation
-5. Create issue with gitlab-mcp(create_issue)
+5. Create issue with `glab issue create --title "<title>" --description "<description>" --label "bug,priority::high,auth"`
 
 **Result:**
 ```
@@ -303,10 +296,7 @@ Labels: ["bug", "priority::high", "auth"]
 **User:** "Show me all open bugs assigned to me"
 
 **AI Workflow:**
-1. Use gitlab-mcp(list_issues) with filters:
-   - state: "opened"
-   - labels: ["bug"]
-   - scope: "assigned_to_me"
+1. Use `glab issue list --state opened --label bug --assignee @me` to list matching issues
 
 **Result:**
 ```
@@ -330,15 +320,8 @@ Found 3 open bug issues assigned to you:
 **User:** "Close issue #142 and add a comment that it's fixed in v2.4.0"
 
 **AI Workflow:**
-1. First, add a note/comment to the issue
-2. Then update issue state to closed
-
-**Using gitlab-mcp(update_issue):**
-```
-project_id: "mygroup/myproject"
-issue_iid: 142
-state_event: "close"
-```
+1. First, add a note/comment to the issue: `glab issue note 142 --message "Fixed in v2.4.0. Closing this issue."`
+2. Then close the issue: `glab issue close 142`
 
 **Result:**
 ```

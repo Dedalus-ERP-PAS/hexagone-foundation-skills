@@ -1,8 +1,7 @@
 ---
 name: meeting
 description: "Lance une réunion simulée avec plusieurs personas experts pour analyser un sujet sous des perspectives diverses, prendre une décision et proposer une solution avant implémentation. Peut optionnellement publier l'analyse de la réunion sur une issue GitLab ou GitHub liée."
-allowed-tools: gitlab-mcp(get_issue), gitlab-mcp(create_issue_note), gitlab-mcp(update_issue), gitlab-mcp(list_issues), gitlab-mcp(create_merge_request), gitlab-mcp(update_merge_request)
-version: 1.2.0
+version: 1.3.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -326,8 +325,8 @@ _Analyse générée automatiquement par IA_
 ```
 
 Post the comment using the appropriate tool:
-- **GitLab:** Use `gitlab-mcp(create_issue_note)`
-- **GitHub:** Use `gh issue comment`
+- **GitLab:** Use `glab issue note <iid> --message "<comment>"`
+- **GitHub:** Use `gh issue comment <number> --body "<comment>"`
 
 ### Step 7: Follow-Up Meeting (If Option 2 Selected)
 
