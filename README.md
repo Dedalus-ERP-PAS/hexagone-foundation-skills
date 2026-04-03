@@ -51,9 +51,7 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 | [Coding standards](docs/coding-standards.md)                             | Standards de code universels pour TypeScript, JavaScript, React et Node.js                       |
 | [React best practices](docs/react-best-practices.md)                     | Guide des best practices React et Next.js (architecture, performance, shadcn/ui)                 |
 | [Vue best practices](docs/vue-best-practices.md)                         | Best practices Vue.js 3 et Nuxt avec Composition API et patterns d'organisation                  |
-| [Frontend](docs/frontend.md)                                             | Règles de développement frontend natif — respect du framework et du design system                |
-| [Web design guidelines](docs/web-design-guidelines.md)                   | Audit et revue de code UI pour conformité aux guidelines web                                     |
-| [Design system rules](docs/create-design-system-rules.md)                | Génération de règles de design system pour workflows Figma-to-code                               |
+| [Design compliance](docs/design-compliance.md)                           | Audit de conformité au design system Hexagone avec auto-correction                               |
 | [MCP builder](docs/mcp-builder.md)                                       | Guide pour créer des serveurs MCP (Model Context Protocol) en TypeScript ou Python               |
 | [Playwright skill](docs/playwright-skill.md)                             | Tests et automatisation web complète avec Playwright                                             |
 | [PostgreSQL](docs/postgres.md)                                           | Exécution de requêtes SQL en lecture seule sur PostgreSQL                                        |
@@ -143,8 +141,7 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **backend-patterns**               | Patterns d'architecture backend : API RESTful, repository pattern, optimisation DB, caching            | [backend-patterns.md](docs/backend-patterns.md)                             |
 | **changelog-generator**            | Génération automatique de changelogs à partir de l'historique git                                      | [changelog-generator.md](docs/changelog-generator.md)                       |
 | **coding-standards**               | Standards de code universels : conventions de nommage, principes SOLID, TypeScript/JavaScript          | [coding-standards.md](docs/coding-standards.md)                             |
-| **create-design-system-rules**     | Règles de design system pour workflows Figma-to-code                                                   | [create-design-system-rules.md](docs/create-design-system-rules.md)         |
-| **frontend**                       | Règles de développement frontend natif — respect du framework et du design system                      | [frontend.md](docs/frontend.md)                                             |
+| **design-compliance**              | Audit de conformité au design system Hexagone : PrimeVue 4, Tailwind CSS 4, tokens, auto-correction    | [design-compliance.md](docs/design-compliance.md)                           |
 | **github-issues**                  | Gestion complète des issues GitHub : création, recherche, mise à jour et commentaires                  | [github-issues.md](docs/github-issues.md)                                   |
 | **code-review**                    | Revue de code des merge requests GitLab : qualité, sécurité, performance                               | [code-review.md](docs/code-review.md)                                       |
 | **issue-review**                   | Revue autonome d'issues par personas IA : faisabilité, complétude, risques et publication sur l'issue  | [issue-review.md](docs/issue-review.md)                                     |
@@ -162,7 +159,6 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **vue-best-practices**             | Best practices Vue.js 3/Nuxt : Composition API, réactivité, Tailwind CSS, PrimeVue                     | [vue-best-practices.md](docs/vue-best-practices.md)                         |
 | **testing-patterns**               | Patterns de test complets : unitaire, intégration, E2E, mocking, anti-patterns                         | [testing-patterns.md](docs/testing-patterns.md)                             |
 | **typescript-migration**           | Migration incrémentale JS → TypeScript : tsconfig, typage, élimination de `any`                        | [typescript-migration.md](docs/typescript-migration.md)                     |
-| **web-design-guidelines**          | Audit UI/UX : conformité Web Interface Guidelines, accessibilité                                       | [web-design-guidelines.md](docs/web-design-guidelines.md)                   |
 | **hexagone-swdoc**                 | Documentation des web services Hexagone : endpoints, formats, contrats de service                      | [hexagone-swdoc.md](docs/hexagone-swdoc.md)                                 |
 | **hexagone-frontend**              | Documentation des composants frontend Hexagone (@his/hexa-components) : props, events, patterns        | [hexagone-frontend.md](docs/hexagone-frontend.md)                           |
 | **hexagone-web-feature-extractor** | Exploration d'un espace Hexagone Web : capture d'écrans, description fonctionnelle et document Word PO | [hexagone-web-feature-extractor.md](docs/hexagone-web-feature-extractor.md) |

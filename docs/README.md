@@ -24,8 +24,7 @@ Index de la documentation disponible pour les Foundation Skills.
 | ------------------------------------------------- | --------------------------------------- |
 | [react-best-practices](react-best-practices.md)   | Guidelines performance React/Next.js    |
 | [vue-best-practices](vue-best-practices.md)       | Best practices Vue.js 3/Nuxt            |
-| [frontend](frontend.md)                           | Règles de développement frontend natif  |
-| [web-design-guidelines](web-design-guidelines.md) | Audit UI, accessibilité et UX           |
+| [design-compliance](design-compliance.md)         | Audit de conformité au design system Hexagone |
 
 ### Sécurité & Qualité
 
@@ -84,7 +83,6 @@ Index de la documentation disponible pour les Foundation Skills.
 | ----------------------------------------------------------- | ------------------------------------------------- |
 | [mcp-builder](mcp-builder.md)                               | Création de serveurs MCP                          |
 | [article-extractor](article-extractor.md)                   | Extraction d'articles web                         |
-| [create-design-system-rules](create-design-system-rules.md) | Génération de règles de design system             |
 | [docs](docs.md)                                             | Génération de README et documentation projet      |
 | [write-a-skill](write-a-skill.md)                           | Guide pour créer un nouveau skill                 |
 | [ubiquitous-language](ubiquitous-language.md)               | Extraction de glossaire DDD (langage ubiquitaire) |
