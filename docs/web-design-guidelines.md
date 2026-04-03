@@ -2,6 +2,13 @@
 
 Inspection visuelle et revue de code pour la conformité aux Web Interface Guidelines. Supporte l'analyse statique et l'inspection via navigateur.
 
+## Pourquoi ce skill
+
+- **Accessibilité obligatoire** — La conformité WCAG est un enjeu légal et un impératif d'inclusion
+- **Cohérence utilisateur** — Une UI homogène réduit la courbe d'apprentissage et les erreurs de saisie
+- **Qualité perçue** — Les détails visuels (alignement, espacement, responsive) construisent la confiance utilisateur
+- **Détection automatique** — Repère en quelques secondes des problèmes qu'un audit manuel prendrait des heures à identifier
+
 ## Quand utiliser ce skill
 
 Utilisez ce skill pour :

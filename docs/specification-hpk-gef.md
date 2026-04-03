@@ -1,157 +1,8 @@
-# Referentiel des messages HPK - Gestion Economique et Financiere (GEF)
+# Référentiel des messages HPK - Gestion Économique et Financière (GEF)
 
-Specification de reference des messages HPK pour la gestion economique et financiere dans Hexagone. Ce document decrit les formats de messages entrants et sortants (produits, fournisseurs, commandes, livraisons, etc.).
+Spécification de référence des messages HPK pour la gestion économique et financière dans Hexagone. Ce document decrit les formats de messages entrants et sortants (produits, fournisseurs, commandes, livraisons, etc.).
 
-> **Note technique** : ce document est une conversion automatique de la specification Word officielle. Il sert de reference pour le skill `hpk-parser`.
-
-## Historique des versions
-
-```
-Numéro de
-version
-```
-
-```
-Date Résumé Responsable
-```
-
-```
-09.04.224 21 /0 8 /2020 Référencement des messages gestion
-économique et financière entrants et
-sortants
-```
-
-```
-Dubos Stéphane
-```
-
-```
-09.04.225 25/05/2021 Modification des messages Marchés
-sortant.
-Modification des messages
-fournisseurs sortant.
-Ajout des messages d’échantillons et
-d’annulation de livraison
-```
-
-```
-Dubos Stéphane
-```
-
-```
-09.04.225- 2 17/10/2022 Ajout de l’IUD-ID
-Comptes sur 13 caractères
-Ajout du Franco de port dans les
-messages d’informations générales
-fournisseur
-Ajout du stock mensuel dans les
-messages de consommations
-```
-
-```
-Dubos Stéphane
-```
-
-```
-09.04.22 6 - 1 17/0 9 /2024 Ajout transitaire dans les messages
-DA|DE
-Ordonnancement des messages
-marchés et ajout des informations
-fournisseurs dans le MA|M2 et du
-marché dans le FP|M
-```
-
-```
-Dubos Stéphane
-```
-
-##### APPROBATIONS
-
-```
-Nom Fonction Date
-Scagliarini Laurence Cellule test et qualification
-Guillot Laëtitia P.O.O 19/10/
-```
-
-## TABLE OF CONTENTS
-
-- Introduction et présentation du document
-- 1 Mécanisme de communication
-  - ➢ Fonctionnement
-    - 1.1.1 Processus de communication
-    - 1.1.2 Format des messages
-    - 1.1.3 Normes à respecter lors de la constitution de messages
-- Produits
-- 2 Création d’un Produit
-  - ➢ Message 0 : Données générales du produit
-  - ➢ Message 1 : Informations produit pharmacie
-  - ➢ Message 2 : Informations pour édition livret thérapeutique
-  - ➢ Message 3 : Informations comptables pour Gestion Economique
-  - ➢ Message 4 : Informations générales pour Gestion Economique
-  - ➢ Message 5 : Informations sur les magasins par produit
-- 3 Modification sur produit
-- 4 Suppression d'un produit
-- Fournisseurs
-- 1 Création / Modification / Suppression d'un fournisseur
-  - ➢ Message 1 : Informations générales liées au fournisseur
-  - ➢ Message 2 : Domiciliations bancaires liées au fournisseur
-  - ➢ Message 3 : Points de commande liés au fournisseur
-- 2 Modification Fournisseurs
-- 3 Suppression fournisseur :
-  - ➢ Message 1 : suppression d’un fournisseur
-  - ➢ Message 2 : Suppression d’une domiciliation bancaire.........................................................
-- Liens Produits / Fournisseurs
-- 1 Création / Modification / Suppression d'un lien
-  - ➢ Message 1 : Informations générales liées au lien
-- Gestion des Marchés
-- 1 Création d’un marché dans la Gestion Economique et Financière
-  - ➢ Message 1 : Entête de Marché
-  - ➢ Message 2 : Lignes de Marché transmises
-- EPICURE (web) 2 Création d’un marché dans la Gestion Economique et Financière avec la nouvelle interface
-  - ➢ Message 1 : Entête de Marché
-  - ➢ Message 2 : Lignes de Marché transmises
-- 3 Transmission des consommations des produits
-  - ➢ Message 1 : Consommations par produit
-- 4 Création d’un marché
-  - ➢ Message 1 : Entête de Marché
-  - ➢ Message 2 : Lignes de Marché
-  - ➢ Message 3 : Fournisseurs par marché
-- 5 Modification de marché
-- 6 Suppression de marché
-  - ➢ Message 1 : Arrêt d’un marché
-  - ➢ Message 2 : Arrêt d’une ligne de marché
-- Demandes d’approvisionnements externes :
-- 1 Création d’une demande...................................................................................................
-  - ➢ Message 1 : Entête de demande d’approvisionnement
-  - ➢ Message 2 : Lignes de demande d’approvisionnement externe
-- Commandes
-- 1 Création d’une commande
-  - ➢ Message 1 : Entête de commande:........................................................................................
-  - ➢ Message 2 : Lignes de commande
-- 2 Modification de Commande
-- 3 Suppression de Commande
-- Livraisons provenant de l’extérieur
-- 1 Création d’une livraison externe
-  - ➢ Message 1 : Lignes de Livraison externe
-  - ➢ Message 2 : Lignes de Livraison sur produit avec gestion de lot
-- 2 Modification de lignes de Livraison
-- 3 Annulation de Livraison
-- Echantillons
-- 1 Création d’une livraison externe d’échantillon
-- Receptions
-- 1 Création d’une réception
-  - ➢ Message 1 : Lignes de Réception
-- 2 Modification de Réception
-- 3 Suppression de Réception
-- Mouvements de stocks internes
-- 1 Création d’un Mouvement de stock interne
-  - ➢ Message 1 : Mouvements de STOCK
-- 2 Envoi des listes pré établies
-  - ➢ Message 1 : Listes pré établies
-- Recettes diverses
-- 1 Création d’un Mouvement de recettes diverses
-  - ➢ Message 1 : Entête de pièce
-  - ➢ Message 2 : Lignes de pièce
+> **Note technique** : ce document est une conversion automatique de la specification Word officielle. Il sert de référence pour le skill `hpk-parser`.
 
 ## Introduction et présentation du document
 
@@ -159,7 +10,6 @@ Guillot Laëtitia P.O.O 19/10/
 
 ### ➢ Fonctionnement
 
-```
 Chaque événement concernant un utilisateur pour le serveur d’accréditation ou d’un patient
 pour les serveurs d’identité, de mouvement ou d’acte est enregistré dans la base de données
 HEXAGONE WEB, et génère un message dans la base ORACLE HEXAGONE WEB.
@@ -170,13 +20,10 @@ et qui sera en mesure de comprendre et de traiter ce message.
 Chaque application reçoit le message et renvoie un accusé de réception. Cette information
 servira en cas d’interruption de la communication pour savoir quels sont les messages qui n’ont
 jamais été reçus et le cas échéant de les renvoyer.
-```
 
 #### 1.1.1 Processus de communication
 
-```
 Il existe deux types de processus :
-```
 
 1. L’envoi de messages liés à des évènements détectés dans la base HEXAGONE WEB.
     Dans ce cas de figure, l’événement détecté active le Service Echange ou Hexaflux, pour la
@@ -193,25 +40,20 @@ Il existe deux types de processus :
     Les messages sont mis en historiques et épurés en fonction du paramétrage. De même, en
     cas de non réponse des composants externes, la communication sera automatiquement
 
-```
 interrompue après un nombre de tentatives paramétré, et le ou les administrateurs sont
 prévenus par courrier électronique.
 Il est aussi possible de planifier des arrêts de la communication pour la maintenance, ou
 de faire des arrêts immédiats.
-```
 
 2. Les demandes de création des applications externes.
 
-```
 La demande est prise en compte en mode synchrone, et l’information est retournée en
 temps réel. L’application HEXAGONE WEB génère des évènements et les gère selon le
 principe évoqué ci-dessus, mais en gérant un niveau de priorité maximal pour ce type de
 message.
-```
 
 #### 1.1.2 Format des messages
 
-```
 Rubrique Long. Format Oblig. Commentaires
 Type 2 S O PR = Produits
 FO = Fournisseurs
@@ -230,13 +72,10 @@ Suppression.
 Emetteur 15 S O HEXAGONE
 Date de l’envoi 16 Date O Date de l’envoi au format :
 YYYYMMDDHHMISSnn
-```
 
-```
 Individu 50 S O Individu au sens S3A qui a généré le
 message.
 Le reste est fonction du message.
-```
 
 #### 1.1.3 Normes à respecter lors de la constitution de messages
 
@@ -257,9 +96,7 @@ information. Par exemple, si la date de naissance n’est pas connue on aura :
 
 ## 2 Création d’un Produit
 
-```
 Uniquement prévu en envoi d’Hexagone WEB vers un autre logiciel.
-```
 
 ### ➢ Message 0 : Données générales du produit
 
@@ -287,28 +124,20 @@ YYYYMMDD
 **Code UCD** (^13) N N Code Unité commune dispensation Obligatoire si
 type Médicament
 
-```
 Code
 Médicament
-```
 
-```
 1 S N Plus utilisé depuis la version D.02 de GREF
-```
 
-```
 Niveau ATC de
 rattachement
-```
 
-```
 1 N N Obligatoire si Code ATC renseigné. Niveau
 d’arborescence :
 2 si Usage thérapeutique
 3 si sous-groupe thérapeutique
 4 si sous-groupe chimique
 5 si substance chimique
-```
 
 **Code Matériel** (^1) S N Plus utilisé depuis la version D.02 de GREF (Vide)
 **Type produit** (^3) S N Type de produit : **MED** = Médicament
@@ -373,18 +202,14 @@ Attestation** (^1) S O Plus utilisé à partir de la version D.03 de GREF
 **Code
 Fractionnable**
 
-```
 1 S O Plus utilisé à partir de la version D.03 de GREF
 (Vide)
-```
 
 **Taux de
 Majoration**
 
-```
 1 N N Obligatoire si produit rétrocédé. Valeurs :
 2 si 35%, 4 si 65% et 5 si 100%
-```
 
 **Prix Rétrocession** (^14) N N **Obligatoire** si produit rétrocédé. Le prix est TTC
 **Code édition
@@ -419,14 +244,10 @@ prescription
 **Code Hors T2A** (^1) S O **T** pour oui, **F** pour Non
 **Code LPP** (^13) S N Code transmis pour B2 à partir du 01/01/
 
-```
 Taux majoration
 Rétrocession
-```
 
-```
 5 .2 N N Taux de majoration de rétrocession
-```
 
 **Liste traceur** (^1) S N Plus envoyé à partir de la version 9 .0 2 de GREF
 (Vide)
@@ -582,16 +403,12 @@ préconisation
 1** S O Produit à utiliser dans la préconisation de
 commande. Valeur **O** pour Vrai, **N** pour Faux
 
-```
 Qté
 consommation
 forcée
-```
 
-```
 14 N N Quantité de consommation forcée pour
 préconisation. Décimalisée à 3
-```
 
 **Famille article 27** (^4) N N Plus utilisé à partir de _la version D.0_ 2 _de GEF_ (Vide)
 **Code Unité de
@@ -637,9 +454,7 @@ message)
 **Exercice
 comptable**
 
-```
 4 N O Exercice de gestion
-```
 
 **UF Magasin** (^4) N O UF magasin de stockage
 **Armoire** (^4) S N Code armoire de l’UF de stockage
@@ -685,16 +500,12 @@ Q)
 
 ## 3 Modification sur produit
 
-```
 Mêmes messages que les messages de création dès qu’une information est modifiée avec un
 mode « MODIFICATION ». Seul le message sur lequel une modification est apportée est émis.
-```
 
 ## 4 Suppression d'un produit
 
-```
 Message émis lors de la saisie d’une date de fin sur le produit.
-```
 
 **Rubrique** (^) **Long. Format Oblig. Commentaires
 Type** (^2) S O Type du message :PR = Produits
@@ -720,7 +531,6 @@ Uniquement prévu en envoi d’Hexagone WEB vers un autre logiciel.
 
 Message obligatoire en création de fournisseur.
 
-```
 Rubrique Long. Format Oblig. Commentaires
 Type 2 S O Type du message :FO : Fournisseur
 Message 2 S O M
@@ -731,27 +541,17 @@ YYYYMMDDHHMISSnn
 Individu
 (émetteur du
 message)
-```
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
-```
 Code
 Fournisseur
-```
 
-```
 6 S O Numéro Identifiant Fournisseur (Unique)
-```
 
-```
 Code divers
 (O/N)
-```
 
-```
 1 S O Code permettant de regrouper des fournisseurs
 occasionnels sous un même code divers. Dans ce
 cas, toutes les informations utiles dans la pièce
@@ -762,15 +562,13 @@ Raison sociale 38 S O Raison sociale du fournisseur en Majuscules
 Adresse 1 38 S N Complément destinataire
 Adresse 2 38 S N N° Voie et voie
 Code postal 5 N O Code postal
-```
 
 **Ville 38** S O Obligatoire majuscule
 
 **Bureau
 distributeur**
 
-##### 27 S O
-
+27 S O
 **No téléphone 16** S N No téléphone du fournisseur
 
 **No de Fax 16** S N No de Fax
@@ -780,10 +578,8 @@ distributeur**
 **Compte tiers
 exploit.**
 
-```
 12 N O No de compte de tiers pour les factures sur la
 section d’exploitation.
-```
 
 **No de SIRET 14** S N No de SIRET du fournisseur
 
@@ -791,20 +587,16 @@ section d’exploitation.
 tiers
 investissement**
 
-```
 12 N O No de compte de tiers pour les factures sur la
 section d’investissement
-```
 
 **Code APE 4** S N Code APE du fournisseur
 
 **Délai de
 paiement**
 
-```
 3 N N Nombre de jours pour le délai de paiement des
 factures de ce fournisseur
-```
 
 **Date de début 8** Date O Date de début d’utilisation de ce fournisseur.
 Format YYYYMMDD
@@ -816,28 +608,22 @@ YYYYMMDD
 regroupement
 facture**
 
-```
 1 S O Code permettant d’indiquer si on peut regrouper
 plusieurs factures sur les mandats pour ce
 fournisseur.. Valeurs T pour Vrai, F pour faux
-```
 
 **Code
 concurrentiel**
 
-```
 1 S O Code fournisseur concurrentiel ou pas. T pour
 Vrai, F pour faux
-```
 
 **Adresse EMAIL 255** S N Adresse EMAIL de la Maison Mère
 
 **Type de
 fournisseur**
 
-```
 10 S N Type de fournisseur
-```
 
 **Adresse 3 38** S N Complément d’adresse
 
@@ -847,23 +633,16 @@ fournisseur**
 
 **Résident 1** S O Résident en france ( **F** / **T** )
 
-```
 Complément
 du nom
-```
 
-```
 38 S N Complément du nom
-```
 
-```
 Prénom 38 S N Prénom
 Civilité 10 S N Civilite : MR, MME, MELLE
 Nature
 identifiant
-```
 
-```
 2 S N Nature de l'identifiant du tiers
 exemple : 00 Aucun, 01 SIRET, 02 SIREN, 03
 FINESS, 04 NIR, 05 TVAIntraCo, 06 Hors UE, 07
@@ -873,28 +652,19 @@ des personnes physiques), 12 NFP (Numéro des
 finances publiques)
 Identifiant du
 tiers
-```
 
-```
 18 S N Identifiant du tiers
 N° SIREN, SIRET, FINESS ou autre ....
 Catégorie du
 tiers
-```
 
-```
 2 S O Catégorie du tiers
-```
 
-```
 Nature
 juridique du
 tiers
-```
 
-```
 2 S O Nature juridique du tiers
-```
 
 **Franco de Port** (^13) N N Décimalisé à 2, montant franco de port
 
@@ -911,33 +681,21 @@ Type** (^2) S O Type du message :FO : Fournisseur
 **Date de l’envoi 16** Date^ O Date de l’envoi au format :
 YYYYMMDDHHMISSnn
 
-```
 Individu
 (émetteur du
 message)
-```
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
-```
 Code
 Fournisseur
-```
 
-```
 6 S O Numéro Identifiant Fournisseur (Unique)
-```
 
-```
 No de
 domiciliation
-```
 
-```
 2 N O Numéro de domiciliation bancaire de 01 à 99
-```
 
 **Clé RIB** (^2) N O Clé RIB associée à la domiciliation bancaire 2
 Chiffres
@@ -1005,26 +763,18 @@ d’adresse
 **Code pays 3** S O Code pays
 **Résident 1** S O Résident en france ( **F** / **T** )
 
-```
 Complément du
 nom
-```
 
-```
 38 S N Complément du nom
-```
 
-```
 Prénom 38 S N Prénom
 Civilité 10 S N Civilite : MR, MME, MELLE
-```
 
 ## 2 Modification Fournisseurs
 
-```
 Mêmes messages que les messages de création dès qu’une information est modifiée avec un
 mode « MODIFICATION »
-```
 
 ## 3 Suppression fournisseur
 
@@ -1152,9 +902,7 @@ YYYYMMDDHHMISSnn
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **Code Fournisseur** (^6) S O Numéro Identifiant Fournisseur (Unique)
 **Code produit** (^8) S O Code identifiant produit
@@ -1249,10 +997,8 @@ C : Négocié sans concurrence
 T : Travaux
 A : Article 30
 
-```
 U : Besoin unique
 N : Autres
-```
 
 **Nature** (^1) S O Obligatoire si type = ‘T’(Travaux). Valeurs
 autorisées :
@@ -1296,50 +1042,32 @@ Marché
 11** N O Monétaire décimalisé à 2 (par n° de marché)
 Si Marché en Mini/Maxi, Montant maxi HT
 
-```
 par n° de marché, par fournisseur
 Montant TTC du
 Marché
-```
 
-```
 11 N O Monétaire décimalisé à 2 (par n° de marché)
 Si Marché en Mini/Maxi, Montant maxi TTC
 par n° de marché, par fournisseur
 Date de début de
 période
-```
 
-```
 8 Date O Date de début de période. Format YYYYMMDD
-```
 
-```
 Date de fin de
 période
-```
 
-```
 8 Date O Date de fin de période. Format YYYYMMDD
-```
 
-```
 Durée de la
 période
-```
 
-```
 2 N O Nombre de mois de la période
-```
 
-```
 Type de
 procédure
-```
 
-```
 2 S O Type de procédure à saisir avant l’export
-```
 
 Remarque : Si le marché porte sur plusieurs fournisseurs, on aura autant d’enregistrements
 
@@ -1364,9 +1092,7 @@ YYYYMMDDHHMISSnn
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **No de marché** (^8) S O No de marché attribué par le logiciel émetteur
 **ATTENTION dans la Gestion Economique et
@@ -1496,24 +1222,16 @@ marché sera rejeté.
 
 ### ➢ Message 1 : Entête de Marché
 
-```
 Rubrique Long. Forma
 t
-```
 
-```
 Obli
 g.
-```
 
-```
 Commentaires
-```
 
-```
 Type 2 S O Type du message :MT : Marchés Transmis
 Message 2 S O M1
-```
 
 **Mode 1** S O C
 
@@ -1521,33 +1239,25 @@ Message 2 S O M1
 
 **Date de l’envoi 16** Date^ O Date de l’envoi au format :
 
-```
 YYYYMMDDHHMISSnn
-```
 
 **Individu
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **No de marché 8** S O No de marché attribué par le logiciel émetteur.
 
-```
 ATTENTION dans la Gestion Economique et
 Financière : No sur 6 en numérique avec les 2
 premiers correspondants à l’exercice (exemple sur
 2003, no 030001)
-```
 
 **Code
 fournisseur**
 
-```
 6 S O Doit exister dans Hexagone WEB
-```
 
 **Raison sociale 38** S O Doit exister dans Hexagone WEB
 
@@ -1558,46 +1268,35 @@ fournisseur**
 **No du compte
 bancaire**
 
-##### 11 S O
-
+11 S O
 **Clé RIB 2** N O
 
 **Délai de
 Paiement**
 
-```
 3 N N Nombre de jours. Compris entre 001 et 999
-```
 
 **Date de
 Consultation**
 
-```
 8 Date O Date de lancement de la consultation du marché.
 Format YYYYMMDD
-```
 
 **Date de
 Notification**
 
-```
 8 Date O Date de notification au titulaire. Format
 YYYYMMDD
-```
 
 **Date début de
 marché**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **Date de fin
 marché**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **Marché alloti 1** S O T : pour marché alloti, F sinon
 
@@ -1605,74 +1304,56 @@ marché**
 
 **(retenus)**
 
-```
 4 N N Si marché alloti, donne le nombre de lots associés
-```
 
 **Marché à bon
 de commande**
 
-```
 1 S O Valeurs F pour Non, T pour Oui
-```
 
 **Reconductible 1** S O Valeurs F pour Non, T pour Oui
 
 **Nombre de
 reconductions**
 
-```
 3 N O Obligatoire sir code « Reconductible » est à T.
 Compris entre 001 et 999.
-```
 
 **Gestion
 Interne**
 
-```
 1 S O Valeur F pour Non, T pour Oui.
-```
 
 **Pourcentage
 maxi de
 blocage**
 
-```
 5 N N Décimalisé à 2.
-```
 
 **Type de
 marché**
 
-```
 1 S N Positionnement non utilisé dans cette version
-```
 
 **Nature 1** S N Positionnement non utilisé dans cette version
 
 **Code CMP
 dominant**
 
-```
 10 S F Obligatoire si type marché = ‘M’.
-```
 
 **Groupement
 d’achat**
 
-```
 1 S O T si marché dans le cadre d’un groupement
 d’achat, F si marché propre à l’établissement.
-```
 
 **Taux des
 Intérêts
 moratoires**
 
-```
 5 N F Numérique décimalisé à 2. Taux spécifique pour le
 marché
-```
 
 **Code IBAN 34** S N Code IBAN ( _International Bank Account Number_ .)
 
@@ -1681,111 +1362,85 @@ marché
 **Mini/Maxi
 (O/N)**
 
-```
 1 S O Marché en Mini/Maxi
 F pour non, T pour oui
-```
 
 **Gpt Achat
 (O/N)**
 
-```
 1 S O Marché en groupement d’achat
 F pour non, T pour oui
-```
 
 **Accord cadre
 (O/N)**
 
-```
 1 S O Marché accord cadre
 F pour non, T pour oui
-```
 
 **Marché
 subséquent
 (O/N)**
 
-```
 1 S N Marché subséquent
 F pour non, T pour oui (non utilisé actuellement)
-```
 
 **Montant
 minimum de
 commande**
 
-```
 9 N N Montant minimum de commande
-```
 
 **Franco de port 9** N N Monétaire décimalisé à 2 (montant HT)
 
 **Montant HT du
 Marché**
 
-```
 11 N O Monétaire décimalisé à 2 (par n° de marché)
 Si Marché en Mini/Maxi, Montant maxi HT
 par n° de marché, par fournisseur
-```
 
 **Montant TTC
 du Marché**
 
-```
 11 N O Monétaire décimalisé à 2 (par n° de marché)
 Si Marché en Mini/Maxi, Montant maxi TTC
 par n° de marché, par fournisseur
-```
 
 **Date de début
 de période**
 
-```
 8 Date N Date de début de période. Format YYYYMMDD
 (non utilisé actuellement)
-```
 
 **Date de fin de
 période**
 
-```
 8 Date N Date de fin de période. Format YYYYMMDD (non
 utilisé actuellement)
-```
 
 **Durée de la
 période**
 
-```
 2 N O Nombre de mois de la période
-```
 
 **Type de
 procédure**
 
-```
 2 S O Type de procédure à saisir avant l’export
-```
 
 **Caractéristique
 s du marché**
 
-```
 1 S O Caractéristiques M = mixte, C = négocié sans
 concurrence, A = article 30, N = aucune
 caractéristique (normal)
 Obligatoirement à N si Nature = T
-```
 
 **Type de
 marché**
 
-```
 1 S O Types T = travaux, F = fourniture, S = service
 Obligatoirement à T si nature = T
-```
 
 **Nature 1** S O Nature du marché T = travaux, B = à bon de
 commande, A = autre
@@ -1836,10 +1491,8 @@ ordonnateur
 **Quantité minimum
 retenue**
 
-```
 14 N N Quantité minimum pour les marchés à bon de
 commande Décimalisée à 3
-```
 
 **Quantité moyenne** (^14) N N Quantité moyenne. Décimalisée à 3. Non utilisée
 dans la Gestion Economique et Financière
@@ -1884,14 +1537,12 @@ Rupture sur N° ligne de marché + N°lot + N°sous
 lot :
 Montant proposé =
 
-```
 Cumul de tous les produits au mode de calcul
 « Somme »
 +
 Moyenne de tous les produits au mode de calcul
 « Moyenne »
 (non utilisé actuellement)
-```
 
 **Code fournisseur** (^6) S O Doit exister dans Hexagone WEB (10 car maxi
 dans Epicure+)
@@ -1930,13 +1581,11 @@ par l'établissement.
 
 ## 3 Transmission des consommations des produits
 
-```
 Ces enregistrements sont uniquement envoyés par la Gestion Economique et Financière pour
 un logiciel extérieur.
 Ces messages sont notamment destinés à alimenter les logiciels de gestion des marchés avec
 les consommations des produits stockés constatées dans Hexagone WEB, pour un magasin
 donné, sur une période donnée.
-```
 
 ### ➢ Message 1 : Consommations par produit
 
@@ -1969,11 +1618,9 @@ d’historique
 fournisseur du
 marché**
 
-```
 6 S N Si marché en cours sur ce produit lors de
 l’extraction, le code fournisseur est transmis. C’est
 le code Hexagone
-```
 
 **Raison sociale** (^38) S N Raison sociale du fournisseur du marché
 **PU HT du
@@ -1999,10 +1646,8 @@ Décimalisée à 3.
 
 ## 4 Création d’un marché
 
-```
 Les marchés peuvent être uniquement envoyés depuis la Gestion Economique et Financière
 vers un autre destinataire.
-```
 
 ### ➢ Message 1 : Entête de Marché
 
@@ -2044,9 +1689,7 @@ marché
 **Date de fin
 marché**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **Marché alloti** (^1) S O **T** : pour marché alloti, **F** sinon
 **Nbre de lots** (^4) N F Si marché alloti, donne le nombre de lots associés
@@ -2088,10 +1731,8 @@ d’achat, **F** si marché propre à l’établissement.
 Intérêts
 moratoires**
 
-```
 5 N F Numérique décimalisé à 2. Taux spécifique pour le
 marché
-```
 
 **Observations** (^80) S F Observations
 
@@ -2138,20 +1779,14 @@ des marchés publics.
 minimum de
 commande**
 
-##### 14 N N
+14 N N
 
-```
 Quantité minimum à commander. Décimalisée à 3
-```
 
-```
 Code Unité de
 conditionnement
-```
 
-```
 5 S N Code unité de conditionnement du fournisseur, existe dans la table HXUNDIST
-```
 
 **Nombre d’unités** (^14) N N Nombre d’unités de gestion dans fournisseur. Décimalisé à 3 l’unité de conditionnement du
 **Délai de livraison** (^3) N N Nombre de jours pour délai de livraison.^
@@ -2161,33 +1796,23 @@ principal
 **No de point de
 commande**
 
-##### 2 N O
+2 N O
 
-```
 Par défaut 01. Point de commande habituel pour le produit.
-```
 
-```
 Référence du
 produit chez le
 fournisseur
-```
 
-##### 1024 S N
+1024 S N
 
-```
 Texte permettant l’identification du produit chez le fournisseur,
 il sera repris sur les bons de commande
-```
 
-```
 Référence
 fournisseur
-```
 
-```
 30 S N Références exactes du produit chez le fournisseur sans annotation personnelle.
-```
 
 **Code fabricant** (^13) S N Code fabricant lié au LPPR (liste des produits et prestations remboursables, ancien nom LPP).
 
@@ -2195,12 +1820,9 @@ fournisseur
 
 Uniquement si marché multi fournisseurs et/ou marché alloti
 
-```
 Rubrique Long. Format Oblig. Commentaires
 Type 2 S O Type du message :MA : Marchés
-```
 
-```
 Message 2 S O M3
 Mode 1 S O C
 Emetteur 15 S O HEXAGONE
@@ -2209,55 +1831,38 @@ YYYYMMDDHHMISSnn
 Individu
 (émetteur du
 message)
-```
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
-```
 No de marché 6 N O No de marché attribué par l’établissement
 No de lot 4 N O No de lot associé au fournisseur
 Code
 fournisseur
-```
 
-```
 6 S O Code fournisseur Hexagone WEB associé
-```
 
-```
 No de
 domiciliation
 bancaire
-```
 
-```
 2 N O No de domiciliation bancaire du fournisseur, pour
 gestion des règlements.
-```
 
-```
 Date début 8 Date O Format YYYYMMDD
 Date de fin 8 Date O Format YYYYMMDD
 Libellé du lot 150 S N Libellé du lot
-```
 
 ## 5 Modification de marché
 
-```
 Mêmes messages que les messages de création dès qu’une information est modifiée avec un
 mode « MODIFICATION »
-```
 
 ## 6 Suppression de marché
 
 ### ➢ Message 1 : Arrêt d’un marché
 
-```
 Rubrique Long. Format Oblig. Commentaires
 Type 2 S O Type du message :MA : Marchés
-```
 
 **Message 2** S O M1
 
@@ -2274,9 +1879,7 @@ YYYYMMDDHHMISSnn
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **No de marché 6** N O No de marché attribué par l’établissement
 
@@ -2297,35 +1900,27 @@ MA : Marchés
 
 **Date de l’envoi 16** Date^ O Date de l’envoi au format :
 
-```
 YYYYMMDDHHMISSnn
-```
 
 **Individu
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **No de marché 6** N O No de marché attribué par l’établissement
 
 **No ligne
 marché**
 
-```
 3 N O No de ligne clôturée.
-```
 
 **Code produit 8** S N Obligatoirement renseigné si ligne sur produit
 
 **Compte
 ordonnateur**
 
-```
 13 S N Obligatoirement renseigné si ligne sur compte
-```
 
 **Code CMP 10** S O Obligatoire code nomenclature du nouveau code
 des marchés publics.
@@ -2413,24 +2008,18 @@ d’approvisionnements
 
 **Date de l’envoi 16** Date^ O Date de l’envoi au format :
 
-```
 YYYYMMDDHHMISSnn
-```
 
 **Individu
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **Date de
 demande**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **No de demande** (^10) S O
 **No de ligne** (^3) N O No de ligne de demande : 001 à 999 maximum.
@@ -2532,16 +2121,12 @@ commande.
 **Objet
 commande**
 
-```
 40 S N Objet de commande
-```
 
 **Date de
 commande**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **Date de livraison** (^8) Date N Date de livraison. Format YYYYMMDD
 **Montant TTC de
@@ -2673,14 +2258,10 @@ Imprévisible
 1** S O Plus envoyé à partir de la version 9.02 de GREF
 (Vide)
 
-```
 Libellé long
 produit
-```
 
-```
 150 S N Renseigné si code produit présent
-```
 
 **Type produit** (^3) D N Type de produit : **MED** = Médicament
 **MAT** = Matériel Médical
@@ -2784,14 +2365,10 @@ HEXAGONE WEB
 Permet de faire le lien avec le numéro de ligne de
 commande associée la ligne de livraison
 
-```
 No de Bordereau
 de livraison
-```
 
-```
 10 S N No du BL du fournisseur
-```
 
 **Code fournisseur** (^6) S O Fournisseur HEXAGONE WEB effectuant la
 livraison
@@ -2881,14 +2458,10 @@ produit n'a pas de lot
 **No de série** (^30) S F N° de série - Obligatoire si le produit
 HEXAGONE WEB le gère.
 
-```
 Date de
 péremption
-```
 
-```
 8 Date O Date de péremption du lot reçu
-```
 
 **Quantité reçue** (^14) N O Le total des lignes par produit doit être égal
 à la quantité totale reçue. Décimalisée à 3.
@@ -2940,43 +2513,33 @@ intégration. Fonctionne uniquement avec HEXAFLUX.
 **Date de
 l’envoi**
 
-```
 16 Date O Date de l’envoie au format :
 YYYYMMDDHHMISSnn
-```
 
 **Individu
 (émetteur
 du message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **Date
 D’annulatio
 n**
 
-```
 8 Date O Format YYYYMMDD
-```
 
 **No de
 réception de
 l’émetteur**
 
-```
 10 S O No de réception de l’émetteur
-```
 
 **No de
 commande
 de
 l’émetteur**
 
-```
 10 S O No de commande de l’émetteur
-```
 
 ## Echantillons
 
@@ -2987,7 +2550,6 @@ de l’émetteur doit être renseigné et il sera stocké **comme un mouvement d
 d’entrée** de la Gestion Economique et Financière qui sera généré si tous les contrôles sont
 corrects. Fonctionne uniquement avec HEXAFLUX.
 
-```
 Rubrique Long. Format Oblig. Commentaires
 Type 2 S O Type du message : EC : Echantillons
 Message 2 S O M1
@@ -2998,53 +2560,35 @@ YYYYMMDDHHMISSnn
 Individu
 (émetteur du
 message)
-```
 
-##### 50 S O PHARMA
-
-```
+50 S O PHARMA
 Date de
 livraison des
 échantillons
-```
 
-```
 8 Date O Format YYYYMMDD
-```
 
-```
 No de
 réception de
 l’émetteur
-```
 
-```
 10 S O No de réception des échantillons de l’émetteur
-```
 
-```
 Code
 fournisseur
-```
 
-```
 6 S O Fournisseur HEXAGONE WEB effectuant la
 livraison
 UF magasin de
 réception
-```
 
-```
 4 N O Doit exister dans HEXAGONE WEB et être associée
 comme UF magasin principale sur les produits
 Code produit 8 S O Obligatoire
 Signe du
 Mouvement
-```
 
-```
 1 S O P pour positif – N pour Négatif
-```
 
 **Quantité livrée 14** N O Décimalisée à 3.^
 Quantité > 0 (Positive) , doit être exprimée dans
@@ -3056,24 +2600,18 @@ marché
 **No Lot de
 Marché**
 
-```
 2 N N Uniquement si marché alloti
-```
 
 **No de Lot du
 Produit**
 
-```
 30 S N No de lot de l’échantillon
-```
 
 **Date de
 Péremption du
 lot**
 
-```
 8 Date N Obligatoire si No de lot renseigné
-```
 
 **Commentaire 40** S N Permet d’identifier le mouvement
 
@@ -3119,18 +2657,14 @@ Réception
 CMP :
 **F** : Réception Normale
 
-```
 T : Réception Travaux
-```
 
 **No de
 commande
 HEXAGONE WEB**
 
-```
 8 N O No de commande dans la Gestion Economique et
 Financière associé à la réception
-```
 
 **No de ligne cde** (^3) N O No de ligne de commande : 001 à 999 maximum.
 **No de Bordereau
@@ -3220,7 +2754,6 @@ les contrôles sont corrects.
 **_Ces messages concernent uniquement les produits gérés en stock et non gérés en
 entrées/sorties simultanées :_**
 
-```
 A - Les sorties de stock classiques des magasins et / ou armoires de service :
 Consommations de produits par les services, et gestion des retours de service. Dans ce
 cas, 2 possibilités sont offertes :
@@ -3236,27 +2769,22 @@ l’arrêté de balance définitive : L’intégration de ces mouvements génèr
 de sorties normaux..
 (Message de type SO, code Message S1 avec champ Valeur de la sortie non
 renseignée)
-```
 
 **B - Les inventaires de stock par magasin et / ou armoire de service** :
 
-```
 Ces mouvements permettront de générer un état d’inventaire qui sera rapproché du
 stock géré dans la Gestion Economique et Financière dans les procédures de gestion des
 inventaires des stocks. Ces messages sont purement quantitatifs.
 (Message de type SO, code Message I1 avec champ Valeur de la sortie non
 renseignée)
-```
 
 **C - Les transferts entre magasins de l ‘établissement**
 
-```
 Ces mouvements permettront de gérer dans la Gestion Economique et Financière les
 mouvements entre magasins et / ou armoires de service à l’intérieur de l’établissement.
 Ces mouvements ne rentrent pas dans la comptabilisation des consommations.
 (Message de type SO, code Message T1 avec champ Valeur de la sortie non
 renseignée)
-```
 
 ### ➢ Message 1 : Mouvements de STOCK
 
@@ -3288,16 +2816,13 @@ destinatrice
 4** N O Pour les messages S1 : UF destinatrice de la sortie
 ou faisant le retour
 
-```
 Pour les messages I1 : Mettre 0000
 Pour les messages T1 : UF magasin réceptionnant
 le produit transféré
-```
 
 **Code Armoire de
 l’UF destinatrice**
 
-```
 4 S N Uniquement renseigné si gestion des armoires
 dans la Gestion Economique et Financière.
 Pour les messages S1 : Code armoire associé à UF
@@ -3305,7 +2830,6 @@ destinatrice de la sortie ou faisant le retour
 Pour les messages I1 : Mettre 0000
 Pour les messages T1 : Code armoire de l’ UF
 magasin réceptionnant le produit transféré
-```
 
 **Code produit** (^8) S O Identifiant du produit dans la Gestion Economique
 et Financière : peut-être soit le code produit soit le
@@ -3331,12 +2855,10 @@ code IUD-IP (Identifiant Production : numéro de
 série, numéro de lot, date de fabrication, date
 d'expiration).
 
-```
 Il y a 4 types selon le standard choisi pour le code
 IUD-ID : GTIN (standard GS1), UPN (standard
 HIBC), PPN (standard IFA) et PPIC (standard ISBT
 128).
-```
 
 **IUDID** (^25) S N Le code IUD-ID (Identifiant Dispositif : code
 fabricant, modèle, conditionnement) est le
@@ -3369,15 +2891,11 @@ message)
 0000)
 **UF cliente** (^4) N O UF cliente associée à la liste
 
-```
 Code Armoire
 Cliente
-```
 
-```
 4 S N Code de l’armoire associée à l’UF cliente. Si pas de
 gestion des armoires valeur 0000
-```
 
 **Code liste** (^8) S O Nom de la liste
 **Code produit** (^8) S O Code produit
@@ -3417,24 +2935,18 @@ RD : Pièce de recettes diverses
 
 **Date de l’envoi 16** Date^ O Date de l’envoi au format :
 
-```
 YYYYMMDDHHMISSnn
-```
 
 **Individu
 (émetteur du
 message)**
 
-```
 50 S O Individu au sens S3A qui a généré le message.
-```
 
 **No de pièce de
 l’expéditeur**
 
-```
 10 S O No d’identifiant unique de la pièce
-```
 
 **Exercice** (^4) N O Exercice comptable d’imputation de la pièce
 **Code débiteur** (^6) S O Code débiteur destinataire du titre à émettre.

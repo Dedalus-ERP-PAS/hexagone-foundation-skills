@@ -50,7 +50,7 @@ Ajoute le label "priority::high" à l'issue #45
 
 ## Prérequis
 
-- Serveur MCP (Model Context Protocol) GitLab configuré (`gitlab-mcp`)
+- CLI **glab** configuré et authentifié auprès de l'instance GitLab
 - Accès à l'instance GitLab auto-hébergée : https://gitlab-erp-pas.dedalus.lan
 - Identifiants et permissions appropriés sur les projets GitLab concernés
 

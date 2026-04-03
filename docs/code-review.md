@@ -24,7 +24,7 @@ Montre-moi les MR ouvertes à reviewer
 
 ## Prérequis
 
-- Serveur **MCP** (Model Context Protocol) GitLab configuré (`gitlab-mcp`)
+- CLI **glab** configuré et authentifié auprès de l'instance GitLab
 - Accès à l'instance GitLab auto-hébergée Dedalus : https://gitlab-erp-pas.dedalus.lan
 - Identifiants et permissions appropriés sur les projets concernés
 
@@ -106,9 +106,9 @@ Assistant :
 ## Démarrage rapide
 
 ```bash
-npx skills add Dedalus-ERP-PAS/foundation-skills --skill gitlab-code-review -g -y
+npx skills add Dedalus-ERP-PAS/foundation-skills --skill code-review -g -y
 ```
 
 ## Ressources
 
-- [SKILL.md complet](../skills/gitlab-code-review/SKILL.md) — Guide détaillé
+- [SKILL.md complet](../skills/code-review/SKILL.md) — Guide détaillé

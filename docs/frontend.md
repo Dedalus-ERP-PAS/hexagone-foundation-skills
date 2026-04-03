@@ -100,9 +100,7 @@ Le skill applique des règles strictes selon le contexte détecté.
 
 - **vue-best-practices** / **react-best-practices** — Patrons spécifiques au framework
 - **create-design-system-rules** — Pour les projets sans design system établi
-- **web-design-guidelines** — Pour auditer l'accessibilité et la qualité UI
-- **react-best-practices** / **vue-best-practices** — Patterns de code pour les frameworks
-- **web-design-guidelines** — Audit et revue d'interfaces existantes
+- **web-design-guidelines** — Audit accessibilité et qualité UI
 
 ## Ressources
 

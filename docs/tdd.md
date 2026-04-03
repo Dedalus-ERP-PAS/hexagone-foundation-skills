@@ -2,6 +2,13 @@
 
 Le **TDD (Test-Driven Development)** est une méthode de développement piloté par les tests. Ce skill guide l'agent IA pour appliquer le cycle red-green-refactor de manière rigoureuse.
 
+## Pourquoi ce skill
+
+- **Moins de bugs en production** — Les tests écrits avant le code détectent les régressions immédiatement
+- **Confiance lors des refactorings** — Modifier du code existant sans risque grâce à un filet de tests solide
+- **Spécifications vivantes** — Les tests documentent le comportement attendu mieux qu'un cahier des charges
+- **Feedback rapide** — Chaque cycle dure quelques minutes, pas des jours
+
 ## Qu'est-ce que le TDD ?
 
 - Vous écrivez les tests **avant** le code de production

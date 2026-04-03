@@ -1,1511 +1,8 @@
-# Specification des messages HPK ADT - Service Echange
+# Spécification des messages HPK ADT - Service Échange
 
-Specification de reference des messages HPK ADT (Admission, Discharge, Transfer) du Service Echange Hexagone. Ce document decrit les structures de donnees pour les messages d'identite (ID), mouvements (MV), couverture (CV) et autres types HPK.
+Spécification de référence des messages HPK ADT (Admission, Discharge, Transfer) du Service Échange Hexagone. Ce document décrit les structures de données pour les messages d'identité (ID), mouvements (MV), couverture (CV) et autres types HPK.
 
-> **Note technique** : ce document est une conversion automatique de la specification Word officielle. Il sert de reference pour le skill `hpk-parser`.
-
-## Maitrise du document
-
-| | |
-|---|---|
-| **Redacteur** | P. LAUNAY -- Responsable Unite de developpement |
-| **Date de creation** | 27/08/1999 |
-| **Derniere mise a jour** | 22/01/2026 |
-
-## Historique des versions
-
-+------+---+------+----------------------------------------+------+------+
-| Date |   | Op   |                                        | Révi | D    |
-|      |   | érat |                                        | sion | iffu |
-|      |   | ions |                                        |      | sion |
-|      |   | et   |                                        |      |      |
-|      |   | comm |                                        |      |      |
-|      |   | enta |                                        |      |      |
-|      |   | ires |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1.0  | 2 |      | P. Launay: Création                    |      | ![]  |
-|      | 7 |      |                                        |      | (ver |
-|      | / |      |                                        |      | topa |
-|      | 0 |      |                                        |      | l_d5 |
-|      | 8 |      |                                        |      | b45b |
-|      | / |      |                                        |      | 6900 |
-|      | 9 |      |                                        |      | c449 |
-|      | 9 |      |                                        |      | bd9c |
-|      |   |      |                                        |      | d55a |
-|      |   |      |                                        |      | 0f4a |
-|      |   |      |                                        |      | cdb4 |
-|      |   |      |                                        |      | a7/m |
-|      |   |      |                                        |      | edia |
-|      |   |      |                                        |      | /ima |
-|      |   |      |                                        |      | ge3. |
-|      |   |      |                                        |      | png) |
-+------+---+------+----------------------------------------+------+------+
-| 1.1  | 1 |      | C. Madrid: Modification                | ![]  | ![]  |
-|      | 5 |      |                                        | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 9 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 2.1  | 2 |      | P. Launay: Prise en compte des         | ![]  | ![]  |
-|      | 7 |      | messages utilisateurs                  | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 9 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 2.2  | 2 |      | C. Madrid: Modification (individu)     | ![]  | ![]  |
-|      | 7 |      |                                        | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 9 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 2.3  | 1 |      | P. Launay: Spécification des           | ![]  | ![]  |
-|      | 1 |      | structures de données                  | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 2.4  | 1 |      | P. Launay: Spécification des Services  | ![]  | ![]  |
-|      | 2 |      | et modification des règles de nommage  | (ver | (ver |
-|      | / |      | des entités                            | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 3.1  | 1 |      | P. Launay: Ajout des tables            | ![]  | ![]  |
-|      | 3 |      | d\'administration des évènements       | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 3.2  | 2 |      | P. Launay: Aojut de nouveaux champs    | ![]  | ![]  |
-|      | 6 |      | dans les descriptifs de table          | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 4.1  | 2 |      | P. Launay: Ajout des demandes          | ![]  | ![]  |
-|      | 9 |      | d\'examens                             | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 9 |      |                                        | c449 | c449 |
-|      | 9 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 4.2  | 2 |      | P. Launay: Ajout des minutes de        | ![]  | ![]  |
-|      | 5 |      | naissance au message ID, MA (Page 15)  | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 5 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 0 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 5.0  | 2 |      | R. Gill: Mise à jour pour Hexagone v7  | ![]  | ![]  |
-|      | 5 |      | b.18                                   | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 0 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 5.2  | 2 |      | P. Launay : Ajout des messages         | ![]  | ![]  |
-|      | 2 |      | d\'actes en *NGAP* et en *CDAM*        | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 5 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 1 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 6.1  | 0 |      | P. Launay : Modification de messages   | ![]  | ![]  |
-|      | 4 |      | et ajout de messages (ID M1 page 15,   | (ver | (ver |
-|      | / |      | IY M1, page 17, MV M2 page 19, MV M3   | topa | topa |
-|      | 0 |      | page 20, MV M6 page 22, MV M7 page 23, | l_d5 | l_d5 |
-|      | 1 |      | MV M8 page 24 et MV M9 page 25)        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 6.2  | 2 |      | P. Launay : Modification du message IY | ![]  | ![]  |
-|      | 3 |      | page 17.                               | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 6.3  | 2 |      | R. Gill: Ajout de la description de    | ![]  | ![]  |
-|      | 4 |      | table HNDGHL7, et de la communication  | (ver | (ver |
-|      | / |      | par IHE/HL7                            | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 6.4  | 2 |      | R. Gill: Ajout du champ Uf précédente  | ![]  | ![]  |
-|      | 5 |      | dans le message M6                     | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.0  | 2 |      | P.Launay : Ajout des messages UF       | ![]  | ![]  |
-|      | 7 |      |                                        | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 2 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.1  | 2 |      | P.Launay : Ajouts des messages         | ![]  | ![]  |
-|      | 9 |      | Produits                               | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 4 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.2  | 2 |      | C. Madrid : Ajout dans le message M8   | ![]  | ![]  |
-|      | 2 |      | du motif de l'absence                  | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 7 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.3  | 2 |      | I.Ravet : Modification des messages    | ![]  | ![]  |
-|      | 5 |      | Utilisateurs                           | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.4  | 1 |      | P. Launay : Modification des messages  | ![]  | ![]  |
-|      | 3 |      | Actes                                  | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.5  | 1 |      | I.Ravet : Mise à jour des messages     | ![]  | ![]  |
-|      | 5 |      | Utilisateurs v7.c10                    | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 2 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.6  | 2 |      | C. Alphand : Ajout des messages ST/EJ  | ![]  | ![]  |
-|      | 8 |      | et ST/EG                               | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 2 |      |                                        | c449 | c449 |
-|      | 0 |      |                                        | bd9c | bd9c |
-|      | 0 |      |                                        | d55a | d55a |
-|      | 2 |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.7  | 0 |      | P. Launay : Mise en page par domaine   | ![]  | ![]  |
-|      | 2 |      |                                        | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 3 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.8  | 0 |      | V. Amorin : Ajout n°Finess dans les    | ![]  | ![]  |
-|      | 4 |      | messages UF (p20)                      | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 3 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 3 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.9  | 1 |      | JM Gio : Ajout identifiant cps et      | ![]  | ![]  |
-|      | 5 |      | liste des uf et des finess dans les    | (ver | (ver |
-|      | / |      | messages création et modification      | topa | topa |
-|      | 0 |      | Praticiens et modification message     | l_d5 | l_d5 |
-|      | 4 |      | suppression                            | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 3 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 7.10 | 1 |      | C.Alphand : Nouveau message ID M5      | ![]  | ![]  |
-|      | 0 |      |                                        | (ver | (ver |
-|      | / |      | C.Alphand : Message ID M1 rajout       | topa | topa |
-|      | 0 |      | sipprentot                             | l_d5 | l_d5 |
-|      | 2 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 2 |      |                                        | c449 | c449 |
-|      | 0 |      |                                        | bd9c | bd9c |
-|      | 0 |      |                                        | d55a | d55a |
-|      | 4 |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.01 | 0 |      | Mise a jour charte graphique, et       | ![]  | ![]  |
-|      | 5 |      | Elite.S                                | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 3 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 4 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.02 | 2 |      | JP. Pereira : Messages Elite.S         | ![]  | ![]  |
-|      | 3 |      | disponibles à partir de la version     | (ver | (ver |
-|      | / |      | D.03                                   | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 9 |      | Ajout message PR M7, SO LI             | b45b | b45b |
-|      | / |      | -Modifications messages PR M0, PR M1,  | 6900 | 6900 |
-|      | 0 |      | PR M3,PR M4, FO M3, CO CE, CO CL.      | c449 | c449 |
-|      | 4 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.03 | 1 |      | C.Alphand : Message ID\|M1 ajout des   | ![]  | ![]  |
-|      | 4 |      | zones télécom (D03), des autres        | (ver | (ver |
-|      | / |      | adresses (D03), modification identité  | topa | topa |
-|      | 0 |      | protégée (D03.1)                       | l_d5 | l_d5 |
-|      | 4 |      |                                        | b45b | b45b |
-|      | / |      | Message CV ajout du type, numéro de    | 6900 | 6900 |
-|      | 0 |      | dossier, zone prévisionnel (D03)       | c449 | c449 |
-|      | 5 |      |                                        | bd9c | bd9c |
-|      |   |      | A la fin du message ID\|M1 (position   | d55a | d55a |
-|      | 2 |      | 45) ajout de l'ipp du patient à garder | 0f4a | 0f4a |
-|      | 6 |      | si c'est une fusion de patient sinon   | cdb4 | cdb4 |
-|      | / |      | vide (disponible en D04).              | a7/m | a7/m |
-|      | 0 |      |                                        | edia | edia |
-|      | 5 |      | A la fin du message MV\|M4 (position   | /ima | /ima |
-|      | / |      | 10) ajout de F si c'est une fusion de  | ge4. | ge3. |
-|      | 0 |      | patient sinon vide (disponible en      | png) | png) |
-|      | 5 |      | D04).                                  |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 8.04 | 1 |      | C.Alphand : Message ID\|M1 ajout des   | ![]  | ![]  |
-|      | 4 |      | zones (En D04) : Cp du lieu de         | (ver | (ver |
-|      | / |      | naissance, pays de naissance, VIP,     | topa | topa |
-|      | 0 |      | Identité à valider                     | l_d5 | l_d5 |
-|      | 9 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 5 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.05 | 1 |      | Philippe LAUNAY : Ajout des messages   | ![]  | ![]  |
-|      | 2 |      | propres aux Box Urgences.              | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 1 |      |                                        | l_d5 | l_d5 |
-|      | 0 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 5 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.06 | 0 |      | C.Alphand : Ajout à la fin du message  | ![]  | ![]  |
-|      | 2 |      | NO\|PR (praticiens) du nom et prénom   | (ver | (ver |
-|      | / |      | (disponible en D03.7)                  | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      | C.Alphand N.Gaillard : (disponible en  | b45b | b45b |
-|      | / |      | D03.8)                                 | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 6 |      | -   nouveaux messages Structure        | bd9c | bd9c |
-|      |   |      |     (Bâtiment, Etage, Pièce, Pièce/UF, | d55a | d55a |
-|      |   |      |     Lit, Service)                      | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      | -   ajout etab juridique à la fin du   | a7/m | a7/m |
-|      |   |      |     message ST\|EG                     | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      | > C.Alphand (disponibles en D03.8)     | ge4. | ge3. |
-|      |   |      | > nouveau message NO\|ET               | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 8.07 | 1 |      | > X.DELOIRE : Ajout des messages de    | ![]  | ![]  |
-|      | 1 |      | > fin de séance et de fin de venue     | (ver | (ver |
-|      | / |      |                                        | topa | topa |
-|      | 0 |      |                                        | l_d5 | l_d5 |
-|      | 1 |      |                                        | b45b | b45b |
-|      | / |      |                                        | 6900 | 6900 |
-|      | 0 |      |                                        | c449 | c449 |
-|      | 6 |      |                                        | bd9c | bd9c |
-|      |   |      |                                        | d55a | d55a |
-|      |   |      |                                        | 0f4a | 0f4a |
-|      |   |      |                                        | cdb4 | cdb4 |
-|      |   |      |                                        | a7/m | a7/m |
-|      |   |      |                                        | edia | edia |
-|      |   |      |                                        | /ima | /ima |
-|      |   |      |                                        | ge4. | ge3. |
-|      |   |      |                                        | png) | png) |
-+------+---+------+----------------------------------------+------+------+
-| 9.00 | 0 |      | > C.Alphand (disponible en D03.9) :    |      |      |
-|      | 2 |      | >                                      |      |      |
-|      | / |      | > \- Ajout message ST\|B1 structure    |      |      |
-|      | 0 |      | > Box                                  |      |      |
-|      | 3 |      | >                                      |      |      |
-|      | / |      | > \- Ajout type + étage dans le        |      |      |
-|      | 0 |      | > message ST\|LI                       |      |      |
-|      | 6 |      | >                                      |      |      |
-|      |   |      | > \- Ajout type dans le message ST\|UP |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Modif message ID\`M1 M lors d'une |      |      |
-|      |   |      | > fusion                               |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Modif message ID M1 ajout de      |      |      |
-|      |   |      | > l'AQS + modif pour les pièces        |      |      |
-|      |   |      | > justifiants l'identité               |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > -Ajout message UF\|U1 : type de      |      |      |
-|      |   |      | > séjour et type de pmsi               |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Message ID\|M1 : les autres       |      |      |
-|      |   |      | > adresses d'un patient sont séparées  |      |      |
-|      |   |      | > par \^ (suppression du retour        |      |      |
-|      |   |      | > chariot pour séparées 2 adresses)    |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Nouveaux messages : Zones         |      |      |
-|      |   |      | > (ST\|ZO), secteurs (ST\|SC)          |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Modification du message CV\|M1    |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 1 |      | > XDeloire (disponible en D03.10) :    |      |      |
-| 0.00 | 3 |      | >                                      |      |      |
-|      | / |      | > \- Ajout message MV\|L1 Libération   |      |      |
-|      | 0 |      | > lits pour fin de séances et venues   |      |      |
-|      | 6 |      | >                                      |      |      |
-|      | / |      | > \- Ajout message MV\|FX de fin de    |      |      |
-|      | 0 |      | > consultation                         |      |      |
-|      | 6 |      | >                                      |      |      |
-|      |   |      | > C.Alphand (disponible en D03.10)     |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > -Ajout dans le message ID M1 :       |      |      |
-|      |   |      | > identité usurpée, ressortissant,     |      |      |
-|      |   |      | > niveau d'étude, pays des adresses au |      |      |
-|      |   |      | > format code iso, pays de naissances  |      |      |
-|      |   |      | > (format code iso)                    |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Message ST\|B1 : ajout Zone et    |      |      |
-|      |   |      | > secteur                              |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Message NO\|NA (nationalités)     |      |      |
-|      |   |      | > suppression du code langue et        |      |      |
-|      |   |      | > longueur cp dans le message de       |      |      |
-|      |   |      | > création et modification (ces        |      |      |
-|      |   |      | > données sont désormais à prendre     |      |      |
-|      |   |      | > dans la table des pays)              |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Nouveau message NO\|PA : pays     |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 1 |      | > M. Dupont : Modification des         |      |      |
-|      | 2 |      | > messages UF U1 C et UF U1 M          |      |      |
-|      | / |      | > concernant hxunite : secana sur 10   |      |      |
-|      | 0 |      | > caractères au lieu de 8.             |      |      |
-|      | 9 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 6 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 0 |      | > C.Alphand (disponible en D03.11)     |      |      |
-| 1.00 | 7 |      | >                                      |      |      |
-|      | / |      | > -Ajout dans le message ID M1  :      |      |      |
-|      | 1 |      | > heure de décès, minute de décès,     |      |      |
-|      | 2 |      | > personnel hospitalier                |      |      |
-|      | / |      | >                                      |      |      |
-|      | 0 |      | > -Ajout dans le message ST\|EJ : IBAN |      |      |
-|      | 6 |      | > et BIC                               |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Nouveau message ID\|MT : Médecin  |      |      |
-|      |   |      | > traitant                             |      |      |
-|      |   |      | >                                      |      |      |
-|      |   |      | > \- Ajout message No\|OR date de fin  |      |      |
-|      |   |      | > de validité + nouveau code organisme |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 0 |      | > Ajout de la date de sortie des       |      |      |
-| 1.00 | 7 |      | > urgences pour M2 (D03.10.5)          |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 7 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 0 |      | > XD : Ajout du chrono du mode de      |      |      |
-| 1.00 | 9 |      | > placement dans les messages IY.      |      |      |
-|      | / |      | > Ajout des anciens et nouveaux motif  |      |      |
-|      | 0 |      | > de venue et UF dans les messages M3. |      |      |
-|      | 3 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 7 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 3 |      | > CA (disponible en D03.12) :          |      |      |
-| 2.00 | 1 |      | >                                      |      |      |
-|      | / |      | > -ajout dans NO\|ET (nomenclature     |      |      |
-|      | 0 |      | > statut du parcours) : Origine de     |      |      |
-|      | 1 |      | > prescription et saisie médecin       |      |      |
-|      | / |      | >                                      |      |      |
-|      | 0 |      | > -Message des praticiens (ajout       |      |      |
-|      | 8 |      | > civilité, Titre, RPPS)               |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 1 |      | > RG : Ajout Date de saisie d'origine  |      |      |
-| 2.00 | 6 |      | > sur le M3 pour traiter un problème   |      |      |
-|      | / |      | > de re-génération.                    |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 8 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 0 |      | > CA : Ajout RPSS dans le message      |      |      |
-| 3.00 | 9 |      | > ID\|MT                               |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 3 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 9 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 1 |      | > CA : Ajout INSC et CLEINSC dans le   |      |      |
-| 4.00 | 7 |      | > message ID\|M1                       |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 5 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CA : Nouveau message ID\|CE (DMP)    |      |      |
-|      | 7 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 3 |      | > CA : Ajout date de fin de validité   |      |      |
-|      | 1 |      | > du praticien message NO\|PR          |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 3 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CA : Ajout code insee message NO\|PA |      |      |
-|      | 2 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 5 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 3 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > RG : Ajout contexte de modification  |      |      |
-|      | 5 |      | > sur le MV\|M2                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 4 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 3 |      | > CAL : Ajout IPP fédérateur           |      |      |
-|      | 1 |      | > (PATNUMREG) -- Mess ID               |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 6 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CAL : Ajout secteur et contrat pour  |      |      |
-|      | 4 |      | > le praticien -- Mess NO\|PR          |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 8 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CAL : Ajout NUMPASS et passage sur   |      |      |
-|      | 4 |      | > message MV                           |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 5 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 8 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CAL : Ajout DOSNUMA sur message MV   |      |      |
-|      | 4 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 9 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 8 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 1 |      | > CAL : Ajout NIR assuré, Date de      |      |      |
-|      | 2 |      | > naissance bénéficiaire, rand de      |      |      |
-|      | / |      | > naissance bénéficiaire, et quantité  |      |      |
-|      | 0 |      | > du bénéficiaire sur message ID\|CE   |      |      |
-|      | 4 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 1 |      |                                        |      |      |
-|      | 9 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-|      | 0 |      | > CAL : Ajout NIR bénéficiaire sur     |      |      |
-|      | 9 |      | > message ID\|CE                       |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 4 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-| 1    | 1 |      | > PGR : Messages ressources humaines   |      |      |
-| 5.00 | 4 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 0 |      |                                        |      |      |
-|      | 9 |      |                                        |      |      |
-|      | / |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-|      | 2 |      |                                        |      |      |
-+------+---+------+----------------------------------------+------+------+
-
-Sommaire
-
-[Maîtrise du document [2](#_Toc36009210)](#_Toc36009210)
-
-[Service Echange [11](#_Toc133218604)](#_Toc133218604)
-
-[Introduction et présentation du document
-[11](#introduction-et-présentation-du-document)](#introduction-et-présentation-du-document)
-
-[ Généralités [11](#généralités)](#généralités)
-
-[Terminologie [11](#terminologie)](#terminologie)
-
-[ Composants [11](#composants)](#composants)
-
-[ Propriétés [12](#propriétés)](#propriétés)
-
-[Mécanisme de communication
-[12](#mécanisme-de-communication)](#mécanisme-de-communication)
-
-[ Fonctionnement [12](#fonctionnement)](#fonctionnement)
-
-[Processus de communication
-[12](#processus-de-communication)](#processus-de-communication)
-
-[Schéma de communication :
-[13](#schéma-de-communication)](#schéma-de-communication)
-
-[Format des messages : [15](#_Toc114068297)](#_Toc114068297)
-
-[Normes à respecter lors de la constitution de messages :
-[15](#normes-à-respecter-lors-de-la-constitution-de-messages)](#normes-à-respecter-lors-de-la-constitution-de-messages)
-
-[Description des fonctions du service échange :
-[16](#_Toc114068299)](#_Toc114068299)
-
-[Messages Ressources Humaines
-[17](#messages-ressources-humaines)](#messages-ressources-humaines)
-
-[ Bulletins de salaire
-[17](#bulletins-de-salaire)](#bulletins-de-salaire)
-
-[Mise au coffre-fort Digiposte d'un bulletin de salaire
-[17](#mise-au-coffre-fort-digiposte-dun-bulletin-de-salaire)](#mise-au-coffre-fort-digiposte-dun-bulletin-de-salaire)
-
-[Messages Structures et nomenclatures
-[18](#messages-structures-et-nomenclatures)](#messages-structures-et-nomenclatures)
-
-[ Nomenclature : Utilisateur
-[18](#nomenclature-utilisateur)](#nomenclature-utilisateur)
-
-[Création d\'un Utilisateur
-[18](#création-dun-utilisateur)](#création-dun-utilisateur)
-
-[Modification d\'un Utilisateur [19](#_Toc114068306)](#_Toc114068306)
-
-[Suppression d\'un Utilisateur [20](#_Toc114068307)](#_Toc114068307)
-
-[ Structure : Etablissement juridique
-[21](#structure-etablissement-juridique)](#structure-etablissement-juridique)
-
-[Création ou modification d'un établissement juridique
-[21](#création-ou-modification-dun-établissement-juridique)](#création-ou-modification-dun-établissement-juridique)
-
-[Suppression d'un établissement juridique
-[22](#suppression-dun-établissement-juridique)](#suppression-dun-établissement-juridique)
-
-[ Structure : Etablissements géographiques
-[23](#structure-etablissements-géographiques)](#structure-etablissements-géographiques)
-
-[Création d'un établissement géographique
-[23](#création-dun-établissement-géographique)](#création-dun-établissement-géographique)
-
-[Modification d'un établissement géographique
-[24](#_Toc114068313)](#_Toc114068313)
-
-[Suppression d'un établissement géographique
-[24](#suppression-dun-établissement-géographique)](#suppression-dun-établissement-géographique)
-
-[ Structure : Bâtiment [25](#structure-bâtiment)](#structure-bâtiment)
-
-[Création d\'un bâtiment
-[25](#création-dun-bâtiment)](#création-dun-bâtiment)
-
-[Modification d\'un bâtiment
-[25](#modification-dun-bâtiment)](#modification-dun-bâtiment)
-
-[Suppression d\'un bâtiment
-[26](#suppression-dun-bâtiment)](#suppression-dun-bâtiment)
-
-[ Structure : Etage [27](#structure-etage)](#structure-etage)
-
-[Création d\'un étage [27](#création-dun-étage)](#création-dun-étage)
-
-[Modification d\'un étage
-[27](#modification-dun-étage)](#modification-dun-étage)
-
-[Suppression d\'un étage
-[28](#suppression-dun-étage)](#suppression-dun-étage)
-
-[ Structure : Pièces [29](#structure-pièces)](#structure-pièces)
-
-[Création d\'une pièce [29](#création-dune-pièce)](#création-dune-pièce)
-
-[Modification d\'une pièce
-[30](#modification-dune-pièce)](#modification-dune-pièce)
-
-[Suppression d\'une pièce
-[31](#suppression-dune-pièce)](#suppression-dune-pièce)
-
-[ Structure : Pièces/UF [32](#structure-piècesuf)](#structure-piècesuf)
-
-[Création d\'un lien Pièce/UF
-[32](#création-dun-lien-pièceuf)](#création-dun-lien-pièceuf)
-
-[Modification d\'un lien Pièce/UF
-[33](#modification-dun-lien-pièceuf)](#modification-dun-lien-pièceuf)
-
-[Suppression Pièces/UF
-[34](#suppression-piècesuf)](#suppression-piècesuf)
-
-[ Structure : Lit [35](#structure-lit)](#structure-lit)
-
-[Création d\'un lit [35](#création-dun-lit)](#création-dun-lit)
-
-[Modification d\'un lit
-[36](#modification-dun-lit)](#modification-dun-lit)
-
-[Suppression d\'un lit [37](#suppression-dun-lit)](#suppression-dun-lit)
-
-[ Structure Box [38](#structure-box)](#structure-box)
-
-[ Structure Zone [39](#structure-zone)](#structure-zone)
-
-[ Structure Secteur [39](#structure-secteur)](#structure-secteur)
-
-[ Structure : Services [40](#structure-services)](#structure-services)
-
-[Création d\'un service
-[40](#création-dun-service)](#création-dun-service)
-
-[Modification d\'un service
-[40](#modification-dun-service)](#modification-dun-service)
-
-[Suppression d\'un service
-[42](#suppression-dun-service)](#suppression-dun-service)
-
-[ Structure : Unités fonctionnelles
-[43](#structure-unités-fonctionnelles)](#structure-unités-fonctionnelles)
-
-[Création d\'une Unité fonctionnelle (UF)
-[43](#création-dune-unité-fonctionnelle-uf)](#création-dune-unité-fonctionnelle-uf)
-
-[Modification d\'une Unité fonctionnelle (UF)
-[45](#modification-dune-unité-fonctionnelle-uf)](#modification-dune-unité-fonctionnelle-uf)
-
-[Mise hors service d\'une Unité fonctionnelle (UF)
-[46](#mise-hors-service-dune-unité-fonctionnelle-uf)](#mise-hors-service-dune-unité-fonctionnelle-uf)
-
-[ Structure : Centres de responsabilité
-[47](#structure-centres-de-responsabilité)](#structure-centres-de-responsabilité)
-
-[Création d'un centre de responsabilité
-[47](#création-dun-centre-de-responsabilité)](#création-dun-centre-de-responsabilité)
-
-[Modification d'un centre de responsabilité
-[47](#modification-dun-centre-de-responsabilité)](#modification-dun-centre-de-responsabilité)
-
-[Mise hors service d'un centre de responsabilité
-[49](#mise-hors-service-dun-centre-de-responsabilité)](#mise-hors-service-dun-centre-de-responsabilité)
-
-[ Nomenclature : Civilités
-[50](#nomenclature-civilités)](#nomenclature-civilités)
-
-[Création d'une civilité
-[50](#création-dune-civilité)](#création-dune-civilité)
-
-[Modification d'une civilité
-[50](#modification-dune-civilité)](#modification-dune-civilité)
-
-[Mise hors service d'une civilité
-[52](#mise-hors-service-dune-civilité)](#mise-hors-service-dune-civilité)
-
-[Mise hors service d'une version
-[52](#mise-hors-service-dune-version)](#mise-hors-service-dune-version)
-
-[ Nomenclature : Situations Familiales
-[53](#nomenclature-situations-familiales)](#nomenclature-situations-familiales)
-
-[Création d'une situation familiale
-[53](#création-dune-situation-familiale)](#création-dune-situation-familiale)
-
-[Modification d'une situation familiale
-[53](#modification-dune-situation-familiale)](#modification-dune-situation-familiale)
-
-[Mise hors service d'une situation familiale
-[54](#mise-hors-service-dune-situation-familiale)](#mise-hors-service-dune-situation-familiale)
-
-[Mise hors service d'une version
-[54](#mise-hors-service-dune-version-1)](#mise-hors-service-dune-version-1)
-
-[ Nomenclature : Nationalité
-[55](#nomenclature-nationalité)](#nomenclature-nationalité)
-
-[Création d'une nationalité
-[55](#création-dune-nationalité)](#création-dune-nationalité)
-
-[Modification d'une nationalité
-[55](#modification-dune-nationalité)](#modification-dune-nationalité)
-
-[Mise hors service d'une nationalité
-[56](#mise-hors-service-dune-nationalité)](#mise-hors-service-dune-nationalité)
-
-[Mise hors service d'une version
-[56](#mise-hors-service-dune-version-2)](#mise-hors-service-dune-version-2)
-
-[ Nomenclature : Pays [57](#nomenclature-pays)](#nomenclature-pays)
-
-[Création d'un pays [57](#création-dun-pays)](#création-dun-pays)
-
-[Modification d'un pays
-[57](#modification-dun-pays)](#modification-dun-pays)
-
-[Mise hors service d'un pays
-[59](#mise-hors-service-dun-pays)](#mise-hors-service-dun-pays)
-
-[Mise hors service d'une version
-[59](#mise-hors-service-dune-version-3)](#mise-hors-service-dune-version-3)
-
-[ Nomenclature : Spécialités Médicales
-[60](#nomenclature-spécialités-médicales)](#nomenclature-spécialités-médicales)
-
-[Création d'une spécialité médicale
-[60](#création-dune-spécialité-médicale)](#création-dune-spécialité-médicale)
-
-[Modification d'une spécialité médicale
-[60](#modification-dune-spécialité-médicale)](#modification-dune-spécialité-médicale)
-
-[Mise hors service d'une spécialité médicale
-[62](#mise-hors-service-dune-spécialité-médicale)](#mise-hors-service-dune-spécialité-médicale)
-
-[Mise hors service d'une version de spécialités médicales
-[62](#mise-hors-service-dune-version-de-spécialités-médicales)](#mise-hors-service-dune-version-de-spécialités-médicales)
-
-[ Nomenclature : Langues Maternelles
-[63](#nomenclature-langues-maternelles)](#nomenclature-langues-maternelles)
-
-[Création d'une langue maternelle
-[63](#création-dune-langue-maternelle)](#création-dune-langue-maternelle)
-
-[Modification d'une langue maternelle
-[63](#modification-dune-langue-maternelle)](#modification-dune-langue-maternelle)
-
-[Mise hors service d'une langue maternelle
-[64](#mise-hors-service-dune-langue-maternelle)](#mise-hors-service-dune-langue-maternelle)
-
-[Mise hors service d'une version de langue maternelle
-[64](#mise-hors-service-dune-version-de-langue-maternelle)](#mise-hors-service-dune-version-de-langue-maternelle)
-
-[ Nomenclature : Pièces justificatives
-[65](#nomenclature-pièces-justificatives)](#nomenclature-pièces-justificatives)
-
-[Création d'une pièce justificative
-[65](#création-dune-pièce-justificative)](#création-dune-pièce-justificative)
-
-[Modification d'une pièce justificative
-[65](#modification-dune-pièce-justificative)](#modification-dune-pièce-justificative)
-
-[Mise hors service d'une pièce justificative
-[66](#_Toc114068383)](#_Toc114068383)
-
-[Mise hors service d'une version des pièces justificatives
-[66](#mise-hors-service-dune-version-des-pièces-justificatives)](#mise-hors-service-dune-version-des-pièces-justificatives)
-
-[ Nomenclature : Catégories Socioprofessionnelles
-[67](#nomenclature-catégories-socioprofessionnelles)](#nomenclature-catégories-socioprofessionnelles)
-
-[Création d'une catégorie socioprofessionnelle
-[67](#création-dune-catégorie-socioprofessionnelle)](#création-dune-catégorie-socioprofessionnelle)
-
-[Modification d'une catégorie socioprofessionnelle
-[67](#modification-dune-catégorie-socioprofessionnelle)](#modification-dune-catégorie-socioprofessionnelle)
-
-[Mise hors service d'une catégorie socioprofessionnelle
-[68](#mise-hors-service-dune-catégorie-socioprofessionnelle)](#mise-hors-service-dune-catégorie-socioprofessionnelle)
-
-[Mise hors service d'une version des catégories socioprofessionnelles
-[68](#mise-hors-service-dune-version-des-catégories-socioprofessionnelles)](#mise-hors-service-dune-version-des-catégories-socioprofessionnelles)
-
-[ Nomenclature : Situations Professionnelles
-[69](#nomenclature-situations-professionnelles)](#nomenclature-situations-professionnelles)
-
-[Création d'une situation professionnelle
-[69](#création-dune-situation-professionnelle)](#création-dune-situation-professionnelle)
-
-[Modification d'une situation professionnelle
-[69](#modification-dune-situation-professionnelle)](#modification-dune-situation-professionnelle)
-
-[Mise hors service d'une situation professionnelle
-[70](#mise-hors-service-dune-situation-professionnelle)](#mise-hors-service-dune-situation-professionnelle)
-
-[Mise hors service d'une version des situations professionnelles
-[70](#mise-hors-service-dune-version-des-situations-professionnelles)](#mise-hors-service-dune-version-des-situations-professionnelles)
-
-[ Nomenclature : Statuts de parcours
-[71](#nomenclature-statuts-de-parcours)](#nomenclature-statuts-de-parcours)
-
-[Création d'un statut de parcours
-[71](#création-dun-statut-de-parcours)](#création-dun-statut-de-parcours)
-
-[Modification d'un statut de parcours
-[72](#modification-dun-statut-de-parcours)](#modification-dun-statut-de-parcours)
-
-[Mise hors service d'un statut de parcours
-[72](#mise-hors-service-dun-statut-de-parcours)](#mise-hors-service-dun-statut-de-parcours)
-
-[Mise hors service d'une version des statuts de parcours
-[73](#mise-hors-service-dune-version-des-statuts-de-parcours)](#mise-hors-service-dune-version-des-statuts-de-parcours)
-
-[ Nomenclature : Praticiens
-[73](#nomenclature-praticiens)](#nomenclature-praticiens)
-
-[Création d'un praticien
-[73](#création-dun-praticien)](#création-dun-praticien)
-
-[Modification d'un praticien
-[75](#modification-dun-praticien)](#modification-dun-praticien)
-
-[Suppression d'un praticien
-[76](#suppression-dun-praticien)](#suppression-dun-praticien)
-
-[ Nomenclature : Organismes
-[78](#nomenclature-organismes)](#nomenclature-organismes)
-
-[Création d'un organisme
-[78](#création-dun-organisme)](#création-dun-organisme)
-
-[Modification d'un organisme
-[80](#modification-dun-organisme)](#modification-dun-organisme)
-
-[Suppression d'un organisme
-[82](#suppression-dun-organisme)](#suppression-dun-organisme)
-
-[ Nomenclature : Gestion des contrats
-[84](#nomenclature-gestion-des-contrats)](#nomenclature-gestion-des-contrats)
-
-[Création d'un contrat
-[84](#création-dun-contrat)](#création-dun-contrat)
-
-[Modification d'un contrat
-[85](#modification-dun-contrat)](#modification-dun-contrat)
-
-[Suppression d'un contrat
-[88](#suppression-dun-contrat)](#suppression-dun-contrat)
-
-[ Nomenclature : Produits
-[90](#nomenclature-produits)](#nomenclature-produits)
-
-[Création d'un Produit :
-[90](#création-dun-produit)](#création-dun-produit)
-
-[ Modification sur produit
-[98](#modification-sur-produit)](#modification-sur-produit)
-
-[ Suppression d\'un produit
-[98](#suppression-dun-produit)](#suppression-dun-produit)
-
-[ Nomenclature : Fournisseurs :
-[99](#nomenclature-fournisseurs)](#nomenclature-fournisseurs)
-
-[ Création / Modification / Suppression d\'un fournisseur
-[99](#création-modification-suppression-dun-fournisseur)](#création-modification-suppression-dun-fournisseur)
-
-[ Modification Fournisseurs
-[101](#modification-fournisseurs)](#modification-fournisseurs)
-
-[ Suppression fournisseur :
-[103](#suppression-fournisseur)](#suppression-fournisseur)
-
-[ Nomenclature : Liens Produits / Fournisseurs :
-[104](#nomenclature-liens-produits-fournisseurs)](#nomenclature-liens-produits-fournisseurs)
-
-[Création / Modification / Suppression d\'un lien
-[104](#création-modification-suppression-dun-lien)](#création-modification-suppression-dun-lien)
-
-[Messages Patient [105](#messages-patient)](#messages-patient)
-
-[ Serveur d\'Identité, Mouvements, Actes :
-[105](#serveur-didentité-mouvements-actes)](#serveur-didentité-mouvements-actes)
-
-[Création / Modification / Suppression d\'Identité Patient (ID M1)
-[105](#création-modification-suppression-didentité-patient-id-m1)](#création-modification-suppression-didentité-patient-id-m1)
-
-[Création / Modification / Suppression d'un médecin traitant d'un
-patient (ID MT)
-[109](#création-modification-suppression-dun-médecin-traitant-dun-patient-id-mt)](#création-modification-suppression-dun-médecin-traitant-dun-patient-id-mt)
-
-[Création / Modification du consentement éclairé d'un patient (ID CE)
-[111](#création-modification-du-consentement-éclairé-dun-patient-id-ce)](#création-modification-du-consentement-éclairé-dun-patient-id-ce)
-
-[MPI (ID M5) [113](#_Toc114068427)](#_Toc114068427)
-
-[Message M1 IY : descriptions des informations psy (Nouveau message
-version c.06) [114](#_Toc114068428)](#_Toc114068428)
-
-[Admission d\'un Patient (M2) [115](#_Toc114068429)](#_Toc114068429)
-
-[Changement de Statut du Séjour (M3)
-[118](#changement-de-statut-du-séjour-m3)](#changement-de-statut-du-séjour-m3)
-
-[Changement de Rattachement du Séjour (M4)
-[120](#_Toc114068431)](#_Toc114068431)
-
-[Entrée du Patient dans l\'Unité de Soins (M6)
-[121](#_Toc114068432)](#_Toc114068432)
-
-[Changement des Conditions de Séjour du Patient (M7)
-[123](#changement-des-conditions-de-séjour-du-patient-m7)](#changement-des-conditions-de-séjour-du-patient-m7)
-
-[Sortie du Patient de l\'Unité de Soins (M8)
-[125](#_Toc114068434)](#_Toc114068434)
-
-[Sortie du Patient de l\'Hôpital (M9)
-[126](#sortie-du-patient-de-lhôpital-m9)](#sortie-du-patient-de-lhôpital-m9)
-
-[Couverture d'un patient (CV\|M1)
-[128](#couverture-dun-patient-cvm1)](#couverture-dun-patient-cvm1)
-
-[Libération de lit pour les séances (MV\|L1)
-[131](#libération-de-lit-pour-les-séances-mvl1)](#libération-de-lit-pour-les-séances-mvl1)
-
-[Libération de lit pour les venues (MV\|L1)
-[133](#libération-de-lit-pour-les-venues-mvl1)](#libération-de-lit-pour-les-venues-mvl1)
-
-[ [134](#section-15)](#section-15)
-
-[Libération de fin de consultation externe (MV\|FX)
-[135](#libération-de-fin-de-consultation-externe-mvfx)](#libération-de-fin-de-consultation-externe-mvfx)
-
-[ Messages mouvements d'urgence
-[137](#messages-mouvements-durgence)](#messages-mouvements-durgence)
-
-[Mouvements de box B1
-[137](#mouvements-de-box-b1)](#mouvements-de-box-b1)
-
-[ Mouvements temporaires aux urgences MT
-[139](#mouvements-temporaires-aux-urgences-mt)](#mouvements-temporaires-aux-urgences-mt)
-
-[Message M6 (Arrivée dans un emplacement temporaire)
-[139](#message-m6-arrivée-dans-un-emplacement-temporaire)](#message-m6-arrivée-dans-un-emplacement-temporaire)
-
-[Message M8 (sortie d'un emplacement temporaire)
-[142](#message-m8-sortie-dun-emplacement-temporaire)](#message-m8-sortie-dun-emplacement-temporaire)
-
-[ Actes [145](#actes)](#actes)
-
-[Message d'envoi de la codification NGAP (Actes)
-[145](#message-denvoi-de-la-codification-ngap-actes)](#message-denvoi-de-la-codification-ngap-actes)
-
-[Messages d'envoi de la codification CDAM (Actes)
-[147](#_Toc114068448)](#_Toc114068448)
-
-[ Examens [148](#examens)](#examens)
-
-[Demande d\'Examen (A1) [148](#demande-dexamen-a1)](#demande-dexamen-a1)
-
-[Messages Ressources Economiques et Financières
-[149](#messages-ressources-economiques-et-financières)](#messages-ressources-economiques-et-financières)
-
-[ Marchés : [149](#marchés)](#marchés)
-
-[Création d'un marché dans ELITE.S
-[149](#création-dun-marché-dans-elite.s)](#création-dun-marché-dans-elite.s)
-
-[ Transmission des consommations des produits
-[152](#transmission-des-consommations-des-produits)](#transmission-des-consommations-des-produits)
-
-[ Marchés validés dans ELITE.S:
-[154](#marchés-validés-dans-elite.s)](#marchés-validés-dans-elite.s)
-
-[Création d'un marché [154](#création-dun-marché)](#création-dun-marché)
-
-[ Modification de Marché
-[156](#modification-de-marché)](#modification-de-marché)
-
-[ Suppression De Marché :
-[157](#suppression-de-marché)](#suppression-de-marché)
-
-[ Demandes d'approvisionnements :
-[158](#demandes-dapprovisionnements)](#demandes-dapprovisionnements)
-
-[Création d'une demande
-[158](#création-dune-demande)](#création-dune-demande)
-
-[ Commandes : [162](#commandes)](#commandes)
-
-[Création d'une commande
-[162](#création-dune-commande)](#création-dune-commande)
-
-[ Modification de Commande
-[164](#modification-de-commande)](#modification-de-commande)
-
-[ Suppression de Commande :
-[165](#suppression-de-commande)](#suppression-de-commande)
-
-[ Livraisons provenant de l'extérieur :
-[166](#livraisons-provenant-de-lextérieur)](#livraisons-provenant-de-lextérieur)
-
-[Création d'une livraison externe
-[166](#création-dune-livraison-externe)](#création-dune-livraison-externe)
-
-[ Modification de lignes de Livraison
-[168](#modification-de-lignes-de-livraison)](#modification-de-lignes-de-livraison)
-
-[ Réceptions : [169](#réceptions)](#réceptions)
-
-[Création d'une réception
-[169](#création-dune-réception)](#création-dune-réception)
-
-[ Modification de Réception
-[171](#modification-de-réception)](#modification-de-réception)
-
-[ Suppression de Réception :
-[171](#suppression-de-réception)](#suppression-de-réception)
-
-[ Factures Externes : [172](#factures-externes)](#factures-externes)
-
-[Création d'une facture externe
-[172](#création-dune-facture-externe)](#création-dune-facture-externe)
-
-[ Mouvements de stocks internes:
-[176](#mouvements-de-stocks-internes)](#mouvements-de-stocks-internes)
-
-[Création d'un Mouvement de stock interne
-[176](#création-dun-mouvement-de-stock-interne)](#création-dun-mouvement-de-stock-interne)
-
-[ Envoi des liste pré établies
-[178](#envoi-des-liste-pré-établies)](#envoi-des-liste-pré-établies)
-
-[ Recettes diverses: [179](#recettes-diverses)](#recettes-diverses)
-
-[Création d'un Mouvement de recettes diverses
-[179](#création-dun-mouvement-de-recettes-diverses)](#création-dun-mouvement-de-recettes-diverses)
-
-[ Inventaires pour les biens immobilisés:
-[182](#inventaires-pour-les-biens-immobilisés)](#inventaires-pour-les-biens-immobilisés)
-
-[Création d'un Mouvement d'inventaire
-[182](#création-dun-mouvement-dinventaire)](#création-dun-mouvement-dinventaire)
-
-[Exemples d'évènements et messages associés :
-[183](#exemples-dévènements-et-messages-associés)](#exemples-dévènements-et-messages-associés)
-
-[Arrivée aux urgences :
-[183](#arrivée-aux-urgences)](#arrivée-aux-urgences)
-
-[Hospitalisation suite urgence :
-[183](#hospitalisation-suite-urgence)](#hospitalisation-suite-urgence)
-
-[Confirmation de suite hospitalisation :
-[183](#confirmation-de-suite-hospitalisation)](#confirmation-de-suite-hospitalisation)
-
-[Consultation externe suite urgence :
-[183](#consultation-externe-suite-urgence)](#consultation-externe-suite-urgence)
-
-[Confirmation de suite consultation :
-[183](#confirmation-de-suite-consultation)](#confirmation-de-suite-consultation)
-
-[Autres suites urgence
-[183](#autres-suites-urgence)](#autres-suites-urgence)
-
-[Entrée directe [185](#entrée-directe)](#entrée-directe)
-
-[Mutation après une entrée directe
-[185](#mutation-après-une-entrée-directe)](#mutation-après-une-entrée-directe)
-
-[Mutation insérée entre deux mouvements
-[185](#mutation-insérée-entre-deux-mouvements)](#mutation-insérée-entre-deux-mouvements)
-
-[Sortie définitive [185](#sortie-définitive)](#sortie-définitive)
-
-[Pré admission [185](#pré-admission)](#pré-admission)
-
-[Confirmation d'une pré admission
-[185](#confirmation-dune-pré-admission)](#confirmation-dune-pré-admission)
-
-[Nouveau né hospitalisé :
-[185](#nouveau-né-hospitalisé)](#nouveau-né-hospitalisé)
-
-[Changement de chambre : [187](#_Toc114068495)](#_Toc114068495)
-
-[Suppression d'un dossier :
-[187](#suppression-dun-dossier)](#suppression-dun-dossier)
-
-[Suppression d'un patient avec n dossiers
-[187](#suppression-dun-patient-avec-n-dossiers)](#suppression-dun-patient-avec-n-dossiers)
-
-[Fusion de deux patients
-[187](#fusion-de-deux-patients)](#fusion-de-deux-patients)
-
-[ Admission aux urgences
-[187](#admission-aux-urgences)](#admission-aux-urgences)
-
-[Arrivée aux urgences sans localisation
-[187](#arrivée-aux-urgences-sans-localisation)](#arrivée-aux-urgences-sans-localisation)
-
-[Arrivée aux urgences et mis en salle d'attente
-[188](#arrivée-aux-urgences-et-mis-en-salle-dattente)](#arrivée-aux-urgences-et-mis-en-salle-dattente)
-
-[Arrivée aux urgences et mise en box
-[188](#arrivée-aux-urgences-et-mise-en-box)](#arrivée-aux-urgences-et-mise-en-box)
-
-[ Mouvements possibles aux urgences
-[188](#mouvements-possibles-aux-urgences)](#mouvements-possibles-aux-urgences)
-
-[Passage d'un BOX vers la radio
-[188](#passage-dun-box-vers-la-radio)](#passage-dun-box-vers-la-radio)
-
-[Changement de box [188](#changement-de-box)](#changement-de-box)
-
-[Retour au box suite à une radio
-[189](#retour-au-box-suite-à-une-radio)](#retour-au-box-suite-à-une-radio)
-
-[Passage de salle d'attente vers la radio
-[189](#passage-de-salle-dattente-vers-la-radio)](#passage-de-salle-dattente-vers-la-radio)
-
-[Passage de la radio vers le scanner
-[189](#passage-de-la-radio-vers-le-scanner)](#passage-de-la-radio-vers-le-scanner)
-
-[Le patient est dans un box suite Hospitalisation ou consultation
-externe
-[189](#le-patient-est-dans-un-box-suite-hospitalisation-ou-consultation-externe)](#le-patient-est-dans-un-box-suite-hospitalisation-ou-consultation-externe)
-
-[Le patient est dans un box il est hospitalisé en lit porte mais reste
-dans le box
-[189](#le-patient-est-dans-un-box-il-est-hospitalisé-en-lit-porte-mais-reste-dans-le-box)](#le-patient-est-dans-un-box-il-est-hospitalisé-en-lit-porte-mais-reste-dans-le-box)
-
-[Cas Particuliers de Demandes Faites aux Serveurs
-[192](#cas-particuliers-de-demandes-faites-aux-serveurs)](#cas-particuliers-de-demandes-faites-aux-serveurs)
-
-[ Serveur d\'Identité [192](#serveur-didentité)](#serveur-didentité)
-
-[ Serveur d\'Actes [194](#serveur-dactes)](#serveur-dactes)
-
-[Spécifications du Service Echange
-[195](#spécifications-du-service-echange)](#spécifications-du-service-echange)
-
-[ Schéma Fonctionnel [195](#schéma-fonctionnel)](#schéma-fonctionnel)
-
-[ Spécificités Fonctionnelles
-[195](#spécificités-fonctionnelles)](#spécificités-fonctionnelles)
-
-[Structure de l'accusé de réception
-[195](#structure-de-laccusé-de-réception)](#structure-de-laccusé-de-réception)
-
-[Informations à répercuter vers les autres applications
-[196](#informations-à-répercuter-vers-les-autres-applications)](#informations-à-répercuter-vers-les-autres-applications)
-
-[Structure des tables du Service Echange
-[196](#structure-des-tables-du-service-echange)](#structure-des-tables-du-service-echange)
-
-[ Composants Externes
-[196](#composants-externes)](#composants-externes)
-
-[Service de demande de création d\'IPP.
-[196](#service-de-demande-de-création-dipp.)](#service-de-demande-de-création-dipp.)
-
-[]{#_Toc133218604 .anchor}Service Echange
+> **Note technique** : ce document est une conversion automatique de la spécification Word officielle. Il sert de référence pour le skill `hpk-parser`.
 
 # Introduction et présentation du document
 
@@ -1641,7 +138,6 @@ Il existe deux type de processus :
 
 ### Schéma de communication :
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image5.wmf)
 
 \
 
@@ -1719,7 +215,6 @@ n'est pas connue on aura :
 
 ...\|IPP_ATIENT\|NOM\|PRENOM\|\|\|D\|Mr\|...
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image6.png)
 Attention
 
 Des champs peuvent être rajoutés par Symphonie *On Line* à la fin des
@@ -1731,14 +226,12 @@ uniquement sur les champs connus.
 
 ### Description des fonctions du service échange :
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
     ENVOI :\
     Cette fonction traite les messages en provenance d'HEXAGONE et à
     destination des applications externes. Elle stocke le message reçu
     dans la table des messages en attente et envoie un accusé de
     réception à HEXAGONE
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
     RECEPTION :\
     Cette fonction traite les messages en provenance des applications
     externes et à destination d'HEXAGONE. Elle stocke le message reçu
@@ -1746,12 +239,11 @@ uniquement sur les champs connus.
     réception à l'application externe expéditrice, avec les informations
     clés nécessaire (N° IPP, par exemple).
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
     ACCUSE DE RECEPTION :\
     Cet accusé de réception du Service Echange consiste en trois
     paramètres.
 
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Prend
+> Prend
 > les valeurs :
 >
 > 0 Reçu et pris en charge par le Service Echange.
@@ -1762,18 +254,16 @@ uniquement sur les champs connus.
 
 > 50 Problème mais demande de ré-envoi
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Statut
+> Statut
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png)
 > Contexte de l'erreur survenue dans le Service Echange. Cette erreur
 > pourra ou non être traitée par l'application qui a envoyé le message.
 > Dans tous les cas, un fichier texte (d\'extension .log) sera alimenté
 > lors de la détection d'une erreur par le Service Echange.
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
     MOTEUR DE GESTION DES MESSAGES :
 
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Cette
+> Cette
 > fonction consiste en une application autonome qui tourne en
 > permanence, qui scrute la table des messages en attente dans l'ordre
 > chronologique d'émission, qui génère par destinataire les messages
@@ -1781,7 +271,7 @@ uniquement sur les champs connus.
 > message. Ensuite il supprime ou tope "à traiter" (suivant paramétrage)
 > les messages dans la table des messages en attente.
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Le
+> Le
 > moteur essaiera de traiter toutes les demandes qu'il recevra. Dans le
 > cas où il ne pourrait pas lancer le composant paramétré comme
 > destinataire, le message sera laissé en attente, ou la communication
@@ -1794,7 +284,7 @@ uniquement sur les champs connus.
 > d'entrée dans une unité de soin si le message M1 de création du
 > patient n'a pu être traité par cette même application.
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Dans
+> Dans
 > le cas d\'envoi d\'informations au Service Echange (retour), il n'est
 > pas nécessaire d'avoir le composant du destinataire sur tous les
 > postes. Par contre, il peut être intéressant, pour des questions de
@@ -1803,7 +293,7 @@ uniquement sur les champs connus.
 > fonctionnent que dans un environnement *Windows*. Si ce n\'est pas le
 > cas, les composants sont directement activés depuis le serveur.
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) Le
+> Le
 > run-time HEXAGONE doit être déployé sur tous les postes des
 > applications communicantes s'il n'y a pas de poste dédié à la
 > communication. Et aux seuls postes faisant des demandes au serveur
@@ -11841,7 +10331,7 @@ Evènements déclenchant l'émission de ce message:
 | es/venues** | ** |           |     |                               |
 +-------------+----+-----------+-----+-------------------------------+
 
-##  {#section-14 .list-paragraph}
+##
 
 ### Libération de lit pour les venues (MV\|L1)
 
@@ -12069,7 +10559,6 @@ Evènements déclenchant l'émission de ce message:
 | es/venues** | ** |           |     |                               |
 +-------------+----+-----------+-----+-------------------------------+
 
-## 
 
 ###  Libération de fin de consultation externe (MV\|FX)
 
@@ -12320,13 +10809,12 @@ plateaux techniques, salles d'attentes ...) et définitives (Box).
 
 Un seul message MU / B1 envoyé pour identifier les évènements suivants :
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Arrivée
+Arrivée
 aux urgences et mise en box directe
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
 Changement de box (passage d'un box à un autre)
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Sortie
+Sortie
 des urgences si le patient était dans un box.
 
 +-------------+----+-----------+-----+-------------------------------+
@@ -12485,15 +10973,14 @@ des urgences si le patient était dans un box.
 Trois messages distincts sont envoyés pour identifier les évènements
 suivants :
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Départ
+Départ
 d'un emplacement temporaire, quelque soit l'emplacement de destination
 même un Box.
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Arrivée
+Arrivée
 dans un emplacement temporaire, quelque soit l'emplacement de départ
 même un Box.
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png)
 Changement d'emplacement temporaire.
 
 ### Message M6 (Arrivée dans un emplacement temporaire)
@@ -13150,7 +11637,6 @@ codification *CDAM*.
 |             | ** |           |     |                               |
 +-------------+----+-----------+-----+-------------------------------+
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image6.png)
 Attention
 
 Lors de la mise en œuvre de la *CCAM*, un nouveau message K3 sera mis en
@@ -14816,12 +13302,12 @@ prendre en compte.
 Pour une remise à zéro d'une ligne mettre la quantité à zéro. Attention
 au code' ligne de commande soldée'
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Si
+-   Si
     code = O la ligne de commande sera considérée dans GREF comme soldée
     en livraison et donc ne pourra plus être associée a une autre
     réception.
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Si
+-   Si
     code = N La ligne de commande reste en attente de livraison pour la
     différence entre la quantité commandée et le cumul des quantités
     livrées (si ce cumul est inférieur à la quantité en commande).
@@ -15395,7 +13881,6 @@ corrects.
 | évisible** |    |      |     |                                       |
 +------------+----+------+-----+---------------------------------------+
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image6.png)
 Attention
 
 Toutes les factures transmises et générées dans ELITE.S ne pourront pas
@@ -15414,14 +13899,14 @@ les contrôles sont corrects.
 ***Ces messages concernent uniquement les produits gérés en stock et non
 gérés en entrées/sorties simultanées:***
 
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) **Les
+> **Les
 > sorties de stock classiques des magasins et / ou armoires de service
 >  :**
 >
 > Consommations de produits par les services, et gestion des retours de
 > service. Dans ce cas, 2 possibilités sont offertes :
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Soit
+-   Soit
     > les mouvements transmis sont déjà valorisés par le système
     > émetteur, dans ce cas la valorisation du mouvement sera
     > comptabilisée telle quelle dans ELITE.S . L'intégration de ce
@@ -15429,7 +13914,7 @@ gérés en entrées/sorties simultanées:***
     > *(Message de type SO, code Message S1 avec champ Valeur de la
     > sortie renseignée)*
 
--   ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image1.png) Soit
+-   Soit
     > les mouvements transmis sont uniquement quantitatifs, dans ce cas
     > la valorisation sera effectuée dans ELITE.S lors de l'arrêté de
     > balance définitive : L'intégration de ces mouvements génère des
@@ -15437,7 +13922,7 @@ gérés en entrées/sorties simultanées:***
     > *(Message de type SO, code Message S1 avec champ Valeur de la
     > sortie non renseignée)*
 
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) **Les
+> **Les
 > inventaires de stock par magasin et / ou armoire de service:**
 >
 > Ces mouvements permettront de générer un état d'inventaire qui sera
@@ -15447,7 +13932,7 @@ gérés en entrées/sorties simultanées:***
 > *(Message de type SO, code Message I1 avec champ Valeur de la sortie
 > non renseignée)*
 >
-> ![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image2.png) **Les
+> **Les
 > transferts entre magasins de l 'établissement**
 >
 > Ces mouvements permettront de gérer dans ELITE.S les mouvements entre
@@ -16583,7 +15068,6 @@ Ils devront avoir le format suivant:
 
 -   ## Schéma Fonctionnel
 
-![](vertopal_d5b45b6900c449bd9cd55a0f4acdb4a7/media/image7.wmf)
 
 -   ## Spécificités Fonctionnelles
 

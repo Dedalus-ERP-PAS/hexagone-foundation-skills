@@ -54,7 +54,7 @@ Trouve les bugs créés cette semaine
 
 ## Prérequis
 
-- Serveur MCP (Model Context Protocol) GitHub configuré (`github-mcp`)
+- CLI **gh** (GitHub CLI) installé et authentifié
 - Accès au repository GitHub concerné
 
 ## Types d'issues

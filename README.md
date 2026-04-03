@@ -57,7 +57,8 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 | [MCP builder](docs/mcp-builder.md)                                       | Guide pour créer des serveurs MCP (Model Context Protocol) en TypeScript ou Python               |
 | [Playwright skill](docs/playwright-skill.md)                             | Tests et automatisation web complète avec Playwright                                             |
 | [PostgreSQL](docs/postgres.md)                                           | Exécution de requêtes SQL en lecture seule sur PostgreSQL                                        |
-| [GitLab code review](docs/gitlab-code-review.md)                         | Revue de code des merge requests GitLab avec analyse qualité et sécurité                         |
+| [Code review](docs/code-review.md)                                       | Revue de code des merge requests GitLab avec analyse qualité et sécurité                         |
+| [Issue review](docs/issue-review.md)                                     | Revue autonome d'issues par personas IA avec publication du rapport sur l'issue                   |
 | [GitLab issue](docs/gitlab-issue.md)                                     | Création et gestion d'issues GitLab sur instance auto-hébergée                                   |
 | [GitHub issues](docs/github-issues.md)                                   | Création et gestion d'issues GitHub avec workflows structurés                                    |
 | [Security review](docs/security-review.md)                               | Audit de sécurité couvrant authentification, injection SQL, secrets et CSRF                      |
@@ -94,6 +95,7 @@ npx skills add Dedalus-ERP-PAS/foundation-skills --skill backend-patterns --skil
 
 - **Skills de développement** — Standards de code, patterns backend, best practices React et Vue.js
 - **Revue de code automatisée** — Analyse qualité, sécurité et performance des merge requests GitLab
+- **Revue d'issues par personas** — Analyse multi-angle de la faisabilité, complétude et risques avant implémentation
 - **Parseurs de messages de santé** — Interprétation des formats HPK et HL7 PAM utilisés en milieu hospitalier
 - **Gestion d'issues** — Création et suivi d'issues GitHub et GitLab avec contexte enrichi
 - **Manipulation de documents** — Création et édition de fichiers Word, Excel, PowerPoint et PDF
@@ -144,7 +146,8 @@ Le développeur installe les skills via la commande `npx skills add`. Les fichie
 | **create-design-system-rules**     | Règles de design system pour workflows Figma-to-code                                                   | [create-design-system-rules.md](docs/create-design-system-rules.md)         |
 | **frontend**                       | Règles de développement frontend natif — respect du framework et du design system                      | [frontend.md](docs/frontend.md)                                             |
 | **github-issues**                  | Gestion complète des issues GitHub : création, recherche, mise à jour et commentaires                  | [github-issues.md](docs/github-issues.md)                                   |
-| **gitlab-code-review**             | Revue de code des merge requests GitLab : qualité, sécurité, performance                               | [gitlab-code-review.md](docs/gitlab-code-review.md)                         |
+| **code-review**                    | Revue de code des merge requests GitLab : qualité, sécurité, performance                               | [code-review.md](docs/code-review.md)                                       |
+| **issue-review**                   | Revue autonome d'issues par personas IA : faisabilité, complétude, risques et publication sur l'issue  | [issue-review.md](docs/issue-review.md)                                     |
 | **fast-meeting**                   | Réunion rapide autonome : analyse, décision, implémentation et création de MR/PR sans intervention     | [fast-meeting.md](docs/fast-meeting.md)                                     |
 | **meeting**                        | Réunion simulée avec personas pour analyser un sujet et décider avant d'implémenter                    | [meeting.md](docs/meeting.md)                                               |
 | **gitlab-issue**                   | Gestion des issues GitLab sur instances auto-hébergées                                                 | [gitlab-issue.md](docs/gitlab-issue.md)                                     |

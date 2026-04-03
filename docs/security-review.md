@@ -2,6 +2,13 @@
 
 Audit de sécurité couvrant l'authentification, l'injection SQL, l'exposition de secrets, CSRF (Cross-Site Request Forgery) et les vulnérabilités OWASP (Open Web Application Security Project) Top 10.
 
+## Pourquoi ce skill
+
+- **Données patients sensibles** — En milieu hospitalier, une faille expose des données de santé protégées par le RGPD et l'HDS
+- **Conformité réglementaire** — Les audits de sécurité réguliers sont exigés pour les hébergeurs de données de santé
+- **Prévention proactive** — Détecter les vulnérabilités avant la mise en production coûte 100x moins cher qu'après
+- **Couverture systématique** — Le skill vérifie 10 catégories OWASP en une seule passe, rien n'est oublié
+
 ## Quand utiliser ce skill
 
 Utilisez ce skill pour :
