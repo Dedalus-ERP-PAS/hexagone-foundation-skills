@@ -17,7 +17,7 @@ Guide pour installer et utiliser les skills avec vos assistants IA (GitHub Copil
 > setup
 > ```
 >
-> Voir [docs/setup.md](setup.md) pour le détail.
+> Voir [setup.md](setup.md) pour le détail.
 
 ## Installation
 

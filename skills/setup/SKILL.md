@@ -1,7 +1,7 @@
 ---
 name: setup
 description: "Installe les outils CLI prérequis (gh, glab, jq), guide l'authentification GitHub/GitLab, installe uvx et configure le serveur MCP mcp-atlassian pour Jira dans OpenCode. Idempotent : relancer le skill est sans danger. Déclenché quand l'utilisateur dit « setup », « install prerequisites » ou « configurer jira »."
-version: 1.0.0
+version: 1.0.1
 license: MIT
 ---
 
@@ -18,6 +18,8 @@ Install CLI tools, authenticate to GitHub/GitLab, and configure the `mcp-atlassi
 ## Trigger
 
 User says: "setup", "install prerequisites", "configure jira", or similar.
+
+> **Important — interactive skill only.** This skill requires user interaction (auth prompts, Jira credentials). It must **not** be called as a sub-step from autonomous skill pipelines (fast-meeting, issue-review, etc.) — doing so will stall the pipeline waiting for input that will never arrive.
 
 ---
 
@@ -47,6 +49,7 @@ Check and authenticate each CLI:
 gh auth status 2>&1
 ```
 
+- Show the full output to the user (current logged-in account, token scopes, etc.)
 - If not authenticated → tell the user: "Run `gh auth login` and follow the prompts."
 - Do NOT run `gh auth login` automatically (requires interactive input).
 
@@ -54,6 +57,7 @@ gh auth status 2>&1
 glab auth status 2>&1
 ```
 
+- Show the full output to the user (GitLab instance, current user, token validity, etc.)
 - If not authenticated → tell the user: "Run `glab auth login` and follow the prompts."
 - Do NOT run `glab auth login` automatically.
 

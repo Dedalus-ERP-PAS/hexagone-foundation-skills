@@ -48,7 +48,7 @@ version: 1.0.0
 - Use progressive disclosure: put detailed content in `reference/` files
 - Include concrete examples
 - No time-sensitive information
-- If the skill requires external CLI tools (e.g., `gh`, `glab`, `jq`, `playwright`), add a `## Prerequisites` section listing each tool with its install command. If the tool is not already handled by `skills/setup/reference/setup.sh`, add it there too (the setup script is maintained manually).
+- If the skill requires external CLI tools (e.g., `gh`, `glab`, `jq`, `playwright`), add a `## Prerequisites` section listing each tool with its install command. If the tool is not already handled by `skills/setup/reference/setup.sh`, add it there and bump `setup`'s version (the setup script is maintained manually).
 
 ### Step 4: Create reference files (if needed)
 
@@ -88,7 +88,7 @@ See existing files in `docs/` for style reference.
 - [ ] Concrete examples included
 - [ ] Reference files only one level deep
 - [ ] If external CLI tools are required, a `## Prerequisites` section is present with install commands
-- [ ] If the tool is new (not yet in `setup.sh`), `skills/setup/reference/setup.sh` has been updated
+- [ ] If the skill requires a new CLI tool not already handled by `setup.sh`, add it to `skills/setup/reference/setup.sh` and bump `setup`'s version
 
 ## Versioning rules
 
