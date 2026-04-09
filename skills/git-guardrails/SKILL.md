@@ -1,7 +1,7 @@
 ---
 name: git-guardrails
 description: "Configure des hooks Claude Code pour bloquer les commandes git dangereuses (push, force-push, reset --hard, clean, branch -D, checkout/restore) avant leur exécution. Empêche les opérations git destructrices au niveau de l'agent."
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -11,6 +11,11 @@ metadata:
 # Git Guardrails
 
 Sets up a PreToolUse hook that intercepts and blocks dangerous git commands before Claude Code executes them.
+
+## Prerequisites
+
+- **jq**: required for the hook script to parse tool input — install with `brew install jq` or `apt-get install jq`
+  - **Important:** if `jq` is not installed, the hook will **fail open** (allow all commands). Always verify `jq` is available after setup.
 
 ## When to Use This Skill
 

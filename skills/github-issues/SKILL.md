@@ -1,7 +1,7 @@
 ---
 name: github-issues
 description: "Crée, récupère, met à jour et gère les issues GitHub avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet, ajouter des commentaires ou gérer les workflows d'issues dans GitHub."
-version: 1.1.0
+version: 1.2.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,10 @@ metadata:
 # GitHub Issues Management
 
 Create, retrieve, update, and manage GitHub issues with comprehensive context integration and structured workflows.
+
+## Prerequisites
+
+- **gh** (GitHub CLI): required for all issue operations — install from https://cli.github.com or `brew install gh`
 
 ## When to Use This Skill
 

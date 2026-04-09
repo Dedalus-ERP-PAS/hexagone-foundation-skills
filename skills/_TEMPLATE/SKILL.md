@@ -11,6 +11,12 @@ metadata:
 
 Brief description of the skill's purpose.
 
+## Prerequisites
+
+<!-- Remove this section if the skill has no external tool dependencies -->
+
+- **tool-name**: description — install with `<install command>`
+
 ## When to Use This Skill
 
 Activate when the user:

@@ -11,6 +11,14 @@ Guide pour installer et utiliser les skills avec vos assistants IA (GitHub Copil
   - VS Code : ouvrir les settings (`Ctrl+,`) et rechercher "agent skills"
   - Cursor / Windsurf : vérifier dans les préférences
 
+> **Après l'installation**, lancez le skill `setup` pour installer automatiquement les outils CLI prérequis (`gh`, `glab`, `jq`, `uvx`) et configurer l'intégration Jira :
+>
+> ```
+> setup
+> ```
+>
+> Voir [docs/setup.md](setup.md) pour le détail.
+
 ## Installation
 
 ### Installation globale (tous les skills)

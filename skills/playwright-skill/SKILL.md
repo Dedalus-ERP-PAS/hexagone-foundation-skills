@@ -1,13 +1,18 @@
 ---
 name: playwright-skill
 description: "Automatisation complète du navigateur et tests web avec Playwright. Détecte automatiquement les serveurs de développement, gère le cycle de vie des serveurs, écrit des scripts de test propres dans /tmp. Tester des pages, remplir des formulaires, capturer des screenshots, vérifier le responsive design, valider l'UX, tester les flux de connexion, vérifier les liens, déboguer des webapps dynamiques, automatiser toute tâche navigateur. À utiliser quand l'utilisateur veut tester des sites web, automatiser des interactions navigateur, valider des fonctionnalités web ou effectuer tout test basé sur le navigateur."
-version: 1.0.0
+version: 1.1.0
 license: MIT
 ---
 
 # Playwright Web Testing & Automation
 
 Comprehensive web testing skill using Playwright. Write custom JavaScript code for any testing or automation task.
+
+## Prerequisites
+
+- **Node.js**: required — install from https://nodejs.org
+- **playwright** npm package: `npm install playwright` (installs headless Chromium automatically)
 
 ## Decision Tree: Choosing Your Approach
 

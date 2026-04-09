@@ -1,7 +1,7 @@
 ---
 name: issue-review
 description: "Lance une revue d'issue automatique avec des personas experts sélectionnés automatiquement, analyse la faisabilité, la complétude, les risques et l'architecture, puis publie un rapport structuré directement sur l'issue — le tout sans intervention de l'utilisateur."
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,11 @@ metadata:
 # Issue Review
 
 Run a fully autonomous multi-angle review of a GitLab or GitHub issue using expert personas. The skill fetches issue context, explores the relevant codebase, runs a 3-round persona meeting (opening statements, debate, weighted convergence), and posts a structured review comment directly on the issue — all without asking the user for confirmation.
+
+## Prerequisites
+
+- **gh** (GitHub CLI): required when the project uses GitHub — install from https://cli.github.com or `brew install gh`
+- **glab** (GitLab CLI): required when the project uses GitLab — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## When to Use This Skill
 

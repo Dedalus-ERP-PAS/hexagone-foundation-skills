@@ -1,7 +1,7 @@
 ---
 name: fast-meeting
 description: "Lance une réunion autonome rapide avec des personas sélectionnés automatiquement, implémente la décision, crée une MR/PR, commite, pousse et publie un résumé en français — le tout sans intervention de l'utilisateur."
-version: 1.6.0
+version: 1.7.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,11 @@ metadata:
 # Fast Meeting
 
 Run a fully autonomous meeting with expert personas, then immediately implement the recommended solution, create a merge request or pull request, and post a French description — all without asking the user for confirmation.
+
+## Prerequisites
+
+- **gh** (GitHub CLI): required when the project uses GitHub — install from https://cli.github.com or `brew install gh`
+- **glab** (GitLab CLI): required when the project uses GitLab — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## When to Use This Skill
 

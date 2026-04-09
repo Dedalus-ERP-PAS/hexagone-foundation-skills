@@ -2,7 +2,7 @@
 name: article-extractor
 description: "Extraire le contenu propre d'articles depuis des URLs (billets de blog, articles, tutoriels) et sauvegarder en texte lisible. À utiliser quand l'utilisateur veut télécharger, extraire ou sauvegarder un article/billet de blog depuis une URL sans publicités, navigation ou encombrement."
 allowed-tools: Bash,Write
-version: 1.0.0
+version: 1.0.1
 license: MIT
 metadata:
   author: Foundation Skills
@@ -11,6 +11,14 @@ metadata:
 # Article Extractor
 
 This skill extracts the main content from web articles and blog posts, removing navigation, ads, newsletter signups, and other clutter. Saves clean, readable text.
+
+## Prerequisites
+
+At least one of:
+- **Node.js 18+ and npm** — required for `reader` (`npm install -g reader-cli`)
+- **Python 3 and pip** — required for `trafilatura` (`pip3 install trafilatura`)
+
+If neither is installed, the skill falls back to a basic `curl`-based extraction (no install needed).
 
 ## When to Use This Skill
 

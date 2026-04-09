@@ -1,7 +1,7 @@
 ---
 name: triage-issue
 description: "Trier un bug ou une issue en explorant le codebase pour trouver la cause racine, puis créer une issue GitLab ou GitHub avec un plan de correction basé sur le TDD. À utiliser quand l'utilisateur signale un bug, veut créer une issue, mentionne « triage » ou veut investiguer et planifier la correction d'un problème."
-version: 1.1.0
+version: 1.2.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -11,6 +11,11 @@ metadata:
 # Triage Issue
 
 Investigate a reported problem, find its root cause, and create a GitLab or GitHub issue with a TDD fix plan. This is a mostly hands-off workflow -- minimize questions to the user.
+
+## Prerequisites
+
+- **gh** (GitHub CLI): required when the project uses GitHub — install from https://cli.github.com or `brew install gh`
+- **glab** (GitLab CLI): required when the project uses GitLab — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## When to Use This Skill
 

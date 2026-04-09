@@ -1,7 +1,7 @@
 ---
 name: postgres
 description: "Exécute des requêtes SQL en lecture seule sur plusieurs bases de données PostgreSQL. À utiliser pour : (1) interroger des bases PostgreSQL, (2) explorer les schémas/tables, (3) exécuter des requêtes SELECT pour l'analyse de données, (4) vérifier le contenu des bases. Supporte plusieurs connexions avec descriptions pour une sélection automatique intelligente. Bloque toutes les opérations d'écriture (INSERT, UPDATE, DELETE, DROP, etc.) par sécurité."
-version: 1.0.0
+version: 1.0.1
 license: MIT
 ---
 
@@ -9,7 +9,7 @@ license: MIT
 
 Execute safe, read-only queries against configured PostgreSQL databases.
 
-## Requirements
+## Prerequisites
 
 - Python 3.8+
 - psycopg2-binary: `pip install -r requirements.txt`

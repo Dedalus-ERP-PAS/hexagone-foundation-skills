@@ -1,7 +1,7 @@
 ---
 name: gitlab-issue
 description: "Crée, récupère, met à jour et gère les issues GitLab avec collecte complète du contexte. À utiliser quand l'utilisateur veut créer une nouvelle issue, voir les détails d'une issue, mettre à jour des issues existantes, lister les issues du projet ou gérer les workflows d'issues dans GitLab."
-version: 1.1.0
+version: 1.2.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,10 @@ metadata:
 # GitLab Issue Management
 
 Create, retrieve, update, and manage GitLab issues with comprehensive context integration and structured workflows.
+
+## Prerequisites
+
+- **glab** (GitLab CLI): required for all issue operations — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## GitLab Instance Configuration
 

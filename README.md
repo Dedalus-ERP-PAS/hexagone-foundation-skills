@@ -102,6 +102,7 @@ graph LR
 | **playwright-skill** | Automatisation navigateur et tests web | [doc](docs/playwright-skill.md) |
 | **postgres** | Requêtes SQL lecture seule sur PostgreSQL | [doc](docs/postgres.md) |
 | **mcp-builder** | Création de serveurs MCP | [doc](docs/mcp-builder.md) |
+| **setup** | Installation des outils CLI, auth GitHub/GitLab, config Jira MCP | [doc](docs/setup.md) |
 | **write-a-skill** | Guide pour créer un nouveau skill | [doc](docs/write-a-skill.md) |
 
 ## Ressources

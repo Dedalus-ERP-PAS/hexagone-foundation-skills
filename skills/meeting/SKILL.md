@@ -1,7 +1,7 @@
 ---
 name: meeting
 description: "Lance une réunion simulée avec plusieurs personas experts pour analyser un sujet sous des perspectives diverses, prendre une décision et proposer une solution avant implémentation. Peut optionnellement publier l'analyse de la réunion sur une issue GitLab ou GitHub liée."
-version: 1.3.0
+version: 1.4.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,11 @@ metadata:
 # Meeting
 
 Simulate a structured meeting with multiple expert personas to analyze a subject, debate perspectives, and converge on the best course of action. The output is a decision-ready analysis that the user validates before any implementation begins.
+
+## Prerequisites
+
+- **gh** (GitHub CLI): required when posting meeting results to GitHub issues — install from https://cli.github.com or `brew install gh`
+- **glab** (GitLab CLI): required when posting meeting results to GitLab issues — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## When to Use This Skill
 

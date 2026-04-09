@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: "Effectue des revues de code complètes des merge requests GitLab, analysant la qualité du code, la sécurité, les performances et les bonnes pratiques. À utiliser quand l'utilisateur dit « code review » ou demande de revoir des merge requests ou d'analyser les changements d'une branche avant fusion."
-version: 2.0.0
+version: 2.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -10,6 +10,10 @@ metadata:
 # Code Review
 
 Perform comprehensive code reviews of GitLab merge requests, providing actionable feedback on code quality, security, performance, and best practices.
+
+## Prerequisites
+
+- **glab** (GitLab CLI): required for all MR and pipeline operations — install from https://gitlab.com/gitlab-org/cli or `brew install glab`
 
 ## GitLab Instance Configuration
 
