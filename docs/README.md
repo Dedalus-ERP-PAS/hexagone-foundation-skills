@@ -65,6 +65,7 @@ Index de la documentation disponible pour les Foundation Skills.
 | [triage-issue](triage-issue.md)               | Triage de bugs avec plan de fix TDD                           |
 | [meeting](meeting.md)                         | Réunion simulée avec personas experts                         |
 | [fast-meeting](fast-meeting.md)               | Réunion autonome rapide avec décision et MR/PR                |
+| [meeting-report](meeting-report.md)           | Compte-rendu automatique depuis une transcription Teams (.vtt) |
 
 ### Hexagone / Domaine santé
 

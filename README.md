@@ -70,6 +70,7 @@ graph LR
 |-------|-------------|-----|
 | **meeting** | Réunion simulée avec personas experts | [doc](docs/meeting.md) |
 | **fast-meeting** | Réunion autonome rapide avec décision et MR/PR | [doc](docs/fast-meeting.md) |
+| **meeting-report** | Compte-rendu automatique en français depuis une transcription Teams (`.vtt`) — spécifique hexagone-monorepo | [doc](docs/meeting-report.md) |
 | **grill-me** | Interview approfondie pour valider un plan | [doc](docs/grill-me.md) |
 | **ubiquitous-language** | Extraction de glossaire DDD (domaine santé) | [doc](docs/ubiquitous-language.md) |
 
