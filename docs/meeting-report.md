@@ -39,12 +39,17 @@ Le skill classe automatiquement le compte-rendu dans le bon sous-dossier de `doc
 |---|---|
 | `foundation/` | Réunions internes de l'équipe Foundation (sprint, rétro, point équipe, daily) |
 | `core/` | Sujets transversaux, architecture, LDAP, S3A, permissions, rôles |
+| `interoperability/` | Équipe Hexaflux, HL7 v2.5, FHIR, IHE PAM, segments ADT (PID, PV1, NK1, OBX), mappings, flux, brokers |
 | `gap/` | Gestion Administrative Patient : admission, venue, séjour, facturation, portail patient, ROC, serveur d'actes, urgences, Diapason |
 | `grh/` | Ressources humaines : MyRHConnect, RH Dossier, paie, contrats |
 | `gef/` | Finance et achats : pharmacie, M21, contentieux, trésorerie, HA GHT, immobilisations |
 | `ui-ux/` | Design, maquettes, ateliers UX/UI, Figma, écrans, prototypes |
 
 Si la réunion couvre plusieurs domaines, le skill choisit le domaine **dominant** (celui avec le plus de signaux dans la transcription).
+
+**Classement par projet, pas par équipe.** L'équipe Hexaflux fait partie de l'équipe Foundation au niveau organisationnel, mais travaille exclusivement sur le projet Hexaflux (domaine interopérabilité). Ses réunions récurrentes (hebdo, rétro, standup) sont donc classées dans `interoperability/`, jamais dans `foundation/`. Le dossier `foundation/` est réservé aux réunions de l'équipe Foundation portant sur la plateforme transverse.
+
+**Cas particulier interop vs GAP.** Les messages HL7 véhiculent des données patient (PID, PV1, NK1…), donc les mots-clés GAP apparaissent naturellement dans une réunion d'interop. Quand des signaux HL7/interop sont présents, le skill classe en `interoperability/` — même si « patient » ou « admission » reviennent souvent — car la réunion parle d'**intégration technique**, pas de workflow métier.
 
 ## Convention de nommage
 

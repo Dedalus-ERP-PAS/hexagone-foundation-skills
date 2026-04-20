@@ -2,7 +2,7 @@
 name: meeting-report
 description: "Génère automatiquement un compte-rendu de réunion en français à partir d'une transcription Teams (.vtt) et optionnellement d'un rapport de présence (.csv). Spécifique au projet hexagone-monorepo. À utiliser quand l'utilisateur dépose un ou deux chemins de fichiers Teams dans le prompt et demande la génération d'un compte-rendu."
 allowed-tools: Read, Write, Bash, Grep, Glob
-version: 1.0.0
+version: 1.1.0
 license: MIT
 metadata:
   author: Foundation Skills
@@ -12,7 +12,7 @@ metadata:
 
 Generate a structured French meeting report from a Microsoft Teams `.vtt` transcript, optionally enriched with a Teams `.csv` attendance report. The report is written to the correct sub-domain folder under `docs/reports/` inside the **hexagone-monorepo** project.
 
-**This skill is specific to the hexagone-monorepo project.** It assumes the working directory is hexagone-monorepo and that `docs/reports/` exists with the following sub-domain folders: `foundation/`, `core/`, `gap/`, `grh/`, `gef/`, `ui-ux/`.
+**This skill is specific to the hexagone-monorepo project.** It assumes the working directory is hexagone-monorepo and that `docs/reports/` exists with the following sub-domain folders: `foundation/`, `core/`, `interoperability/`, `gap/`, `grh/`, `gef/`, `ui-ux/`.
 
 ## When to Use This Skill
 
@@ -82,10 +82,11 @@ Priority order:
 
 Analyze transcript content for domain signals using the table below (case-insensitive keyword matching):
 
-| Folder | Signals (French keywords) |
+| Folder | Signals (French / technical keywords) |
 |---|---|
 | `foundation/` | sprint, rétro, rétrospective, point équipe, stand-up, daily, foundation, équipe foundation |
 | `core/` | architecture transversale, cross-domain, LDAP, S3A, S3A settings, permissions utilisateur, rôles, authentification |
+| `interoperability/` | Hexaflux, interopérabilité, interop, HL7, HL7 v2, HL7 v2.5, FHIR, IHE, PAM, ADT, segment, PID, PV1, PV2, NK1, OBX, EVN, MSH, HPK, flux, intégration, message, mapping, broker, Mirth, Rhapsody |
 | `gap/` | admission, patient, venue, séjour, dossier patient, pré-admission, AMO, AMC, débiteur, couverture sociale, facturation, valorisation, portail patient, ROC, serveur d'actes, actes, urgences, Diapason |
 | `grh/` | RH, ressources humaines, employé, salarié, contrat, paie, MyRHConnect, RH Dossier |
 | `gef/` | pharmacie, M21, contentieux, emprunts, trésorerie, HA GHT, immobilisations, achats, fournisseurs, comptabilité générale, Hélios, export comptable |
@@ -93,10 +94,14 @@ Analyze transcript content for domain signals using the table below (case-insens
 
 **Classification rule:**
 
-1. If the meeting is clearly an internal **Foundation team recurring meeting** (sprint, rétro, daily, point équipe, stand-up) → `foundation/`
-2. Otherwise, count keyword matches per domain folder and pick the **folder with the highest count** (dominant domain)
-3. On a tie, prefer the folder whose signals appear earliest in the transcript
-4. If no signals match at all → ask the user to confirm the target folder
+Classification is **by project/domain, not by team org.** The Hexaflux team is organizationally part of the Foundation team but works exclusively on the Hexaflux project (domain = interoperability), so their recurring meetings land in `interoperability/`, not `foundation/`. Always check project-specific signals before the generic Foundation standup rule.
+
+1. If the meeting is the **Hexaflux team recurring meeting** (mentions « Hexaflux », or a weekly/standup/rétro involving the HL7/interop scope) → `interoperability/`
+2. Else if the meeting is a **Foundation team recurring meeting** working on the horizontal/transverse platform (sprint, rétro, daily, point équipe, stand-up — without project-specific scope) → `foundation/`
+3. **Interoperability vs. GAP disambiguation.** HL7 messages carry patient data (PID, PV1, NK1, etc.) so GAP keywords (patient, admission, séjour, venue) will naturally appear. When HL7/interop signals are present alongside GAP signals, the meeting is about **integration**, not patient business workflows → classify as `interoperability/`. Only classify as `gap/` when the discussion is about the functional/business side (UI, portail patient, facturation, workflows métier admission) without a technical HL7/message layer.
+4. Otherwise, count keyword matches per domain folder and pick the **folder with the highest count** (dominant domain)
+5. On a tie, prefer the folder whose signals appear earliest in the transcript
+6. If no signals match at all → ask the user to confirm the target folder
 
 ### Step 5: Extract Meeting Title and Slug
 
@@ -308,4 +313,16 @@ User: compte-rendu /tmp/point_facturation_ght.vtt
 → gap has significantly more keyword hits → picks gap as dominant
 → Classifies as gap/
 → Writes docs/reports/gap/2026-04-08-point-facturation-ght.md
+```
+
+### Example 5: Hexaflux weekly — HL7 discussion, not GAP
+
+```
+User: crée un compte-rendu /tmp/hexaflux_weekly.vtt
+
+→ Skill reads the .vtt
+→ Detects HL7 / ADT / PID / PV1 / NK1 / OBX / segment / mapping signals
+→ Patient and admission keywords are present BUT tied to HL7 message segments, not business workflows
+→ Applies the interop-vs-gap disambiguation rule → picks interoperability/
+→ Writes docs/reports/interoperability/2026-04-17-hexaflux-weekly.md
 ```
